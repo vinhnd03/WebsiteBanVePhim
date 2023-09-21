@@ -1,0 +1,225 @@
+/* CSS cho thanh menu */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    background-color: #3498db; /* Màu nền của thanh menu (ví dụ: xanh dương) */
+    background-image: url('image/logomenu.jpg'); /* Đường dẫn hình ảnh làm nền */
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10px 20px;
+    color: white; /* Màu chữ trên thanh menu (ví dụ: trắng) */
+    margin-top: 10px;
+    border-radius: 15px;
+
+}
+
+
+.menu .logo img {
+    max-width: 150px; /* Điều chỉnh kích thước của logo */
+}
+
+.menu-con {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 5px;
+
+}
+
+.menu-item {
+    margin: 0 10px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: white; /* Màu chữ của các mục menu (ví dụ: trắng) */
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.menu-item a:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Màu nền khi di chuột vào (ví dụ: đen nhạt có độ trong suốt) */
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* Khoảng cách giữa menu và ô tìm kiếm */
+}
+
+.form-row-search {
+    position: relative;
+}
+
+.search-field {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    width: 150px; /* Điều chỉnh độ rộng của ô tìm kiếm */
+}
+
+.search {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    margin-left: 5px; /* Khoảng cách giữa ô tìm kiếm và nút tìm kiếm */
+}
+
+-------------------------------
+/* phần login*/
+.btn-register {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  /* CSS cho phần đăng nhập */
+  .btn-login {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #2ecc71;
+    color: #fff;
+  }
+  
+  /* CSS cho logo trong phần đăng nhập và đăng ký */
+  .logo-login {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+  }
+  
+  /* CSS cho phần login */
+  .login {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* CSS để căn giữa nút đăng ký và đăng nhập */
+  .login ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .login ul li {
+    margin-right: 10px;
+  }
+  
+
+
+------------------------------------------
+
+/* CSS cho slide show */
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin-top: 20px; /* Khoảng cách giữa slide show và thanh menu */
+}
+
+.mySlides {
+    display: none;
+}
+
+img {
+    width: 100%;
+}
+
+/* Chỉnh kích thước hình ảnh trong slide show */
+.mySlides img {
+    width: 100%;
+    height: 300px; /* Điều chỉnh chiều cao của slide show */
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+/* Chỉnh hiệu ứng chuyển đổi */
+.fade {
+    animation: fade 2s ease-in-out infinite;
+}
+
+@keyframes fade {
+    0%, 100% { opacity: 0; }
+    20%, 80% { opacity: 1; }
+}
+
+------------------------------------
+
+/* CSS mua vé Online*/
+.mua-ve {
+    padding: 20px;
+    margin-top: 20px; /* Khoảng cách giữa slide show và phần mua vé */
+    text-align: center;
+}
+
+.mua-ve h2 {
+    font-size: 24px; /* Kích thước chữ */
+    color: #333; /* Màu chữ (ví dụ: màu đen) */
+    font-weight: bold; /* Độ đậm của chữ */
+    margin-bottom: 20px; /* Khoảng cách với các nút */
+}
+.mua-ve h2,
+.mua-ve button {
+    display: inline-block; /* Hiển thị trên cùng một hàng */
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+}
+
+.mua-ve button {
+    margin-left: 20px; /* Khoảng cách giữa thẻ <h2> và các nút */
+}
+.mua-ve button {
+    display: inline-block; /* Hiển thị nút trên cùng một hàng */
+    margin-right: 20px; /* Khoảng cách giữa các nút */
+}
+
+.btn-chon-phim, .btn-chon-ngay, .btn-chon-suat {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.btn-chon-phim {
+    background-color: #616263; /* Màu nền cho nút chọn phim */
+    color: white;
+}
+
+.btn-chon-ngay {
+    background-color: #616263; /* Màu nền cho nút chọn ngày */
+    color: white;
+}
+
+.btn-chon-suat {
+    background-color: #616263; /* Màu nền cho nút chọn suất chiếu */
+    color: white;
+}
+
+.btn-chon-phim:hover,
+.btn-chon-ngay:hover,
+.btn-chon-suat:hover {
+    opacity: 0.8;
+}
+
+
+----------------------------
+
+/* Danh sách phim*/
+
+
