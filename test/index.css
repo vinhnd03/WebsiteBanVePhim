@@ -218,6 +218,148 @@ img {
 }
 
 
+<<<<<<< HEAD
+----------------------------
+
+/* khuyến mãi*/
+/* CSS cho phần promotion-list-content */
+.promotion-list-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* CSS cho phần title */
+.title h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* CSS cho phần list-wrap */
+.list-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* CSS cho phần block */
+.block {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 10px 20px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* CSS cho phần block-image */
+.block-image img {
+    width: 100%; /* Để hình ảnh mở rộng theo kích thước của khối */
+    height: auto; /* Để duy trì tỷ lệ khung ảnh */
+    border-radius: 5px; /* Bo góc hình vuông */
+}
+
+/* CSS cho phần block-txt */
+.block-txt {
+    padding: 10px 0;
+}
+
+.block-txt h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007BFF;
+}
+
+.block-txt p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+
+-------------------------------------
+/* Thẻ Thành Viên */
+
+/* CSS cho phần title */
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* CSS cho phần car */
+.car {
+    width: 30%;
+    margin-left: 200px;
+    margin-top: 20px;
+}
+
+/* CSS cho phần slide-slidebox */
+.slide-slidebox {
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    margin: 20px 0;
+    border-radius: 15px;
+}
+
+.slide-wraper {
+    display: flex;
+    transition: transform 0.5s;
+    border-radius: 15px;
+}
+
+.slide-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+/* CSS cho phần member-item */
+.member-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.member-pic img {
+    max-width: 100%;
+    height: auto;
+    
+}
+
+.member-txt a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.member-txt a:hover {
+    color: #007BFF;
+}
+
+/* CSS cho phần content-page */
+.content-page {
+    padding: 20px;
+}
+
+=======
 /* ---------------------------- */
 
 /* Danh sách phim*/
+>>>>>>> c8b27369fc991fd8bbb1ebaf026f9ed17a850b78
