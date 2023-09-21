@@ -124,69 +124,115 @@ body {
   
 
 
-------------------------------------------
+/* ------------------------------------------ */
+.slide_BG{
+    height: 20%;
+    background-image: url('./image/Slide_BG.png');
+}
 
 /* CSS cho slide show */
 .slideshow-container {
-    max-width: 100%;
+    /* max-width: 100%;
+    position: relative; */
     position: relative;
+    max-width:  80%;
+    
+    margin: 0 auto;
     margin-top: 20px; /* Khoảng cách giữa slide show và thanh menu */
 }
 
 .mySlides {
     display: none;
+    
 }
 
 img {
-    width: 100%;
+    border-radius: 3px;
 }
 
 /* Chỉnh kích thước hình ảnh trong slide show */
 .mySlides img {
-    width: 100%;
-    height: 300px; /* Điều chỉnh chiều cao của slide show */
+    width: 80%;
+     /* Điều chỉnh chiều cao của slide show */
     object-fit: cover;
     margin-top: 10px;
 }
 
 /* Chỉnh hiệu ứng chuyển đổi */
 .fade {
-    animation: fade 2s ease-in-out infinite;
+    /* animation: fade 2s ease-in-out infinite; */
+    animation-name: fade;
+    animation-duration: 2s;
 }
 
 @keyframes fade {
-    0%, 100% { opacity: 0; }
-    20%, 80% { opacity: 1; }
+    /* 0%, 100% { opacity: 0; }
+    20%, 80% { opacity: 1; } */
+    0% {
+        opacity: 0.4;
+      }
+      100% {
+        opacity: 1;
+      }
 }
 
 ------------------------------------
 
 /* CSS mua vé Online*/
-.mua-ve {
-    padding: 20px;
-    margin-top: 20px; /* Khoảng cách giữa slide show và phần mua vé */
-    text-align: center;
+.ticket-buying {
+    margin-top: 10%; /* Khoảng cách giữa slide show và phần mua vé */
+    
 }
 
-.mua-ve h2 {
+.ticket-buying h2 {
     font-size: 24px; /* Kích thước chữ */
     color: #333; /* Màu chữ (ví dụ: màu đen) */
     font-weight: bold; /* Độ đậm của chữ */
-    margin-bottom: 20px; /* Khoảng cách với các nút */
+    margin-bottom: 1%;
 }
-.mua-ve h2,
-.mua-ve button {
+.ticket-buying h2,
+.ticket-buying button {
     display: inline-block; /* Hiển thị trên cùng một hàng */
     vertical-align: middle; /* Căn giữa theo chiều dọc */
 }
 
-.mua-ve button {
+.ticket-buying button {
     margin-left: 20px; /* Khoảng cách giữa thẻ <h2> và các nút */
 }
-.mua-ve button {
+.ticket-buying button {
     display: inline-block; /* Hiển thị nút trên cùng một hàng */
     margin-right: 20px; /* Khoảng cách giữa các nút */
 }
+
+
+.movies-selecting .nav-link{
+    height: 100%;
+    
+}
+
+.movies-selecting .nav{
+    height: 60px;
+    
+}
+
+.movies-selecting .nav-item{
+    width: 40%;
+}
+
+.movies-selecting a{    
+    color: black;
+}
+
+.nav-link .active{
+    background-color: #d20303;
+   
+}
+
+.movies-selecting a:hover{
+    background-color: aqua;
+    color: white;
+}
+
 
 .btn-chon-phim, .btn-chon-ngay, .btn-chon-suat {
     padding: 10px 20px;

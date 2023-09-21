@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>Menu của tôi</title>
+<<<<<<< HEAD
+    <link rel="stylesheet" href="./index.css">
+
+=======
     <link rel="stylesheet" href="index.css">
+<<<<<<< Updated upstream
+>>>>>>> c100ec9febdbe75ea5a8a21884a63f7bb5b9b016
+=======
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+>>>>>>> Stashed changes
 </head>
 
 <body>
-
-
     <!-- Thanh Menu-->
     <div class="menu">
         <div class="logo">
-            <img src="image/logo ticketmen_preview_rev_1.png    " alt="">
+            <img src="image/logo ticketmen_preview_rev_1.png" alt="">
         </div>
         <div class="menu-con">
             <div class="menu-item">
@@ -56,9 +66,9 @@
 
         <ul>
             <img src="image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
-            <button class="btn-register">Đăng ký</button>
+            <button class="btn-login">Đăng ký</button>
         </ul>
-       
+
         <ul>
             <img src="image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
             <button class="btn-login">Đăng nhập</button>
@@ -66,55 +76,71 @@
 
     </div>
 
-    <!-- Slide Show-->
-    <div class="slideshow-container">
-        <div class="mySlides">
-            <img src="image/slideshow1.webp" style="width:30%  height=50px">
+    <div class="slide_BG">
+        <!-- Slide Show-->
+        <div class="slideshow-container text-center">
+            <div class="mySlides fade">
+                <img src="image/slideshow1.webp" style="width:30% ;height:50px">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="image/slideshow2.webp" style="width:30%  height=50px">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="image/slideshow3.jpg" style="width:30% height=50px">
+            </div>
         </div>
 
-        <div class="mySlides">
-            <img src="image/slideshow2.webp" style="width:30%  height=50px">
-        </div>
 
-        <div class="mySlides">
-            <img src="image/slideshow3.jpg" style="width:30% height=50px">
+        <!-- Mua vé online -->
+        <div class="ticket-buying mt-3 text-center">
+            <h2>Mua Vé Online</h2>
+
+            <button class="btn-chon-phim">Chọn phim</button>
+
+
+            <button class="btn-chon-ngay">Chọn ngày</button>
+
+
+            <button class="btn-chon-suat">Chọn suất chiếu</button>
         </div>
     </div>
-
-
-    <!-- Mua vé online -->
-    <div class="mua-ve">
-        <h2>Mua Vé Online</h2>
-
-        <button class="btn-chon-phim">Chọn phim</button>
-
-
-        <button class="btn-chon-ngay">Chọn ngày</button>
-
-
-        <button class="btn-chon-suat">Chọn suất chiếu</button>
-    </div>
-
     <!--Danh sách phim -->
-    <div class="danh-sach-phim">
-        <ul>
-            <li>
-                <font style="vertical-align: inherit;">
-                    Đang Trình Diển
-                </font>
+    <div class="movies-selecting text-center mt-3">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-toggle="tab" href="" role="tab" data-target="#edit"
+                    aria-selected="true">Phim đang chiếu</a>
             </li>
-            <li>
-                <font style="vertical-align: inherit;">
-                    Sắp Diển ra
-                </font>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#list" aria-selected="false">Phim
+                    sắp chiếu</a>
             </li>
         </ul>
+        <div class="tab-content" id="myContent">
+            <div class="tab-pane fade show active" id="edit">
+                <h1>PHIM ĐANG CHIẾU</h1>
+            </div>
+            <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="videoList-tab">
+                <h1>PHIM SẮP CHIẾU</h1>
+            </div>
+        </div>
     </div>
-
 
 
     <script src="SlideShow.js"></script>
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
