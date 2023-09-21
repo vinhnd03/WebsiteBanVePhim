@@ -1,0 +1,30 @@
+/* Styles for the slideshow container */
+.slideshow-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Style for individual slides */
+  .slide {
+    display: none;
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+  /* Style for fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 2s;
+  }
+  
+  @keyframes fade {
+    0% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
