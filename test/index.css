@@ -212,19 +212,25 @@ img {
 
 .movies-selecting .nav{
     height: 60px;
+    border-radius: 10px ;
     
 }
 
 .movies-selecting .nav-item{
     width: 40%;
+    border : 1px white solid;
+
+    
 }
 
 .movies-selecting a{    
     color: black;
+    font-size: 25px;
+    font-weight: 500;
 }
 
-.nav-link .active{
-    background-color: #d20303;
+.movies-selecting .active{
+    background-color: aqua;
    
 }
 
@@ -264,8 +270,6 @@ img {
 }
 
 
-<<<<<<< HEAD
-----------------------------
 
 /* khuyến mãi*/
 /* CSS cho phần promotion-list-content */
@@ -323,7 +327,7 @@ img {
 }
 
 
--------------------------------------
+/* ------------------------------------- */
 /* Thẻ Thành Viên */
 
 /* CSS cho phần title */
@@ -404,11 +408,12 @@ img {
     padding: 20px;
 }
 
-=======
+
 /* ---------------------------- */
 
 /* Danh sách phim*/
 
+<<<<<<< Updated upstream
 
 
 /* -------------Hỏi Đáp--------------- */
@@ -544,3 +549,5 @@ body {
   .btn-primary:hover {
     background-color: #005f6b;
   }
+=======
+>>>>>>> Stashed changes
