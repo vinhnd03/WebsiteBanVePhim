@@ -10,39 +10,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<style>
-     .container {
-      padding: 20px;
-    }
 
-    .input-group {
-      width: 300px;
-    }
-
-    .form-group {
-      width: 300px;
-    }
-
-    .card {
-      margin-bottom: 20px;
-    }
-
-    .card img {
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .card-title {
-      font-size: 1.25rem;
-    }
-
-    .card-text {
-      font-size: 0.875rem;
-    }
-
-</style>
-
+    <link rel="stylesheet" href="./index.css">
+</head> 
 <body>
 
     <div class="container">
@@ -68,92 +38,90 @@
         </div>
     
         <!-- Hiển thị danh sách phim -->
-        <div class="row mt-4">
+        <div class="row mt-4 showtime">
           <div class="col-md-6">
             <h2>Phim đang chiếu</h2>
-            <div class="container mt-5">         
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
-                                <p class="card-text">
-                                </p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="image/khuyenmai2.webp" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
-                                <p class="card-text">
-        
-        
-                                </p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Lật Mặt 6</h5>
-                                <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <h3 class="text-center mt-3 text-primary">Lịch chiếu hôm nay</h3>
+            <div class="today-showtime row mt-3s">
+              <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+              <div class="col-md-6">
+                <div class="age">13+</div>
+                <div class="movie-name">Án mạng Venice</div>
+                <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                <div class="btn btn-outline-primary order-btn">19:30 - 21:13</div>
+              </div>
+            </div>
+            <div class="today-showtime row mt-3s">
+              <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+              <div class="col-md-6">
+                <div class="age">13+</div>
+                <div class="movie-name">Án mạng Venice</div>
+                <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                <div class="btn btn-outline-primary order-btn">19:30 - 21:13</div>
+              </div>
+            </div>
+            <div class="today-showtime row mt-3s">
+              <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+              <div class="col-md-6">
+                <div class="age">13+</div>
+                <div class="movie-name">Án mạng Venice</div>
+                <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                <div class="btn btn-outline-primary order-btn">19:30 - 21:13</div>
+              </div>
             </div>
           </div>
           <div class="col-md-6">
             <h2>Phim sắp chiếu</h2>
-            <div class="container mt-5">         
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
-                                <p class="card-text">
-                                </p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="image/khuyenmai2.webp" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
-                                <p class="card-text">
-        
-        
-                                </p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Lật Mặt 6</h5>
-                                <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="container mt-2">         
+              <div class="chon-ngay  row">
+                <div class="col-2">
+                  <button class="btn btn-outline-primary">Thứ Ba</button>
                 </div>
-            </div>
+                <div class="col-2">
+                  <button class="btn btn-outline-primary">Thứ Tư</button>
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-outline-primary">Thứ Năm</button>
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-outline-primary">Thứ Sáu</button>
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-outline-primary">Thứ Bảy</button>
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-outline-primary">Chủ Nhật</button>
+                </div>
+              </div>
+              <div>
+                <div class="today-showtime row mt-3s">
+                  <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+                  <div class="col-md-6">
+                    <div class="age">13+</div>
+                    <div class="movie-name">Án mạng Venice</div>
+                    <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                    <div class="btn btn-outline-primary order-btn">19:30 - 21:13</div>
+                  </div>
+                </div>
+                <div class="today-showtime row mt-3s">
+                  <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+                  <div class="col-md-6">
+                    <div class="age">13+</div>
+                    <div class="movie-name">Án mạng Venice</div>
+                    <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                    <div class="btn btn-outline-primary order-btn">19:30 - 21:13</div>
+                  </div>
+                </div>
+                <div class="today-showtime row mt-3s">
+                  <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+                  <div class="col-md-6">
+                    <div class="age">13+</div>
+                    <div class="movie-name">Án mạng Venice</div>
+                    <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                    <div class="btn btn-outline-primary order-btn">19:30 - 21:13</div>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
