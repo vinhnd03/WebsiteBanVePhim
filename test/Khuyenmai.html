@@ -1,19 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <title>Menu của tôi</title>
+
+    <link rel="stylesheet" href="./index.css">
+
+
+    <link rel="stylesheet" href="index.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+    <!-- Thanh Menu-->
+    <div class="menu">
+        <div class="logo">
+            <img src="image/logo ticketmen_preview_rev_1.png" alt="">
+        </div>
+        <div class="menu-con">
+            <div class="menu-item">
+                <a href="#">Phim</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Lịch Chiếu</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Khuyến mãi</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Hỏi & Đáp</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Tin Tức</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Giới Thiệu</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Liên Hệ</a>
+            </div>
+        </div>
+        <div class="search-form">
+            <div class="form-row-search">
+                <form onsubmit="return false;" action="" id="search" method="get">
+                    <input id="qsearch" type="text" class="search-field" value="Tìm Kiếm">
+                    <input id="defaultvalue" type="hidden" class="search-field" value="Tìm Kiếm">
+                    <input type="hidden" id="href_search" value="">
+                </form>
+            </div>
+            <a href="javascript:void(0);" class="search">Search</a>
+        </div>
+
+
+    </div>
+
+    <!-- Đăng Nhập - Đăng Ký-->
+    <div class="login">
+
+        <ul>
+            <img src="image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
+            <button class="btn-login">Đăng ký</button>
+        </ul>
+
+        <ul>
+            <img src="image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
+            <button class="btn-login">Đăng nhập</button>
+        </ul>
+
+    </div>
+
+    <div class="slide_BG">
+        <!-- Slide Show-->
+        <div class="slideshow-container text-center">
+            <div class="mySlides fade">
+                <img src="image/slideshow1.webp" style="width:30% ;height:50px">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="image/slideshow2.webp" style="width:30%  height=50px">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="image/slideshow3.jpg" style="width:30% height=50px">
+            </div>
+        </div>
+
+
+        <!-- Mua vé online -->
+        <div class="ticket-buying mt-3 text-center">
+            <h2>Mua Vé Online</h2>
+
+            <button class="btn-chon-phim">Chọn phim</button>
+
+
+            <button class="btn-chon-ngay">Chọn ngày</button>
+
+
+            <button class="btn-chon-suat">Chọn suất chiếu</button>
+        </div>
+    </div>
+    <!--Danh sách phim -->
     <div class="content-page">
         <div class="title">
             <h2>
@@ -34,7 +124,7 @@
                                     <div class="member-txt">
                                         <a href="   ">
                                             <form style="vertical-align: inherit;">
-                                                <form style="vertical-align: inherit;">Chi Tiết</form>
+                                                <form style="vertical-align: inherit;"><h5><strong>Chi Tiết</strong> </h5> </form>
 
                                             </form>
                                         </a>
@@ -56,7 +146,7 @@
                                     <div class="member-txt">
                                         <a href="   ">
                                             <form style="vertical-align: inherit;">
-                                                <form style="vertical-align: inherit;">Chi Tiết</form>
+                                                <form style="vertical-align: inherit;"><h5><strong>Chi Tiết</strong> </h5></form>
 
                                             </form>
                                         </a>
@@ -75,94 +165,105 @@
         <div class="title">
             <h2>Khuyến Mãi</h2>
         </div>
+        <br>
         <div class="row" >
             <div class="col">
                 <div>
                     <a>
-                        <img  src="image/km1.jpg" alt="" width="400px" align="right">
+                        <img  src="image/km1.jpg" alt="" align="right" width="700px">
                     </a> 
                 </div>
             </div>
             <div class="col">
+                <h2>
+                    <form style="vertical-align: inherit;"><Strong>Thứ Hai</Strong> </form>
+                </h2>
                 <h3>
-                    <form style="vertical-align: inherit;">Thứ Hai</form>
-                </h3>
                 <p>
                     <form style="vertical-align: inherit;">- Áp dụng vào các buổi diển vào thứ hai.</form>
                 </p>
                 <p>
                     <form style="vertical-align: inherit;">- Giá vé ưu đãi :45.000đ/vé 2D và 70.000đ/vé 3D.</form>
                 </p>
+            </h3>
             </div>
         </div>
 
-        <div class=" row">
+        <div class="list-wrap row">
             <div class="col">
                 <div class="">
                     <a>
-                        <img src="image/km2.jpg" alt="">
+                        <img src="image/km2.jpg" alt="" align="right" width="700px">
                     </a>
-                </div>
-                <div class="col">
-                    <h3>
-                        <form style="vertical-align: inherit;">Thành Viên</form>
-                    </h3>
-                    <p>
-                        <form style="vertical-align: inherit;">-Thứ Tư hàng tuần, Hội viên Cinestar được  ưu đãi giá vé cho cả C'VIP và C'FRIEND</form>
-                    </p>
-                    <p>
-                        <form style="vertical-align: inherit;">- Giá vé: 45.000đ/vé 2D và 70.000đ/vé 3D</form>
-                    </p>
-                    <p>
-                        <form style="vertical-align: inherit;">- Giảm trực tiếp 10% và 15% trên hóa đơn đồ ăn và đồ uống cho C'FRIEND và C'VIP tương ứng</form>
-                    </p>
                 </div>
             </div>
-        </div>
-        <div class="list-wrap">
-            <div class="block">
-                <div class="block-image">
-                    <a>
-                        <img src="image/km3.jpg" alt="">
-                    </a>
-                </div>
-                <div class="block-txt">
-                    <h3>
-                        <form style="vertical-align: inherit;">Student</form>
-                    </h3>
-                    <p>
-                        <form style="vertical-align: inherit;">-Áp dụng từ thứ Hai đến thứ Sáu hàng tuần dành cho giáo viên, học sinh, sinh viên và thanh thiếu niên dưới 22 tuổi.</form>
-                    </p>
-                    <p>
-                        <form style="vertical-align: inherit;">-Giá vé chỉ 45.000đ/ vé 2D</form>
-                    </p>
-                    <p>
-                        <form style="vertical-align: inherit;">-Vui lòng xuất trình thẻ học sinh/thẻ giáo viên hoặc thẻ căn cước khi mua vé.</form>
-                    </p>
-                </div>
+            <div class="col" >
+                <h2>
+                    <form style="vertical-align: inherit;"><strong>Thành Viên</strong> </form>
+                </h2>
+                <h3>
+                <p>
+                    <form style="vertical-align: inherit;">-Thứ Tư hàng tuần, Hội viên Cinestar được  ưu đãi giá vé cho cả C'VIP và C'FRIEND</form>
+                </p>
+                <p>
+                    <form style="vertical-align: inherit;">- Giá vé: 45.000đ/vé 2D và 70.000đ/vé 3D</form>
+                </p>
+                <p>
+                    <form style="vertical-align: inherit;">- Giảm trực tiếp 10% và 15% trên hóa đơn đồ ăn và đồ uống cho C'FRIEND và C'VIP tương ứng</form>
+                </p>
+                </h3>
             </div>
         </div>
-        <div class="list-wrap">
-            <div class="block">
-                <div class="block-image">
+        
+        <div class="list-wrap row">
+            <div class="col">
+                <div class="">
                     <a>
-                        <img src="image/km4.jpg" alt="">
+                        <img src="image/km3.jpg" alt=""align="right" width="700px">
                     </a>
                 </div>
-                <div class="block-txt">
-                    <h3>
-                        <form style="vertical-align: inherit;">Ten</form>
-                    </h3>
-                    <p>
-                        <form style="vertical-align: inherit;">- Áp dụng cho suất chiếu đầu tiên và trước 10h sáng  hàng ngày.</form>
-                    </p>
-                    <p>
-                        <form style="vertical-align: inherit;">- Giá vé: 45.000đ/vé 2D, 70.000đ/vé 3D</form>
-                    </p>
-                    <p>
-                        <form style="vertical-align: inherit;">- Tặng kèm COMBO Hotdog đặc biệt: 25.000đ/vé.</form>
-                    </p>
+            </div>
+            <div class="col">
+                <h2>
+                    <form style="vertical-align: inherit;"><strong>Student</strong> </form>
+                </h2>
+                <h3 style="color: black;">
+                <p>
+                    <form style="vertical-align: inherit;">-Áp dụng từ thứ Hai đến thứ Sáu hàng tuần dành cho giáo viên, học sinh, sinh viên và thanh thiếu niên dưới 22 tuổi.</form>
+                </p>
+                <p>
+                    <form style="vertical-align: inherit;">-Giá vé chỉ 45.000đ/ vé 2D</form>
+                </p>
+                <p>
+                    <form style="vertical-align: inherit;">-Vui lòng xuất trình thẻ học sinh/thẻ giáo viên hoặc thẻ căn cước khi mua vé.</form>
+                </p>
+            </h3>
+            </div>
+        </div>
+        <div class="list-wrap row">
+            <div class="col">
+                <div class="">
+                    <a>
+                        <img src="image/km4.jpg" alt="" align="right" width="700px">
+                    </a>
                 </div>
+
+            </div>
+            <div class="col">
+                <h2>
+                    <form style="vertical-align: inherit;"><strong>Ten</strong> </form>
+                </h2>
+                <h3>
+                <p>
+                    <form style="vertical-align: inherit;">- Áp dụng cho suất chiếu đầu tiên và trước 10h sáng  hàng ngày.</form>
+                </p>
+                <p>
+                    <form style="vertical-align: inherit;">- Giá vé: 45.000đ/vé 2D, 70.000đ/vé 3D</form>
+                </p>
+                <p>
+                    <form style="vertical-align: inherit;">- Tặng kèm COMBO Hotdog đặc biệt: 25.000đ/vé.</form>
+                </p>
+            </h3>
             </div>
         </div>
        
@@ -171,7 +272,7 @@
     </div>
 
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Phim Hot</h1>
+        <h2 class="text-center mb-4"><strong>Phim Hót</strong> </h2>
 
         <div class="row">
             <div class="col-md-4">
@@ -213,6 +314,9 @@
         </div>
 
     </div>
+
+
+    <script src="SlideShow.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
