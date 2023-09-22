@@ -22,7 +22,6 @@ body {
 
 .menu .logo img {
     max-width: 150px;
-    /* Điều chỉnh kích thước của logo */
 }
 
 .menu-con {
@@ -110,12 +109,14 @@ body {
     width: 70px;
     height: 70px;
     margin-right: 10px;
+    
 }
 
 /* CSS cho phần login */
 .login {
     display: flex;
     align-items: center;
+    background-image: url(image/);
 }
 
 /* CSS để căn giữa nút đăng ký và đăng nhập */
@@ -138,7 +139,7 @@ body {
 /* CSS cho slide show */
 .slide_BG {
     height: 20%;
-    background-image: url('./image/Slide_BG.png');
+    background-image: url('image/Slide_BG.png');
     border-radius: 15px;
 }
 
@@ -624,3 +625,98 @@ body {
     border-radius: 10%;
 }
 
+
+
+/*----------LIÊN HỆ-------------*/
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #5084bc; 
+}
+
+header {
+    background-image: url(image/logomenu.jpg);
+    color: #fff; 
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px; 
+}
+
+
+.content {
+    background-color: #f0f5f5; 
+    max-width: 800px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.title h2 {
+    font-size: 24px;
+    color: #333; 
+    margin-bottom: 20px; 
+}
+
+
+.contact h3 {
+    font-size: 18px;
+    color: #333; 
+    margin-bottom: 10px; 
+}
+
+.contact p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+.contact h2 {
+    font-size: 20px;
+    color: #333; 
+    margin-bottom: 10px; 
+}
+
+
+main form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label,
+input,
+textarea,
+button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+footer {
+    background-color: #333; 
+    color: #fff; 
+    text-align: center;
+    padding: 10px;
+}
