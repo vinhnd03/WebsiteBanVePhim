@@ -9,15 +9,12 @@ body {
     display: flex;
     align-items: center;
     background-color: #3498db;
-    /* Màu nền của thanh menu (ví dụ: xanh dương) */
     background-image: url('image/logomenu.jpg');
-    /* Đường dẫn hình ảnh làm nền */
     background-size: cover;
     background-repeat: no-repeat;
     padding: 10px 20px;
     color: white;
-    /* Màu chữ trên thanh menu (ví dụ: trắng) */
-    margin-top: 10px;
+    margin-top: 3px;
     border-radius: 15px;
 
 }
@@ -32,8 +29,10 @@ body {
     display: flex;
     flex-grow: 1;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 5px;
+    color: #5f17ef;
+    border-radius: 10px;
 
 }
 
@@ -102,8 +101,8 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: #2ecc71;
-    color: #fff;
+    background-color: #63f1a1;
+    color: #0b0a0a;
 }
 
 /* CSS cho logo trong phần đăng nhập và đăng ký */
@@ -135,12 +134,15 @@ body {
 
 
 /* ------------------------------------------ */
+
+/* CSS cho slide show */
 .slide_BG {
     height: 20%;
     background-image: url('./image/Slide_BG.png');
+    border-radius: 15px;
 }
 
-/* CSS cho slide show */
+
 .slideshow-container {
     /* max-width: 100%;
     position: relative; */
