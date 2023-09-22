@@ -9,15 +9,12 @@ body {
     display: flex;
     align-items: center;
     background-color: #3498db;
-    /* Màu nền của thanh menu (ví dụ: xanh dương) */
     background-image: url('image/logomenu.jpg');
-    /* Đường dẫn hình ảnh làm nền */
     background-size: cover;
     background-repeat: no-repeat;
     padding: 10px 20px;
     color: white;
-    /* Màu chữ trên thanh menu (ví dụ: trắng) */
-    margin-top: 10px;
+    margin-top: 3px;
     border-radius: 15px;
 
 }
@@ -25,15 +22,16 @@ body {
 
 .menu .logo img {
     max-width: 150px;
-    /* Điều chỉnh kích thước của logo */
 }
 
 .menu-con {
     display: flex;
     flex-grow: 1;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 5px;
+    color: #5f17ef;
+    border-radius: 10px;
 
 }
 
@@ -102,21 +100,23 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: #2ecc71;
-    color: #fff;
+    background-color: #63f1a1;
+    color: #0b0a0a;
 }
 
 /* CSS cho logo trong phần đăng nhập và đăng ký */
 .logo-login {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     margin-right: 10px;
+    
 }
 
 /* CSS cho phần login */
 .login {
     display: flex;
     align-items: center;
+    background-image: url(image/);
 }
 
 /* CSS để căn giữa nút đăng ký và đăng nhập */
@@ -135,12 +135,22 @@ body {
 
 
 /* ------------------------------------------ */
+<<<<<<< HEAD
 .slide_BG {
     height: 20%;
     background-image: url('./image/H4tz.gif');
 }
+=======
+>>>>>>> 4f5bd39aa59a7d409f43f29e5fc4049a266223b2
 
 /* CSS cho slide show */
+.slide_BG {
+    height: 20%;
+    background-image: url('image/Slide_BG.png');
+    border-radius: 15px;
+}
+
+
 .slideshow-container {
     /* max-width: 100%;
     position: relative; */
@@ -525,6 +535,7 @@ body {
 }
 
 /* -------------------- */
+
 /* gửi câu hỏi và đặt vé */
 
 body {
@@ -579,15 +590,14 @@ body {
 
 .btn-primary:hover {
     background-color: #005f6b;
-
   }
+
+
 
 
   li {
     text-decoration: none;
   }
-
-
 
 .showtime .age{
     background-color: darkorange;
@@ -622,3 +632,98 @@ body {
     border-radius: 10%;
 }
 
+
+
+/*----------LIÊN HỆ-------------*/
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #5084bc; 
+}
+
+header {
+    background-image: url(image/logomenu.jpg);
+    color: #fff; 
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px; 
+}
+
+
+.content {
+    background-color: #f0f5f5; 
+    max-width: 800px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.title h2 {
+    font-size: 24px;
+    color: #333; 
+    margin-bottom: 20px; 
+}
+
+
+.contact h3 {
+    font-size: 18px;
+    color: #333; 
+    margin-bottom: 10px; 
+}
+
+.contact p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+.contact h2 {
+    font-size: 20px;
+    color: #333; 
+    margin-bottom: 10px; 
+}
+
+
+main form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label,
+input,
+textarea,
+button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+footer {
+    background-color: #333; 
+    color: #fff; 
+    text-align: center;
+    padding: 10px;
+}
