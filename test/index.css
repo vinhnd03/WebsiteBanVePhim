@@ -108,8 +108,8 @@ body {
 
 /* CSS cho logo trong phần đăng nhập và đăng ký */
 .logo-login {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     margin-right: 10px;
 }
 
@@ -445,10 +445,7 @@ img {
 
 /* Danh sách phim*/
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 8fc934ab87565fe39d4cefd92e544ceced7eaf5d
 
 /* -------------Hỏi Đáp--------------- */
 body {
@@ -583,21 +580,15 @@ body {
 
 .btn-primary:hover {
     background-color: #005f6b;
-
-<<<<<<< HEAD
   }
 
-=======
-  }
+
 
 
   li {
     text-decoration: none;
   }
 
-
-
->>>>>>> 8fc934ab87565fe39d4cefd92e544ceced7eaf5d
 .showtime .age{
     background-color: darkorange;
     display: inline;
