@@ -445,10 +445,6 @@ img {
 
 /* Danh sách phim*/
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 31a28e187ae80c918ec3d99cf9c3c6a0be1dac71
 
 /* -------------Hỏi Đáp--------------- */
 body {
@@ -528,6 +524,7 @@ body {
 }
 
 /* -------------------- */
+
 /* gửi câu hỏi và đặt vé */
 
 body {
@@ -582,12 +579,8 @@ body {
 
 .btn-primary:hover {
     background-color: #005f6b;
-<<<<<<< HEAD
+
   }
-
-
-=======
-}
 
 .showtime .age{
     background-color: darkorange;
@@ -622,4 +615,3 @@ body {
     border-radius: 10%;
 }
 
->>>>>>> 31a28e187ae80c918ec3d99cf9c3c6a0be1dac71
