@@ -1,46 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <title>Menu của tôi</title>
+
+    <link rel="stylesheet" href="./index.css">
+
+    <link rel="stylesheet" href="index.css">
+
+
+    <link rel="stylesheet" href="./index.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
 </head>
 
-<body>
+<body style="background-color: powderblue;">
+    <!-- Thanh Menu-->
+    <div class="menu">
+        <div class="logo">
+            <img src="image/logo ticketmen_preview_rev_1.png" alt="">
+        </div>
+        <div class="menu-con">
+            <div class="menu-item">
+                <a href="#">Phim</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Lịch Chiếu</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Khuyến mãi</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Hỏi & Đáp</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Tin Tức</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Giới Thiệu</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Liên Hệ</a>
+            </div>
+        </div>
+        <div class="search-form">
+            <div class="form-row-search">
+                <form onsubmit="return false;" action="" id="search" method="get">
+                    <input id="qsearch" type="text" class="search-field" value="Tìm Kiếm">
+                    <input id="defaultvalue" type="hidden" class="search-field" value="Tìm Kiếm">
+                    <input type="hidden" id="href_search" value="">
+                </form>
+            </div>
+            <a href="javascript:void(0);" class="search">Search</a>
+        </div>
 
-    <div class="content">
+
+    </div>
+
+    <!-- Đăng Nhập - Đăng Ký-->
+    <div class="login">
+
+        <ul>
+            <img src="image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
+            <button class="btn-login">Đăng ký</button>
+        </ul>
+
+        <ul>
+            <img src="image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
+            <button class="btn-login">Đăng nhập</button>
+        </ul>
+
+    </div>
+
+    <div class="slide_BG">
+        <!-- Slide Show-->
+        <div class="slideshow-container text-center">
+            <div class="mySlides fade">
+                <img src="image/slideshow1.webp" style="width:1000px;height:500px">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="image/slideshow2.webp" style="width:1000px;  height:500px">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="image/slideshow3.jpg" style="width:1000px; height:500px">
+            </div>
+        </div>
+
+
+        <!-- Mua vé online -->
+        <div class="ticket-buying mt-3 text-center">
+            <h2>Mua Vé Online</h2>
+
+            <button class="btn-chon-phim">Chọn phim</button>
+
+
+            <button class="btn-chon-ngay">Chọn ngày</button>
+
+
+            <button class="btn-chon-suat">Chọn suất chiếu</button>
+        </div>
+    </div>
+    <!--Danh sách caau hoi -->
+    <div class="container-fluid" style="background-color: powderblue;">
         <div class="title">
             <h2>Câu Hỏi Thường Gặp</h2>
         </div>
+
         <div class="wrap">
             <div class="fap">
                 <ul>
                     <li class="active">
-                        <div class="ask">
-                            <span class="num">
-                                <h4>01</h4>
-                            </span>
-                            <h3>Làm sao để sở hữu thẻ thành viên TicletMen</h3>
-                        </div>
-                        <div class="ctl">
-                            <div class="answer">
-                                <span class="cycle">
-                                    <h4>Hồi Đáp</h4>
-                                </span>
-                                <div class="detail">
-                                    <p>Khi mua một vài vé cho mỗi giao dịch, bạn sẽ có cơ hội được tặng một lần</p>
-                                    <p>Để biết thêm thông tin, vui lòng liên hệ với chúng tôi tại khu vực khách Cinestar
-                                        hoặc truy cập trang web của chúng tôi</p>
-                                    <p>Cảm ơn !</p>
-                                </div>
-                            </div>
+                        <div class="ask row">
+                            
+                            <ul class="nav nav-pills">
+                                <li class="nav-item dropdown">
+                                    <h4><strong><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" >01. Làm sao để sở hữu thẻ thành viên TicletMen</a>
+                                  
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"><span class="cycle">
+                                        <h4>Hồi Đáp</h4>
+                                    </span></a>
+                                    <a class="dropdown-item" href="#">                                
+                                        <div class="detail">
+                                        <p>Khi mua một vài vé cho mỗi giao dịch, bạn sẽ có cơ hội được tặng một lần</p>
+                                        <p>Để biết thêm thông tin, vui lòng liên hệ với chúng tôi tại khu vực khách Cinestar
+                                            hoặc truy cập trang web của chúng tôi</p>
+                                        <p>Cảm ơn !</p>
+                                    </div></a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                  </div>
+                                </strong></h4>
+                                </li>
+                              </ul>
                         </div>
                     </li>
                 </ul>
@@ -51,23 +149,30 @@
             <div class="fap">
                 <ul>
                     <li class="active">
-                        <div class="ask">
-                            <span class="num">
-                                <h4>02</h4>
-                            </span>
-                            <h3>Đặc quyền của thẻ thành viên TicketMen khi tôi có một lần là gì?</h3>
-                        </div>
-                        <div class="ctl">
-                            <div class="answer">
-                                <span class="cycle">
-                                    <h4>Hồi Đáp</h4>
-                                </span>
-                                <div class="detail">
-                                    <p>Bạn sẽ đưa ra một mức giá đặc biệt khi mua vé và được giảm giá trên hóa đơn đồ
-                                        ăn. Không chỉ vậy,
-                                        bạn còn có cơ hội nhận quà từ điểm .tích lũy</p>
-                                </div>
-                            </div>
+                        <div class="ask row">
+                            
+                            <ul class="nav nav-pills">
+                                <li class="nav-item dropdown">
+                                    <h4><strong><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" >02. Đặc quyền của thẻ thành viên TicketMen khi tôi có một lần là gì?</a>
+                                  
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"><span class="cycle">
+                                        <h4>Hồi Đáp</h4>
+                                    </span></a>
+                                    <a class="dropdown-item" href="#">                                
+                                        <div class="detail">
+                                            <p>Bạn sẽ đưa ra một mức giá đặc biệt khi mua vé và được giảm giá trên hóa đơn đồ
+                                                ăn. Không chỉ vậy,
+                                                bạn còn có cơ hội nhận quà từ điểm .tích lũy</p>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                  </div>
+                                </strong></h4>
+                                </li>
+                              </ul>
                         </div>
                     </li>
                 </ul>
@@ -78,39 +183,47 @@
             <div class="fap">
                 <ul>
                     <li class="active">
-                        <div class="ask">
-                            <span class="num">
-                                <h4>03</h4>
-                            </span>
-                            <h3>Hệ thống âm thanh Dolby Atmos là gì?</h3>
-                        </div>
-                        <div class="ctl">
-                            <div class="answer">
-                                <span class="cycle">
-                                    <h4>Hồi Đáp</h4>
-                                </span>
-                                <div class="detail">
-                                    <p>
-                                        Hệ thống Dolby Atmos đã tạo ra trải nghiệm âm thanh 3D tại rạp kể từ tháng 6 năm
-                                        2012. Giờ đây, công ty mang đến cho chúng ta âm thanh vòm đang
-                                        mang trải nghiệm âm thanh dựa trên vật thể của mình vào gia đình và trên các
-                                        thiết bị di động.</p>
-                                    <p>
-                                        Điều kỳ lạ về âm thanh là nó cực kỳ quan trọng đối với phim, nhưng khi được thực
-                                        hiện tốt thì bạn thậm chí không nhận ra.
-                                        Chắc hẳn bạn đã từng nghe đến công nghệ Dolby's Atmos trong các bộ phim như Star
-                                        Trek Into the Darkness hay bộ phim hay nhất mùa hè,
-                                        Guardians of Galaxy. Nhưng khi bạn nhận thấy điều gì đang xảy ra với âm thanh
-                                        thì điều đó thật ngoạn mục.
-                                    </p>
-                                    <p>
-                                        Vậy Atmos sắp có mặt trên TV và điện thoại của bạn, nhưng chính xác thì nó có ý
-                                        nghĩa gì? Chúng tôi đã chia nhỏ cách Atmos sẽ thay
-                                        đổi rạp hát tại nhà và âm thanh di động cũng như ý nghĩa của nó đối với bạn và
-                                        đôi tai của bạn.
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="ask row">
+                            
+                            <ul class="nav nav-pills">
+                                <li class="nav-item dropdown">
+                                    <h4><strong><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" >03. Hệ thống âm thanh Dolby Atmos là gì?</a>
+                                  
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"><span class="cycle">
+                                        <h4>Hồi Đáp</h4>
+                                    </span></a>
+                                    <a class="dropdown-item" href="#">                                
+                                        <div class="detail">
+                                            <p>
+                                                Hệ thống Dolby Atmos đã tạo ra trải nghiệm âm thanh 3D tại rạp kể từ tháng 6 năm
+                                                2012.</p> <p>Giờ đây, công ty mang đến cho chúng ta âm thanh vòm đang
+                                                mang trải nghiệm âm thanh dựa trên vật thể của mình vào gia đình và trên các
+                                                thiết bị di động.</p>
+                                            <p>
+                                                Điều kỳ lạ về âm thanh là nó cực kỳ quan trọng đối với phim, nhưng khi được thực
+                                                hiện tốt thì bạn thậm chí không nhận ra.</p>
+                                            <p> Chắc hẳn bạn đã từng nghe đến công nghệ Dolby's Atmos trong các bộ phim như Star
+                                                Trek Into the Darkness hay bộ phim hay nhất mùa hè,
+                                                Guardians of Galaxy.</p> 
+                                            <p>Nhưng khi bạn nhận thấy điều gì đang xảy ra với âm thanh
+                                                thì điều đó thật ngoạn mục.
+                                            </p>
+                                            <p>
+                                                Vậy Atmos sắp có mặt trên TV và điện thoại của bạn, nhưng chính xác thì nó có ý
+                                                nghĩa gì? Chúng tôi đã chia nhỏ cách Atmos sẽ thay</p>
+                                            <p> đổi rạp hát tại nhà và âm thanh di động cũng như ý nghĩa của nó đối với bạn và
+                                                đôi tai của bạn.
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                  </div>
+                                </strong></h4>
+                                </li>
+                              </ul>
                         </div>
                     </li>
                 </ul>
@@ -119,8 +232,8 @@
     </div>
 
     
-    <div class="container">
-        <h2>Gửi Câu Hỏi Của Bạn</h2>
+    <div class="container" style="background-color: powderblue;">
+        <h2><strong>Gửi Câu Hỏi Của Bạn</strong> </h2>
         <form>
           <div class="form-group">
             <label for="fullName">Họ và tên:</label>
@@ -142,29 +255,6 @@
         </form>
       </div>
 
-
-    <div class="container">
-        <h2>Đặt Vé Rạp Chiếu Phim</h2>
-        <form>
-            <div class="form-group">
-                <label for="movieName">Tên phim:</label>
-                <input type="text" class="form-control" id="movieName" placeholder="Nhập tên phim">
-            </div>
-            <div class="form-group">
-                <label for="date">Ngày chiếu:</label>
-                <input type="date" class="form-control" id="date">
-            </div>
-            <div class="form-group">
-                <label for="time">Thời gian chiếu:</label>
-                <input type="time" class="form-control" id="time">
-            </div>
-            <div class="form-group">
-                <label for="numTickets">Số lượng vé:</label>
-                <input type="number" class="form-control" id="numTickets" min="1">
-            </div>
-            <button type="submit" class="btn btn-primary">Đặt vé</button>
-        </form>
-    </div>
     <div class="container-fluid" style="background-color: black;color: white;">
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <!-- Left -->
@@ -281,6 +371,7 @@
             <p>FPT Polytechnic &copy; Sinh viên IT</p>
             </div>
     </div>
+    <script src="SlideShow.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
