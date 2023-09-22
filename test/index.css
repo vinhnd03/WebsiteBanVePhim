@@ -445,6 +445,10 @@ img {
 
 /* Danh sách phim*/
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8fc934ab87565fe39d4cefd92e544ceced7eaf5d
 
 /* -------------Hỏi Đáp--------------- */
 body {
@@ -493,7 +497,7 @@ body {
 .num {
     background-color: #333333;
     color: #ffffff;
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     display: inline-block;
     margin-right: 10px;
@@ -580,8 +584,20 @@ body {
 .btn-primary:hover {
     background-color: #005f6b;
 
+<<<<<<< HEAD
   }
 
+=======
+  }
+
+
+  li {
+    text-decoration: none;
+  }
+
+
+
+>>>>>>> 8fc934ab87565fe39d4cefd92e544ceced7eaf5d
 .showtime .age{
     background-color: darkorange;
     display: inline;
