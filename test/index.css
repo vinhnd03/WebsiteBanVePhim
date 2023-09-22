@@ -413,10 +413,6 @@ img {
 
 /* Danh sách phim*/
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 0f7132011667b22245561acea41bb59ff95c37e4
 
 
 /* -------------Hỏi Đáp--------------- */
@@ -466,7 +462,7 @@ body {
   .num {
     background-color: #333333;
     color: #ffffff;
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     display: inline-block;
     margin-right: 10px;
@@ -551,9 +547,11 @@ body {
 
   .btn-primary:hover {
     background-color: #005f6b;
-<<<<<<< HEAD
   }
 
-=======
+  li {
+    text-decoration: none;
   }
->>>>>>> 0f7132011667b22245561acea41bb59ff95c37e4
+
+
+
