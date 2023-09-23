@@ -135,13 +135,11 @@ body {
 
 
 /* ------------------------------------------ */
-<<<<<<< HEAD
 .slide_BG {
     height: 20%;
     background-image: url('./image/H4tz.gif');
 }
-=======
->>>>>>> 4f5bd39aa59a7d409f43f29e5fc4049a266223b2
+
 
 /* CSS cho slide show */
 .slide_BG {
@@ -727,3 +725,24 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+
+/*---------------------------Register/Login---------------------------*/
+
+.form-register{
+    padding: 5%;
+    margin-top: 10%;
+    background-image: url('./image/login_bg.jpg');
+    background-repeat: X;
+    background-size: cover;
+}
+
+.form-register small{
+    color: white    ;
+}
+
+.form-register .form-control{
+    border: 3px solid #f78156;
+}
+
+
