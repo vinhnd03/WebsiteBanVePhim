@@ -4,29 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Menu của tôi</title>
-<<<<<<< HEAD
-=======
-
->>>>>>> 4f5bd39aa59a7d409f43f29e5fc4049a266223b2
-
-    <link rel="stylesheet" href="./index.css">
-
-    <link rel="stylesheet" href="index.css">
-
-
     <link rel="stylesheet" href="./index.css">
 
 
-<<<<<<< HEAD
+    <!-- AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+    <script src="./index.js"></script>
 
-=======
->>>>>>> 4f5bd39aa59a7d409f43f29e5fc4049a266223b2
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body style="background-image: url(./image/H4tz.gif);">
+<body style="background-image: url(./image/H4tz.gif);" ng-app="myApp">
     <!-- Thanh Menu-->
     <div class="menu">
         <div class="logo">
@@ -37,22 +28,22 @@
                 <a href="#">Phim</a>
             </div>
             <div class="menu-item">
-                <a href="#">Lịch Chiếu</a>
+                <a href="#!showtime">Lịch Chiếu</a>
             </div>
             <div class="menu-item">
-                <a href="#">Khuyến mãi</a>
+                <a href="#!discount">Khuyến mãi</a>
             </div>
             <div class="menu-item">
-                <a href="#">Hỏi & Đáp</a>
+                <a href="#!qna">Hỏi & Đáp</a>
             </div>
             <div class="menu-item">
-                <a href="#">Tin Tức</a>
+                <a href="#!news">Tin Tức</a>
             </div>
             <div class="menu-item">
-                <a href="#">Giới Thiệu</a>
+                <a href="#!about">Giới Thiệu</a>
             </div>
             <div class="menu-item">
-                <a href="#">Liên Hệ</a>
+                <a href="#!contact">Liên Hệ</a>
             </div>
         </div>
         <div class="search-form">
@@ -74,12 +65,12 @@
 
         <ul>
             <img src="image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
-            <button class="btn-login">Đăng ký Thành Viên </button>
+            <a href="#!register" class="btn-login">Đăng ký Thành Viên </a>
         </ul>
 
         <ul>
             <img src="image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
-            <button class="btn-login">Đăng nhập</button>
+            <a href="#!login" class="btn-login">Đăng nhập</a>
         </ul>
 
     </div>
@@ -114,6 +105,10 @@
             <button class="btn-chon-suat">Chọn suất chiếu</button>
         </div>
     </div>
+
+    <!--Content -->
+    <div ng-view></div>
+
     <!--Danh sách phim -->
     <div class="movies-selecting text-center mt-3">
         <ul class="nav justify-content-center">
