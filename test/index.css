@@ -138,13 +138,14 @@ body {
 .slide_BG {
     height: 20%;
     background-image: url('./image/H4tz.gif');
+    background-size: contain;
 }
 
 
 /* CSS cho slide show */
 .slide_BG {
     height: 20%;
-    background-image: url('image/Slide_BG.png');
+    background-image: url('image/nen1.jpg');
     border-radius: 15px;
 }
 
@@ -262,12 +263,12 @@ img {
 }
 
 .movies-selecting .active {
-    background-color: aqua;
+    background-color: ;
 
 }
 
 .movies-selecting a:hover {
-    background-color: aqua;
+    background-color: blueviolet;
     color: white;
 }
 
@@ -707,7 +708,7 @@ button {
     width: 100%;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
+
     border-radius: 4px;
 }
 
@@ -743,6 +744,10 @@ footer {
 
 .form-register .form-control{
     border: 3px solid #f78156;
+}
+
+.tenpim {
+    color: #0b0a0a;
 }
 
 
