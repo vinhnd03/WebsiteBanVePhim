@@ -21,7 +21,7 @@ body {
 
 
 .menu .logo img {
-    max-width: 150px;
+   width: 100%;
 }
 
 .menu-con {
@@ -93,6 +93,7 @@ body {
     border: none;
     background-color: #3498db;
     color: #fff;
+    
 }
 
 /* CSS cho phần đăng nhập */
@@ -104,6 +105,10 @@ body {
     color: #0b0a0a;
 }
 
+
+.btn-login:hover{
+    text-decoration: none;
+}
 /* CSS cho logo trong phần đăng nhập và đăng ký */
 .logo-login {
     width: 70px;
