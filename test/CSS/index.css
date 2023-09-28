@@ -158,9 +158,6 @@ body {
     /* max-width: 100%;
     position: relative; */
     position: relative;
-    max-width: 80%;
-
-    margin: 0 auto;
     margin-top: 20px;
     /* Khoảng cách giữa slide show và thanh menu */
 }
