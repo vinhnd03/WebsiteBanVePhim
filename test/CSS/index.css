@@ -139,11 +139,6 @@ body {
 
 
 /* ------------------------------------------ */
-.slide_BG {
-    height: 20%;
-    background-image: url('./image/H4tz.gif');
-    background-size: contain;
-}
 
 
 /* CSS cho slide show */
@@ -151,6 +146,7 @@ body {
     height: 20%;
     background-image: url('image/nen1.jpg');
     border-radius: 15px;
+    background-size: contain;
 }
 
 
@@ -168,7 +164,7 @@ body {
 }
 
 img {
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 /* Chỉnh kích thước hình ảnh trong slide show */
@@ -183,7 +179,7 @@ img {
 .fade {
     /* animation: fade 2s ease-in-out infinite; */
     animation-name: fade;
-    animation-duration: 2s;
+    animation-duration: 3s;
 }
 
 @keyframes fade {
@@ -318,7 +314,7 @@ img {
 }
 
 /* CSS cho phần title */
-.title h2 {
+.title h3 {
     font-size: 24px;
     font-weight: bold;
     color: #333;
@@ -344,9 +340,7 @@ img {
 /* CSS cho phần block-image */
 .block-image img {
     width: 100%;
-    /* Để hình ảnh mở rộng theo kích thước của khối */
     height: auto;
-    /* Để duy trì tỷ lệ khung ảnh */
     border-radius: 5px;
     /* Bo góc hình vuông */
 }
