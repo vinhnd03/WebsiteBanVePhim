@@ -737,10 +737,13 @@ footer {
 
 .form-register{
     padding: 5%;
-    margin-top: 10%;
+    margin-top: 1%;
     background-image: url('./image/login_bg.jpg');
     background-repeat: X;
     background-size: cover;
+}
+.form-register-backgrow{
+    background-color: whitesmoke;
 }
 
 .form-register small{
