@@ -1,0 +1,758 @@
+/* CSS cho thanh menu */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    background-color: #3498db;
+    background-image: url('image/logomenu.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10px 20px;
+    color: white;
+    margin-top: 3px;
+    border-radius: 15px;
+
+}
+
+
+.menu .logo img {
+   width: 100%;
+}
+
+.menu-con {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    margin-top: 15px;
+    padding: 5px;
+    color: #5f17ef;
+    border-radius: 10px;
+
+}
+
+.menu-item {
+    margin: 0 10px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: white;
+    /* Màu chữ của các mục menu (ví dụ: trắng) */
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.menu-item a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Màu nền khi di chuột vào (ví dụ: đen nhạt có độ trong suốt) */
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    /* Khoảng cách giữa menu và ô tìm kiếm */
+}
+
+.form-row-search {
+    position: relative;
+}
+
+.search-field {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    width: 150px;
+    /* Điều chỉnh độ rộng của ô tìm kiếm */
+}
+
+.search {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    margin-left: 5px;
+    /* Khoảng cách giữa ô tìm kiếm và nút tìm kiếm */
+}
+
+/* ------------------------------- */
+
+/* phần login*/
+.btn-register {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    
+}
+
+/* CSS cho phần đăng nhập */
+.btn-login {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #63f1a1;
+    color: #0b0a0a;
+}
+
+
+.btn-login:hover{
+    text-decoration: none;
+}
+/* CSS cho logo trong phần đăng nhập và đăng ký */
+.logo-login {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+    
+}
+
+/* CSS cho phần login */
+.login {
+    display: flex;
+    align-items: center;
+    background-image: url(image/);
+}
+
+/* CSS để căn giữa nút đăng ký và đăng nhập */
+.login ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.login ul li {
+    margin-right: 10px;
+}
+
+
+
+/* ------------------------------------------ */
+.slide_BG {
+    height: 20%;
+    background-image: url('./image/H4tz.gif');
+    background-size: contain;
+}
+
+
+/* CSS cho slide show */
+.slide_BG {
+    height: 20%;
+    background-image: url('image/nen1.jpg');
+    border-radius: 15px;
+}
+
+
+.slideshow-container {
+    /* max-width: 100%;
+    position: relative; */
+    position: relative;
+    max-width: 80%;
+
+    margin: 0 auto;
+    margin-top: 20px;
+    /* Khoảng cách giữa slide show và thanh menu */
+}
+
+.mySlides {
+    display: none;
+
+}
+
+img {
+    border-radius: 3px;
+}
+
+/* Chỉnh kích thước hình ảnh trong slide show */
+.mySlides img {
+    width: 80%;
+    /* Điều chỉnh chiều cao của slide show */
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+/* Chỉnh hiệu ứng chuyển đổi */
+.fade {
+    /* animation: fade 2s ease-in-out infinite; */
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+@keyframes fade {
+
+    /* 0%, 100% { opacity: 0; }
+    20%, 80% { opacity: 1; } */
+    0% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ------------------------------------ */
+
+/* CSS mua vé Online*/
+.ticket-buying {
+    margin-top: 10%;
+    /* Khoảng cách giữa slide show và phần mua vé */
+
+}
+
+.ticket-buying h2 {
+    font-size: 24px;
+    /* Kích thước chữ */
+    color: #333;
+    /* Màu chữ (ví dụ: màu đen) */
+    font-weight: bold;
+    /* Độ đậm của chữ */
+    margin-bottom: 1%;
+}
+
+.ticket-buying h2,
+.ticket-buying button {
+    display: inline-block;
+    /* Hiển thị trên cùng một hàng */
+    vertical-align: middle;
+    /* Căn giữa theo chiều dọc */
+}
+
+.ticket-buying button {
+    margin-left: 20px;
+    /* Khoảng cách giữa thẻ <h2> và các nút */
+}
+
+.ticket-buying button {
+    display: inline-block;
+    /* Hiển thị nút trên cùng một hàng */
+    margin-right: 20px;
+    /* Khoảng cách giữa các nút */
+}
+
+
+.movies-selecting .nav-link {
+    height: 100%;
+
+}
+
+.movies-selecting .nav {
+    height: 60px;
+    border-radius: 10px;
+
+}
+
+.movies-selecting .nav-item {
+    width: 40%;
+    border: 1px white solid;
+
+
+}
+
+.movies-selecting a {
+    color: black;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.movies-selecting .active {
+    
+
+}
+
+.movies-selecting a:hover {
+    background-color: blueviolet;
+    color: white;
+}
+
+
+.btn-chon-phim,
+.btn-chon-ngay,
+.btn-chon-suat {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.btn-chon-phim {
+    background-color: #616263;
+    /* Màu nền cho nút chọn phim */
+    color: white;
+}
+
+.btn-chon-ngay {
+    background-color: #616263;
+    /* Màu nền cho nút chọn ngày */
+    color: white;
+}
+
+.btn-chon-suat {
+    background-color: #616263;
+    /* Màu nền cho nút chọn suất chiếu */
+    color: white;
+}
+
+.btn-chon-phim:hover,
+.btn-chon-ngay:hover,
+.btn-chon-suat:hover {
+    opacity: 0.8;
+}
+
+
+
+/* khuyến mãi*/
+/* CSS cho phần promotion-list-content */
+.promotion-list-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* CSS cho phần title */
+.title h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* CSS cho phần list-wrap */
+.list-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* CSS cho phần block */
+.block {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 10px 20px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* CSS cho phần block-image */
+.block-image img {
+    width: 100%;
+    /* Để hình ảnh mở rộng theo kích thước của khối */
+    height: auto;
+    /* Để duy trì tỷ lệ khung ảnh */
+    border-radius: 5px;
+    /* Bo góc hình vuông */
+}
+
+/* CSS cho phần block-txt */
+.block-txt {
+    padding: 10px 0;
+}
+
+.block-txt h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007BFF;
+}
+
+.block-txt p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+
+/* ------------------------------------- */
+/* Thẻ Thành Viên */
+
+/* CSS cho phần title */
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* CSS cho phần car */
+.car {
+    width: 30%;
+    margin-left: 200px;
+    margin-top: 20px;
+}
+
+/* CSS cho phần slide-slidebox */
+.slide-slidebox {
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    margin: 20px 0;
+    border-radius: 15px;
+}
+
+.slide-wraper {
+    display: flex;
+    transition: transform 0.5s;
+    border-radius: 15px;
+}
+
+.slide-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+/* CSS cho phần member-item */
+.member-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.member-pic img {
+    max-width: 100%;
+    height: auto;
+
+}
+
+.member-txt a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.member-txt a:hover {
+    color: #007BFF;
+}
+
+/* CSS cho phần content-page */
+.content-page {
+    padding: 20px;
+}
+
+
+/* ---------------------------- */
+
+/* Danh sách phim*/
+
+
+
+/* -------------Hỏi Đáp--------------- */
+body {
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+}
+
+.content {
+    width: 70%;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #c8c1c1;
+    border-radius: 10px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title h2 {
+    color: #5f17ef;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.fap {
+    width: 60%;
+}
+
+.ask {
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 9px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ask h3 {
+    color: #333;
+}
+
+.num {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.ctl {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 9px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.answer {
+    padding: 10px;
+    margin-bottom: 7px;
+}
+
+.cycle {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.detail p {
+    margin-bottom: 10px;
+}
+
+/* -------------------- */
+
+/* gửi câu hỏi và đặt vé */
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container-css {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.container-css h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    border-color: #008cba;
+    box-shadow: 0 0 10px rgba(0, 140, 186, 0.5);
+}
+
+.btn-primary {
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #008cba;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #005f6b;
+  }
+
+
+
+
+  li {
+    text-decoration: none;
+  }
+
+.showtime .age{
+    background-color: darkorange;
+    display: inline;
+    padding: 1%;
+    border-radius: 20%;
+    color: white;
+    margin-top: 3%;
+}
+
+.showtime .movie-name{
+    font-weight: 700;
+    font-size: larger;
+    margin-top: 5%;
+}
+
+.showtime .category{
+    color: dimgrey;
+    font-size: small;
+}
+
+.showtime .order-btn{
+    margin-top: 40%;
+}
+
+.today-showtime{
+    margin: 10% 0;
+}
+
+.showtime>.col-md-6{
+    border-right: 1px solid blue;
+    border-radius: 10%;
+}
+
+
+
+/*----------LIÊN HỆ-------------*/
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #5084bc; 
+}
+
+header {
+    background-image: url(image/logomenu.jpg);
+    color: #fff; 
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px; 
+}
+
+
+.content {
+    background-color: #f0f5f5; 
+    max-width: 800px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.title h2 {
+    font-size: 24px;
+    color: #333; 
+    margin-bottom: 20px; 
+}
+
+
+.contact h3 {
+    font-size: 18px;
+    color: #333; 
+    margin-bottom: 10px; 
+}
+
+.contact p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+.contact h2 {
+    font-size: 20px;
+    color: #333; 
+    margin-bottom: 10px; 
+}
+
+
+main form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label,
+input,
+textarea,
+button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    border-radius: 4px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+footer {
+    background-color: #333; 
+    color: #fff; 
+    text-align: center;
+    padding: 10px;
+}
+
+
+/*---------------------------Register/Login---------------------------*/
+
+.form-register{
+    padding: 5%;
+    margin-top: 10%;
+    background-image: url('./image/login_bg.jpg');
+    background-repeat: X;
+    background-size: cover;
+}
+
+.form-register small{
+    color: white    ;
+}
+
+.form-register .form-control{
+    border: 3px solid #f78156;
+}
+
+.tenpim {
+    color: #0b0a0a;
+}
+
+
