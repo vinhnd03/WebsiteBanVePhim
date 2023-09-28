@@ -60,7 +60,7 @@
                 <a href="#!news">Tin Tức</a>
             </div>
             <div class="menu-item">
-                <a href="#!about">Giới Thiệu</a>
+                <a href="#!about">Dịch Vụ</a>
             </div>
             <div class="menu-item">
                 <a href="#!contact">Liên Hệ</a>
@@ -93,24 +93,39 @@
 
     </div>
 
-    <div class="slide_BG">
+    <div  id="carouselExampleIndicators" class="slide_BG"  data-ride="carousel">
         <!-- Slide Show-->
+       
         <div class="slideshow-container text-center">
+            <ol class="carousel-indicators"  id="carouselExampleIndicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
             <div class="mySlides fade">
-                <img src="image/1.png" alt="First slide">
+                <img class="d-block w-100" src="image/1.png" alt="First slide">
             </div>
 
             <div class="mySlides fade">
-                <img src="image/2.png" alt="First slide">
+                <img class="d-block w-100" src="image/2.png" alt="First slide">
             </div>
 
             <div class="mySlides fade">
-                <img src="image/3.png" alt="First slide">
+                <img class="d-block w-100" src="image/3.png" alt="First slide">
             </div>
 
             <div class="mySlides fade">
-                <img src="image/4.png" alt="First slide">
+                <img class="d-block w-100" src="image/4.png" alt="First slide">
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
         </div>
 
 
