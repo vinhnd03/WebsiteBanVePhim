@@ -19,3 +19,28 @@ function showSlides() {
 }
 
 showSlides();
+
+
+$(document).ready(function() {
+  var menu = $(".menu");
+  var lastScrollTop = 0;
+  
+  $(window).scroll(function() {
+    var scrollTop = $(this).scrollTop();
+    
+    if (scrollTop > lastScrollTop) {
+      // Cuộn xuống, thu gọn thanh menu
+      menu.css("height", "60px"); // Thiết lập kích thước thu gọn
+    } else {
+      // Cuộn lên trên cùng, mở rộng thanh menu
+      menu.css("height", "300px"); // Thiết lập kích thước mở rộng
+    }
+    
+    lastScrollTop = scrollTop;
+  });
+});
+
+
+
+
+
