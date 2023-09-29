@@ -17,8 +17,8 @@ import lombok.Data;
 @SuppressWarnings("*")
 @Data
 @Entity
-@Table(name = "Rooms")
-public class Room implements Serializable{
+@Table(name = "Tickets")
+public class Ticket implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
