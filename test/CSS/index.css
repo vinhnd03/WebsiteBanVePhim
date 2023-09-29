@@ -100,20 +100,22 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: #63f1a1;
+    background-color:white;
     color: #0b0a0a;
 }
 
 
 .btn-login:hover{
     text-decoration: none;
+    background-color: blanchedalmond;
+
 }
+
 /* CSS cho logo trong phần đăng nhập và đăng ký */
 .logo-login {
     width: 70px;
     height: 70px;
     margin-right: 10px;
-    
 }
 
 /* CSS cho phần login */
