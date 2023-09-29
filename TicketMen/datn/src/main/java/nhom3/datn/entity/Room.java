@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -15,13 +16,13 @@ import lombok.Data;
 @SuppressWarnings("*")
 @Data
 @Entity
-@Table(name = "Categories")
-public class Category implements Serializable{
+@Table(name = "Rooms")
+public class Room implements Serializable {
     @Id
-    String id;
+    String roomId;
     String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category")
-    List<Movie> movies;
+    @OneToMany(mappedBy = "room")
+    List<Ticket> tickets;
 }

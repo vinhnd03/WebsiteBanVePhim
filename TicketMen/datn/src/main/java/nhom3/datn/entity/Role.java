@@ -15,13 +15,13 @@ import lombok.Data;
 @SuppressWarnings("*")
 @Data
 @Entity
-@Table(name = "Categories")
-public class Category implements Serializable{
+@Table(name = "Roles")
+public class Role implements Serializable{
     @Id
     String id;
     String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category")
-    List<Movie> movies;
+    @OneToMany(mappedBy = "role")
+    List<Authority> authorities;
 }

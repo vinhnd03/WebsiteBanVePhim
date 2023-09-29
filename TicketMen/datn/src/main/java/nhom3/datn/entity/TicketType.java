@@ -15,13 +15,15 @@ import lombok.Data;
 @SuppressWarnings("*")
 @Data
 @Entity
-@Table(name = "Categories")
-public class Category implements Serializable{
+@Table(name = "TicketTypes")
+public class TicketType implements Serializable{
     @Id
     String id;
+
     String name;
+    Double price;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category")
-    List<Movie> movies;
+    @OneToMany(mappedBy = "ticketType")
+    List<Ticket> tickets;
 }

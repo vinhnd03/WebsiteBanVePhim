@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,13 +16,21 @@ import lombok.Data;
 @SuppressWarnings("*")
 @Data
 @Entity
-@Table(name = "Categories")
-public class Category implements Serializable{
+@Table(name = "Accounts")
+public class Account implements Serializable{
     @Id
-    String id;
+    String username;
+    String password;
     String name;
+    String email;
+    String sdt;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category")
-    List<Movie> movies;
+    @OneToMany(mappedBy = "account")
+    List<Authority> authorities;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "account")
+    List<Order> orders;
+
 }
