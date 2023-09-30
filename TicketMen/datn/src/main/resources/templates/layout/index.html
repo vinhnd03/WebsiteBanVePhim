@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Menu của tôi</title>
-    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="stylesheet" href="/CSS/index.css">
     <!-- AngularJS-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
 
-    <script src="./JS/index.js"></script>
+    <!-- <script src="./JS/index.js"></script> -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<div style="background-image: url(./image/nen1.jpg); background-size: contain;" ng-app="myApp">
+<div style="background-image: url(/image/nen1.jpg); background-size: contain;" ng-app="myApp">
     <!-- Thanh Menu-->
     <div th:replace="/layout/_menu.html"></div>
     <!--noi dung Bị ẨN NHA ":))" ĐỪNG XÓA-->
@@ -29,23 +29,22 @@
     <div class="login">
 
         <ul>
-            <img src="image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
-            <a type="button" data-toggle="modal" data-target="#myModal2" class="btn-login">Đăng ký </a>
+            <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
+            <a th:href="@{/login}" type="button" data-toggle="modal" data-target="#myModal2" class="btn-login">Đăng ký </a>
         </ul>
 
         <ul>
-            <img src="image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
-            <a type="button" data-toggle="modal" data-target="#myModal1" class="btn-login">Đăng nhập</a>
+            <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
+            <a th:href="@{/login}" type="button" data-toggle="modal" data-target="#myModal1" class="btn-login">Đăng nhập</a>
         </ul>
-
     </div>
     <!-- Button trigger modal -->
 
     <!--Modal-->   
         <!-- Modal DANG NHAP-->
-        <div th:replace="/account/login.html"></div>
+        <div th:replace="/security/login.html"></div>
     <!-- Modal DANG KÝ-->
-    <div th:replace="/account/register.html"></div>
+    <div th:replace="/security/register.html"></div>
 
      <!-- Slide Show-->
      <div th:replace="/layout/_slideshow.html"></div>
@@ -143,7 +142,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
+                                <img src="/image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
                                     <p class="card-text">
@@ -155,7 +154,7 @@
 
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="image/khuyenmai2.webp" class="card-img-top" alt="...">
+                                <img src="/image/khuyenmai2.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
                                     <p class="card-text">
@@ -169,7 +168,7 @@
 
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="image/khuyenmai3.jpg" class="card-img-top" alt="...">
+                                <img src="/image/khuyenmai3.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Lật Mặt 6</h5>
                                     <p class="card-text">Miêu tả sản phẩm 3.</p>
@@ -179,7 +178,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="image/khuyenmai3.jpg" class="card-img-top" alt="...">
+                                <img src="/image/khuyenmai3.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Lật Mặt 6</h5>
                                     <p class="card-text">Miêu tả sản phẩm 3.</p>
@@ -198,7 +197,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
+                                <img src="/image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
                                     <p class="card-text">
@@ -210,7 +209,7 @@
 
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="image/khuyenmai2.webp" class="card-img-top" alt="...">
+                                <img src="/image/khuyenmai2.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
                                     <p class="card-text">
@@ -224,7 +223,7 @@
 
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="image/khuyenmai3.jpg" class="card-img-top" alt="...">
+                                <img src="/image/khuyenmai3.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Lật Mặt 6</h5>
                                     <p class="card-text">Miêu tả sản phẩm 3.</p>
@@ -241,8 +240,7 @@
 
     <div th:replace="/layout/_footer.html"></div>
 
-    <script src="./JS/SlideShow.js"></script>
-    <script src="./JS/index.js"></script>
+    <script src="/JS/SlideShow.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

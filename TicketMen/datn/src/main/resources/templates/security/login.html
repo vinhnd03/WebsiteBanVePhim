@@ -1,0 +1,34 @@
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" xmlns:th="http://www.thymeleaf.org">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="" align="center">
+        <h4 class="modal-title" id="myModalLabel"><strong>Đăng nhập</strong> </h4>
+      </div>
+      <div class="modal-body">
+          <form class="form-register row" th:action="@{/security/login}" method="post" >
+              <div class="col-12">
+                  <div class="form-group">
+                    <input type="text" name="username"
+                      class="form-control" id="" aria-describedby="helpId" placeholder="Tên đăng nhập">
+                    <small id="helpId" class="form-text text-dark">Tên đăng nhập</small>
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                    <input type="password" name="password"
+                      class="form-control" id="" aria-describedby="helpId" placeholder="Mật khẩu">
+                    <small id="helpId" class="form-text text-dark">Mật khẩu</small>
+                  </div>
+              </div>
+              <button type="button" class="btn btn-primary">Đăng nhập</button><br>
+       
+          <button type="button" class="btn btn-default" data-dismiss="modal">Quên mật khẩu</button>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <i class="pull-left text-danger" th:text="${message} + hello"></i>
+      </div>
+      
+    </div>
+  </div>
+</div>

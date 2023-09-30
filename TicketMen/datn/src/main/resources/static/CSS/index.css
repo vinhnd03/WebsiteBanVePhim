@@ -146,7 +146,7 @@ body {
 /* CSS cho slide show */
 .slide_BG {
     height: 20%;
-    background-image: url('image/nen1.jpg');
+    /* background-image: url('/image/nen1.jpg'); */
     border-radius: 15px;
     background-size: contain;
 }
@@ -730,7 +730,7 @@ footer {
 .form-register{
     padding: 5%;
     margin-top: 1%;
-    background-image: url('./image/login_bg.jpg');
+    background-image: url('');
     background-repeat: X;
     background-size: cover;
 }
