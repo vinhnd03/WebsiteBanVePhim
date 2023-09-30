@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adminnistation</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!-- FFont Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Router-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
+<body class="container-fluid" ng-app="admin-app" style="background-color: pink;">
+    <!-- <header class="row">
+      <img src="../image/Website Administation (1).png"  width="100%" class="img-fluid">
+    </header> -->
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light container">
+                <img src="../image/logo ticketmen_preview_rev_1.png" alt="">
+            <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="my-nav" class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./QLPhim.html">Quản lý Phim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./QLVe.html">Quản lý vé</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./PhanQuyen.html">Phân quyền</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <br><br>
+    <!-- main -->
+    <main>
+        <div>
+            <div class="card">
+                <div class="card-header"><h1><strong>Quản lý vé</strong> </h1></div>
+                <div class="card-boby">
+                    <div class="row">
+                        <div class="col-sm-4 text-center">
+                            <label for="image" class="mt-4">
+                                <img src="../image/anh1.jpg" alt="" style="max-width: 90%; max-height: 250px;" class="img-fluid">
+                            </label>
+                        </div>
+                        <div class="col-sm-8 mt-3">
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <div style="font-weight: 500;">Tên phim</div>
+                                    <input ng-model="form.name" class="form-control" style="width: 95%;">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div style="font-weight: 500;">Price</div>
+                                    <input ng-model="form.price" class="form-control" style="width: 95%;">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <div style="font-weight: 500;">Image</div>
+                                    <input type="file" class="form-control" id="image" style="width: 95%;"
+                                    onchange="angular.element(this).scope().imageChanged(this.files)">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div style="font-weight: 500;">Thể loại</div>
+                                    <select  ng-model="form.category.id" class="form-control" style="width: 95%;">
+                                        <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <div style="font-weight: 500;">Create Date</div>
+                                    <input ng-model="form.createDate" type="date" class="form-control" style="width: 95%;">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div style="font-weight: 500;">?</div>
+                                    <div class="form-control" style="width: 95%;">
+                                        <label class="radio-inline">
+                                            <input ng-model="form.available" type="radio" ng-value="true" name="available">Yes &emsp;
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input ng-model="form.available" type="radio" ng-value="false" name="available">No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button ng-click="create()" class="btn btn-primary">
+                        <i class="fa fa-plus" aria-hidden="true"></i>Create
+                    </button>
+                    <button ng-click="update()" class="btn btn-success">
+                        <i class="fa fa-stack-overflow" aria-hidden="true"></i>Save
+                    </button>
+                    <button ng-click="delete(form)" class="btn btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>Delete
+                    </button>
+                    <button ng-click="reset()" class="btn btn-info">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>Reset
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <br><br><br><br><br><br><br><br>
+    <footer>
+                    <footer style="background: black; color: white;">
+                  <div class="container-fluid">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <!-- Left -->
+            
+            <!-- Right -->
+            <div>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-github"></i>
+            </a>
+            </div>
+            <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+            
+            <!-- Section: Links  -->
+            <section class="">
+            <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Người làm trang wed :
+            </h6>
+            <p>
+            Phan Ngọc Hoàng
+            </p>
+            </div>
+            <!-- Grid column -->
+            
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+            Products
+            </h6>
+            <p>
+            <a href="#!" class="text-reset">Angular</a>
+            </p>
+            <p>
+            <a href="#!" class="text-reset">React</a>
+            </p>
+            <p>
+            <a href="#!" class="text-reset">Vue</a>
+            </p>
+            <p>
+            <a href="#!" class="text-reset">Laravel</a>
+            </p>
+            </div>
+            <!-- Grid column -->
+            
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+            </h6>
+            <p>
+            <a href="#!" class="text-reset">Pricing</a>
+            </p>
+            <p>
+            <a href="#!" class="text-reset">Settings</a>
+            </p>
+            <p>
+            <a href="#!" class="text-reset">Orders</a>
+            </p>
+            <p>
+            <a href="#!" class="text-reset">Help</a>
+            </p>
+            </div>
+            <!-- Grid column -->
+            
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3"></i> Đà Nẵng</p>
+            <p>
+            <i class="fas fa-envelope me-3"></i>
+            hoangpnpd05646@fpt.edu.vn
+            </p>
+            <p><i class="fas fa-phone me-3"></i> 0766536921</p>
+            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+            </div>
+            <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+            </div>
+            </section>
+            <!-- Section: Links  -->
+            
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            <p>FPT Polytechnic &copy; 2023. All rights reserved.</p>
+            </div>
+    </div>
+    </div>
+        </footer>
+    </footer>
+    <script src="/assets/admin/admin-app.js"></script>
+    <script src="/assets/admin/product/product-ctrl.js"></script>
+    <script src="/assets/admin/authority/authority-ctrl.js"></script>
+
+</body>
+</html>
