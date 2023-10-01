@@ -26,20 +26,36 @@
         </div>
         <!-- -->
 
+        <!-- <th:block th:if="${#request.remoteUser}">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/order/list}">Your Orders</a>
+            </li>
+            <li class="nav-item" th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
+                <a class="nav-link" th:href="@{/admin/home/index}">Administration</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/security/logoff}">Sign Out</a>
+            </li>
+        </th:block>
+
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/security/login/form}">Sign In</a>
+        </li> -->
         <!-- Đăng Nhập - Đăng Ký-->
         <div class="login">
+            <th:block th:unless="${#request.remoteUser}">
+                <ul>
+                    <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
+                    <a href="#" type="button" data-toggle="modal" data-target="#myModal2" class="btn-login">Đăng
+                        ký
+                    </a>
+                </ul>
 
-            <ul>
-                <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
-                <a href="#" type="button" data-toggle="modal" data-target="#myModal2" class="btn-login">Đăng
-                    ký
-                </a>
-            </ul>
-
-            <ul>
-                <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
-                <a id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login">Đăng nhập</a>
-            </ul>
+                <ul>
+                    <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
+                    <a id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login">Đăng nhập</a>
+                </ul>
+            </th:block>
         </div>
         <script>
             // Chọn nút "Đăng nhập"

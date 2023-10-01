@@ -3,6 +3,8 @@ package nhom3.datn.security;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     AccountService accountService;
 
+    @Autowired
+    HttpSession session;
+
     @Lazy
     @Autowired
     BCryptPasswordEncoder pe;
@@ -36,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         auth.userDetailsService(username -> {
             try {
                 Account user = accountService.findById(username);
+                session.setAttribute("name", user.getName());
                 String password = pe.encode(user.getPassword());
                 String[] roles = user.getAuthorities().stream()
                     .map(er -> er.getRole().getId())
