@@ -26,7 +26,7 @@ public class Account implements Serializable{
     String sdt;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     List<Authority> authorities;
 
     @JsonIgnore
