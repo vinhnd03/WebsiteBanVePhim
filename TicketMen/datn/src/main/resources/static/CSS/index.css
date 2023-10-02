@@ -750,4 +750,15 @@ footer {
     color: #0b0a0a;
 }
 
+/* username */
+.username a {
+    font-size: large;
+    font-weight: 600;
+    color: #000;
+    margin-right: 10%;
+}
 
+.username a:hover{
+    background-color: plum;
+    text-decoration: none;
+}

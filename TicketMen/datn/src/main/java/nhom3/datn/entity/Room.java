@@ -19,7 +19,7 @@ import lombok.Data;
 @Table(name = "Rooms")
 public class Room implements Serializable {
     @Id
-    String roomId;
+    String id;
     String name;
 
     @JsonIgnore
