@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HomeController {
-        @RequestMapping({"/index"})
+public class ProductController {
+    @RequestMapping({"/index",})
     public String home(){
         return "layout/index";
     }
