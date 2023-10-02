@@ -11,8 +11,8 @@ public class HomeController {
         return "layout/index";
     }
 
-        @RequestMapping({"/index"})
-    public String index(){
-        return "Admin/index";
+        @RequestMapping({"/admin", "/admin/home/index"})
+    public String admin(){
+        return "redirect:/Admin/index.html";
     }
 }
