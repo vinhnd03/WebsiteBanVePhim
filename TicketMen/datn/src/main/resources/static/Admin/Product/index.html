@@ -1,0 +1,26 @@
+<ul class="nav nav-tabs mt-3">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" data-toggle="tab" href="" role="tab"
+        data-target="#edit" aria-selected="true">EDITING</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" data-toggle="tab" href="" role="tab"
+        data-target="#list" aria-selected="false">LIST</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myContent">
+    <div class="tab-pane fade show active" id="edit">
+        <div ng-include="'/static/admin/product/_form.html'"></div>
+    </div>
+    <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="videoList-tab">
+        <div ng-include="'/static/admin/product/_Table.html'"></div>
+    </div>
+  </div>
+  <div class="site-body">
+    <div class="alert-container" ng-show="showAlert">
+        <div class="custom-alert">
+            <p>{{alertMessage}}</p>
+            <button class="close-btn" ng-click="closeAlert()">Close</button>
+        </div>
+    </div>
+</div>
