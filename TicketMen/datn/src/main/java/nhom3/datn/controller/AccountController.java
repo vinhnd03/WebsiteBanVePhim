@@ -44,6 +44,6 @@ public class AccountController {
         
         accountService.save(account);
         authorityService.save(authority);
-        return "redirect:/layout/index";
+        return "redirect:/home/index";
     }
 }

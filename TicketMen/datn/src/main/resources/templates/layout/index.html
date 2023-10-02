@@ -43,6 +43,15 @@
         </li> -->
         <!-- Đăng Nhập - Đăng Ký-->
         <div class="login">
+            <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
+                <p>Chào mừng Admin!</p>
+            </div>
+            
+            <div th:if="${#authorization.expression('hasRole(''USER'')')}">
+                <!-- Hiển thị nội dung cho người dùng có vai trò USER -->
+                <p>Chào mừng User!</p>
+            </div>
             <th:block th:unless="${#request.remoteUser}">
                 <ul>
                     <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
@@ -72,6 +81,21 @@
             $('#myModal1').on('hidden.bs.modal', function () {
                 // Sử dụng window.history.replaceState để chuyển đổi URL trở lại
                 window.history.replaceState({}, 'Trang trước', "/");
+            });
+
+            // Kiểm tra URL của trang khi nó tải lại
+            window.addEventListener('load', function () {
+                // Kiểm tra nếu URL hiện tại chứa "/security/login/error"
+                if (window.location.pathname === '/security/login/error') {
+                    // Lấy thẻ modal
+                    const modal = document.getElementById('myModal1');
+
+                    // Mở modal
+                    if (modal) {
+                        modal.classList.add('show');
+                        modal.style.display = 'block';
+                    }
+                }
             });
         </script>
 

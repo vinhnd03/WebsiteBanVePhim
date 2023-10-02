@@ -5,5 +5,7 @@ import nhom3.datn.entity.Account;
 public interface AccountService {
 
     Account findById(String username);
+
+    void save(Account account);
     
 }

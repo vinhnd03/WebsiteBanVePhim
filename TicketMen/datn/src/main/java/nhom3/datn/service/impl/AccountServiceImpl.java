@@ -15,6 +15,11 @@ public class AccountServiceImpl implements AccountService{
     @Override
     public Account findById(String username) {
         return dao.findById(username).get();
+    }
+
+    @Override
+    public void save(Account account) {
+        dao.save(account);
     }   
 
 }
