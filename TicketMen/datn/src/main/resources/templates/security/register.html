@@ -2,10 +2,10 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="" align="center">
-                <h4 class="modal-title" id="myModalLabel1"><strong>Đăng KÝ</strong> </h4>
+                <h4 class="modal-title" id="myModalLabel1"><strong>Đăng Ký</strong> </h4>
             </div>
             <div class="modal-body">
-                <form class="form-register row">
+                <form class="form-register row" th:action="@{/account/add}" method="post">
                     <div class="col-6">
                         <div class="form-group mt-3">
                             <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
@@ -69,11 +69,14 @@
                             <small id="helpId" class="form-text">Nhập lại mật khẩu</small>
                         </div>
                     </div>
+
+                    
+                    <button class="btn btn-primary">Đăng ký</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-primary">Đăng Ký</button>
+                
             </div>
         </div>
     </div>
