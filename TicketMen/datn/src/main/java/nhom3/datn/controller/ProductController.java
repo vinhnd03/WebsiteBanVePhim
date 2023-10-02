@@ -7,8 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ProductController {
+<<<<<<< HEAD
         // @RequestMapping({"/index"})
     // public String index(){
     //     return "/admin/index.html";
     // }
+=======
+    @RequestMapping({"/index",})
+    public String home(){
+        return "layout/index";
+    }
+>>>>>>> 0cbdcc04e6855ad652a11ed5f2569506ab4c2595
 }
