@@ -1,7 +1,6 @@
 package nhom3.datn.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.AccountDao;
