@@ -34,6 +34,10 @@ app.config(function ($routeProvider) {
             templateUrl: "./Layout/Register.html", // Template cho trang "contact"
             controller: "RegisterController"
         })
+        // .when("/admin", {
+        //     templateUrl: "./Admin/index.html", // Template cho trang "contact"
+        //     controller: "ProductController"
+        // })
         .otherwise({
             redirectTo: "/" // Trang mặc định khi không có định tuyến khớp
         });
