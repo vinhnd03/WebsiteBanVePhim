@@ -36,10 +36,10 @@
             <div id="my-nav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../index.html">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./QLPhim.html">Quản lý Phim</a>
+                        <a class="nav-link" href="#!product">Quản lý Phim</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./QLVe.html">Quản lý vé</a>
@@ -57,71 +57,7 @@
     <br><br>
     <!-- main -->
     <main>
-        <div>
-            <div class="card">
-                <div class="card-header"><h1><strong>Quản lý phim</strong> </h1></div>
-                <div class="card-boby">
-                    <div class="row">
-                        <div class="col-sm-4 text-center">
-                            <label for="image" class="mt-4">
-                                <img src="../image/anh1.jpg" alt="" style="max-width: 90%; max-height: 250px;" class="img-fluid">
-                            </label>
-                        </div>
-                        <div class="col-sm-8 mt-3">
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <div style="font-weight: 500;">Tên phim</div>
-                                    <input ng-model="form.name" class="form-control" style="width: 95%;">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <div style="font-weight: 500;">Studio</div>
-                                    <input ng-model="form.price" class="form-control" style="width: 95%;">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <div style="font-weight: 500;">Image</div>
-                                    <input type="file" class="form-control" id="image" style="width: 95%;"
-                                    onchange="angular.element(this).scope().imageChanged(this.files)">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <div style="font-weight: 500;">Thể loại</div>
-                                    <select  ng-model="form.category.id" class="form-control" style="width: 95%;">
-                                        <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <div style="font-weight: 500;">Showtime</div>
-                                    <input ng-model="form.createDate" type="date" class="form-control" style="width: 95%;">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <div style="font-weight: 500;">Age</div>
-                                    <input ng-model="form.price" class="form-control" style="width: 95%;">
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="card-footer text-center">
-                    <button ng-click="create()" class="btn btn-primary">
-                        <i class="fa fa-plus" aria-hidden="true"></i>Create
-                    </button>
-                    <button ng-click="update()" class="btn btn-success">
-                        <i class="fa fa-stack-overflow" aria-hidden="true"></i>Save
-                    </button>
-                    <button ng-click="delete(form)" class="btn btn-danger">
-                        <i class="fa fa-trash" aria-hidden="true"></i>Delete
-                    </button>
-                    <button ng-click="reset()" class="btn btn-info">
-                        <i class="fa fa-refresh" aria-hidden="true"></i>Reset
-                    </button>
-                </div>
-            </div>
-
-        </div>
+        <div ng-view></div>
     </main>
     <br><br><br><br><br><br><br><br>
     <footer>
