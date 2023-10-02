@@ -43,9 +43,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 Account user = accountService.findById(username);
                 session.setAttribute("name", user.getName());
                 String password = pe.encode(user.getPassword());
+                
                 String[] roles = user.getAuthorities().stream()
-                    .map(er -> er.getRole().getId())
-                    .collect(Collectors.toList()).toArray(new String[0]);
+                .map(er -> er.getRole().getId())
+                .collect(Collectors.toList()).toArray(new String[0]);
                 return User.withUsername(username).password(password)
                     .roles(roles).build();
             } catch (NoSuchElementException e) {

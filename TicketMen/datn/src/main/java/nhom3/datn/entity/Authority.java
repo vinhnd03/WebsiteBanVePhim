@@ -19,13 +19,13 @@ import lombok.Data;
 public class Authority implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "Username")
-    Account account;
+    private Account account;
     
     @ManyToOne
     @JoinColumn(name = "Roleid")
-    Role role;
+    private Role role;
 }

@@ -750,6 +750,11 @@ footer {
     color: #0b0a0a;
 }
 
+.username{
+    display: block;
+    
+}
+
 /* username */
 .username a {
     font-size: large;

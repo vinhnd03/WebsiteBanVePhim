@@ -1,7 +1,7 @@
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" xmlns:th="http://www.thymeleaf.org">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="" align="center">
+      <div class="" align="center"><br>
         <h4 class="modal-title" id="myModalLabel"><strong>Đăng nhập</strong> </h4>
       </div>
       <div class="modal-body">
@@ -22,10 +22,11 @@
               </div>
               <button class="btn btn-primary">Đăng nhập</button><br>
               <button type="button" class="btn btn-default" data-dismiss="modal">Quên mật khẩu</button>
+              <i class="text-center pull-left" th:text="${message}"></i>
           </form>
       </div>
       <div class="modal-footer">
-        <i class="text-center text-danger" th:text="${message} + hello"></i>
+        
       </div>
       
     </div>
