@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import nhom3.datn.entity.Movie;
 
 public interface MovieDao extends JpaRepository<Movie, Long>{
-    @Query("SELECT p FROM Movie p WHERE p.category.id=?1")
+    @Query("SELECT m FROM Movie m WHERE m.category.id=?1")
     List<Movie> findByCategoryId(String cid);
 }
