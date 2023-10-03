@@ -4,11 +4,13 @@ package nhom3.datn.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.MovieDao;
 import nhom3.datn.entity.Movie;
 import nhom3.datn.service.ProductService;
 
+@Service 
 public class ProductServiceImpl implements ProductService{
     @Autowired
     MovieDao mdao;

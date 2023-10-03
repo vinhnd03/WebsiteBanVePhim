@@ -23,32 +23,32 @@ import nhom3.datn.service.ProductService;
 @RestController
 @RequestMapping("/rest/products")
 public class ProductRestController {
-    // @Autowired
-    // ProductService productService;
+    @Autowired
+    ProductService productService;
 
-    // @GetMapping("{id}")
-    // public Movie getOne(@PathVariable("id") Long id){
-    //     return productService.findById(id);
-    // }
+    @GetMapping("{id}")
+    public Movie getOne(@PathVariable("id") Long id){
+        return productService.findById(id);
+    }
 
-    // @GetMapping()
-    // public List<Movie> getAll(){
-    //     return productService.findAll();
-    // }
+    @GetMapping()
+    public List<Movie> getAll(){
+        return productService.findAll();
+    }
 
-    // @PostMapping()
-    // public Movie create(@RequestBody Movie movie){
-    //     return productService.create(movie);
-    // }
+    @PostMapping()
+    public Movie create(@RequestBody Movie movie){
+        return productService.create(movie);
+    }
 
-    // @PutMapping("{id}")
-    // public Movie update(@PathVariable("id") Long id,
-    //     @RequestBody Movie movie){
-    //     return productService.update(movie);
-    // }
+    @PutMapping("{id}")
+    public Movie update(@PathVariable("id") Long id,
+        @RequestBody Movie movie){
+        return productService.update(movie);
+    }
 
-    // @DeleteMapping("{id}")
-    // public void delete(@PathVariable("id") Long id){
-    //     productService.delete(id);
-    // }
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") Long id){
+        productService.delete(id);
+    }
 }

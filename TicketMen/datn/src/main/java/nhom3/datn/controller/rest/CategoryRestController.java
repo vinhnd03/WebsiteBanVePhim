@@ -16,11 +16,11 @@ import nhom3.datn.service.CategoryService;
 @RestController
 @RequestMapping("/rest/categories")
 public class CategoryRestController {
-    // @Autowired
-    // CategoryService categoryService;
+    @Autowired
+    CategoryService categoryService;
 
-    // @GetMapping()
-    // public List<Category> getAll(){
-    //     return categoryService.fillAll();
-    // }
+    @GetMapping()
+    public List<Category> getAll(){
+        return categoryService.fillAll();
+    }
 }
