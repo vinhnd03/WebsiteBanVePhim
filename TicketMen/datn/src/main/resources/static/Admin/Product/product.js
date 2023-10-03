@@ -1,4 +1,4 @@
-app.controller("product", function($scope, $http){
+app.controller("product-ctrl", function($scope, $http){
     $scope.items = [];
     $scope.cates = [];
     $scope.form = {};

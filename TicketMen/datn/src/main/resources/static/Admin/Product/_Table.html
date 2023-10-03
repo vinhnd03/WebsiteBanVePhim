@@ -6,9 +6,9 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Price</th>
-                <th>Date</th>
+                <th>Age</th>
                 <th>Image</th>
+                <th>Date</th>
                 <th>Category</th>
                 <th>Available?</th>
                 <th></th>
@@ -18,11 +18,10 @@
             <tr ng-repeat="item in pager.items">
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.price | number : 2}}</td>
-                <td>{{item.createDate | date : 'dd-MM-yyyy'}}</td>
-                <td>{{item.image}}</td>
+                <td>{{item.age | number : 2}}</td>
+                <td>{{item.showtime | date : 'dd-MM-yyyy'}}</td>
+                <td>{{item.poster}}</td>
                 <td>{{item.category.name}}</td>
-                <td>{{item.available?'Yes':'No'}}</td>
                 <td>
                     <div class="btn-group btn-group-xs">
                         <button ng-click="edit(item)" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button>
