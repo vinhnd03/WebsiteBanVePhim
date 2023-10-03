@@ -1,4 +1,4 @@
-app.controller("product-ctrl", function($scope, $http){
+app.controller("product", function($scope, $http){
     $scope.items = [];
     $scope.cates = [];
     $scope.form = {};
@@ -20,7 +20,7 @@ app.controller("product-ctrl", function($scope, $http){
 
     $scope.initialize = function(){
         //load products
-        $http.get("/rest/products").then(resp => {
+        $http.get("/Admin/products").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
                 item.createDate = new Date(item.createDate)
