@@ -13,6 +13,6 @@ public class HomeController {
 
         @RequestMapping({"/admin", "/admin/home/index"})
     public String admin(){
-        return "redirect:/Admin/index.html";
+        return "redirect:/admin/index.html";
     }
 }

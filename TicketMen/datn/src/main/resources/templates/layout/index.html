@@ -11,6 +11,7 @@
 
     <!-- <script src="./JS/index.js"></script> -->
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -25,29 +26,13 @@
 
         </div>
         <!-- -->
-
-        <!-- <th:block th:if="${#request.remoteUser}">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/order/list}">Your Orders</a>
-            </li>
-            <li class="nav-item" th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
-                <a class="nav-link" th:href="@{/admin/home/index}">Administration</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/security/logoff}">Sign Out</a>
-            </li>
-        </th:block>
-
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/security/login/form}">Sign In</a>
-        </li> -->
         <!-- Đăng Nhập - Đăng Ký-->
         <div class="login">
             <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
                 <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
                 <p>Chào mừng Admin!</p>
             </div>
-            
+
             <div th:if="${#authorization.expression('hasRole(''USER'')')}">
                 <!-- Hiển thị nội dung cho người dùng có vai trò USER -->
                 <p>Chào mừng User!</p>
@@ -55,32 +40,42 @@
             <th:block th:unless="${#request.remoteUser}">
                 <ul>
                     <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
-                    <a href="#" type="button" data-toggle="modal" data-target="#myModal2" class="btn-login">Đăng
+                    <button type="button" data-toggle="modal" data-target="#myModal2" class="btn-login">Đăng
                         ký
-                    </a>
+                    </button>
                 </ul>
 
                 <ul>
                     <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
-                    <a id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login">Đăng nhập</a>
+                    <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login">Đăng nhập</button>
                 </ul>
             </th:block>
         </div>
         <script>
-            // Chọn nút "Đăng nhập"
-            var loginButton = document.getElementById('loginButton');
+            $(document).ready(function () {
+                // Chọn nút "Đăng nhập" bằng jQuery
+                var loginButton = $('#loginButton');
 
-            // Thêm sự kiện click lên nút "Đăng nhập"
-            loginButton.addEventListener('click', function () {
-                // Sử dụng window.history.pushState để thay đổi URL
-                window.history.pushState({}, 'Đăng nhập', '/security/login/form');
+                // Thêm sự kiện click lên nút "Đăng nhập" bằng jQuery
+                loginButton.on('click', function () {
+                    // Sử dụng window.history.pushState để thay đổi URL
+                    window.history.pushState({}, 'Login', '/security/login/form');
+                });
 
 
             });
+
             // Bắt sự kiện khi modal được ẩn
-            $('#myModal1').on('hidden.bs.modal', function () {
-                // Sử dụng window.history.replaceState để chuyển đổi URL trở lại
-                window.history.replaceState({}, 'Trang trước', "/");
+            $(document).ready(function () {
+                var myModal = $('#myModal1');
+                var previousPath = window.location.pathname; // Lưu đường dẫn trước đó
+
+
+                myModal.on('hidden.bs.modal', function () {
+                    // Khi modal bị ẩn, thực hiện các thay đổi bạn muốn ở đây
+                    window.history.pushState({}, 'Previous Path', previousPath);
+                    
+                });
             });
 
             // Kiểm tra URL của trang khi nó tải lại

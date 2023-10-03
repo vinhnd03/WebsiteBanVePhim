@@ -20,7 +20,7 @@ app.controller("product-ctrl", function($scope, $http){
 
     $scope.initialize = function(){
         //load products
-        $http.get("/Admin/products").then(resp => {
+        $http.get("/admin/products").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
                 item.createDate = new Date(item.createDate)
