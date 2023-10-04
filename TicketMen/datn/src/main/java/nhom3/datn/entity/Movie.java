@@ -43,6 +43,6 @@ public class Movie implements Serializable{
     List<Ticket> tickets;
 
     @ManyToOne
-    @JoinColumn(name = "CategoryId")
+    @JoinColumn(name = "Categoryid")
     Category category;
 }
