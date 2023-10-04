@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import nhom3.datn.entity.Account;
 import nhom3.datn.entity.Authority;
@@ -32,18 +33,23 @@ public class AccountController {
     AuthorityService authorityService;
 
     @PostMapping("account/add")
-    public String add(Model model, @ModelAttribute("account") Account account,
-            @RequestParam("gender") String gender){
+    public ModelAndView add(ModelMap model, @ModelAttribute("account") Account account,
+            @RequestParam("gender") String gender,  @RequestParam("confirmPassword") String confirmPassword,
+            @RequestParam("password") String password){
         Authority authority = new Authority();
         Role role = roleService.findById("USER");
 
         authority.setAccount(account);
         authority.setRole(role);
 
-        System.out.println(gender);
-        // account.setGender(gender);
-        accountService.save(account);
-        authorityService.save(authority);
-        return "redirect:/home/index";
+        if(password.equals(confirmPassword)){
+            accountService.save(account);
+            authorityService.save(authority);
+            model.addAttribute("message", "Đăng ký thành công");
+            return new ModelAndView("foward:/home/index", model);
+        }
+
+        model.addAttribute("message", "Lỗi xác nhận mật khẩu");
+        return new ModelAndView("redirect:/home/index", model);
     }
 }

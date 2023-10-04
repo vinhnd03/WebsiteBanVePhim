@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
 
 <head>
     <meta charset="UTF-8">
@@ -47,7 +47,8 @@
 
                 <ul>
                     <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
-                    <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login">Đăng nhập</button>
+                    <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login">Đăng
+                        nhập</button>
                 </ul>
             </th:block>
         </div>
@@ -74,24 +75,11 @@
                 myModal.on('hidden.bs.modal', function () {
                     // Khi modal bị ẩn, thực hiện các thay đổi bạn muốn ở đây
                     window.history.pushState({}, 'Previous Path', previousPath);
-                    
+
                 });
             });
 
-            // Kiểm tra URL của trang khi nó tải lại
-            window.addEventListener('load', function () {
-                // Kiểm tra nếu URL hiện tại chứa "/security/login/error"
-                if (window.location.pathname === '/security/login/error') {
-                    // Lấy thẻ modal
-                    const modal = document.getElementById('myModal1');
 
-                    // Mở modal
-                    if (modal) {
-                        modal.classList.add('show');
-                        modal.style.display = 'block';
-                    }
-                }
-            });
         </script>
 
         <!-- Button trigger modal -->
@@ -105,207 +93,28 @@
         <div th:replace="/layout/_slideshow.html"></div>
 
 
-
-        <div id="carouselExampleIndicators" class="slide_BG" data-ride="carousel">
-
-            <!-- Mua vé online -->
-            <div class="ticket-buying mt-3 text-center ">
-                <h2>Mua Vé Online</h2>
-            </div>
-            <ul class="nav justify-content-center" style="color:aliceblue ;">
-                <ul class="nav nav-pills">
-                    <li class="nav-item dropdown">
-                        <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">
-                                    Chọn phim </a>
-
-                                <div class="dropdown-menu">
-
-                                    <a class="dropdown-item" href="#">
-                                        <div class="detail">
-                                            <p>Naruto</p>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <div class="detail">
-                                            <p>One piece</p>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <div class="detail">
-                                            <p>Bleach</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </strong></h4>
-                    </li>
-                </ul>
-                <ul class="nav nav-pills">
-                    <li class="nav-item dropdown">
-                        <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">Chọn
-                                    ngày </a>
-
-                                <div class="dropdown-menu">
-
-                                    <a class="dropdown-item" href="#">
-                                        <div class="detail">
-                                            <p>22-22-2022</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </strong></h4>
-                    </li>
-                </ul>
-                <ul class="nav nav-pills">
-                    <li class="nav-item dropdown">
-                        <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">Chọn
-                                    suất chiếu </a>
-
-                                <div class="dropdown-menu">
-
-                                    <a class="dropdown-item" href="#">
-                                        <div class="detail">
-                                            <p>Xuất chiếu</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </strong></h4>
-                    </li>
-                </ul>
-            </ul>
-
-        </div>
+        <!-- Ticket Select-->
+        <div th:replace="/layout/_select.html"></div>
 
         <!--Content -->
-
+        <div th:replace="${main}"></div>
+        
         <!--Danh sách phim -->
-        <div class="movies-selecting text-center mt-3">
-            <ul class="nav justify-content-center">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" data-toggle="tab" href="" role="tab" data-target="#edit"
-                        aria-selected="true">Phim đang chiếu</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#list"
-                        aria-selected="false">Phim sắp chiếu</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myContent">
-                <div class="tab-pane fade show active" id="edit">
-                    <h1>PHIM ĐANG CHIẾU</h1>
-                    <div class="container mt-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="/image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
-                                        <p class="card-text">
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="/image/khuyenmai2.webp" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
-                                        <p class="card-text">
+        <div th:replace="/layout/_mlist.html"></div>
+    </div>
+    <div th:replace="/layout/_footer.html"></div>
 
 
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="/image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Lật Mặt 6</h5>
-                                        <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="/image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Lật Mặt 6</h5>
-                                        <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="videoList-tab">
-                    <h1>PHIM SẮP CHIẾU</h1>
-                    <div class="container mt-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="/image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
-                                        <p class="card-text">
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="/image/khuyenmai2.webp" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
-                                        <p class="card-text">
-
-
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="/image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Lật Mặt 6</h5>
-                                        <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div th:replace="/layout/_footer.html"></div>
-
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
-
 </html>
