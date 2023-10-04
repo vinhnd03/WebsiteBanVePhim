@@ -3,24 +3,9 @@ app.controller("product-ctrl", function($scope, $http){
     $scope.cates = [];
     $scope.form = {};
 
-    //Hiển thị thông báo
-    $scope.showAlert = false; // Không hiển thị thông báo ban đầu
-
-    $scope.alertMessage = ""; // Chuỗi thông báo
-
-    $scope.showAlertMessage = function (message) {
-        $scope.alertMessage = message;
-        $scope.showAlert = true;
-    };
-
-    $scope.closeAlert = function () {
-        $scope.showAlert = false;
-        $scope.alertMessage = "";
-    };
-
     $scope.initialize = function(){
         //load products
-        $http.get("/admin/products").then(resp => {
+        $http.get("/rest/products").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
                 item.createDate = new Date(item.createDate)
@@ -61,10 +46,10 @@ app.controller("product-ctrl", function($scope, $http){
             resp.data.createDate = new Date(resp.data.createDate)
             $scope.items.push(resp.data);
             $scope.reset();
-            $scope.showAlertMessage("Thêm mới thành công")
+            alert("Them moi thanh cong");
             $scope.initialize();
         }).catch(error => {
-            $scope.showAlertMessage("Thêm mới thất bại")
+            alert("Loi them moi san pham");
             console.log("Error", error);
         })
     }
@@ -75,22 +60,23 @@ app.controller("product-ctrl", function($scope, $http){
         $http.put(`/rest/products/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items[index] = item;
-            $scope.showAlertMessage("Cập nhật thành công")
+            alert("Cập nhật sản phẩm thành công")
         }).catch(error => {
-            $scope.showAlertMessage("Cập nhật thất bại")
+            alert("Lỗi cập nhật sản phẩm");
             console.log("Error", error);
         })
     }
 
     //Xóa sản phẩm
-    $scope.delete = function(item){       
+    $scope.delete = function(item){
+
         $http.delete(`/rest/products/${item.id}`).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items.splice(index, 1);
             $scope.reset();
-            $scope.showAlertMessage("Xóa thành công")
+            alert("Xóa sản phẩm thành công")
         }).catch(error => {
-            $scope.showAlertMessage("Lỗi xóa sản phẩm")
+            alert("Lỗi xóa sản phẩm");
             console.log("Error", error);
         })
     }
@@ -105,7 +91,7 @@ app.controller("product-ctrl", function($scope, $http){
         }).then(resp => {
             $scope.form.image = resp.data.name;
         }).catch(error => {
-            $scope.showAlertMessage("Lỗi Update ảnh")
+            alert("Loi upload anh");
             console.log("Error", error);
         })
     }
@@ -115,6 +101,7 @@ app.controller("product-ctrl", function($scope, $http){
         size: 5,
         get items(){
             var start = this.page * this.size;
+            //console.log(start + "..." + this.size);
             return $scope.items.slice(start, start + this.size);
         },
         get count(){
@@ -140,6 +127,3 @@ app.controller("product-ctrl", function($scope, $http){
         }
     }
 });
-
-
-//5 trang (0, 1, 2, 3, 4)
