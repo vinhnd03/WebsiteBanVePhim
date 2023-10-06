@@ -15,4 +15,14 @@ public class HomeController {
     public String admin(){
         return "redirect:/admin/index.html";
     }
+
+    @RequestMapping("/qna")
+    public String qna(){
+        return "other/qna";
+    }
+
+    @RequestMapping("/discount")
+    public String discount(){
+        return "other/discount";
+    }
 }
