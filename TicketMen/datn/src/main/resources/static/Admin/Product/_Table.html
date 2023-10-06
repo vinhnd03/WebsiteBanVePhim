@@ -7,10 +7,10 @@
                 <th>Id</th>
                 <th>Tên phim</th>
                 <th>Độ tuổi</th>
-                <th>Image</th>
                 <th>Date</th>
-                <!-- <th>Category</th>
-                <th>Available?</th> -->
+                <th>Category</th>
+                <th>Image</th>
+                <!-- <th>Available?</th>  -->
                 <th></th>
             </tr>
         </thead>
@@ -19,9 +19,9 @@
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.age }}</td>
-                <td>{{item.poster}}</td>
                 <td>{{item.showtime | date : 'dd-MM-yyyy'}}</td>
-                <!-- <td>{{item.category.name}}</td> -->
+                <td>{{item.category.name}}</td>
+                <td>{{item.image}}</td>
                 <td>
                     <div class="btn-group btn-group-xs">
                         <button ng-click="edit(item)" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button>
