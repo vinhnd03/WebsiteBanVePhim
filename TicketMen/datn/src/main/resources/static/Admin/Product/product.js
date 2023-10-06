@@ -85,7 +85,7 @@ app.controller("product-ctrl", function($scope, $http){
     $scope.imageChanged = function(files){
         var data = new FormData();
         data.append('file', files[0]);
-        $http.post('/rest/upload/images', data, {
+        $http.post('/rest/upload/image', data, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         }).then(resp => {
