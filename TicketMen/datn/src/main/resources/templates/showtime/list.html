@@ -1,0 +1,96 @@
+<div xmlns:th="http://www.thymeleaf.org"
+th:replace="~{/layout/index :: dynamic(~{::main})}">
+    <main class="container" style="color: white;">
+        <h1 class="mt-4">Lịch chiếu phim</h1>
+    
+        <!-- Tìm kiếm phim -->
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Tìm kiếm</button>
+          </div>
+        </div>
+    
+        <!-- Bộ lọc theo thể loại -->
+        <div class="form-group">
+          <label for="genreFilter">Lọc theo thể loại:</label>
+          <select class="form-control" id="genreFilter">
+            <option>Tất cả</option>
+            <option>Hành động</option>
+            <option>Kinh dị</option>
+            <option>Tình cảm</option>
+          </select>
+        </div>
+    
+        <!-- Hiển thị danh sách phim -->
+        <h2 class="text-center mt-3 ">Lịch chiếu hôm nay</h2>
+        <div class="row mt-4 showtime tenpim">
+          <div class="col-md-6">
+            <h2>Phim đang chiếu</h2>
+            
+            <div class="today-showtime row mt-3s">
+              <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+              <div class="col-md-6">
+                <div class="age">13+</div>
+                <div class="movie-name">Án mạng Venice</div>
+                <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                <div class="btn btn-outline-danger order-btn">19:30 - 21:13</div>
+              </div>
+            </div>
+            <div class="today-showtime row mt-3s">
+              <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+              <div class="col-md-6">
+                <div class="age">13+</div>
+                <div class="movie-name">Án mạng Venice</div>
+                <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                <div class="btn btn-outline-danger order-btn">19:30 - 21:13</div>
+              </div>
+            </div>
+            <div class="today-showtime row mt-3s">
+              <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+              <div class="col-md-6">
+                <div class="age">13+</div>
+                <div class="movie-name">Án mạng Venice</div>
+                <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                <div class="btn btn-outline-danger order-btn">19:30 - 21:13</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2>Phim sắp chiếu</h2>
+            <div class="container mt-2">         
+
+              <div>
+                <div class="today-showtime row mt-3s">
+                  <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+                  <div class="col-md-6">
+                    <div class="age">13+</div>
+                    <div class="movie-name">Án mạng Venice</div>
+                    <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                    <div class="btn btn-outline-danger order-btn">19:30 - 21:13</div>
+                  </div>
+                </div>
+                <div class="today-showtime row mt-3s">
+                  <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+                  <div class="col-md-6">
+                    <div class="age">13+</div>
+                    <div class="movie-name">Án mạng Venice</div>
+                    <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                    <div class="btn btn-outline-danger order-btn">19:30 - 21:13</div>
+                  </div>
+                </div>
+                <div class="today-showtime row mt-3s">
+                  <img class="col-md-4" src="./image/an-mang-o-venice1.jpg" alt="">
+                  <div class="col-md-6">
+                    <div class="age">13+</div>
+                    <div class="movie-name">Án mạng Venice</div>
+                    <div class="category">Kinh Dị, Tâm Lý, Tội Phạm</div>
+                    <div class="btn btn-outline-danger order-btn">19:30 - 21:13</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
