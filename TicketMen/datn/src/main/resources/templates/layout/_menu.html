@@ -19,10 +19,10 @@
             <a href="#!news">Tin Tức</a>
         </div>
         <div class="menu-item">
-            <a href="#!about">Dịch Vụ</a>
+            <a th:href="@{/service}">Dịch Vụ</a>
         </div>
         <div class="menu-item">
-            <a href="#!contact">Liên Hệ</a>
+            <a th:href="@{/contact}">Liên Hệ</a>
         </div>
     </div>
     <th:block th:if="${#request.remoteUser}">

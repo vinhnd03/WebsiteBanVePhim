@@ -1,0 +1,56 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+    <main>
+        <header>
+            <h1>Liên Hệ</h1>
+        </header>
+
+        <div class="content">
+            <div class="title">
+                <h2>Liên Hệ</h2>
+            </div>
+            <div class="contact">
+                <h3>
+                    <strong>TICKETMEN CINEMAS</strong>
+                </h3>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <h2>
+                    HEADQUATERS
+                </h2>
+                <p></p>
+                <h2>
+                    Địa chỉ: 137 Nguyễn Thị Thập - Hòa Minh - Liên Chiều - Đà Nẳng
+                </h2>
+                <p></p>
+                <h2>
+                    Hotline: +84 12345678
+                </h2>
+                <p></p>
+
+            </div>
+        </div>
+        <main>
+            <form action="" method="post">
+                <label for="name">Họ và tên:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Số điện thoại:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+
+                <label for="message">Nội Dung:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Gửi</button>
+            </form>
+        </main>
+        <footer>
+            <p>Bạn cũng có thể liên hệ qua số điện thoại: 123-456-7890</p>
+        </footer>
+    </main>
+</div>

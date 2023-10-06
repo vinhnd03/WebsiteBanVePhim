@@ -25,4 +25,15 @@ public class HomeController {
     public String discount(){
         return "other/discount";
     }
+
+    @RequestMapping("/contact")
+    public String contact(){
+        return "other/contact";
+    }
+
+    @RequestMapping("/service")
+    public String service(){
+        return "other/service";
+    }
 }
+
