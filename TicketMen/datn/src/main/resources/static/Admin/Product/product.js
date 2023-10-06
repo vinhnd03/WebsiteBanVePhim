@@ -28,7 +28,7 @@ app.controller("product-ctrl", function($scope, $http){
     $scope.reset = function(){
         $scope.form = {
             createDate: new Date(),
-            image: 'OIP2.jpg',
+            poster: 'OIP2.jpg',
             available: true,
         }
     }
@@ -89,7 +89,7 @@ app.controller("product-ctrl", function($scope, $http){
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         }).then(resp => {
-            $scope.form.image = resp.data.name;
+            $scope.form.poster = resp.data.name;
         }).catch(error => {
             $scope.showAlertMessage("Lỗi Update ảnh")
             console.log("Error", error);

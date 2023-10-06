@@ -36,8 +36,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Movie update(Movie movie) {
-        return mdao.save(movie);
+    public Movie update(Movie product) {
+        return mdao.save(product);
     }
 
     @Override

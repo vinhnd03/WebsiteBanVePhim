@@ -37,14 +37,14 @@ public class ProductRestController {
     }
 
     @PostMapping()
-    public Movie create(@RequestBody Movie movie){
-        return productService.create(movie);
+    public Movie create(@RequestBody Movie product){
+        return productService.create(product);
     }
 
     @PutMapping("{id}")
     public Movie update(@PathVariable("id") Long id,
-        @RequestBody Movie movie){
-        return productService.update(movie);
+        @RequestBody Movie product){
+        return productService.update(product);
     }
 
     @DeleteMapping("{id}")
