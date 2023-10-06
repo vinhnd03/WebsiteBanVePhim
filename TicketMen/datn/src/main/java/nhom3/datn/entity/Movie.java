@@ -33,7 +33,7 @@ public class Movie implements Serializable{
     String name;
     String studio;
     Integer age;
-    String image;
+    String poster;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "Date")
