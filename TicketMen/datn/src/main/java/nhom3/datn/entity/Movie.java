@@ -17,6 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -31,12 +32,19 @@ public class Movie implements Serializable{
     Long id;
     String name;
     String studio;
-    int age;
-    String poster;
+    Integer age;
+    String image;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "Showtime")
-    Date showtime = new Date();
+    @Column(name = "Date")
+    Date date = new Date();
+
+    @Temporal(TemporalType.TIME)
+    @Column(name = "Time")
+    Date time = new Date();
+
+    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
+    // String time;
 
     @JsonIgnore
     @OneToMany(mappedBy = "movie")
