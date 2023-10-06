@@ -91,7 +91,7 @@ app.controller("product-ctrl", function($scope, $http){
         }).then(resp => {
             $scope.form.image = resp.data.name;
         }).catch(error => {
-            alert("Loi upload anh");
+            $scope.showAlertMessage("Lỗi Update ảnh")
             console.log("Error", error);
         })
     }
