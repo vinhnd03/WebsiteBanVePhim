@@ -10,7 +10,6 @@ app.controller("product-ctrl", function ($scope, $http) {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
                 item.date = new Date(item.date)
-
                 // Chuyển đổi thời gian thành đúng định dạng "HH:mm a"
                 const timeParts = item.time.split(':');
                 const hours = parseInt(timeParts[0], 10);
@@ -19,6 +18,7 @@ app.controller("product-ctrl", function ($scope, $http) {
                 timeDate.setHours(hours);
                 timeDate.setMinutes(minutes);
                 timeDate.setSeconds(0);
+                timeDate.setMilliseconds(0);
                 item.time = timeDate;
             })
             $scope.reset();
