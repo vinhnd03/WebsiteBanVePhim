@@ -594,6 +594,9 @@ body {
   li {
     text-decoration: none;
   }
+  #li{
+    text-decoration: none;
+  }
 
 .showtime .age{
     background-color: darkorange;
