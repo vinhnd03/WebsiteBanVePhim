@@ -2,10 +2,10 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(function ($routeProvider) {
     $routeProvider
-        // .when("/", {
-        //     templateUrl: "", // Template cho trang chính
-        //     controller: "HomeController"
-        // })
+         .when("/home", {
+            templateUrl: "./Layout/Home.html", // Template cho trang chính
+            controller: "HomeController"
+         })
         .when("/showtime", {
             templateUrl: "./Layout/Lichchieu.html", // Template cho trang chính
             controller: "ShowwtimeController"
