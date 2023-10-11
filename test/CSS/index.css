@@ -726,5 +726,17 @@ footer {
 .tenpim {
     color: #0b0a0a;
 }
+/* Trang danh sach phim */
+.topMovie{
+    background: url('../image/TopMovieBG.png') center no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+.topMovie-title{
+    font-size: medium;
+    font-weight: 700;
+    color: white;
+}
 
 
