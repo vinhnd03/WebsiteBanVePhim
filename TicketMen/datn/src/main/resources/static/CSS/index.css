@@ -266,7 +266,7 @@ img {
 
 }
 
-.movies-selecting a:hover {
+.movies-selecting li:hover {
     background-color: blueviolet;
     color: white;
 }
@@ -592,6 +592,9 @@ body {
 
 
   li {
+    text-decoration: none;
+  }
+  #li{
     text-decoration: none;
   }
 
