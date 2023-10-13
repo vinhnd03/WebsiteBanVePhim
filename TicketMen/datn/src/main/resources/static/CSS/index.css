@@ -266,7 +266,7 @@ img {
 
 }
 
-.movies-selecting a:hover {
+.movies-selecting li:hover {
     background-color: blueviolet;
     color: white;
 }
