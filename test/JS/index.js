@@ -4,7 +4,6 @@ app.config(function ($routeProvider) {
     $routeProvider
          .when("/home", {
             templateUrl: "./Layout/Home.html", // Template cho trang chính
-            controller: "HomeController"
          })
         .when("/showtime", {
             templateUrl: "./Layout/Lichchieu.html", // Template cho trang chính
