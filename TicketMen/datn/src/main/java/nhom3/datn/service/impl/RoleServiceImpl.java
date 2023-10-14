@@ -23,5 +23,4 @@ public class RoleServiceImpl implements RoleService{
         return dao.findAll();
     }
 
-   
 }

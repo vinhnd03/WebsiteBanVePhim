@@ -10,9 +10,9 @@ app.config(function($routeProvider){
             templateUrl: "/admin/authority/index.html",
             controller: "authority-ctrl"
         })
-        .when("/unathorized", {
-            templateUrl: "/assets/admin/authority/unauthorize.html",
-            controller: "authority-ctrl"
+        .when("/unauthorized", {
+            templateUrl: "/admin/authority/unauthorized.html",
+            
         })
         .otherwise({
             template: "<h1 class='text-center'>FPT Polytechnic Adminitration</h1>"

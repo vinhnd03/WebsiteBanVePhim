@@ -62,7 +62,7 @@ public class SecurityConfig {
         http.authorizeRequests(authorizeRequests -> authorizeRequests
                 .antMatchers("/order/**").authenticated()
                 .antMatchers("/admin/**").hasAnyRole("STAFF", "ADMIN")
-                .antMatchers("/rest/authorities").hasRole("STAFF")
+                .antMatchers("/rest/authorities").hasRole("ADMIN")
                 .anyRequest().permitAll());
         http.formLogin(login -> login
                 .loginPage("/security/login/form")
@@ -72,7 +72,7 @@ public class SecurityConfig {
         http.rememberMe(rememberMe -> rememberMe
                 .tokenValiditySeconds(86400));
         http.exceptionHandling(exceptionHandling -> exceptionHandling
-                .accessDeniedPage("/security/unauthorized"));
+                .accessDeniedPage("/unauthorized"));
         http.logout(logout -> logout
                 .logoutUrl("/security/logoff")
                 .logoutSuccessUrl("/security/logoff/success"));

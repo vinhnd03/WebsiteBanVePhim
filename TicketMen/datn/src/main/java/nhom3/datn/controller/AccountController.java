@@ -43,10 +43,12 @@ public class AccountController {
         authority.setRole(role);
 
         if(password.equals(confirmPassword)){
+            account.setUsername(account.getUsername().toLowerCase());
+            account.setPassword(password.toLowerCase());
             accountService.save(account);
-            authorityService.save(authority);
+            authorityService.create(authority);
             model.addAttribute("message", "Đăng ký thành công");
-            return new ModelAndView("foward:/home/index", model);
+            return new ModelAndView("redirect:/home/index", model);
         }
 
         model.addAttribute("message", "Lỗi xác nhận mật khẩu");

@@ -15,16 +15,9 @@ import nhom3.datn.service.AuthorityService;
 public class AuthorityServiceImpl implements AuthorityService{
     @Autowired
     AuthorityDao dao;
-     @Autowired
-    AccountDao acdao;
 
-    @Override
-    public void save(Authority authority) {
-        dao.save(authority);
-    }
-    
-    // hoang them
-   
+    @Autowired
+    AccountDao acdao;
 
     @Override
     public List<Authority> findAuthoritiesOfAdministrators() {

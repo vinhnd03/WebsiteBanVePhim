@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 import lombok.Data;
 
-@SuppressWarnings("*")
+@SuppressWarnings("serial")
 @Data
 @Entity
 @Table(name = "Tickets")

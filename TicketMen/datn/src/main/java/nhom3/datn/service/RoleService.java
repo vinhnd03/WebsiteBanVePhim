@@ -7,5 +7,6 @@ import nhom3.datn.entity.Role;
 public interface RoleService {
 
     Role findById(String id);
-    public List<Role> findAll();
+    
+    List<Role> findAll();
 }

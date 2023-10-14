@@ -6,8 +6,6 @@ import nhom3.datn.entity.Authority;
 
 public interface AuthorityService {
 
-    void save(Authority authority);
-    
     List<Authority> findAuthoritiesOfAdministrators();
 
     List<Authority> findAll();

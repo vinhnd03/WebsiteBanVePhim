@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-@SuppressWarnings("*")
+@SuppressWarnings("serial")
 @Data
 @Entity
 @Table(name = "TicketTypes")
