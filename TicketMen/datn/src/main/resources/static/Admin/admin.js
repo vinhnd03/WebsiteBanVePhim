@@ -7,7 +7,7 @@ app.config(function($routeProvider){
             controller: "product-ctrl"
         })
         .when("/authorize", {
-            templateUrl: "/assets/admin/authority/index.html",
+            templateUrl: "/admin/authority/index.html",
             controller: "authority-ctrl"
         })
         .when("/unathorized", {
