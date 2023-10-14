@@ -41,7 +41,7 @@ public class SecurityConfig {
         // Tạo một nguồn dữ liệu đăng nhập tùy chỉnh ở đây
         return username -> {
             try {
-                Account user = accountService.findById(username);
+                Account user = accountService.findById(username.toLowerCase());
                 session.setAttribute("name", user.getName());
                 String password = pe.encode(user.getPassword());
 
