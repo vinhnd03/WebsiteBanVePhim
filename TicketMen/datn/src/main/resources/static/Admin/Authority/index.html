@@ -10,7 +10,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="acc in admins">
-                <td>{{acc.fullname}}</td>
+                <td>{{acc.Name}}</td>
                 <td ng-repeat="role in roles" class="text-center">
                     <input type="checkbox" ng-checked="authority_of(acc, role)" 
                         ng-click="authority_changed(acc, role)">
