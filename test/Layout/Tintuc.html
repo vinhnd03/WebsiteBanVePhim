@@ -11,24 +11,68 @@
     <link rel="stylesheet" href="../CSS/index.css">
   </head>
   <body>
-    <div class="conitent-page">
-        <div class="section.title">
-            <h2><strong>
-                TIN TỨC
-            </strong></h2>
-        </div>
-        <div class="sub-tab news">
-            <ul>
-                <li>
+    <div class="container">
+      <div class="title">
+        TIN TỨC
+      </div>
 
-                </li>
-                <li>
-                    
-                </li>
-            </ul>
-        </div>
+      <ul class="nav nav-tabs">
+          <li class="nav-item">
+              <a class="nav-link active" id="tinDienAnh-tab" data-toggle="tab" href="#tinDienAnh" role="tab" aria-controls="tinDienAnh" aria-selected="true">Tin Điện Ảnh</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="tuyenDung-tab" data-toggle="tab" href="#tuyenDung" role="tab" aria-controls="tuyenDung" aria-selected="false">Tuyển Dụng</a>
+          </li>
+      </ul>
 
-    </div>
+      <div class="tab-content mt-3">
+          <div class="tab-pane fade show active" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab">
+              <ul class="list-group">
+                <div class="row">
+                  <div class="col-sm-4">
+                      <a href="#" style="text-decoration: none">
+                          <div class="panel panel-primary">
+                              <div class="panel-body"><img src="/test/image/km2.jpg" class="img-responsive"
+                                      style="width:100%" alt="Image"></div>
+                              <div class="panel-body"><strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong></div>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                        <a href="#" style="text-decoration: none">
+                            <div class="panel panel-primary">
+                                <div class="panel-body"><img src="/test/image/km2.jpg" class="img-responsive"
+                                        style="width:100%" alt="Image"></div>
+                                <div class="panel-body"><strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">
+                          <a href="#" style="text-decoration: none">
+                              <div class="panel panel-primary">
+                                  <div class="panel-body"><img src="/test/image/km2.jpg" class="img-responsive"
+                                          style="width:100%" alt="Image"></div>
+                                  <div class="panel-body"><strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong></div>
+                              </div>
+                          </a>
+                      </div>
+              </ul>
+          </div>
+
+          <!-- Tab Tuyển Dụng -->
+          <div class="tab-pane fade" id="tuyenDung" role="tabpanel" aria-labelledby="tuyenDung-tab">
+              <!-- Danh sách tin tức Tuyển Dụng -->
+              <ul class="list-group">
+                  <li class="list-group-item">Tin 1: Nội dung tin tức Tuyển Dụng 1</li>
+                  <li class="list-group-item">Tin 2: Nội dung tin tức Tuyển Dụng 2</li>
+                  <li class="list-group-item">Tin 3: Nội dung tin tức Tuyển Dụng 3</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
