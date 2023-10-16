@@ -2,6 +2,9 @@ app = angular.module("admin-app", ["ngRoute"]);
 
 app.config(function($routeProvider){
     $routeProvider
+        .when("/", {
+            templateUrl: "/Admin/home/index.html", // Template cho trang chính
+        })
         .when("/product", {
             templateUrl: "/admin/product/index.html",
             controller: "product-ctrl"
@@ -21,4 +24,5 @@ app.config(function($routeProvider){
         .otherwise({
             template: "<h1 class='text-center'>FPT Polytechnic Adminitration</h1>"
         })
+
 });
