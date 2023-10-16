@@ -8,7 +8,7 @@ import java.util.List;
 import nhom3.datn.entity.Movie;
 
 
-public interface ProductService {
+public interface MovieService {
 
     List<Movie> findAll();
 

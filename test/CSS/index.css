@@ -740,3 +740,15 @@ footer {
 }
 
 
+/*slide list phim hot*/
+.dire-button{
+    height: 80px;
+    width: 100%;
+    background-color:#b5c9d7;
+
+}
+
+.dire-button img{
+    width: 100%;
+}
+
