@@ -1,3 +1,45 @@
+<style>
+    .dire-button {
+        height: 80px;
+        width: 100%;
+        position: relative;
+        bottom: 300px;
+        z-index: inherit;
+    }
+
+    .dire-button img {
+        width: 7%;
+    }
+
+
+    .dire-button .btn-right {
+
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('.owl-carousel').owlCarousel({
+            autoplay: true,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: true,
+            loop: true,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+    });
+
+</script>
+
 <div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org">
     <ul class="nav justify-content-center">
         <li class="nav-item" role="presentation">
@@ -5,65 +47,36 @@
                 aria-selected="true">Phim đang chiếu</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#list"
-                aria-selected="false">Phim
-                sắp chiếu</a>
+            <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#list" aria-selected="false">Phim sắp
+                chiếu</a>
         </li>
     </ul>
     <div class="tab-content" id="myContent">
         <div class="tab-pane fade show active" id="edit">
             <h1>PHIM ĐANG CHIẾU</h1>
             <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-4">
+                <div class="row owl-carousel owl-theme">
+                    <div class="col-3" th:each=" m: ${items}">
                         <div class="card">
-                            <img src="/image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
+                            <img th:src="@{|/image/${m.poster}|}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
+                                <h5 class="card-title" th:text="${m.name}"></h5>
                                 <p class="card-text">
                                 </p>
                                 <a href="#" class="btn btn-primary">Xem chi tiết</a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="/image/khuyenmai2.webp" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
-                                <p class="card-text">
-
-
-                                </p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="/image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Lật Mặt 6</h5>
-                                <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="/image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Lật Mặt 6</h5>
-                                <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <div class="dire-button row">
+                <div class="text-left btn-left col-6">
+                    <i><img src="/image/previous.png" alt=""></i>
 
                 </div>
-
+                <div class="text-right btn-right col-6">
+                    <i><img src="/image/next.png" alt=""></i>
+                </div>
             </div>
         </div>
         <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="videoList-tab">

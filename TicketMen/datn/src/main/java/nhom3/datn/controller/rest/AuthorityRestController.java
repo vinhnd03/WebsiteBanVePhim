@@ -25,21 +25,20 @@ public class AuthorityRestController {
     AuthorityService authorityService;
 
     @GetMapping
-    public List<Authority> findAll(@RequestParam("admin") Optional<Boolean> admin){
-        System.out.println(admin);
-        if(admin.orElse(false)){
+    public List<Authority> findAll(@RequestParam("admin") Optional<Boolean> admin) {
+        if (admin.orElse(false)) {
             return authorityService.findAuthoritiesOfAdministrators();
         }
         return authorityService.findAll();
     }
 
     @PostMapping
-    public Authority post(@RequestBody Authority auth){
+    public Authority post(@RequestBody Authority auth) {
         return authorityService.create(auth);
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") Integer id){
+    public void delete(@PathVariable("id") Integer id) {
         authorityService.delete(id);
     }
 }

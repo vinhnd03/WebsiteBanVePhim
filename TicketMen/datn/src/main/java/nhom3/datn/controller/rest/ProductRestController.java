@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nhom3.datn.entity.Movie;
-import nhom3.datn.service.ProductService;
+import nhom3.datn.service.MovieService;
 
 
 
@@ -24,7 +24,7 @@ import nhom3.datn.service.ProductService;
 @RequestMapping("/rest/products")
 public class ProductRestController {
     @Autowired
-    ProductService productService;
+    MovieService productService;
 
     @GetMapping("{id}")
     public Movie getOne(@PathVariable("id") Long id){

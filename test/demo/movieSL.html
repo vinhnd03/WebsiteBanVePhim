@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <script>
+        const listBox = document.querySelectorAll('.box');
+        const wrapperBox = document.querySelector('.review-box');
+        const btnLeft = document.querySelector('.btnLeft');
+        const btnRight = document.querySelector('.btnRight');
+        const reviewDiv = document.querySelector('.review');
+        document.addEventListener('DOMContentLoaded', function () {
+            // responsive
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 1366) {
+                    make_slide(3);
+                } else if (window.innerWidth >= 992) {
+                    make_slide(2);
+                } else {
+                    make_slide(1);
+                }
+            });
+
+            const media = [
+                window.matchMedia('(min-width: 1366px)'),
+                window.matchMedia('(min-width: 992px)'),
+            ];
+
+            if (media[0].matches) {
+                make_slide(3);
+            } else if (media[1].matches) {
+                make_slide(2);
+            } else {
+                make_slide(1);
+            }
+        });
+
+        function make_slide(amountSlideAppear) {
+            // set width and margin for item slide
+            const widthItemAndMargin = reviewDiv.offsetWidth / amountSlideAppear;
+            let widthAllBox = widthItemAndMargin * listBox.length;
+            wrapperBox.style.width = `${widthAllBox}px`;
+
+            listBox.forEach((element) => {
+                element.style.marginRight = '20px';
+                element.style.width = `${widthItemAndMargin - 20}px`;
+            });
+
+            // handle slide
+            let count = 0;
+            let spacing = widthAllBox - amountSlideAppear * widthItemAndMargin;
+            btnRight.addEventListener('click', function () {
+                count += widthItemAndMargin;
+
+                if (count > spacing) {
+                    count = 0;
+                }
+                wrapperBox.style.transform = `translateX(${-count}px)`;
+            });
+
+            btnLeft.addEventListener('click', function () {
+                count -= widthItemAndMargin;
+
+                if (count < 0) {
+                    count = spacing;
+                }
+                wrapperBox.style.transform = `translateX(${-count}px)`;
+            });
+        }
+    </script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html{
+            font-size: 62.5%
+        }
+
+
+
+        .review-box {
+            display: flex;
+            /* overflow: hidden; */
+            transition: transform 0.3s linear;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="review">
+        <div class="header-content">
+            <div class="title">
+                <h2>Slideshow With Vanilla JavaScript</h2>
+            </div>
+            <div class="nav">
+                <i class="fas btn fa-chevron-left btnLeft"></i><i class="fas btn fa-chevron-right btnRight"></i>
+            </div>
+        </div>
+        <div class="review-box" style="width: 300px;">
+            <div class="box">
+                <div class="image">
+                    <img src="https://images.unsplash.com/photo-1596050843849-db303b16b50e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                        alt="" />
+                </div>
+                <div class="name">Simon</div>
+                <div class="designation">Student</div>
+                <div class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam.
+                </div>
+            </div>
+            <!-- end box -->
+            <div class="review-box">
+                <div class="box">
+                    <div class="image">
+                        <img src="https://images.unsplash.com/photo-1596050843849-db303b16b50e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                            alt="" />
+                    </div>
+                    <div class="name">Simon</div>
+                    <div class="designation">Student</div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam.
+                    </div>
+                </div>
+                <!-- end box --><div class="review-box">
+            <div class="box">
+                <div class="image">
+                    <img src="https://images.unsplash.com/photo-1596050843849-db303b16b50e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                        alt="" />
+                </div>
+                <div class="name">Simon</div>
+                <div class="designation">Student</div>
+                <div class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam.
+                </div>
+            </div>
+            <!-- end box --><div class="review-box">
+            <div class="box">
+                <div class="image">
+                    <img src="https://images.unsplash.com/photo-1596050843849-db303b16b50e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                        alt="" />
+                </div>
+                <div class="name">Simon</div>
+                <div class="designation">Student</div>
+                <div class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam.
+                </div>
+            </div>
+            <!-- end box -->
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
