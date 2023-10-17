@@ -1,5 +1,7 @@
 package nhom3.datn.service;
 
+import java.util.List;
+
 import nhom3.datn.entity.Account;
 
 public interface AccountService {
@@ -8,4 +10,7 @@ public interface AccountService {
 
     void save(Account account);
     
+    List<Account> getAdministrators();
+
+    List<Account> findAll();
 }

@@ -1,5 +1,7 @@
 package nhom3.datn.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,4 +24,14 @@ public class AccountServiceImpl implements AccountService{
         dao.save(account);
     }   
 
+    // hoang them
+    public List<Account> getAdministrators() {
+        return dao.getAdministrators();
+    }
+
+    
+    public List<Account> findAll() {
+        return dao.findAll();
+
+}
 }

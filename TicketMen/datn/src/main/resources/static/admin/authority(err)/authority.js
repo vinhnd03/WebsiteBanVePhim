@@ -18,6 +18,7 @@ app.controller("authority-ctrl", function($scope, $http, $location){
         $scope.alertMessage = "";
     };
 
+
     $scope.initialize = function(){
         //load all roles
         $http.get("/rest/roles").then(resp => {

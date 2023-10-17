@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
-@SuppressWarnings("*")
+@SuppressWarnings("serial")
 @Data
 @Entity
 @Table(name =  "Movies")
