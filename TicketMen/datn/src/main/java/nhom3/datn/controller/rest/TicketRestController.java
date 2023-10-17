@@ -1,6 +1,5 @@
 package nhom3.datn.controller.rest;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,41 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import nhom3.datn.entity.Movie;
-import nhom3.datn.service.MovieService;
+import nhom3.datn.entity.Ticket;
+import nhom3.datn.service.TicketService;
 
 
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/rest/products")
-public class ProductRestController {
+@RequestMapping("/rest/tickets")
+public class TicketRestController {
     @Autowired
-    MovieService productService;
+    TicketService ticketService;
 
     @GetMapping("{id}")
-    public Movie getOne(@PathVariable("id") Long id){
-        return productService.findById(id);
+    public Ticket getOne(@PathVariable("id") Long id){
+        return ticketService.findById(id);
     }
 
     @GetMapping()
-    public List<Movie> getAll(){
-        return productService.findAll();
+    public List<Ticket> getAll(){
+        return ticketService.findAll();
     }
 
     @PostMapping()
-    public Movie create(@RequestBody Movie product){
-        return productService.create(product);
+    public Ticket create(@RequestBody Ticket ticket){
+        return ticketService.create(ticket);
     }
 
     @PutMapping("{id}")
-    public Movie update(@PathVariable("id") Long id,
-        @RequestBody Movie product){
-        return productService.update(product);
+    public Ticket update(@PathVariable("id") Long id,
+        @RequestBody Ticket ticket){
+        return ticketService.update(ticket);
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") Long id){
-        productService.delete(id);
+        ticketService.delete(id);
     }
 }

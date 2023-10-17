@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.MovieDao;
 import nhom3.datn.entity.Movie;
-import nhom3.datn.service.ProductService;
+import nhom3.datn.service.MovieService;
 
 @Service 
-public class ProductServiceImpl implements ProductService{
+public class MovieServiceImpl implements MovieService{
     @Autowired
     MovieDao mdao;
 

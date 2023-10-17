@@ -18,7 +18,7 @@ body {
 
 
 .menu .logo img {
-    width: 100%;
+   width: 100%;
 }
 
 .menu-con {
@@ -40,6 +40,7 @@ body {
 .menu-item a {
     text-decoration: none;
     color: rgb(4, 0, 234);
+    /* Màu chữ của các mục menu (ví dụ: trắng) */
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 5px;
@@ -48,6 +49,7 @@ body {
 .menu-item a:hover {
     background-color: plum;
     text-decoration: none;
+    /* Màu nền khi di chuột vào (ví dụ: đen nhạt có độ trong suốt) */
 }
 
 .search-form {
@@ -67,6 +69,7 @@ body {
     border-radius: 5px;
     margin-right: 5px;
     width: 150px;
+    /* Điều chỉnh độ rộng của ô tìm kiếm */
 }
 
 .search {
@@ -77,6 +80,7 @@ body {
     color: white;
     cursor: pointer;
     margin-left: 5px;
+    /* Khoảng cách giữa ô tìm kiếm và nút tìm kiếm */
 }
 
 /* ------------------------------- */
@@ -88,32 +92,40 @@ body {
     border: none;
     background-color: #3498db;
     color: #fff;
-
+    
 }
+
+/* CSS cho phần đăng nhập */
 .btn-login {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: white;
+    background-color:white;
     color: #0b0a0a;
 }
 
 
-.btn-login:hover {
+.btn-login:hover{
     text-decoration: none;
     background-color: blanchedalmond;
 
 }
+
+/* CSS cho logo trong phần đăng nhập và đăng ký */
 .logo-login {
     width: 70px;
     height: 70px;
     margin-right: 10px;
 }
+
+/* CSS cho phần login */
 .login {
     display: flex;
     align-items: center;
     background-image: url(image/);
 }
+
+/* CSS để căn giữa nút đăng ký và đăng nhập */
 .login ul {
     list-style: none;
     margin: 0;
@@ -145,6 +157,7 @@ body {
     position: relative; */
     position: relative;
     margin-top: 20px;
+    /* Khoảng cách giữa slide show và thanh menu */
 }
 
 .mySlides {
@@ -155,11 +168,16 @@ body {
 img {
     border-radius: 10px;
 }
+
+/* Chỉnh kích thước hình ảnh trong slide show */
 .mySlides img {
     width: 80%;
+    /* Điều chỉnh chiều cao của slide show */
     object-fit: cover;
     margin-top: 10px;
 }
+
+/* Chỉnh hiệu ứng chuyển đổi */
 .fade {
     /* animation: fade 2s ease-in-out infinite; */
     animation-name: fade;
@@ -190,24 +208,32 @@ img {
 
 .ticket-buying h2 {
     font-size: 24px;
+    /* Kích thước chữ */
     color: #333;
+    /* Màu chữ (ví dụ: màu đen) */
     font-weight: bold;
+    /* Độ đậm của chữ */
     margin-bottom: 1%;
 }
 
 .ticket-buying h2,
 .ticket-buying button {
     display: inline-block;
+    /* Hiển thị trên cùng một hàng */
     vertical-align: middle;
+    /* Căn giữa theo chiều dọc */
 }
 
 .ticket-buying button {
     margin-left: 20px;
+    /* Khoảng cách giữa thẻ <h2> và các nút */
 }
 
 .ticket-buying button {
     display: inline-block;
+    /* Hiển thị nút trên cùng một hàng */
     margin-right: 20px;
+    /* Khoảng cách giữa các nút */
 }
 
 
@@ -235,7 +261,10 @@ img {
     font-weight: 500;
 }
 
-.movies-selecting .active {}
+.movies-selecting .active {
+    
+
+}
 
 .movies-selecting a:hover {
     background-color: blueviolet;
@@ -255,16 +284,19 @@ img {
 
 .btn-chon-phim {
     background-color: #616263;
+    /* Màu nền cho nút chọn phim */
     color: white;
 }
 
 .btn-chon-ngay {
     background-color: #616263;
+    /* Màu nền cho nút chọn ngày */
     color: white;
 }
 
 .btn-chon-suat {
     background-color: #616263;
+    /* Màu nền cho nút chọn suất chiếu */
     color: white;
 }
 
@@ -277,81 +309,27 @@ img {
 
 
 /* khuyến mãi*/
-.body{
-    background-color: #1b77a5;
-}    
-
-.title {
-        text-align: center;
-        
-    }
-
-    .title h3 {
-        font-size: 70px;
-        margin-bottom: 20px;
-    }
-/* 
-    .row {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    } */
-
-    .col {
-        width: 50%;
-        padding: 10px;
-    }
-
-    .slide-wrapper-outter {
-        display: flex;
-        justify-content: center;
-    }
-
-    .slide-wraper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid #606060;
-        border-radius: 5px;
-        background-color:#dcdcdc ;
-    }
-
-    .member-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .member-pic img {
-        max-width: 100px;
-        height: 70px;
-    }
-
-    .member-txt {
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .member-txt h5 {
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-
+/* CSS cho phần promotion-list-content */
 .promotion-list-content {
-    background-color: #fcfcfc;
+    background-color: #f9f9f9;
     padding: 20px;
 }
+
+/* CSS cho phần title */
 .title h3 {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bold;
     color: #333;
 }
+
+/* CSS cho phần list-wrap */
 .list-wrap {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
 }
+
+/* CSS cho phần block */
 .block {
     width: 100%;
     max-width: 300px;
@@ -360,11 +338,16 @@ img {
     border: 1px solid #ccc;
     padding: 10px;
 }
+
+/* CSS cho phần block-image */
 .block-image img {
     width: 100%;
     height: auto;
     border-radius: 5px;
+    /* Bo góc hình vuông */
 }
+
+/* CSS cho phần block-txt */
 .block-txt {
     padding: 10px 0;
 }
@@ -380,7 +363,6 @@ img {
     font-size: 14px;
     color: #333;
 }
-
 
 
 /* ------------------------------------- */
@@ -458,61 +440,14 @@ img {
 .member-txt a:hover {
     color: #007BFF;
 }
+
+/* CSS cho phần content-page */
 .content-page {
     padding: 20px;
 }
 
 
-/* ------------TIN TỨC---------------- */
-
-
-.col-sm-3 {
-    width: 40%;
-    margin: 30px;
-    margin-left: 40px;
-
-}
-ul.nav-tabs {
-    display: flex;
-    justify-content: center;
-}
-.row {
-    display: flex;
-    justify-content: space-between;
-    transition: background-color 0.3s; 
-}
-.panel.panel-primary:hover {
-    background-color: rgb(245, 65, 95); 
-}
-.panel {
-    border: 2px solid #e2ddf1;
-    border-radius: 5px;
-    padding: 5px;
-    text-align: center;
-
-}
-
-.panel-heading {
-    background-color: #337ab7;
-    color: #fff;
-    padding: 10px;
-    font-weight: bold;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.panel-body img {
-    max-width: 100%;
-    height: auto;
-}
-
-.panel-footer {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
+/* ---------------------------- */
 
 /* Danh sách phim*/
 
@@ -595,6 +530,10 @@ body {
     margin-bottom: 10px;
 }
 
+/* -------------------- */
+
+/* gửi câu hỏi và đặt vé */
+
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
@@ -647,16 +586,16 @@ body {
 
 .btn-primary:hover {
     background-color: #005f6b;
-}
+  }
 
 
 
 
-li {
+  li {
     text-decoration: none;
-}
+  }
 
-.showtime .age {
+.showtime .age{
     background-color: darkorange;
     display: inline;
     padding: 1%;
@@ -665,26 +604,26 @@ li {
     margin-top: 3%;
 }
 
-.showtime .movie-name {
+.showtime .movie-name{
     font-weight: 700;
     font-size: larger;
     margin-top: 5%;
 }
 
-.showtime .category {
+.showtime .category{
     color: dimgrey;
     font-size: small;
 }
 
-.showtime .order-btn {
+.showtime .order-btn{
     margin-top: 40%;
 }
 
-.today-showtime {
+.today-showtime{
     margin: 10% 0;
 }
 
-.showtime>.col-md-6 {
+.showtime>.col-md-6{
     border-right: 1px solid blue;
     border-radius: 10%;
 }
@@ -693,23 +632,26 @@ li {
 
 /*----------LIÊN HỆ-------------*/
 
+
+/* Thiết lập font chữ và background chung cho trang */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f7f7f7;
 }
+
+/* Phần header và thông tin liên hệ */
 .contact {
     text-align: center;
     padding: 20px;
     background-image: url(../image/hh.jpg);
-
 }
 
 .contact h1 {
     font-size: 45px;
     margin: 0;
-    color: #f3176f;
+    color: #ffffff;
 }
 
 .contact h2 {
@@ -736,10 +678,10 @@ body {
     margin-top: 10px;
 }
 
+/* Phần tiêu đề cho form liên hệ */
 .section-title {
     text-align: center;
     margin-top: 40px;
-    color: #5f17ef;
 }
 
 
@@ -749,51 +691,64 @@ body {
     margin-bottom: 10px;
 }
 
-.box {
+/* Phần chân trang */
+footer {
     text-align: center;
-    background-image: url(../image/lihe.jpg);
+    padding: 20px 0;
+    background-color: #555a5e;
+    color: #fff;
 }
 
-.lh {
-    color: #ffffff;
-}
+
 
 
 /*---------------------------Register/Login---------------------------*/
 
-.form-register {
+.form-register{
     padding: 5%;
     margin-top: 1%;
     background-image: url('./image/login_bg.jpg');
     background-repeat: X;
     background-size: cover;
 }
-
-.form-register-backgrow {
+.form-register-backgrow{
     background-color: whitesmoke;
 }
 
-.form-register small {
-    color: white;
+.form-register small{
+    color: white    ;
 }
 
-.form-register .form-control {
+.form-register .form-control{
     border: 3px solid #f78156;
 }
 
 .tenpim {
     color: #0b0a0a;
 }
-
 /* Trang danh sach phim */
-.topMovie {
+.topMovie{
     background: url('../image/TopMovieBG.png') center no-repeat;
     background-size: 100% 100%;
-
+    
 }
 
-.topMovie-title {
+.topMovie-title{
     font-size: medium;
     font-weight: 700;
     color: white;
 }
+
+
+/*slide list phim hot*/
+.dire-button{
+    height: 80px;
+    width: 100%;
+    background-color:#b5c9d7;
+
+}
+
+.dire-button img{
+    width: 100%;
+}
+
