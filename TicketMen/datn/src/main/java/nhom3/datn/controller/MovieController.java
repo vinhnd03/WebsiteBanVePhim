@@ -1,5 +1,7 @@
 package nhom3.datn.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +42,6 @@ public class MovieController {
     public String detail(Model model, @PathVariable("id") Long id) {
         Movie item = movieService.findById(id);
         model.addAttribute("item", item);
-        return "product/detail";
+        return "movie/detail";
     }
 }
