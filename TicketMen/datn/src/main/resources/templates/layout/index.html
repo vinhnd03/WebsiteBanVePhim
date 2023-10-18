@@ -22,10 +22,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
         <script src="/JS/SlideShow.js"></script>
         <script src="/owlcarousel/owl.carousel.min.js"></script>
+        <script src="/JS/index.js"></script>
     </head>
 </head>
 
-<body>
+<body ng-app="myApp">
     <div style="background-image: url(/image/nen1.jpg); background-size: contain;">
         <!-- Thanh Menu-->
         <div th:replace="/layout/_menu.html"></div>
@@ -103,7 +104,7 @@
 
         <div style="background-image: url(image/nen1.jpg); height: 10px;"><br></div>
         <!-- Ticket Select-->
-        <div th:replace="/layout/_select.html"></div>
+        
         <div style="background-image: url(image/nen1.jpg); height: 10px;"><br></div>
         <!--Content -->
         <div th:replace="${main}"></div>

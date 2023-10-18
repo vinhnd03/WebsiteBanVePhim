@@ -21,34 +21,34 @@ import nhom3.datn.service.MovieService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/rest/products")
-public class ProductRestController {
+@RequestMapping("/rest/movies")
+public class MovieRestController {
     @Autowired
-    MovieService productService;
+    MovieService movieService;
 
     @GetMapping("{id}")
     public Movie getOne(@PathVariable("id") Long id){
-        return productService.findById(id);
+        return movieService.findById(id);
     }
 
     @GetMapping()
     public List<Movie> getAll(){
-        return productService.findAll();
+        return movieService.findAll();
     }
 
     @PostMapping()
-    public Movie create(@RequestBody Movie product){
-        return productService.create(product);
+    public Movie create(@RequestBody Movie movie){
+        return movieService.create(movie);
     }
 
     @PutMapping("{id}")
     public Movie update(@PathVariable("id") Long id,
-        @RequestBody Movie product){
-        return productService.update(product);
+        @RequestBody Movie movie){
+        return movieService.update(movie);
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") Long id){
-        productService.delete(id);
+        movieService.delete(id);
     }
 }

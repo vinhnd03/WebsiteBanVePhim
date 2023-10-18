@@ -36,4 +36,7 @@ app.config(function ($routeProvider) {
         .otherwise({
             redirectTo: "/" // Trang mặc định khi không có định tuyến khớp
         });
+
+
+    
 });

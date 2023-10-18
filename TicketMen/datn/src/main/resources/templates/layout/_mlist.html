@@ -16,7 +16,7 @@
     }
 </style>
 
-<div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org">
+<div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org" ng-controller="movie-ctrl">
     <ul class="nav justify-content-center">
         <li class="nav-item" role="presentation">
             <a class="nav-link active" data-toggle="tab" href="" role="tab" data-target="#edit"
@@ -59,37 +59,11 @@
             <h1>PHIM SẮP CHIẾU</h1>
             <div class="container mt-5">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3" ng-repeat="item in pager.items">
                         <div class="card">
-                            <img src="/image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
+                            <img src="/image/{{item.poster}}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
-                                <p class="card-text">
-                                </p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="/image/khuyenmai2.webp" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
-                                <p class="card-text">
-
-
-                                </p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="/image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Lật Mặt 6</h5>
+                                <h5 class="card-title">{{item.name}}</h5>
                                 <p class="card-text">Miêu tả sản phẩm 3.</p>
                                 <a href="#" class="btn btn-primary">Xem chi tiết</a>
                             </div>
@@ -97,6 +71,15 @@
                     </div>
                 </div>
 
+            </div>
+            <div class="dire-button row">
+                <div class="text-left btn-left col-6" ng-click="pager.prev()">
+                    <i><img src="/image/previous.png" alt=""></i>
+
+                </div>
+                <div class="text-right btn-right col-6"  ng-click="pager.next()">
+                    <i><img src="/image/next.png" alt=""></i>
+                </div>
             </div>
         </div>
     </div>
