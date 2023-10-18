@@ -40,7 +40,6 @@ body {
 .menu-item a {
     text-decoration: none;
     color: rgb(4, 0, 234);
-    /* Màu chữ của các mục menu (ví dụ: trắng) */
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 5px;
@@ -49,14 +48,12 @@ body {
 .menu-item a:hover {
     background-color: plum;
     text-decoration: none;
-    /* Màu nền khi di chuột vào (ví dụ: đen nhạt có độ trong suốt) */
 }
 
 .search-form {
     display: flex;
     align-items: center;
     margin-left: 10px;
-    /* Khoảng cách giữa menu và ô tìm kiếm */
 }
 
 .form-row-search {
@@ -69,7 +66,6 @@ body {
     border-radius: 5px;
     margin-right: 5px;
     width: 150px;
-    /* Điều chỉnh độ rộng của ô tìm kiếm */
 }
 
 .search {
@@ -80,7 +76,6 @@ body {
     color: white;
     cursor: pointer;
     margin-left: 5px;
-    /* Khoảng cách giữa ô tìm kiếm và nút tìm kiếm */
 }
 
 /* ------------------------------- */
@@ -110,22 +105,16 @@ body {
     background-color: blanchedalmond;
 
 }
-
-/* CSS cho logo trong phần đăng nhập và đăng ký */
 .logo-login {
     width: 70px;
     height: 70px;
     margin-right: 10px;
 }
-
-/* CSS cho phần login */
 .login {
     display: flex;
     align-items: center;
     background-image: url(image/);
 }
-
-/* CSS để căn giữa nút đăng ký và đăng nhập */
 .login ul {
     list-style: none;
     margin: 0;
@@ -157,7 +146,6 @@ body {
     position: relative; */
     position: relative;
     margin-top: 20px;
-    /* Khoảng cách giữa slide show và thanh menu */
 }
 
 .mySlides {
@@ -168,18 +156,13 @@ body {
 img {
     border-radius: 10px;
 }
-
-/* Chỉnh kích thước hình ảnh trong slide show */
 .mySlides img {
     width: 80%;
-    /* Điều chỉnh chiều cao của slide show */
     object-fit: cover;
     margin-top: 10px;
 }
 
-/* Chỉnh hiệu ứng chuyển đổi */
 .fade {
-    /* animation: fade 2s ease-in-out infinite; */
     animation-name: fade;
     animation-duration: 3s;
 }
@@ -202,38 +185,28 @@ img {
 /* CSS mua vé Online*/
 .ticket-buying {
     margin-top: 10%;
-    /* Khoảng cách giữa slide show và phần mua vé */
-
 }
 
 .ticket-buying h2 {
     font-size: 24px;
-    /* Kích thước chữ */
     color: #333;
-    /* Màu chữ (ví dụ: màu đen) */
     font-weight: bold;
-    /* Độ đậm của chữ */
     margin-bottom: 1%;
 }
 
 .ticket-buying h2,
 .ticket-buying button {
     display: inline-block;
-    /* Hiển thị trên cùng một hàng */
     vertical-align: middle;
-    /* Căn giữa theo chiều dọc */
 }
 
 .ticket-buying button {
     margin-left: 20px;
-    /* Khoảng cách giữa thẻ <h2> và các nút */
 }
 
 .ticket-buying button {
     display: inline-block;
-    /* Hiển thị nút trên cùng một hàng */
     margin-right: 20px;
-    /* Khoảng cách giữa các nút */
 }
 
 
@@ -261,10 +234,10 @@ img {
     font-weight: 500;
 }
 
-.movies-selecting .active {
+/* .movies-selecting .active {
     
 
-}
+} */
 
 .movies-selecting a:hover {
     background-color: blueviolet;
@@ -284,19 +257,16 @@ img {
 
 .btn-chon-phim {
     background-color: #616263;
-    /* Màu nền cho nút chọn phim */
     color: white;
 }
 
 .btn-chon-ngay {
     background-color: #616263;
-    /* Màu nền cho nút chọn ngày */
     color: white;
 }
 
 .btn-chon-suat {
     background-color: #616263;
-    /* Màu nền cho nút chọn suất chiếu */
     color: white;
 }
 
@@ -308,28 +278,26 @@ img {
 
 
 
-/* khuyến mãi*/
-/* CSS cho phần promotion-list-content */
+/*---------------KHUYỄN MÃI---------------------*/
+.body{
+    background-color: #007BFF;
+}
 .promotion-list-content {
     background-color: #f9f9f9;
     padding: 20px;
 }
 
-/* CSS cho phần title */
 .title h3 {
     font-size: 24px;
     font-weight: bold;
     color: #333;
 }
 
-/* CSS cho phần list-wrap */
 .list-wrap {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
 }
-
-/* CSS cho phần block */
 .block {
     width: 100%;
     max-width: 300px;
@@ -339,15 +307,12 @@ img {
     padding: 10px;
 }
 
-/* CSS cho phần block-image */
 .block-image img {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    /* Bo góc hình vuông */
 }
 
-/* CSS cho phần block-txt */
 .block-txt {
     padding: 10px 0;
 }
@@ -447,9 +412,47 @@ img {
 }
 
 
-/* ---------------------------- */
-
-/* Danh sách phim*/
+/* --------------TIN TỨC-------------- */
+.title{
+    font-size: 35px;
+    font-weight: 600;
+}
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+}
+.nav-item {
+    text-align: center;
+    flex: 1;
+    font-size: 25px;
+    font-weight: 300;
+}
+.panel {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+.panel-heading {
+    background-color: #337ab7;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.panel-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.panel-footer {
+    text-align: center;
+}
+.panel:hover {
+    border: 10px solid #3b6df5;
+}
 
 
 
@@ -689,6 +692,13 @@ body {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
+}
+.box{
+    background-image: url(../image/ss.jpg);
+}
+.lh{
+    text-align: center;
+    color: #ffffff;
 }
 
 /* Phần chân trang */

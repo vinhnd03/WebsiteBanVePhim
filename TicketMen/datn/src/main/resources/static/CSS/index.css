@@ -83,7 +83,49 @@ body {
     /* Khoảng cách giữa ô tìm kiếm và nút tìm kiếm */
 }
 
-/* ------------------------------- */
+/* --------------TIN TỨC----------------- */
+.title{
+    font-size: 35px;
+    font-weight: 600;
+}
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+}
+.nav-item {
+    text-align: center;
+    flex: 1;
+    font-size: 25px;
+    font-weight: 300;
+}
+.panel {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+.panel-heading {
+    background-color: #337ab7;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.panel-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.panel-footer {
+    text-align: center;
+}
+.panel:hover {
+    border: 10px solid #3b6df5;
+}
+
+
 
 /* phần login*/
 .btn-register {
@@ -309,27 +351,25 @@ img {
 
 
 /* khuyến mãi*/
-/* CSS cho phần promotion-list-content */
+.body{
+    /* background-color: #007BFF; */
+}
 .promotion-list-content {
     background-color: #f9f9f9;
     padding: 20px;
 }
 
-/* CSS cho phần title */
 .title h3 {
     font-size: 24px;
     font-weight: bold;
     color: #333;
 }
 
-/* CSS cho phần list-wrap */
 .list-wrap {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
 }
-
-/* CSS cho phần block */
 .block {
     width: 100%;
     max-width: 300px;
@@ -339,15 +379,12 @@ img {
     padding: 10px;
 }
 
-/* CSS cho phần block-image */
 .block-image img {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    /* Bo góc hình vuông */
 }
 
-/* CSS cho phần block-txt */
 .block-txt {
     padding: 10px 0;
 }
@@ -363,6 +400,7 @@ img {
     font-size: 14px;
     color: #333;
 }
+
 
 
 /* ------------------------------------- */
@@ -635,96 +673,77 @@ body {
 
 /*----------LIÊN HỆ-------------*/
 
-
+/* Thiết lập font chữ và background chung cho trang */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #5084bc; 
+    background-color: #f7f7f7;
 }
 
-header {
-    background-image: url(image/logomenu.jpg);
-    color: #fff; 
+/* Phần header và thông tin liên hệ */
+.contact {
     text-align: center;
     padding: 20px;
-    border-radius: 15px;
+    background-image: url(../image/hh.jpg);
 }
 
-
-header h1 {
-    font-size: 36px;
-    margin-bottom: 10px; 
+.contact h1 {
+    font-size: 45px;
+    margin: 0;
+    color: #ffffff;
 }
 
-
-.content {
-    background-color: #f0f5f5; 
-    max-width: 800px; 
-    margin: 20px auto; 
-    padding: 20px; 
-    border: 1px solid #ddd; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+.contact h2 {
+    font-size: 32px;
+    margin: 10px 0;
+    color: #ffffff;
 }
 
-
-.title h2 {
-    font-size: 24px;
-    color: #333; 
-    margin-bottom: 20px; 
-}
-
-
+/* Phần nội dung */
 .contact h3 {
-    font-size: 18px;
-    color: #333; 
-    margin-bottom: 10px; 
+    font-size: 24px;
+    color: #ffffff;
+    margin-top: 4%;
 }
 
 .contact p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    color: #ffffff;
 }
 
-
-.contact h2 {
-    font-size: 20px;
-    color: #333; 
-    margin-bottom: 10px; 
+.contact a img {
+    width: 5%;
+    height: auto;
+    margin-top: 10px;
 }
 
-
-main form {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-label,
-input,
-textarea,
-button {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-
-    border-radius: 4px;
-}
-
-button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-
-footer {
-    background-color: #333; 
-    color: #fff; 
+/* Phần tiêu đề cho form liên hệ */
+.section-title {
     text-align: center;
-    padding: 10px;
+    margin-top: 40px;
+}
+
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.box{
+    background-image: url(../image/ss.jpg);
+}
+.lh{
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Phần chân trang */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #555a5e;
+    color: #fff;
 }
 
 

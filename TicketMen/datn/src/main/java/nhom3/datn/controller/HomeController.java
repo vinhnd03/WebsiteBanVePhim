@@ -49,5 +49,11 @@ public class HomeController {
         return "other/service";
     }
 
+    @RequestMapping("/news")
+    public String news(){
+        return "other/news";
+    }
+
+
 }
 
