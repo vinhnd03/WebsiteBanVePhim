@@ -153,9 +153,7 @@ body {
 
 }
 
-img {
-    border-radius: 10px;
-}
+
 .mySlides img {
     width: 80%;
     object-fit: cover;
@@ -627,7 +625,6 @@ body {
 }
 
 .showtime>.col-md-6{
-    border-right: 1px solid blue;
     border-radius: 10%;
 }
 
