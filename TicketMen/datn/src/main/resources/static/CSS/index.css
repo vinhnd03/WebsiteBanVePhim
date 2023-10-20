@@ -769,7 +769,7 @@ footer {
     text-decoration: none;
 }
 
-/* Movie Detail*/
+/* Movie Detail */
 .detail-container {
     width: 100%;
     height: 500px;
@@ -801,14 +801,14 @@ footer {
 
 .detail .text .description {
     font-size: 20px;
-    color: grey;
+    color: rgb(196, 196, 196);
 }
 
 .detail .text .mt-10>b {
     font-size: 22px;
     color: rgb(231, 230, 230);
 }
-.detail .text .mcontent {
+.detail .text .content {
     font-size: 16px;
     color: rgb(177, 177, 177);
 }

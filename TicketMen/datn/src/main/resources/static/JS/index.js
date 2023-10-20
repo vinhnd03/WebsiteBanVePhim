@@ -35,7 +35,7 @@ app.controller("movie-ctrl", function ($scope, $http) {
     $scope.initialize();
     $scope.pager = {
         page: 0,
-        size: 3,
+        size: 4,
         get items() {
             var start = this.page * this.size;
             //console.log(start + "..." + this.size);
