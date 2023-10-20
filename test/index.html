@@ -18,9 +18,134 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/test/owlcarousel/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="/test/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/test/owlcarousel/assets/owl.theme.default.min.css">
+    <!-- icon -->
+    <link rel="stylesheet" href="./CSS/fontawesome-free-6.2.1-web/css/all.min.css">
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                loop: true,
+                margin: 10,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            })
+        });
 
-        <!-- icon -->
-        <link rel="stylesheet" href="./CSS/fontawesome-free-6.2.1-web/css/all.min.css">
+    </script>
+    <style>
+        #wd-slider {
+            width: 60%;
+            margin: 0px auto;
+        }
+
+        #new-list {
+            text-align: center;
+        }
+
+        .promotion-title h5 {
+            display: inline-block;
+            width: 940px;
+            margin-left: 325px;
+            margin-top: 50px;
+        }
+
+        .news-title h2 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        *{
+                padding: 0;
+                margin: 0;
+            }   
+            #wapper{
+                max-width: 1170px;
+                margin: 0 auto;
+            }
+            .headline{
+                text-align: center;
+                margin: 10px 80px;
+            }
+            ul.products{
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-left: 15%;
+                margin-right: 15%;
+            }
+            ul.products li{
+                flex-basis: 25%;
+                padding-left: 15px;
+                padding-right: 15px;
+                box-sizing: border-box; 
+                margin-bottom: 30px;
+            }
+            ul.products li img{
+                width: 100%;
+                height: auto;
+            }
+            ul.products li .product-top{
+                position: relative;
+                overflow: hidden;
+            }
+            ul.products li .product-top .product-thumb{
+                display: block;
+            }
+            ul.products li:hover .product-top .product-thumb img{
+                filter: opacity(75%);
+            }
+            ul.products li .product-top .product-thumb img{
+                display: block;
+            }
+            ul.products li .product-top a.buy-now{
+                text-transform: uppercase;
+                text-decoration: none;
+                text-align: center;
+                display: block;
+                background-color: #446084;
+                color: #fff;
+                padding: 10px 0px;
+                position: absolute;
+                bottom: -45px;
+                width: 100%;
+                transition: 0.30s ease-in-out;
+                opacity: 0.90;
+            }
+            ul.products li:hover a.buy-now{
+                bottom: 0px;
+            }
+            ul.products li .product-info a{
+                display: block;
+                text-decoration: none;
+            }
+            ul.products li .product-info a.product-cat{
+                font-size: 11px;
+                text-transform: uppercase;
+                color: #334862;
+                padding: 3px 0px;
+            }
+            ul.products li .product-info a.product-name{
+                color: #334862;
+                padding: 3px 0px;
+            }
+    </style>
+
 </head>
 
 <body style="background-image: url(./image/nen1.jpg); background-size: contain;" ng-app="myApp">
@@ -29,13 +154,13 @@
         <a class="logo" href="#">
             <img src="image/logo ticketmen_preview_rev_1.png" alt="">
         </a>
-        
+
         <div class="menu-con">
             <div class="menu-item">
-                <a href="#!home"><i class="fa fa-home" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i></a>
             </div>
             <div class="menu-item">
-                <a href="#">Phim</a>
+                <a href="#!movie">Phim</a>
             </div>
             <div class="menu-item">
                 <a href="#!showtime">Lịch Chiếu</a>
@@ -94,114 +219,114 @@
     <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
 
-          <div class="modal-content">
-            <div class="" align="center">
-              <h4 class="modal-title" id="myModalLabel"><strong>Đăng nhập</strong> </h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-register row">
-                    <div class="col-12">
-                        <div class="form-group">
-                          <input type="text"
-                            class="form-control" name="" id="" aria-describedby="helpId" placeholder="Tên đăng nhập">
-                          <small id="helpId" class="form-text">Tên đăng nhập </small>
+            <div class="modal-content">
+                <div class="" align="center">
+                    <h4 class="modal-title" id="myModalLabel"><strong>Đăng nhập</strong> </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-register row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                    placeholder="Tên đăng nhập">
+                                <small id="helpId" class="form-text">Tên đăng nhập </small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                          <input type="password"
-                            class="form-control" name="" id="" aria-describedby="helpId" placeholder="Mật khẩu">
-                          <small id="helpId" class="form-text">Mật khẩu</small>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="" id="" aria-describedby="helpId"
+                                    placeholder="Mật khẩu">
+                                <small id="helpId" class="form-text">Mật khẩu</small>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Đăng nhập</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Quên mật khẩu</button>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Đăng nhập</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Quên mật khẩu</button>
-            </div>
-          </div>
         </div>
-      </div>
-            <!-- Modal DANG KÝ-->
-            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="" align="center">
-                      <h4 class="modal-title" id="myModalLabel1"><strong>Đăng KÝ</strong> </h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-register row">
-                            <div class="col-6">
-                                <div class="form-group mt-3">
-                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                        placeholder="Họ và tên">
-                                    <small id="helpId" class="form-text">Họ và tên</small>
+    </div>
+    <!-- Modal DANG KÝ-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="" align="center">
+                    <h4 class="modal-title" id="myModalLabel1"><strong>Đăng KÝ</strong> </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-register row">
+                        <div class="col-6">
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                    placeholder="Họ và tên">
+                                <small id="helpId" class="form-text">Họ và tên</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group mt-3">
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Nam</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Nữ</label>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mt-3">
-                                    <div class="form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                            value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Nam</label>
-                                    </div>
-                                    <div class="form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                            value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">Nữ</label>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                    placeholder="Địa chỉ">
+                                <small id="helpId" class="form-text">Địa chỉ</small>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                        placeholder="Địa chỉ">
-                                    <small id="helpId" class="form-text">Địa chỉ</small>
-                                </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                    placeholder="Số điện thoại">
+                                <small id="helpId" class="form-text">Số điện thoại</small>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                        placeholder="Số điện thoại">
-                                    <small id="helpId" class="form-text">Số điện thoại</small>
-                                </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                    placeholder="Email">
+                                <small id="helpId" class="form-text">Email</small>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                        placeholder="Email">
-                                    <small id="helpId" class="form-text">Email</small>
-                                </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                    placeholder="Tên đăng nhập">
+                                <small id="helpId" class="form-text">Tên đăng nhập</small>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                        placeholder="Tên đăng nhập">
-                                    <small id="helpId" class="form-text">Tên đăng nhập</small>
-                                </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                    placeholder="Mật khẩu">
+                                <small id="helpId" class="form-text">Mật khẩu</small>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                        placeholder="Mật khẩu">
-                                    <small id="helpId" class="form-text">Mật khẩu</small>
-                                </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                    placeholder="Nhập lại mật khẩu">
+                                <small id="helpId" class="form-text">Nhập lại mật khẩu</small>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                        placeholder="Nhập lại mật khẩu">
-                                    <small id="helpId" class="form-text">Nhập lại mật khẩu</small>
-                                </div>
-                            </div>       
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                      <button type="button" class="btn btn-primary">Đăng Ký</button>
-                    </div>
-                  </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary">Đăng Ký</button>
+                </div>
+            </div>
 
             <div class="modal-content">
                 <div class="" align="center">
@@ -420,117 +545,209 @@
     <!--Content -->
     <div ng-view></div>
 
-    <!--Danh sách phim -->
-    <div class="movies-selecting text-center mt-3">
-        <ul class="nav justify-content-center">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" data-toggle="tab" href="" role="tab" data-target="#edit"
-                    aria-selected="true">Phim đang chiếu</a>
+    <!--Phim Hot-->
+    <div id="wrapper">
+        <div class="headline">
+            <h1>PHIM HOT</h1>
+        </div>
+        <ul class="products">
+            <li >
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="/test/image/khuyến mãi 1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Chi Tiết</a>
+                        <!--MuaNgay-->
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Thể Loại: Hành Động</a>
+                        <strong><a href="" class="product-name">NHỮNG BÍ MẬT CỦA DUMBLEDORE</a></strong>
+                    </div>
+                </div>
             </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#list" aria-selected="false">Phim
-                    sắp chiếu</a>
+            <li >
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="/test/image/khuyến mãi 1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Chi Tiết</a>
+                        <!--MuaNgay-->
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Thể Loại: Hành Động</a>
+                        <strong><a href="" class="product-name">NHỮNG BÍ MẬT CỦA DUMBLEDORE</a></strong>
+                    </div>
+                </div>
+            </li>
+            <li >
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="/test/image/khuyến mãi 1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Chi Tiết</a>
+                        <!--MuaNgay-->
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Thể Loại: Hành Động</a>
+                        <strong><a href="" class="product-name">NHỮNG BÍ MẬT CỦA DUMBLEDORE</a></strong>
+                    </div>
+                </div>
+            </li>
+            <li >
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="/test/image/khuyến mãi 1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Chi Tiết</a>
+                        <!--MuaNgay-->
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Thể Loại: Hành Động</a>
+                        <strong><a href="" class="product-name">NHỮNG BÍ MẬT CỦA DUMBLEDORE</a></strong>
+                    </div>
+                </div>
+            </li>
+            <li >
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="/test/image/khuyến mãi 1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Chi Tiết</a>
+                        <!--MuaNgay-->
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Thể Loại: Hành Động</a>
+                        <strong><a href="" class="product-name">NHỮNG BÍ MẬT CỦA DUMBLEDORE</a></strong>
+                    </div>
+                </div>
+            </li>
+            <li >
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="/test/image/khuyến mãi 1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Chi Tiết</a>
+                        <!--MuaNgay-->
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Thể Loại: Hành Động</a>
+                        <strong><a href="" class="product-name">NHỮNG BÍ MẬT CỦA DUMBLEDORE</a></strong>
+                    </div>
+                </div>
+            </li>
+            <li >
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="/test/image/khuyến mãi 1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Chi Tiết</a>
+                        <!--MuaNgay-->
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Thể Loại: Hành Động</a>
+                        <strong><a href="" class="product-name">NHỮNG BÍ MẬT CỦA DUMBLEDORE</a></strong>
+                    </div>
+                </div>
+            </li>
+            <li >
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="/test/image/khuyến mãi 1.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Chi Tiết</a>
+                        <!--MuaNgay-->
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat">Thể Loại: Hành Động</a>
+                        <strong><a href="" class="product-name">NHỮNG BÍ MẬT CỦA DUMBLEDORE</a></strong>
+                    </div>
+                </div>
             </li>
         </ul>
-        <div class="tab-content" id="myContent">
-            <div class="tab-pane fade show active" id="edit">
-                <h1>PHIM ĐANG CHIẾU</h1>
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
-                                    <p class="card-text">
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="image/khuyenmai2.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
-                                    <p class="card-text">
-
-
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Lật Mặt 6</h5>
-                                    <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Lật Mặt 6</h5>
-                                    <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
+    </div>
+    <!--khuyến mãi-->
+    <div class="promotion-title">
+        <h5><strong>CHƯƠNG TRÌNH KHUYẾN MÃI</strong></h5>
+    </div>
+    <div id="wd-slider">
+        <div class="owl-carousel owl-theme">
+            <a href="#">
+                <img src="/test/image/km3.jpg" alt="">
+            </a>
+            <a href="#">
+                <img src="/test/image/km3.jpg" alt="">
+            </a> <a href="#">
+                <img src="/test/image/km3.jpg" alt="">
+            </a> <a href="#">
+                <img src="/test/image/km3.jpg" alt="">
+            </a> <a href="#">
+                <img src="/test/image/km3.jpg" alt="">
+            </a> <a href="#">
+                <img src="/test/image/km3.jpg" alt="">
+            </a> <a href="#">
+                <img src="/test/image/km3.jpg" alt="">
+            </a>
+        </div>
+    </div>
+    <!--Tin Tức-->
+    <div class="news-title">
+        <h2><strong>TIN TỨC</strong></h2>
+    </div>
+    <div class="container" style="margin-bottom: 2%;">
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="#" style="text-decoration: none">
+                    <img src="/test/image/km3.jpg" class="img-responsive" style="width:100%"
+                            alt="Image">
+                    <strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong>
+                </a>
             </div>
-            <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="videoList-tab">
-                <h1>PHIM SẮP CHIẾU</h1>
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="image/khuyến mãi 1.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">NHỮNG BÍ MẬT CỦA DUMBLEDORE</h5>
-                                    <p class="card-text">
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="image/khuyenmai2.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Siêu Lừa Gặp Siêu Lầy</h5>
-                                    <p class="card-text">
-
-
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="image/khuyenmai3.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Lật Mặt 6</h5>
-                                    <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="col-sm-4">
+                <a href="#" style="text-decoration: none">
+                    <img src="/test/image/km3.jpg" class="img-responsive" style="width:100%"
+                            alt="Image">
+                    <strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="#" style="text-decoration: none">
+                    <img src="/test/image/km3.jpg" class="img-responsive" style="width:100%"
+                            alt="Image">
+                    <strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 2%;">
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="#" style="text-decoration: none">
+                    <img src="/test/image/km3.jpg" class="img-responsive" style="width:100%"
+                            alt="Image">
+                    <strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="#" style="text-decoration: none">
+                    <img src="/test/image/km3.jpg" class="img-responsive" style="width:100%"
+                            alt="Image">
+                    <strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="#" style="text-decoration: none">
+                    <img src="/test/image/km3.jpg" class="img-responsive" style="width:100%"
+                            alt="Image">
+                    <strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong>
+                </a>
             </div>
         </div>
     </div>
@@ -656,9 +873,7 @@
     <script src="./JS/index.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
