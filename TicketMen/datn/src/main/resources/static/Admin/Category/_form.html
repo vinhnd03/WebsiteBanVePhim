@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header" style="font-weight: 600; font-size: large; background-color: cornflowerblue; color: white;">
+        PRODUCT EDITION</div>
+    <div class="card-boby">
+        <div class="row">
+            <div class="col-sm-8 mt-3">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Name</div>
+                        <input ng-model="form.name" class="form-control" style="width: 95%;">
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button ng-click="create()" class="btn btn-primary">
+                    <i class="fa fa-plus" aria-hidden="true"></i>Create
+                </button>
+                <button ng-click="update()" class="btn btn-success">
+                    <i class="fa fa-stack-overflow" aria-hidden="true"></i>Save
+                </button>
+                <button ng-click="delete(form)" class="btn btn-danger">
+                    <i class="fa fa-trash" aria-hidden="true"></i>Delete
+                </button>
+                <button ng-click="reset()" class="btn btn-info">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>Reset
+                </button>
+            </div>
+            <table class="table table-condensed">
+                <thead class="bg-success" style="font-variant: small-caps;">
+                    <tr>
+                        <th>Id</th>
+                        <th>Tên Thể Loại</th>
+                        <!-- <th>Available?</th>  -->
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in pager.items">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>
+                            <div class="btn-group btn-group-xs">
+                                <button ng-click="edit(item)" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                <button ng-click="delete(item)"  class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
