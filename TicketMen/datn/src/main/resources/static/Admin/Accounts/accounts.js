@@ -9,7 +9,7 @@ app.controller("accounts-ctrl", function ($scope, $http) {
         $http.get("/rest/accounts").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
-               item.gender
+               
             })
             $scope.reset();
         });
@@ -30,14 +30,12 @@ app.controller("accounts-ctrl", function ($scope, $http) {
     $scope.reset = function () {
         $scope.form = {
             createDate: new Date(),
-            poster: 'OIP2.jpg',
-            available: true,
+            gender : true
         }
     }
 
     //Hiển thị lên form
     $scope.edit = function (item) {
-        $scope.form = item.gender;
         $scope.form = angular.copy(item);
         $(".nav-tabs a:eq(0)").tab('show')
     }

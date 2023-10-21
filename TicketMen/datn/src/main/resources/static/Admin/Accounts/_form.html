@@ -33,9 +33,9 @@
                     <div class="form-group col-sm-6">
                         <div style="font-weight: 500;">Giới Tính</div>
                         <br>
-                        <input type="radio" id="true"  name="gender" value="1" checked="{{gender == 1 ? 'checked' : ''}}">
+                        <input type="radio" id="true" ng-model="form.gender" name="gender" value="1" ng-checked="form.gender == 1">
                         <label for="true">Nam</label>
-                        <input type="radio" id="false" name="gender" value="0" checked="{{gender == 0 ? 'checked' : ''}}">
+                        <input type="radio" id="false" ng-model="form.gender" name="gender" value="0" ng-checked="form.gender == 0">
                         <label for="false">Nữ</label>
                     </div>
                 </div>
