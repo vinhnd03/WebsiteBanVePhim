@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.AccountDao;
 import nhom3.datn.entity.Account;
+import nhom3.datn.entity.Category;
 import nhom3.datn.service.AccountService;
 
 @Service
@@ -34,4 +35,19 @@ public class AccountServiceImpl implements AccountService{
         return dao.findAll();
 
 }
+
+        @Override
+        public Account create(Account account) {
+            return dao.save(account);
+        }
+
+        @Override
+        public Account update(Account account) {
+           return dao.save(account);
+        }
+
+        @Override
+        public void delete(String username) {
+            dao.deleteById(username);
+        }
 }
