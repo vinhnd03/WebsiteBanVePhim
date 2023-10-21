@@ -9,17 +9,7 @@ app.controller("accounts-ctrl", function ($scope, $http) {
         $http.get("/rest/accounts").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
-                item.date = new Date(item.date)
-                // Chuyển đổi thời gian thành đúng định dạng "HH:mm a"
-                const timeParts = item.time.split(':');
-                const hours = parseInt(timeParts[0], 10);
-                const minutes = parseInt(timeParts[1], 10);
-                const timeDate = new Date();
-                timeDate.setHours(hours);
-                timeDate.setMinutes(minutes);
-                timeDate.setSeconds(0);
-                timeDate.setMilliseconds(0);
-                item.time = timeDate;
+               item.gender
             })
             $scope.reset();
         });
@@ -47,6 +37,7 @@ app.controller("accounts-ctrl", function ($scope, $http) {
 
     //Hiển thị lên form
     $scope.edit = function (item) {
+        $scope.form = item.gender;
         $scope.form = angular.copy(item);
         $(".nav-tabs a:eq(0)").tab('show')
     }

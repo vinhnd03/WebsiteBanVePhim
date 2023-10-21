@@ -33,12 +33,10 @@
                     <div class="form-group col-sm-6">
                         <div style="font-weight: 500;">Giới Tính</div>
                         <br>
-                        <input type="radio" id="true"  name="gender" value="1" checked="checked">
+                        <input type="radio" id="true"  name="gender" value="1" checked="{{gender == 1 ? 'checked' : ''}}">
                         <label for="true">Nam</label>
-                        <input type="radio" id="false" name="gender" value="0">
+                        <input type="radio" id="false" name="gender" value="0" checked="{{gender == 0 ? 'checked' : ''}}">
                         <label for="false">Nữ</label>
-                        
-
                     </div>
                 </div>
                 <div class="row">
