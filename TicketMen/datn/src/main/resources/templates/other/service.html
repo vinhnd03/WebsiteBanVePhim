@@ -1,223 +1,333 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
-  <style>
-    /* CSS cho tab navigation */
-    ul.nav {
-      margin-bottom: 20px;
+  <main>
+<style>
+     ul.nav {
+      display: flex;
+      justify-content: center;
     }
-
+  
     .nav-link {
       color: #000;
       font-weight: bold;
       padding: 10px 20px;
     }
-
+  
     .nav-link.active {
       background-color: #f0f0f0;
       border-radius: 5px;
     }
-
-    /* CSS cho nội dung tab */
-    .tab-pane {
+    .bx {
       padding: 20px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      margin: 20px 0;
+      color: white;
+      margin-top: 50px;
+  
     }
-
-    /* CSS cho h1 */
-    h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
+  
+    .col-6 {
+      color: white;
+      font-size: 20px;
+      float: left;
+      width: 50%;
     }
-
-    /* CSS cho hình ảnh */
+  
+    p {
+      font-size: 15px;
+      line-height: 1.5;
+      font-family: Arial, sans-serif;
+      
+    }
+  
     img {
       max-width: 100%;
-      width: 30%;
-      height: 20%;
+      height: auto;
+      border: 0px solid rgb(250, 247, 247);
+      border-radius: 10px;
+      float: right;
+     
+    }
+  
+    .centered-content {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 700px;
+    }
+  
+    .ttx {
+      color: rgb(242, 242, 244);
+      border-radius: 10px;
+      padding: 10px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
 
-    /* CSS cho các địa chỉ và điều hướng */
-    p {
-      margin: 10px 0;
-    }
+</style>
+  
 
-    /* CSS cho liên kết */
-    a {
-      color: #007BFF;
-    }
 
-    a:hover {
-      color: #0056b3;
-    }
-
-    /* thẻ a ở ticketpoly*/
-    a.hh {
-      display: inline-block;
-      overflow: hidden;
-      border-radius: 40%;
-    }
-
-    a.hh img {
-      display: block;
-      width: 100%;
-      /* Đảm bảo hình ảnh đổ đầy toàn bộ phần hình tròn */
-      height: 200px;
-      /* Đảm bảo tỷ lệ khung hình */
-    }
-  </style>
-  <main>
-    <div class="movies-selecting mt-3" style="color: white;">
+    <div class="movies-selecting  mt-3">
       <ul class="nav justify-content-center">
-        <li class="nav-item col" role="presentation">
+        <li class="nav-item " role="presentation">
           <a class="nav-link active" data-toggle="tab" role="tab" data-target="#dichvu" aria-selected="true">
             DỊCH VỤ</a>
         </li>
-        <li class="nav-item col" role="presentation">
+        <li class="nav-item " role="presentation">
           <a class="nav-link" data-toggle="tab" role="tab" data-target="#rapchieu" aria-selected="false">RẠP CHIẾU
             PHIM TICKETMEN</a>
         </li>
-        <li class="nav-item col" role="presentation">
+        <li class="nav-item " role="presentation">
           <a class="nav-link" data-toggle="tab" role="tab" data-target="#congnghe" aria-selected="false">CÔNG NGHỆ
-            RẠP CHIẾU PHIM</a>
+            RẠP CHIẾU</a>
         </li>
       </ul>
-      <br>
+  
+  
       <div class="tab-content col" id="myContent">
         <div class="tab-pane fade show active" id="dichvu">
-          <div>
-            <h2><strong>CÀ PHÊ CINESTAR</strong> </h2>
-            <br>
-            <div class="row">
-              <div class="col-6">
-                <p>
-                  CÀ PHÊ CINESTAR
-                  Khu vực Fairy Coffee với tầm nhìn từ trên cao và Wifi miễn phí thích hợp để selfie,
-                  check-in và cùng nhau ngắm phố về đêm hay bạn thích Frappe Cappuccino ngọt ngào,
-                  các loại trà Hawaii và hương vị soda Ý khó quên.</p>
-                <p>-------------------</p>
-                <p>Địa chỉ: Tầng 1, Rạp chiếu phim CineStar</p>
-                <p>-271 Nguyễn Trãi, Quận 1, TP.HCM</p>
-                <p>ĐT: (028) 7300 8881</p>
+          <div class="centered-content">  
+            <div class="bx">
+              <div class="row">
+                <div class="col-6">
+                  <p>
+                    <strong>NHÀ HÁT - DALAT OPERA HOUSE</strong><br>
+                    Nhà hát nằm trong công trình Bông Hoa Dã Quỳ,
+                    tọa lạc bên bờ Hồ Xuân Hương - một trong những vị trí đẹp nhất của thành phố.
+                  </p>
+                  <p>Điểm diễn này được cải tạo lại từ cung nghệ thuật, do UBND tỉnh Lâm Đồng
+                    đầu tư xây dựng trước đây, cùng các hạng mục khác trong công trình quảng trường Lâm Viên.</p>
+                  <p>Địa chỉ: Quảng Trường Lâm Viên, Tp. Đà Lạt</p>
+                  <p>Hotline: 035 621 3536</p>
+                </div>
+                <div class="col-6">
+                  <img src="../image/nhahat.jpg">
+                </div>
               </div>
-              <img src="image/dichvu1.jpg">
-
+            </div>
+          
+            <div class="bx">
+              <div class="row"> 
+                <div class="col-6">
+                  <p>
+                    <strong> HỆ THỐNG C'GAME - GAME XU GẮP THÚ</strong><br>
+                    Với nhiều trò chơi game xu đa dạng hấp dẫn, phù hợp với mọi lứa tuổi thuộc hệ thống của Cinestar
+                  </p>
+                  <p>Hiện nay chúng tôi đã phát triển tại các chi nhánh:</p>
+                  <p>- C'Game Huế</p>
+                  <p>- C'Game Đà Lạt </p>
+                </div>
+                <div class="col-6">
+                  <img src="../image/gapthu.png">
+                </div>
+              </div>
+            </div>
+  
+     
+      
+            <div class="bx" style="height:380px;">
+              <div class="row">
+                <div class="col-6">
+                  <div style="width: 100%; height: 40%; overflow: overlay;">
+                    <p>
+                      <strong> HỆ THỐNG NHÀ HÀNG MÓN NGON</strong><br>
+                      1. Nhà hàng Món ngon Đà Lạt
+                    </p>
+                    <p>Nhà hàng Món ngon Đà Lạt có sức chứa 400 thực khách, phục vụ hơn 200 món ăn khác nhau.Hiện nay
+                      chúng
+                      tôi đã phát triển tại các chi nhánh:</p>
+                    <p>Nhà hàng Món ngon hân hạnh phục vụ khách du lịch và địa phương, mang đến trải nghiệm ẩm thực đa
+                      dạng
+                      các món ăn trong nước và quốc tế.</p>
+                    <p>Địa chỉ: Tầng trệt, Quảng Trường Lâm Viên, Đà Lạt.</p>
+                    <p> Hotline: 0263 3969 999</p>
+                    <br>
+                    <p>
+                      2. Nhà hàng Món ngon Huế
+                    </p>
+                    <p>Nhà hàng Món ngon Huế hội tu tinh hoa ẩm thực với hương vị đậm chất Huế và những món ăn Á – Âu được
+                      chế
+                      biến từ những đôi tay tài hoa của đầu bếp địa phương.</p>
+                    <p>Với không gian rộng rãi, màn hình LED và hệ thống âm thanh hiện đại, Nhà hàng Món ngon Huế cũng là
+                      nơi
+                      thường xuyên được lựa chọn tổ chức các tiệc Hội nghị, gặp gỡ, sinh nhật,... </p>
+                    <p>Địa chỉ: Tầng trệt tòa nhà Cinestar, 25 Hai Bà Trưng, Phường Vĩnh Ninh, Tp. Huế</p>
+                    <P>
+                      Hotline: 0234 6 53 53 53 - 0975 90 90 43
+                    </P>
+                  </div>
+                </div>
+                <div class="col-6 mt-2">
+                  <img src="../image/nhahang.jpg">
+                </div>
+              </div>
             </div>
           </div>
-          <h2><strong>CÀ PHÊ CINESTAR</strong> </h2>
-          <br>
-          <div class="row">
-
-            <div class="col-6">
-              <p>
-                CÀ PHÊ CINESTAR
-                Khu vực Fairy Coffee với tầm nhìn từ trên cao và Wifi miễn phí thích hợp để selfie,
-                check-in và cùng nhau ngắm phố về đêm hay bạn thích Frappe Cappuccino ngọt ngào,
-                các loại trà Hawaii và hương vị soda Ý khó quên.</p>
-              <p>-------------------</p>
-              <p>Địa chỉ: Tầng 1, Rạp chiếu phim CineStar</p>
-              <p>-271 Nguyễn Trãi, Quận 1, TP.HCM</p>
-              <p>ĐT: (028) 7300 8881</p>
-            </div>
-            <img src="image/dichvu1.jpg">
-
-          </div>
-
-
         </div>
+  
         <!-- giowi thieu -->
         <div class="tab-pane fade " id="rapchieu" role="tabpanel">
-          <div class="row">
-            <a href="your_link" class="hh">
-              <img src="image/rap.jpg" alt="Your Image">
-            </a>
-            <div class="col-6">
-              <h1>TICKETMEN POLY</h1>
-              <p>Địa chỉ: 137 Nguyễn Thị Thập - Hòa Minh - Liên Chiểu - Đà Nẵng</p>
-              <p>Đường dây nóng: 123456789</p>
-            </div>
-          </div>
-          <div class="row" align="right">
-            <!-- giowi thieu -->
-            <div class="col-9">
-              <h1>TICKETMEN POLY</h1>
-              <p>Địa chỉ: 137 Nguyễn Thị Thập - Hòa Minh - Liên Chiểu - Đà Nẵng</p>
-              <p>Đường dây nóng: 123456789</p>
-            </div>
-            <a href="your_link" class="hh">
-              <img src="image/rap.jpg" alt="Your Image">
-            </a>
-          </div>
-          <!-- giowi thieu -->
-          <div class="row">
-            <a href="your_link" class="hh">
-              <img src="image/rap.jpg" alt="Your Image">
-            </a>
-            <div class="col-6">
-              <h1>TICKETMEN POLY</h1>
-              <p>Địa chỉ: 137 Nguyễn Thị Thập - Hòa Minh - Liên Chiểu - Đà Nẵng</p>
-              <p>Đường dây nóng: 123456789</p>
-            </div>
-          </div>
-          <div class="row" align="right">
-
-            <div class="col-9">
-              <h1>TICKETMEN POLY</h1>
-              <p>Địa chỉ: 137 Nguyễn Thị Thập - Hòa Minh - Liên Chiểu - Đà Nẵng</p>
-              <p>Đường dây nóng: 123456789</p>
-            </div>
-            <a href="your_link" class="hh">
-              <img src="image/rap.jpg" alt="Your Image">
-            </a>
-          </div>
-          <!-- giowi thieu -->
-
-        </div>
-
-
-        <div class="tab-pane fade" id="congnghe" role="tabpanel">
-          <div class="page">
-            <div class="ck row">
-
-              <img src="image/ghedoi.png">
-              <div class="col">
-                <h1>CÔNG NGHỆ 3D</h1>
-                <p>3D là một quá trình trong đó một mô hình kỹ thuật số được biến thành một vật thể rắn ba chiều hữu
-                  hình,
-                  thường bằng cách đặt liên tiếp nhiều lớp vật liệu mỏng xếp chồng lên nhau. </p>
-                <p>Việc tạo ra một đối tượng in 3D đạt được bằng cách sử dụng các quy trình sản xuất bồi đắp (Additive
-                  Manufacturing).
-                  Trong quy trình này, một đối tượng được tạo ra bằng cách “đắp” từng lớp vật liệu lên nhau, mô phỏng
-                  theo
-                  thiết kế đã
-                  vẽ sẵn trên phần mềm CAD, cho đến khi đối tượng được tạo ra. Mỗi lớp này có thể được xem như một mặt
-                  cắt
-                  ngang được cắt mỏng của đối tượng.</p>
+          <div class="centered-content">
+            <div class="bx">
+              <div class="row">
+                <div class="col-6">
+                  <div class="ttx">
+                    <h3>TICKETMEN ĐÀ NẴNG</h3>
+                  </div>
+                  <p>Địa chỉ: 137 Nguyễn Thị Thập - Hòa Minh - Liên Chiểu - Đà Nẵng</p>
+                  <p>Hotline: 026 3730 0008</p>
+                </div>
+                <div class="col-6">
+                  <a href="your_link" class="hh">
+                    <img src="../image/poly2.jpg" alt="Your Image" width="400px">
+                  </a>
+                </div>
               </div>
             </div>
-            <br>
-            <div class="ck row">
-
-              <img src="image/ghedoi.png">
-              <div class="col">
-                <h1>HỒI HỘP NGỌT NGÀO</h1>
-                <p>TicketMen có thể mang đến cho bạn những dây phút xem phim thư giãn và hấp dẩn trong không khí gia
-                  đình
-                  nhẹ nhàng, ấm áp và yêu thương.
-                  Tận hưởng những giây phút ngọt ngào nhất tại TicketMen bên cạnh chiếu ghế SWEETBOX đôi.
-                </p>
-                <p>Với nổ lực không ngừng nhằm mang đến cho người yêu phim việt những trãi nghiệm điện ảnh tuyệt vời
-                  nhất,
-                  TicketMen cũng cấp các
-                  chiếc ghế đôi vô cùng độc đáo và mới lạ cho các cặp tình nhân cũng như một gia đình nhỏ.
-                </p>
+  
+            <div class="bx">
+              <div class="row">
+                <div class="col-6">
+                  <div class="ttx">
+                    <h2>TICKETMEN <br> HỒ CHÍ MINH</h2>
+                  </div>
+                  <p>Tòa nhà QTSC9 (toà T), đường Tô Ký, phường Tân Chánh Hiệp, quận 12, TP HCM.</p>
+                  <p>Hotline: 090 166 0002 </p>
+                </div>
+                <div class="col-6">
+                  <a href="your_link" class="hh">
+                    <img src="../image/poly3.jpeg" alt="Your Image" width="400px">
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="bx">
+              <div class="row">
+                <div class="col-6">
+                  <div class="ttx">
+                    <h2>TICKETMEN HÀ NỘI</h2>
+                  </div>
+                  <p>Cổng số 1, Tòa nhà FPT Polytechnic, 13 phố Trịnh Văn Bô,
+                    phường Phương Canh, quận Nam Từ Liêm, TP Hà Nội</p>
+                  <p>Hotline: 026 3730 0008</p>
+                </div>
+                <div class="col-6">
+                  <a href="your_link" class="hh">
+                    <img src="../image/poly1.jpg" alt="Your Image" width="400px">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="tab-pane fade" id="congnghe" role="tabpanel">
+          <div class="centered-content">
+            <div class="bx" style="height:350px;">
+              <div class="row">
+                <div class="col-6 ">
+                 <div style="width: 100%; height: 70%; overflow: overlay;">
+                  <h3><strong>Công Nghệ 3D</strong></h3>
+                  <p> 3D là một quá trình trong đó một mô hình kỹ thuật số được biến thành một vật thể rắn ba chiều hữu
+                    hình,
+                    thường bằng cách đặt liên tiếp nhiều lớp vật liệu mỏng xếp chồng lên nhau.
+                  </p>
+                  <p>Việc tạo ra một đối tượng in 3D đạt được bằng cách sử dụng các quy trình sản xuất bồi đắp (Additive
+                    Manufacturing).
+                    Trong quy trình này, một đối tượng được tạo ra bằng cách “đắp” từng lớp vật liệu lên nhau, mô phỏng
+                    theo
+                    thiết kế đã
+                    vẽ sẵn trên phần mềm CAD, cho đến khi đối tượng được tạo ra. Mỗi lớp này có thể được xem như một mặt
+                    cắt
+                    ngang được cắt mỏng của đối tượng.</p>
+                </div>
+                 </div>
+                <div class="col-6">
+                  <img src="../image/3d.jpg">
+                </div>
+              </div>
+            </div>
+            <div class="bx" style="height:380px;">
+              <div class="row">
+                <div class="col-6 ">
+                  <div style="width: 100%; height: 70%; overflow: overlay;">
+                    <h3><strong>SWEETBOX</strong></h3>
+                  <p> TICKETMEN có thể mang đến những giây phút thư giản cùng những bộ phim hấp dẩn trong không gian nhẹ
+                    nhàng,
+                    ấm áp cùng người yêu thương và gia đình .Hãy tận hưởng những giây phút
+                    ngọt ngào nhất tại Ticketmen bằng ghế đôi SWEETBOX.
+                  </p>
+                  <p>Với nổ lực không ngừng mang đến cho người yêu phim Việt Nam trải nghiệm điện ảnh tốt nhất, Ticketmen
+                    mang đến loại ghế đôi
+                    SWEETBOX cực kì độc đáo và mới lạ. SWEETBOX được đặt ở hàng ghế cuối cùng của phòng chiếu. Với vất
+                    ngăn cao cũng như sự khéo léo
+                    trong thiết kế giấu đi gác tau chính giữa giúp cho đôi bạn càng thêm gần gũi và ấm áp, tạo không gian
+                    hoàn hảo cho cặp đôi.
+                    Hãy đến và trải nghiệm không gian hoàn hảo cho các cặp đôi với SWEETBOX.</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <img src="../image/SWEETBOX.jpg">
+                </div>
+              </div>
+            </div>
+      
+            <div class="bx" style="height:380px;">
+              <div class="row">
+                <div class="col-6 ">
+                  <div style="width: 100%; height: 40%; overflow: overlay;">
+                    <h3><strong>BOLBY ATMOS</strong></h3>
+                  <p> Dolby Atmos-sự phát triển đánh kể nhất trong công nghệ âm thanh kể từ âm thanh vòm, đang tạo ra sự thay đổi độc đáo
+                    trong kĩ thuật thiết kế âm thanh phân lớn, hiện đã có mặt tại việt nam và sẳn sàng phục vụ khán giả tại Ticketmen.
+                  </p>
+                  <p>
+                    Dolby Atmos sữ dụng thiết kế phân lớn tân tiến để tạo ra các rãnh âm thanh. Lớp nền bao gồm các giải âm thanh môi 
+                    trường tỉnh được phối theo phương pháp âm thanh phân luồng quen thuộc. Các lớp trên trần bao gồm các yếu tố âm thanh 
+                    động được định hướng và thay đổi một cách chính xác theo hình ảnh được hiển thị trong rạp. Bằng cách lắp đặt kệ thống loa 
+                    ở trên đầu và xung quanh, Dolby Atmos có thể khiến khán giả trải nghiệm những âm thanh trung thực và tự nhiên nhưu thật của bộ phim.
+                  </p>
+                  <p>
+                    Làm thế nào Astmos có thể tạo nên trải nghiệm điện ảnh khác biệt:
+                  </p>
+                  <p>
+                    -Âm thanh rõ ràng và được định hướng một cách chính xác hơn. Sự trộn âm thanh có định hướng đối tượng từ các âm thanh theo lớp đọc lập 
+                    đến âm thanh phân luồng.<br>
+                    -Kết nối ý đồ của đạo diển từ dữ liệu mô tả và phát lại theo công nghệ âm thanh được trang bi cho từng phòng chiếu .<br>
+                    -Tự động tạo ra các rãnh âm thanh tối ưu cho các phòng chiếu 5.1 và 7.1.<br>
+                    -Tạo ra trải nghiệm âm thanh sống động, trung thực thông qua 128 yếu tố âm thanh đồng thời và không bị mất đi khi phối âm.<br>
+                    -Quy mô được điều chỉnh theo kích cở của từng phòng chiếu với hệ thống lên đến 64 loa độc lập với nhau.
+                  </p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <img src="../image/BOLBY ATMO.jpeg">
+                </div>
+              </div>
+            </div>
+            <div class="bx">
+              <div class="row">
+                <div class="col-6 ">
+                  <h3><strong>MÁY CHIẾU CHRISTIE</strong></h3>
+                  <p> Máy chiếu CHRISTIE là giải pháp hình ảnh cao cấp cho nhu cầu giải trí, với độ phân giải 1080p-4k. 
+                  </p>
+                  <p>
+                    Ngoài ra máy còn mang đến cho khán giả những trải nghiệm hình ảnh chân thật hơn nhờ hệ thống thấu kính của mình.<br>
+                    Đây thực sự là đỉnh cao trong các phòng chiếu.
+                  </p>
+                </div>
+                <div class="col-6">
+                  <img src="../image/maychieu.jpg">
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  
+  
+
   </main>
   
 </div>

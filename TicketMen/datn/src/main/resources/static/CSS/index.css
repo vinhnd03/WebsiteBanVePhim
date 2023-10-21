@@ -127,7 +127,7 @@ body {
 
 
 
-/* phần login*/
+/*------------PHẦN LOGIN-------------*/
 .btn-register {
     padding: 10px 20px;
     font-size: 16px;
@@ -199,7 +199,6 @@ body {
     position: relative; */
     position: relative;
     margin-top: 20px;
-    /* Khoảng cách giữa slide show và thanh menu */
 }
 
 .mySlides {
@@ -350,12 +349,11 @@ img {
 
 
 
-/* khuyến mãi*/
+/*-----------KHUYẾN MÃI--------------------*/
 .body{
     /* background-color: #007BFF; */
 }
 .promotion-list-content {
-    background-color: #f9f9f9;
     padding: 20px;
 }
 
@@ -375,7 +373,7 @@ img {
     max-width: 300px;
     margin: 0 10px 20px 0;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     padding: 10px;
 }
 
@@ -403,10 +401,11 @@ img {
 
 
 
+
+
 /* ------------------------------------- */
 /* Thẻ Thành Viên */
 
-/* CSS cho phần title */
 .title {
     text-align: center;
     margin-bottom: 20px;
@@ -418,15 +417,11 @@ img {
     color: #333;
     text-align: center;
 }
-
-/* CSS cho phần car */
 .car {
     width: 30%;
     margin-left: 200px;
     margin-top: 20px;
 }
-
-/* CSS cho phần slide-slidebox */
 .slide-slidebox {
     display: flex;
     overflow: hidden;
@@ -434,7 +429,6 @@ img {
     margin: 20px 0;
     border-radius: 15px;
 }
-
 .slide-wraper {
     display: flex;
     transition: transform 0.5s;
@@ -442,12 +436,9 @@ img {
 }
 
 .slide-item {
-    flex: 0 0 100%;
     max-width: 100%;
     border-radius: 15px;
 }
-
-/* CSS cho phần member-item */
 .member-item {
     display: flex;
     align-items: center;
@@ -485,90 +476,9 @@ img {
 }
 
 
-/* ---------------------------- */
 
-/* Danh sách phim*/
+/* -------------Hỏi Đáp--------------- */   
 
-
-
-/* -------------Hỏi Đáp--------------- */
-body {
-    font-family: Arial, sans-serif;
-    margin-top: 20px;
-}
-
-.content {
-    width: 70%;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #c8c1c1;
-    border-radius: 10px;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.title h2 {
-    color: #5f17ef;
-}
-
-.wrap {
-    display: flex;
-    justify-content: center;
-}
-
-.fap {
-    width: 60%;
-}
-
-.ask {
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 9px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.ask h3 {
-    color: #333;
-}
-
-.num {
-    background-color: #333333;
-    color: #ffffff;
-    padding: 5px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.ctl {
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 9px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.answer {
-    padding: 10px;
-    margin-bottom: 7px;
-}
-
-.cycle {
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: inline-block;
-}
-
-.detail p {
-    margin-bottom: 10px;
-}
-
-/* -------------------- */
 
 /* gửi câu hỏi và đặt vé */
 
@@ -625,10 +535,6 @@ body {
 .btn-primary:hover {
     background-color: #005f6b;
   }
-
-
-
-
   li {
     text-decoration: none;
   }
@@ -671,17 +577,14 @@ body {
 
 
 
-/*----------LIÊN HỆ-------------*/
+ /* ----------LIÊN HỆ-------------*/
 
-/* Thiết lập font chữ và background chung cho trang */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
+    
 }
-
-/* Phần header và thông tin liên hệ */
 .contact {
     text-align: center;
     padding: 20px;
@@ -699,8 +602,6 @@ body {
     margin: 10px 0;
     color: #ffffff;
 }
-
-/* Phần nội dung */
 .contact h3 {
     font-size: 24px;
     color: #ffffff;
@@ -717,8 +618,6 @@ body {
     height: auto;
     margin-top: 10px;
 }
-
-/* Phần tiêu đề cho form liên hệ */
 .section-title {
     text-align: center;
     margin-top: 40px;
@@ -729,7 +628,7 @@ body {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
-}
+}   
 .box{
     background-image: url(../image/ss.jpg);
 }
@@ -737,14 +636,12 @@ body {
     text-align: center;
     color: #ffffff;
 }
-
-/* Phần chân trang */
 footer {
     text-align: center;
     padding: 20px 0;
     background-color: #555a5e;
     color: #fff;
-}
+} 
 
 
 /*---------------------------Register/Login---------------------------*/
@@ -755,9 +652,6 @@ footer {
     background-image: url('');
     background-repeat: X;
     background-size: cover;
-}
-.form-register-backgrow{
-    background-color: whitesmoke;
 }
 
 .form-register small{
@@ -829,7 +723,7 @@ footer {
     font-size: 22px;
     color: rgb(231, 230, 230);
 }
-.detail .text .content {
+.detail .text .mcontent {
     font-size: 16px;
     color: rgb(177, 177, 177);
 }
