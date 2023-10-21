@@ -13,6 +13,10 @@ app.config(function($routeProvider){
             templateUrl: "/admin/category/index.html",
             controller: "category-ctrl"
         })
+        .when("/accounts", {
+            templateUrl: "/admin/accounts/index.html",
+            controller: "accounts-ctrl"
+        })
         .when("/authorize", {
             templateUrl: "/admin/authority/index.html",
             controller: "authority-ctrl"
