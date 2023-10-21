@@ -1,37 +1,53 @@
 <style>
-    .dire-button {
-        height: 80px;
-        width: 100%;
-        position: relative;
-        bottom: 300px;
-    }
+  .dire-button {
+    height: 80px;
+    width: 100%;
+    position: relative;
+    bottom: 300px;
+  }
 
-    .dire-button img {
-        width: 7%;
-    }
+  .dire-button img {
+    width: 7%;
+  }
 
-
-    .dire-button .btn-right {
-
-    }
+  .dire-button .btn-right {
+  }
 </style>
 
-<div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org" ng-controller="movie-ctrl">
-    <ul class="nav justify-content-center">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" data-toggle="tab" href="" role="tab" data-target="#edit"
-                aria-selected="true">Phim đang chiếu</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#list" aria-selected="false">Phim sắp
-                chiếu</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="myContent">
-        <div class="tab-pane fade show active" id="edit">
-            <h1>PHIM ĐANG CHIẾU</h1>
-            <div class="container mt-5">
-                <div class="row">
+<div
+  class="movies-selecting text-center mt-3"
+  xmlns:th="http://www.thymeleaf.org"
+  ng-controller="movie-ctrl"
+>
+  <ul class="nav justify-content-center">
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link active"
+        data-toggle="tab"
+        href=""
+        role="tab"
+        data-target="#edit"
+        aria-selected="true"
+        >Phim đang chiếu</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        data-toggle="tab"
+        href=""
+        role="tab"
+        data-target="#list"
+        aria-selected="false"
+        >Phim sắp chiếu</a
+      >
+    </li>
+  </ul>
+  <div class="tab-content" id="myContent">
+    <div class="tab-pane fade show active" id="edit">
+      <h1>PHIM ĐANG CHIẾU</h1>
+      <div class="container mt-5">
+        <!-- <div class="row">
                     <div class="col-3" th:each=" m: ${items}">
                         <div class="card">
                             <img th:src="@{|/image/${m.poster}|}" class="card-img-top" alt="...">
@@ -43,44 +59,144 @@
                             </div>
                         </div>
                     </div>
+                </div> -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" style="margin-bottom: 200%">
+            <div class="item active row">
+              <div class="col" th:each=" m: ${items}">
+                <div class="col-md-3 movie-item show">
+                  <img
+                    th:src="@{|/image/${m.poster}|}"
+                    alt="Los Angeles"
+                    style="width: 100%"
+                  />
+                  <h5 class="card-title" th:text="${m.name}"></h5>
                 </div>
+              </div>
             </div>
-            <div class="dire-button row">
-                <div class="text-left btn-left col-6">
-                    <i><img src="/image/previous.png" alt=""></i>
 
+            <!-- <div class="item active row" ng-repeat="item in pager.items">
+              <div class="col" >
+                <div class="col-md-3 ">
+                  <img
+                  src="/image/{{item.poster}}"
+                    alt="Los Angeles"
+                    style="width: 100%"
+                  />
+                  <h5 class="card-title">{{item.name}}</h5>
                 </div>
-                <div class="text-right btn-right col-6">
-                    <i><img src="/image/next.png" alt=""></i>
+              </div>
+            </div> -->
+
+            <!-- <div class="item col-md-3" ng-repeat="item in pager.items">
+              <div class="card">
+                <img
+                  src="/image/{{item.poster}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p class="card-text">Miêu tả sản phẩm 3.</p>
+                  <a href="#" class="btn btn-primary">Xem chi tiết</a>
                 </div>
-            </div>
+              </div>
+            </div> -->
+          </div>
+
+          <!-- Left and right controls -->
+          <a
+            class="left carousel-control"
+            href="#myCarousel"
+            data-slide="prev"
+            style="
+              margin-left: -10%;
+              width: 10%;
+              height: 0%;
+              color: black;
+              margin-top: 15%;
+            "
+          >
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="right carousel-control"
+            href="#myCarousel"
+            data-slide="next"
+            style="
+              margin-right: -10%;
+              width: 10%;
+              height: 0%;
+              color: black;
+              margin-top: 15%;
+            "
+          >
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="videoList-tab">
-            <h1>PHIM SẮP CHIẾU</h1>
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-3" ng-repeat="item in pager.items">
-                        <div class="card">
-                            <img src="/image/{{item.poster}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{item.name}}</h5>
-                                <p class="card-text">Miêu tả sản phẩm 3.</p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="dire-button row">
-                <div class="text-left btn-left col-6" ng-click="pager.prev()">
-                    <i><img src="/image/previous.png" alt=""></i>
-
-                </div>
-                <div class="text-right btn-right col-6"  ng-click="pager.next()">
-                    <i><img src="/image/next.png" alt=""></i>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div
+      class="tab-pane fade"
+      id="list"
+      role="tabpanel"
+      aria-labelledby="videoList-tab"
+    >
+      <h1>PHIM SẮP CHIẾU</h1>
+      <!-- <table class="table table-condensed row" border="0">
+        <thead class="bg-success " style="font-variant: small-caps;">
+            <tr class="col-3">
+              <td  ng-repeat="item in pager.items" > <img
+                src="/image/{{item.poster}}"
+                class="card-img-top"  height="100px" width="555px"
+                alt="..."/></td>
+  
+            </tr>
+        </thead>
+        <tbody>
+            <tr >
+                <td  ng-repeat="item in pager.items">{{item.name}}</td>
+            </tr>
+            
+        </tbody>
+    </table> -->
+    <div class="card-footer text-center">
+      <button ng-click="pager.prev()" class="btn btn-primary">
+          <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+      </button>
+      <button ng-click="pager.next()" class="btn btn-success">
+          <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+      </button>
+  </div>
+      <!-- <div class="container mt-5">
+        <div class="">
+          <div class="col-md-3" ng-repeat="item in pager.items">
+            <div class="card">
+              <img
+                src="/image/{{item.poster}}"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">Miêu tả sản phẩm 3.</p>
+                <a href="#" class="btn btn-primary">Xem chi tiết</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="dire-button row">
+        <div class="text-left btn-left col-6" ng-click="pager.prev()">
+          <i><img src="/image/previous.png" alt="" /></i>
+        </div>
+        <div class="text-right btn-right col-6" ng-click="pager.next()">
+          <i><img src="/image/next.png" alt="" /></i>
+        </div>
+      </div> -->
+    </div>
+  </div>
 </div>

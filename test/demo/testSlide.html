@@ -1,0 +1,138 @@
+-<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .movie_over {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.5);
+        border: 1px solid #fbdbbd;
+        padding: 25px 20px;
+        text-align: center;
+        z-index: -1;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <!-- <ol class="carousel-indicators" style="margin-top: -200px;">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol> -->
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" style="margin-bottom: 200%">
+                <div class="item active row">
+                    <div class="col ">
+                        <div class="col-md-3 movie-item show" >
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item row">
+                    <div class="col ">
+                        <div class="col-md-3 movie-item show" >
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+
+                            <p class="movie_over">bbbbsddddddccccccccccccccccccccccccccccccccccccccccc</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item row">
+                    <div class="col ">
+                        <div class="col-md-3 movie-item show" >
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+
+                            <p class="movie_over">bbbbsddddddccccccccccccccccccccccccccccccccccccccccc</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="../image/biet-doi-danh-thue-4.jpg" alt="Los Angeles" style="width: 100%" />
+                            <p>aaa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="
+            margin-left: -10%;
+            width: 10%;
+            height: 0%;
+            color: black;
+            margin-top: 15%;
+          ">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next" style="
+            margin-right: -10%;
+            width: 10%;
+            height: 0%;
+            color: black;
+            margin-top: 15%;
+          ">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
