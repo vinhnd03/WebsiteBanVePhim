@@ -6,7 +6,7 @@ app.controller("category-ctrl", function ($scope, $http) {
 
     $scope.initialize = function () {
         //load products
-        $http.get("/rest/movies").then(resp => {
+        $http.get("/rest/categories").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
                 item.date = new Date(item.date)
@@ -53,7 +53,7 @@ app.controller("category-ctrl", function ($scope, $http) {
     //Thêm sản phẩm mới
     $scope.create = function () {
         var item = angular.copy($scope.form);
-        $http.post(`/rest/movies`, item).then(resp => {
+        $http.post(`/rest/categories`, item).then(resp => {
             resp.data.createDate = new Date(resp.data.createDate)
             $scope.items.push(resp.data);
             $scope.reset();
@@ -68,7 +68,7 @@ app.controller("category-ctrl", function ($scope, $http) {
     //Cập nhật sản phẩm
     $scope.update = function () {
         var item = angular.copy($scope.form);
-        $http.put(`/rest/movies/${item.id}`, item).then(resp => {
+        $http.put(`/rest/categories/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items[index] = item;
             alert("Cập nhật sản phẩm thành công")
@@ -81,7 +81,7 @@ app.controller("category-ctrl", function ($scope, $http) {
     //Xóa sản phẩm
     $scope.delete = function (item) {
 
-        $http.delete(`/rest/movies/${item.id}`).then(resp => {
+        $http.delete(`/rest/categories/${item.id}`).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items.splice(index, 1);
             $scope.reset();
@@ -92,20 +92,6 @@ app.controller("category-ctrl", function ($scope, $http) {
         })
     }
 
-    //Upload hình
-    $scope.imageChanged = function (files) {
-        var data = new FormData();
-        data.append('file', files[0]);
-        $http.post('/rest/upload/image', data, {
-            transformRequest: angular.identity,
-            headers: { 'Content-Type': undefined }
-        }).then(resp => {
-            $scope.form.poster = resp.data.name;
-        }).catch(error => {
-            $scope.showAlertMessage("Lỗi Update ảnh")
-            console.log("Error", error);
-        })
-    }
 
     $scope.pager = {
         page: 0,
