@@ -199,7 +199,6 @@ body {
     position: relative; */
     position: relative;
     margin-top: 20px;
-    /* Khoảng cách giữa slide show và thanh menu */
 }
 
 .mySlides {
@@ -407,7 +406,6 @@ img {
 /* ------------------------------------- */
 /* Thẻ Thành Viên */
 
-/* CSS cho phần title */
 .title {
     text-align: center;
     margin-bottom: 20px;
@@ -477,88 +475,10 @@ img {
     padding: 20px;
 }
 
-/* Danh sách phim*/
 
 
+/* -------------Hỏi Đáp--------------- */   
 
-/* -------------Hỏi Đáp--------------- */
-body {
-    font-family: Arial, sans-serif;
-    margin-top: 20px;
-}
-
-.content {
-    width: 70%;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #c8c1c1;
-    border-radius: 10px;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.title h2 {
-    color: #5f17ef;
-}
-
-.wrap {
-    display: flex;
-    justify-content: center;
-}
-
-.fap {
-    width: 60%;
-}
-
-.ask {
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 9px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.ask h3 {
-    color: #333;
-}
-
-.num {
-    background-color: #333333;
-    color: #ffffff;
-    padding: 5px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.ctl {
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 9px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.answer {
-    padding: 10px;
-    margin-bottom: 7px;
-}
-
-.cycle {
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: inline-block;
-}
-
-.detail p {
-    margin-bottom: 10px;
-}
-
-/* -------------------- */
 
 /* gửi câu hỏi và đặt vé */
 
@@ -663,7 +583,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
+    
 }
 .contact {
     text-align: center;
@@ -682,8 +602,6 @@ body {
     margin: 10px 0;
     color: #ffffff;
 }
-
-/* Phần nội dung */
 .contact h3 {
     font-size: 24px;
     color: #ffffff;
@@ -710,7 +628,7 @@ body {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
-}
+}   
 .box{
     background-image: url(../image/ss.jpg);
 }
