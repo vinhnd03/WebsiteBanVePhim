@@ -163,40 +163,40 @@
             
         </tbody>
     </table> -->
-    <div class="card-footer text-center">
-      <button ng-click="pager.prev()" class="btn btn-primary">
-          <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-      </button>
-      <button ng-click="pager.next()" class="btn btn-success">
-          <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-      </button>
-  </div>
-      <!-- <div class="container mt-5">
+      <div class="container mt-5" >
         <div class="">
           <div class="col-md-3" ng-repeat="item in pager.items">
             <div class="card">
-              <img
-                src="/image/{{item.poster}}"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">{{item.name}}</h5>
-                <p class="card-text">Miêu tả sản phẩm 3.</p>
-                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-              </div>
+              <table >
+                <tr>
+                  <td><img
+                    src="/image/{{item.poster}}"
+                    class="card-img-top"
+                    alt="..."
+                  /></td>
+                </tr>
+                <tr>
+                  <td><div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text">Miêu tả sản phẩm 3.</p>
+                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
+                  </div></td>
+                </tr>
+              
+              
+            </table>
             </div>
           </div>
         </div>
-      </div> -->
-      <!-- <div class="dire-button row">
+      </div>
+      <div class="dire-button row">
         <div class="text-left btn-left col-6" ng-click="pager.prev()">
           <i><img src="/image/previous.png" alt="" /></i>
         </div>
         <div class="text-right btn-right col-6" ng-click="pager.next()">
           <i><img src="/image/next.png" alt="" /></i>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </div>
