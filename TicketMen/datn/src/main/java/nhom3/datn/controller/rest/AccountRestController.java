@@ -39,11 +39,6 @@ public class AccountRestController {
 //         return accountService.findById(id);
 //     }
 
-    @GetMapping()
-    public List<Account> getAll(){
-        return accountService.findAll();
-    }
-
     @PostMapping()
     public Account create(@RequestBody Account account){
         return accountService.create(account);
