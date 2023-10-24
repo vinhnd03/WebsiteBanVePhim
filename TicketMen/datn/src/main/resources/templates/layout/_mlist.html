@@ -10,41 +10,22 @@
     width: 7%;
   }
 
-  .dire-button .btn-right {
-  }
+  .dire-button .btn-right {}
 </style>
 
-<div
-  class="movies-selecting text-center mt-3"
-  xmlns:th="http://www.thymeleaf.org"
-  ng-controller="movie-ctrl"
->
+<div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org" ng-controller="movie-ctrl">
   <ul class="nav justify-content-center">
     <li class="nav-item" role="presentation">
-      <a
-        class="nav-link active"
-        data-toggle="tab"
-        href=""
-        role="tab"
-        data-target="#edit"
-        aria-selected="true"
-        >Phim đang chiếu</a
-      >
+      <a class="nav-link active" data-toggle="tab" href="" role="tab" data-target="#edit" aria-selected="true">Phim đang
+        chiếu</a>
     </li>
     <li class="nav-item" role="presentation">
-      <a
-        class="nav-link"
-        data-toggle="tab"
-        href=""
-        role="tab"
-        data-target="#list"
-        aria-selected="false"
-        >Phim sắp chiếu</a
-      >
+      <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#list" aria-selected="false">Phim sắp
+        chiếu</a>
     </li>
   </ul>
   <div class="tab-content" id="myContent">
-    <div class="tab-pane fade show active" id="edit">
+    <div class="tab-pane show active" id="edit">
       <h1>PHIM ĐANG CHIẾU</h1>
       <div class="container mt-5">
         <!-- <div class="row">
@@ -62,20 +43,31 @@
                 </div> -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Wrapper for slides -->
-          <div class="carousel-inner" style="margin-bottom: 200%">
-            <div class="item active row">
-              <div class="col" th:each=" m: ${items}">
-                <div class="col-md-3 movie-item show">
-                  <img
-                    th:src="@{|/image/${m.poster}|}"
-                    alt="Los Angeles"
-                    style="width: 100%"
-                  />
+          <div class="carousel-inner">
+            <div class="item active">
+              <div class="row">
+                <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" th:if="${iterStat.index < 4}">
+                  <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 100%" />
                   <h5 class="card-title" th:text="${m.name}"></h5>
                 </div>
               </div>
             </div>
-
+            <div class="item">
+              <div class="row">
+                <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" 
+                     th:if="${iterStat.index >= 4 and iterStat.index < 8}">
+                    <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 100%" />
+                    <h5 class="card-title" th:text="${m.name}"></h5>
+                </div>
+            </div>
+            </div>
+            <div class="item ">
+              <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" 
+                     th:if="${iterStat.index >= 8 and iterStat.index < 12}">
+                    <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 100%" />
+                    <h5 class="card-title" th:text="${m.name}"></h5>
+                </div>
+            </div>
             <!-- <div class="item active row" ng-repeat="item in pager.items">
               <div class="col" >
                 <div class="col-md-3 ">
@@ -89,62 +81,43 @@
               </div>
             </div> -->
 
-            <div class="item col-md-3" ng-repeat="item in pager.items">
+            <!-- <div class="item col-md-3" ng-repeat="item in pager.items">
               <div class="card">
-                <img
-                  src="/image/{{item.poster}}"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="/image/{{item.poster}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h5 class="card-title">{{item.name}}</h5>
                   <p class="card-text">Miêu tả sản phẩm 3.</p>
                   <a href="#" class="btn btn-primary">Xem chi tiết</a>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
 
           <!-- Left and right controls -->
-          <a
-            class="left carousel-control"
-            href="#myCarousel"
-            data-slide="prev"
-            style="
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="
               margin-left: -10%;
               width: 10%;
               height: 0%;
               color: black;
               margin-top: 15%;
-            "
-          >
+            ">
             <span class="glyphicon glyphicon-chevron-left"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a
-            class="right carousel-control"
-            href="#myCarousel"
-            data-slide="next"
-            style="
+          <a class="right carousel-control" href="#myCarousel" data-slide="next" style="
               margin-right: -10%;
               width: 10%;
               height: 0%;
               color: black;
               margin-top: 15%;
-            "
-          >
+            ">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span class="sr-only">Next</span>
           </a>
         </div>
       </div>
     </div>
-    <div
-      class="tab-pane fade"
-      id="list"
-      role="tabpanel"
-      aria-labelledby="videoList-tab"
-    >
+    <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="videoList-tab">
       <h1>PHIM SẮP CHIẾU</h1>
       <!-- <table class="table table-condensed row" border="0">
         <thead class="bg-success " style="font-variant: small-caps;">
@@ -163,28 +136,16 @@
             
         </tbody>
     </table> -->
-      <div class="container mt-5" >
+      <div class="container mt-5">
         <div class="">
-          <div class="col-md-3" ng-repeat="item in pager.items">
-            <div class="card">
-              <table >
-                <tr>
-                  <td><img
-                    src="/image/{{item.poster}}"
-                    class="card-img-top"
-                    alt="..."
-                  /></td>
-                </tr>
-                <tr>
-                  <td><div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5>
-                    <p class="card-text">Miêu tả sản phẩm 3.</p>
-                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                  </div></td>
-                </tr>
-              
-              
-            </table>
+          <div class="col-md-3 mlist" ng-repeat="item in pager.items">
+            <div class="card"><img ng-src="/image/{{item.poster}}" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">Miêu tả sản phẩm 3.</p>
+                <a href="#" class="btn btn-primary">Xem chi tiết</a>
+              </div>
+              </tr>
             </div>
           </div>
         </div>
