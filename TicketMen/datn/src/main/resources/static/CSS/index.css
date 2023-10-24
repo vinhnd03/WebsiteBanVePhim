@@ -83,9 +83,51 @@ body {
     /* Khoảng cách giữa ô tìm kiếm và nút tìm kiếm */
 }
 
-/* ------------------------------- */
+/* --------------TIN TỨC----------------- */
+.title{
+    font-size: 35px;
+    font-weight: 600;
+}
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+}
+.nav-item {
+    text-align: center;
+    flex: 1;
+    font-size: 25px;
+    font-weight: 300;
+}
+.panel {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+.panel-heading {
+    background-color: #337ab7;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.panel-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.panel-footer {
+    text-align: center;
+}
+.panel:hover {
+    border: 10px solid #3b6df5;
+}
 
-/* phần login*/
+
+
+/*------------PHẦN LOGIN-------------*/
 .btn-register {
     padding: 10px 20px;
     font-size: 16px;
@@ -157,7 +199,6 @@ body {
     position: relative; */
     position: relative;
     margin-top: 20px;
-    /* Khoảng cách giữa slide show và thanh menu */
 }
 
 .mySlides {
@@ -308,46 +349,40 @@ img {
 
 
 
-/* khuyến mãi*/
-/* CSS cho phần promotion-list-content */
+/*-----------KHUYẾN MÃI--------------------*/
+.body{
+    /* background-color: #007BFF; */
+}
 .promotion-list-content {
-    background-color: #f9f9f9;
     padding: 20px;
 }
 
-/* CSS cho phần title */
 .title h3 {
     font-size: 24px;
     font-weight: bold;
     color: #333;
 }
 
-/* CSS cho phần list-wrap */
 .list-wrap {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
 }
-
-/* CSS cho phần block */
 .block {
     width: 100%;
     max-width: 300px;
     margin: 0 10px 20px 0;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     padding: 10px;
 }
 
-/* CSS cho phần block-image */
 .block-image img {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    /* Bo góc hình vuông */
 }
 
-/* CSS cho phần block-txt */
 .block-txt {
     padding: 10px 0;
 }
@@ -365,10 +400,12 @@ img {
 }
 
 
+
+
+
 /* ------------------------------------- */
 /* Thẻ Thành Viên */
 
-/* CSS cho phần title */
 .title {
     text-align: center;
     margin-bottom: 20px;
@@ -380,15 +417,11 @@ img {
     color: #333;
     text-align: center;
 }
-
-/* CSS cho phần car */
 .car {
     width: 30%;
     margin-left: 200px;
     margin-top: 20px;
 }
-
-/* CSS cho phần slide-slidebox */
 .slide-slidebox {
     display: flex;
     overflow: hidden;
@@ -396,7 +429,6 @@ img {
     margin: 20px 0;
     border-radius: 15px;
 }
-
 .slide-wraper {
     display: flex;
     transition: transform 0.5s;
@@ -404,12 +436,9 @@ img {
 }
 
 .slide-item {
-    flex: 0 0 100%;
     max-width: 100%;
     border-radius: 15px;
 }
-
-/* CSS cho phần member-item */
 .member-item {
     display: flex;
     align-items: center;
@@ -447,90 +476,9 @@ img {
 }
 
 
-/* ---------------------------- */
 
-/* Danh sách phim*/
+/* -------------Hỏi Đáp--------------- */   
 
-
-
-/* -------------Hỏi Đáp--------------- */
-body {
-    font-family: Arial, sans-serif;
-    margin-top: 20px;
-}
-
-.content {
-    width: 70%;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #c8c1c1;
-    border-radius: 10px;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.title h2 {
-    color: #5f17ef;
-}
-
-.wrap {
-    display: flex;
-    justify-content: center;
-}
-
-.fap {
-    width: 60%;
-}
-
-.ask {
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 9px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.ask h3 {
-    color: #333;
-}
-
-.num {
-    background-color: #333333;
-    color: #ffffff;
-    padding: 5px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.ctl {
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 9px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.answer {
-    padding: 10px;
-    margin-bottom: 7px;
-}
-
-.cycle {
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: inline-block;
-}
-
-.detail p {
-    margin-bottom: 10px;
-}
-
-/* -------------------- */
 
 /* gửi câu hỏi và đặt vé */
 
@@ -587,10 +535,6 @@ body {
 .btn-primary:hover {
     background-color: #005f6b;
   }
-
-
-
-
   li {
     text-decoration: none;
   }
@@ -633,99 +577,71 @@ body {
 
 
 
-/*----------LIÊN HỆ-------------*/
-
+ /* ----------LIÊN HỆ-------------*/
 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #5084bc; 
+    
 }
-
-header {
-    background-image: url(image/logomenu.jpg);
-    color: #fff; 
+.contact {
     text-align: center;
     padding: 20px;
-    border-radius: 15px;
+    background-image: url(../image/hh.jpg);
 }
 
-
-header h1 {
-    font-size: 36px;
-    margin-bottom: 10px; 
+.contact h1 {
+    font-size: 45px;
+    margin: 0;
+    color: #ffffff;
 }
 
-
-.content {
-    background-color: #f0f5f5; 
-    max-width: 800px; 
-    margin: 20px auto; 
-    padding: 20px; 
-    border: 1px solid #ddd; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+.contact h2 {
+    font-size: 32px;
+    margin: 10px 0;
+    color: #ffffff;
 }
-
-
-.title h2 {
-    font-size: 24px;
-    color: #333; 
-    margin-bottom: 20px; 
-}
-
-
 .contact h3 {
-    font-size: 18px;
-    color: #333; 
-    margin-bottom: 10px; 
+    font-size: 24px;
+    color: #ffffff;
+    margin-top: 4%;
 }
 
 .contact p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    color: #ffffff;
 }
 
-
-.contact h2 {
-    font-size: 20px;
-    color: #333; 
-    margin-bottom: 10px; 
+.contact a img {
+    width: 5%;
+    height: auto;
+    margin-top: 10px;
 }
-
-
-main form {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-label,
-input,
-textarea,
-button {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-
-    border-radius: 4px;
-}
-
-button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-
-footer {
-    background-color: #333; 
-    color: #fff; 
+.section-title {
     text-align: center;
-    padding: 10px;
+    margin-top: 40px;
 }
+
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}   
+.box{
+    background-image: url(../image/ss.jpg);
+}
+.lh{
+    text-align: center;
+    color: #ffffff;
+}
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #555a5e;
+    color: #fff;
+} 
 
 
 /*---------------------------Register/Login---------------------------*/
@@ -736,9 +652,6 @@ footer {
     background-image: url('');
     background-repeat: X;
     background-size: cover;
-}
-.form-register-backgrow{
-    background-color: whitesmoke;
 }
 
 .form-register small{
@@ -769,4 +682,70 @@ footer {
 .username a:hover{
     background-color: plum;
     text-decoration: none;
+}
+
+/* Movie Detail */
+.detail-container {
+    width: 100%;
+    height: 500px;
+    background-image: url('../image/BlackBG.jpg');
+    background-color: rgba(0, 0, 0, 1);
+    background-repeat: no-repeat;
+}
+
+.detail img {
+    margin-top: 5%;
+    width: 25%;
+}
+
+.detail .text {
+    margin-top: 5%;
+}
+
+.detail .text .name {
+    font-size: 40px;
+    color: aliceblue;
+    font-weight: bold;
+}
+
+.detail .text .time {
+    font-size: 15px;
+    color: grey;
+    font-weight: bold;
+}
+
+.detail .text .description {
+    font-size: 20px;
+    color: rgb(196, 196, 196);
+}
+
+.detail .text .mt-10>b {
+    font-size: 22px;
+    color: rgb(231, 230, 230);
+}
+.detail .text .mcontent {
+    font-size: 16px;
+    color: rgb(177, 177, 177);
+}
+
+.detail .detail-footer{
+    color: aliceblue;
+    display: inline-flex;
+}
+
+.detail .detail-footer .dcol{
+    margin-right: 20px;
+}
+
+@keyframes mslide{
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.mlist{
+    animation: mslide 2s ease;
 }

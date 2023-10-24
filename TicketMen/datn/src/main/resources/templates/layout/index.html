@@ -5,22 +5,34 @@
     <meta charset="UTF-8">
     <title>Menu của tôi</title>
     <link rel="stylesheet" href="/CSS/index.css">
-    <script src="/JS/SlideShow.js"></script>
     <!-- AngularJS-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
-
-    <!-- <script src="./JS/index.js"></script> -->
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <head>
+        <meta charset="UTF-8">
+        <title>Menu của tôi</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="/CSS/index.css">
+        <link rel="stylesheet" href="/owlcarousel/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="/owlcarousel/assets/owl.theme.default.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+        <script src="/JS/SlideShow.js"></script>
+        <script src="/owlcarousel/owl.carousel.min.js"></script>
+        <script src="/JS/index.js"></script>
+
+        <!-- menu -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
 </head>
 
-<body>
-    <div style="background-image: url(/image/nen1.jpg); background-size: contain;">
+<body ng-app="myApp">
+    <div style="background-image: url(/image/nen1.jpg); background-size: cover; background-repeat: no-repeat;">
         <!-- Thanh Menu-->
         <div th:replace="/layout/_menu.html"></div>
         <!--noi dung Bị ẨN NHA ":))" ĐỪNG XÓA-->
@@ -81,8 +93,6 @@
 
                 });
             });
-
-
         </script>
 
         <!-- Button trigger modal -->
@@ -97,7 +107,7 @@
 
         <div style="background-image: url(image/nen1.jpg); height: 10px;"><br></div>
         <!-- Ticket Select-->
-        <div th:replace="/layout/_select.html"></div>
+        
         <div style="background-image: url(image/nen1.jpg); height: 10px;"><br></div>
         <!--Content -->
         <div th:replace="${main}"></div>

@@ -6,7 +6,7 @@ app.controller("product-ctrl", function ($scope, $http) {
 
     $scope.initialize = function () {
         //load products
-        $http.get("/rest/products").then(resp => {
+        $http.get("/rest/movies").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
                 item.date = new Date(item.date)
@@ -53,7 +53,7 @@ app.controller("product-ctrl", function ($scope, $http) {
     //Thêm sản phẩm mới
     $scope.create = function () {
         var item = angular.copy($scope.form);
-        $http.post(`/rest/products`, item).then(resp => {
+        $http.post(`/rest/movies`, item).then(resp => {
             resp.data.createDate = new Date(resp.data.createDate)
             $scope.items.push(resp.data);
             $scope.reset();
@@ -68,7 +68,7 @@ app.controller("product-ctrl", function ($scope, $http) {
     //Cập nhật sản phẩm
     $scope.update = function () {
         var item = angular.copy($scope.form);
-        $http.put(`/rest/products/${item.id}`, item).then(resp => {
+        $http.put(`/rest/movies/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items[index] = item;
             alert("Cập nhật sản phẩm thành công")
@@ -81,7 +81,7 @@ app.controller("product-ctrl", function ($scope, $http) {
     //Xóa sản phẩm
     $scope.delete = function (item) {
 
-        $http.delete(`/rest/products/${item.id}`).then(resp => {
+        $http.delete(`/rest/movies/${item.id}`).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items.splice(index, 1);
             $scope.reset();

@@ -6,6 +6,10 @@ app.config(function($routeProvider){
             templateUrl: "/admin/product/index.html",
             controller: "product-ctrl"
         })
+        .when("/category", {
+            templateUrl: "/admin/category/index.html",
+            controller: "category-ctrl"
+        })
         .when("/authorize", {
             templateUrl: "/admin/authority/index.html",
             controller: "authority-ctrl"
@@ -13,6 +17,10 @@ app.config(function($routeProvider){
         .when("/unauthorized", {
             templateUrl: "/admin/authority/unauthorized.html",
             
+        })
+        .when("/ticket", {
+            templateUrl: "/admin/Ticket/index.html",
+            // controller: "ticket-ctrl"
         })
         .otherwise({
             template: "<h1 class='text-center'>FPT Polytechnic Adminitration</h1>"

@@ -1,0 +1,64 @@
+<div class="card">
+    <div class="card-header" style="font-weight: 600; font-size: large; background-color: cornflowerblue; color: white;">
+        TICKET EDITION</div>
+    <div class="card-boby">
+        <!-- <div class="row">
+            <div class="col-sm-4 text-center">
+                <label for="image" class="mt-4">
+                    <img ng-src="{{'/image/' + form.poster}}" alt="" style="max-width: 90%; max-height: 250px;" class="img-fluid">
+                </label>
+            </div>
+            <div class="col-sm-8 mt-3">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Name</div>
+                        <input ng-model="form.name" class="form-control" style="width: 95%;">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Age</div>
+                        <input ng-model="form.age" class="form-control" style="width: 95%;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Image</div>
+                        <input type="file" class="form-control" id="poster" style="width: 95%;"
+                        onchange="angular.element(this).scope().imageChanged(this.files)">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Category</div>
+                        <select  ng-model="form.category.id" class="form-control" style="width: 95%;">
+                            <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Date</div>
+                        <input ng-model="form.date" type="date" class="form-control" style="width: 95%;">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Time</div>
+                        <input ng-model="form.time" type="time" class="form-control" style="width: 95%;">
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div> -->
+    </div>
+    <div class="card-footer text-center">
+        <button ng-click="create()" class="btn btn-primary">
+            <i class="fa fa-plus" aria-hidden="true"></i>Create
+        </button>
+        <button ng-click="update()" class="btn btn-success">
+            <i class="fa fa-stack-overflow" aria-hidden="true"></i>Save
+        </button>
+        <button ng-click="delete(form)" class="btn btn-danger">
+            <i class="fa fa-trash" aria-hidden="true"></i>Delete
+        </button>
+        <button ng-click="reset()" class="btn btn-info">
+            <i class="fa fa-refresh" aria-hidden="true"></i>Reset
+        </button>
+    </div>
+</div>

@@ -2,8 +2,8 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(function ($routeProvider) {
     $routeProvider
-         .when("/home", {
-            templateUrl: "./Layout/Home.html", // Template cho trang chính
+         .when("/movie", {
+            templateUrl: "./Layout/movie.html", // Template cho trang chính
          })
         .when("/showtime", {
             templateUrl: "./Layout/Lichchieu.html", // Template cho trang chính
@@ -36,4 +36,7 @@ app.config(function ($routeProvider) {
         .otherwise({
             redirectTo: "/" // Trang mặc định khi không có định tuyến khớp
         });
+
+
+    
 });

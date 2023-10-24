@@ -87,7 +87,7 @@ public class SecurityConfig {
 
     // Cho phép truy xuất REST API từ bên ngoài (domain khác)
     
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
-    }
+    // public void configure(WebSecurity web) throws Exception {
+    //     web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+    // }
 }

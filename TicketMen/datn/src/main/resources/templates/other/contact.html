@@ -1,56 +1,89 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
     <main>
-        <header>
-            <h1>Liên Hệ</h1>
-        </header>
-
-        <div class="content">
-            <div class="title">
-                <h2>Liên Hệ</h2>
-            </div>
-            <div class="contact">
-                <h3>
-                    <strong>TICKETMEN CINEMAS</strong>
-                </h3>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <h2>
+        <div class="contact">
+            <h1><strong>
+                    Liên Hệ
+                </strong></h1>
+            <h2>
+                TICKETMEN CINEMAS
+            </h2>
+    
+    
+            <h3><strong>    
                     HEADQUATERS
-                </h2>
-                <p></p>
-                <h2>
-                    Địa chỉ: 137 Nguyễn Thị Thập - Hòa Minh - Liên Chiều - Đà Nẳng
-                </h2>
-                <p></p>
-                <h2>
-                    Hotline: +84 12345678
-                </h2>
-                <p></p>
-
+                </strong></h3>
+            <p>
+                Địa Chỉ: 137 Nguyễn Thị Thập - Hòa Minh - Liên Chiểu - Đà Nẵng
+            </p>
+            <p>
+                Hotline: +84 123456789
+            </p>
+            <a href="https://www.facebook.com/polydn">
+                <img src="../image/logo fb .jpg" alt="Logo Facebook" width="5%" height="5%"></a>
+            <p></p>
+            <p></p>
+            <p></p>
+    
+        </div>
+    
+        <div class="section-title">
+            <h2><strong>Gửi Nội Dung Liên Hệ</strong></h2>
+        </div>
+    
+    
+        <div class="container form-register-backgrow">
+            <form class="form-register row">
+                <div class="col-12">
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                            placeholder="Họ và tên(*)">
+                        <!-- <small id="helpId" class="form-text">Họ và tên</small> -->
+                    </div>
+                </div>
+    
+                <div class="col-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                            placeholder="Địa chỉ(*)">
+                        <!-- <small id="helpId" class="form-text">Địa chỉ</small> -->
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                            placeholder="Số điện thoại(*)">
+                        <!-- <small id="helpId" class="form-text">Số điện thoại</small> -->
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Email(*)">
+                        <!-- <small id="helpId" class="form-text">Email</small> -->
+                    </div>
+                </div>
+            </form>
+            <div class="" align="center">
+                <button class="col-3 btn btn-warning">Gửi</button>
+            </div>
+            <br>
+    
+        </div>
+    <br>
+    <br>
+        <div class="box">
+           
+            <div class="lh" >
+                <h2><strong>Liện Hệ Quảng Cáo - Sự Kiện -  GROUPSALE</strong></h2>
+                <h4>
+                    THÔNG TIN LIÊN HỆ:
+                </h4>
+                <h4>
+                    Số Điện Thoại: +84 123456789
+                </h4>
+                <h4>
+                    Email: Ticketmen@gmail.com
+                </h4>
             </div>
         </div>
-        <main>
-            <form action="" method="post">
-                <label for="name">Họ và tên:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="phone">Số điện thoại:</label>
-                <input type="tel" id="phone" name="phone" required>
-
-
-                <label for="message">Nội Dung:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-
-                <button type="submit">Gửi</button>
-            </form>
-        </main>
-        <footer>
-            <p>Bạn cũng có thể liên hệ qua số điện thoại: 123-456-7890</p>
-        </footer>
     </main>
 </div>
