@@ -222,7 +222,7 @@ img {
 .fade {
     /* animation: fade 2s ease-in-out infinite; */
     animation-name: fade;
-    animation-duration: 3s;
+    animation-duration: inherit;
 }
 
 @keyframes fade {
