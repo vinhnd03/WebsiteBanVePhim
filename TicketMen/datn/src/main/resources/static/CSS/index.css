@@ -736,3 +736,16 @@ footer {
 .detail .detail-footer .dcol{
     margin-right: 20px;
 }
+
+@keyframes mslide{
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.mlist{
+    animation: mslide 2s ease;
+}
