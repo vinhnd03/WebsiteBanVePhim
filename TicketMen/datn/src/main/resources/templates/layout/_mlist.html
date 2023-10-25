@@ -25,22 +25,9 @@
     </li>
   </ul>
   <div class="tab-content" id="myContent">
-    <div class="tab-pane show active" id="edit">
+    <div class="tab-pane show active" id="edit" role="tabpanel" aria-labelledby="videoEdit-tab">
       <h1>PHIM ĐANG CHIẾU</h1>
       <div class="container mt-5">
-        <!-- <div class="row">
-                    <div class="col-3" th:each=" m: ${items}">
-                        <div class="card">
-                            <img th:src="@{|/image/${m.poster}|}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title" th:text="${m.name}"></h5>
-                                <p class="card-text">
-                                </p>
-                                <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
@@ -68,29 +55,6 @@
                     <h5 class="card-title" th:text="${m.name}"></h5>
                 </div>
             </div>
-            <!-- <div class="item active row" ng-repeat="item in pager.items">
-              <div class="col" >
-                <div class="col-md-3 ">
-                  <img
-                  src="/image/{{item.poster}}"
-                    alt="Los Angeles"
-                    style="width: 100%"
-                  />
-                  <h5 class="card-title">{{item.name}}</h5>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="item col-md-3" ng-repeat="item in pager.items">
-              <div class="card">
-                <img src="/image/{{item.poster}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">{{item.name}}</h5>
-                  <p class="card-text">Miêu tả sản phẩm 3.</p>
-                  <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                </div>
-              </div>
-            </div> -->
           </div>
 
           <!-- Left and right controls -->
@@ -119,23 +83,6 @@
     </div>
     <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="videoList-tab">
       <h1>PHIM SẮP CHIẾU</h1>
-      <!-- <table class="table table-condensed row" border="0">
-        <thead class="bg-success " style="font-variant: small-caps;">
-            <tr class="col-3">
-              <td  ng-repeat="item in pager.items" > <img
-                src="/image/{{item.poster}}"
-                class="card-img-top"  height="100px" width="555px"
-                alt="..."/></td>
-  
-            </tr>
-        </thead>
-        <tbody>
-            <tr >
-                <td  ng-repeat="item in pager.items">{{item.name}}</td>
-            </tr>
-            
-        </tbody>
-    </table> -->
       <div class="container mt-5">
         <div class="">
           <div class="col-md-3 mlist" ng-repeat="item in pager.items">

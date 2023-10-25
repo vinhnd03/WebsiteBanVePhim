@@ -14,7 +14,7 @@
   <main class="container-fluid">
 
     <ul class="nav nav-tabs">
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link active" id="tinDienAnh-tab" data-toggle="tab" href="#tinDienAnh" role="tab"
           aria-controls="tinDienAnh" aria-selected="true"><strong>PHIM ĐANG CHIẾU</strong></a>
       </li>
@@ -159,69 +159,27 @@
 
 
       <!--PHIM ĐANG CHIẾU-->
-      <div class="tab-pane fade show active" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab">
+      <div class="tab-pane fade active show in" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab">
         <ul class="list-group">
           <div class="container-fluid">
             <div>
               <div class="row ">
-                <div class="col-4 ">
+                <div class="col-4 "  th:each="movie : ${items}">
                   <div class="boder">
                     <div style="width: 50%;float: left;margin-bottom: 3%;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="85%" style="margin: 5%;">
+                      <img th:src="@{|/image/${movie.poster}|}" alt="" width="85%" style="margin: 5%;">
                     </div>
                     <div style="width: 50%;float: left;margin-top: 2%;margin-right: 2%;margin-left: -3%;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
+                      <h4><strong th:text="${movie.name}"></strong> </h4>
                       <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí ẩn, buộc
                         mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
                       <hr>
                       <div class="text-center button">
-                        <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                          <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                        <button type="submit" class="btn btn-success">
-                          <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                      </div>
+                        <a type="button" class="btn btn-primary" style="border-radius: 5%;" th:href="@{|/movie/detail/${movie.id}|}">
+                          <i class="fa-solid fa-circle-info fa-beat"></i>CHI TIẾT</a>
                     </div>  
                     
                   </div>
-                </div>
-                <div class="col-4 ">
-                  <div class="boder">
-                    <div style="width: 50%;float: left;margin-bottom: 3%;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="85%" style="margin: 5%;">
-                    </div>
-                    <div style="width: 50%;float: left;margin-top: 2%;margin-right: 2%;margin-left: -3%;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-                      <hr>
-                      <div class="text-center button">
-                        <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                          <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                        <button type="submit" class="btn btn-success">
-                          <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                      </div>
-                    </div>  
-                    
-                  </div>
-                </div>
-                <div class="col-4 ">
-                  <div class="boder">
-                    <div style="width: 50%;float: left;margin-bottom: 3%;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="85%" style="margin: 5%;">
-                    </div>
-                    <div style="width: 50%;float: left;margin-top: 2%;margin-right: 2%;margin-left: -3%;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-                      <hr>
-                      <div class="text-center button">
-                        <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                          <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                        <button type="submit" class="btn btn-success">
-                          <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                      </div>
-                    </div>  
-                    
                   </div>
                 </div>
               </div>

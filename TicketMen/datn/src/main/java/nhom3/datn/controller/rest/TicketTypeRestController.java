@@ -16,7 +16,7 @@ import nhom3.datn.service.TicketTypeService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/rest/tickettypes")
+@RequestMapping("/rest/ticketTypes")
 public class TicketTypeRestController {
     @Autowired
     TicketTypeService ticketTypeService;
