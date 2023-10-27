@@ -35,16 +35,16 @@
 </head>
 
 <body ng-app="myApp">
-    <div style="background-image: url(/image/nen1.jpg); background-size: cover; background-repeat: no-repeat;">
+    <div style="background-image: url();background-color: 542f50; background-size: cover; background-repeat: no-repeat;">
         <!-- Thanh Menu-->
         <div th:replace="/layout/_menu.html"></div>
-        <!--noi dung Bị ẨN NHA ":))" ĐỪNG XÓA-->
-        <div style="height: 100px;">
+
+        <div style="height: 80px;">
 
         </div>
         <!-- -->
         <!-- Đăng Nhập - Đăng Ký-->
-        <div class="login">
+        <div class="login" style="background-color: aliceblue;">
             <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
                 <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
                 <p>Chào mừng Admin!</p>
@@ -58,15 +58,15 @@
             <th:block th:unless="${#request.remoteUser}">
                 <ul>
                     <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
-                    <button type="button" data-toggle="modal" data-target="#myModal2" class="btn-login">Đăng
-                        ký
+                    <button  data-toggle="modal" data-target="#myModal2" class="btn-register"><strong>Đăng
+                        ký</strong> 
                     </button>
                 </ul>
 
                 <ul>
                     <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
-                    <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login">Đăng
-                        nhập</button>
+                    <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login"><strong>Đăng
+                        nhập</strong> </button>
                 </ul>
             </th:block>
         </div>
@@ -108,14 +108,14 @@
         <!-- Slide Show-->
         <div th:replace="/layout/_slideshow.html"></div>
 
-        <div style="background-image: url(image/nen1.jpg); height: 10px;"><br></div>
+
         <!-- Ticket Select-->
         
-        <div style="background-image: url(image/nen1.jpg); height: 10px;"><br></div>
+
         <!--Content -->
         <div th:replace="${main}"></div>
         <!--Danh sách phim -->
-        <div style="background-image: url(image/nen1.jpg); height: 10px;"><br></div>
+
     </div>
     <div th:replace="/layout/_footer.html"></div>
 
