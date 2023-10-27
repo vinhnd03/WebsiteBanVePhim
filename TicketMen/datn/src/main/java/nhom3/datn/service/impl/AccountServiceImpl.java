@@ -50,4 +50,9 @@ public class AccountServiceImpl implements AccountService{
         public void delete(String username) {
             dao.deleteById(username);
         }
+
+        @Override
+        public List<Account> findAllStaff() {
+            return dao.findAllStaff();
+        }
 }

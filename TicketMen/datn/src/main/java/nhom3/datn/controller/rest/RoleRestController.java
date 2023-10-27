@@ -18,7 +18,7 @@ public class RoleRestController {
     @Autowired
     RoleService roleService;
 
-    @GetMapping
+    @GetMapping()
     public List<Role> getAll(){
         return roleService.findAll();
     }
