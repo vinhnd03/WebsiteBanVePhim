@@ -8,7 +8,7 @@ body {
 .menu {
     display: flex;
     align-items: center;
-    background-color: #9b94ae;
+    background-color: #542f50;
     background-size: cover;
     width: 100%;
     position: fixed;
@@ -27,7 +27,6 @@ body {
     justify-content: center;
     margin-top: 1%;
     padding: 5px;
-    color: #5f17ef;
     border-radius: 10px;
 }
 
@@ -39,7 +38,7 @@ body {
 
 .menu-item a {
     text-decoration: none;
-    color: rgb(4, 0, 234);
+    color: white;
     /* Màu chữ của các mục menu (ví dụ: trắng) */
     font-weight: bold;
     padding: 10px 15px;
@@ -132,8 +131,12 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: #3498db;
-    color: #fff;
+    color: #0b0a0a;
+    
+}
+.btn-register:hover {
+    text-decoration: none;
+    color: tomato;
     
 }
 
@@ -142,15 +145,14 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color:white;
     color: #0b0a0a;
+
 }
 
 
 .btn-login:hover{
     text-decoration: none;
-    background-color: blanchedalmond;
-
+    color: tomato;
 }
 
 /* CSS cho logo trong phần đăng nhập và đăng ký */
@@ -187,7 +189,7 @@ body {
 
 /* CSS cho slide show */
 .slide_BG {
-    height: 20%;
+    /* height: 20%; */
     /* background-image: url('/image/nen1.jpg'); */
     border-radius: 15px;
     background-size: contain;
@@ -280,9 +282,9 @@ img {
 
 .movies-selecting .nav-link {
     height: 100%;
+    background-color: #d14bcf;
 
 }
-
 .movies-selecting .nav {
     height: 60px;
     border-radius: 10px;
@@ -321,30 +323,17 @@ img {
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 10px;
-}
-
-.btn-chon-phim {
-    background-color: #616263;
-    /* Màu nền cho nút chọn phim */
     color: white;
-}
-
-.btn-chon-ngay {
-    background-color: #616263;
-    /* Màu nền cho nút chọn ngày */
-    color: white;
-}
-
-.btn-chon-suat {
-    background-color: #616263;
+    background-color: #504b50fa;
     /* Màu nền cho nút chọn suất chiếu */
     color: white;
 }
 
+
 .btn-chon-phim:hover,
 .btn-chon-ngay:hover,
 .btn-chon-suat:hover {
-    opacity: 0.8;
+    background-color: #d720da;
 }
 
 
