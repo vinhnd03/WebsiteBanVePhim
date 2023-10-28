@@ -34,8 +34,8 @@
     </head>
 </head>
 
-<body ng-app="myApp">
-    <div style="background-image: url();background-color: 542f50; background-size: cover; background-repeat: no-repeat;">
+<body ng-app="myApp" style="background-color: 542f50;">
+    <div style="background-size: cover; background-repeat: no-repeat;margin-bottom: 10%;">
         <!-- Thanh Menu-->
         <div th:replace="/layout/_menu.html"></div>
 
@@ -58,17 +58,24 @@
             <th:block th:unless="${#request.remoteUser}">
                 <ul>
                     <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
-                    <button  data-toggle="modal" data-target="#myModal2" class="btn-register"><strong>Đăng
+                    <button  data-toggle="modal" data-target="#myModal2" class="btn-register" style="width: 130px;"><strong>Đăng
                         ký</strong> 
                     </button>
                 </ul>
 
                 <ul>
                     <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
-                    <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login"><strong>Đăng
+                    <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login" style="width: 130px;"><strong>Đăng
                         nhập</strong> </button>
                 </ul>
             </th:block>
+            <div class="input-group " >
+                <div  >
+                    <button style="background-color: bisque; float: right;" class="btn" type="button" id="button-addon2">Tìm kiếm</button>
+                  </div>
+                <input style="width: 20%;float: right;" type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim" aria-describedby="button-addon2">
+                
+            </div>
         </div>
         <script>
             $(document).ready(function () {

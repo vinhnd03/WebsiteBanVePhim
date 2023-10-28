@@ -1,15 +1,15 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
-    <main>
+    <main style="margin-top: 3%;">
 
         <style>
-            body {
+            /* body {
                 background-color: rgb(222, 237, 232);
-            }
+            } */
         
             .title {
                 font-size: 30px;
                 text-align: center;
-                color: blue;
+                color: white;
                 font-family: 'Times New Roman', Times, serif;
             }
         
@@ -70,11 +70,12 @@
         
             .title {
                 text-align: center;
+                
             }
         
-            .form-group {
-                margin-bottom: 20px;
-                font-size: 20px;
+            .form-group label{
+                color: white;
+                
             }
         
             .form-control {
@@ -82,13 +83,7 @@
                 height: 30px;
             }
         
-            button {
-                margin: 0 auto;
-                width: 130px;
-                height: 40px;
-                background-color: blue;
-                font-size: 40px;
-            }
+           
         
         </style>
         <script>
@@ -104,12 +99,12 @@
             }
         </script>
         
-        <div class="title">
-            <p>
+        <div class="title" >
+            <h2 style="color: white;">
                 <strong>
                     HỎI VÀ ĐÁP
                 </strong>
-            </p>
+            </h2>
         </div>
     
         <div class="faq-wrap">
@@ -307,7 +302,7 @@
     
         <div class="container">
             <h2 class="title"><strong>Gửi Câu Hỏi Của Bạn</strong> </h2>
-            <form>
+            <form style="color: white;">
                 <div class="form-group">
                     <label for="fullName">Họ và tên:</label>
                     <input type="text" class="form-control" id="fullName" placeholder="Nhập họ và tên">
@@ -324,7 +319,7 @@
                     <label for="comment">Bình luận:</label>
                     <textarea class="form-control" id="comment" rows="5" placeholder="Nhập bình luận"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Gửi</button>
+                <a type="button" class="btn btn-primary">Gửi</a>
             </form>
         </div>
     </main>

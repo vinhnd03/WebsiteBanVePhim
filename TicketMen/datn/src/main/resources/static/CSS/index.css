@@ -121,7 +121,7 @@ body {
     text-align: center;
 }
 .panel:hover {
-    border: 10px solid #3b6df5;
+   box-shadow:10px 10px rgb(216, 10, 182) inset;
 }
 
 
@@ -311,7 +311,8 @@ img {
 
 .movies-selecting li:hover {
     background-color: blueviolet;
-    color: white;
+    /* color: white; */
+    color: #000;
 }
 
 

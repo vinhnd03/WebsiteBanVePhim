@@ -1,3 +1,4 @@
+
 <style>
 
   .boder {
@@ -11,10 +12,11 @@
   }
 </style>
 
+
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
   <main class="container"style="margin-top: 2%;">
-
-    <ul class="nav nav-tabs">
+    <div class="movies-selecting  mt-3 container">
+    <ul class="nav nav-tabs ">
       <li class="nav-item active">
         <a class="nav-link active" id="tinDienAnh-tab" data-toggle="tab" href="#tinDienAnh" role="tab"
           aria-controls="tinDienAnh" aria-selected="true"><strong>PHIM ĐANG CHIẾU</strong></a>
@@ -90,7 +92,7 @@
         </ul>
       </div>
     </div>
-    
+  </div>
   </main>
 
 </div>

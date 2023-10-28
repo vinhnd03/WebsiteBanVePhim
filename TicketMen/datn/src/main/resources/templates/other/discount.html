@@ -1,155 +1,148 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
-    <main>
-        <div class="body">
-
-            <!--Danh sách phim -->
-            <div class="content-page">
-                <div class="title">
-                    <h3>    
-                        <strong>Thành Viên</strong>
-                    </h3>
-                    <div class="row">
-
-                        <div class=" col">
-
-                            <div class="slide-wrapper-outter">
-                                <div class="slide-wraper">
-                                    <div class="slide-item">
-                                        <div class="member-item">
-                                            <div class="member-pic">
-                                                <img src="../image/vip.jpg" alt="" height="300px" width="500px">
-                                            </div>
-                                            <div class="member-txt">
-                                                <a href="   ">
-                                                    <form style="vertical-align: inherit;">
-                                                        <form style="vertical-align: inherit;">
-                                                            <h5><strong>Chi Tiết</strong> </h5>
-                                                        </form>
-                                                    </form>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <main style="margin-top: 3%;">
+        <div class="text-center" style="color: white;"><h2><strong>THÀNH VIÊN</strong></h2></div>
+        <div class=" container-fluid">
+            
+            <div id="myCarousel" class="carousel slide container" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-6 movie-item ">
+                                <img src="/image/vip.jpg" alt="Los Angeles" style="width:100%" />
+                                <h3 class="card-title" style="margin-bottom: 10%;"></h3>
                             </div>
-                        </div>
-
-                        <div class=" col">
-                            <div class="slide-wrapper-outter">
-                                <div class="slide-wraper">
-                                    <div class="slide-item">
-                                        <div class="member-item">
-                                            <div class="member-pic">
-                                                <img src="../image/vip.jpg" alt="" height="300px" width="500px">
-                                            </div>
-                                            <div class="member-txt">
-                                                <a href="   ">
-                                                    <form style="vertical-align: inherit;">
-                                                        <form style="vertical-align: inherit;">
-                                                            <h5><strong>Chi Tiết</strong> </h5>
-                                                        </form>
-
-                                                    </form>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-6 movie-item ">
+                                <img src="/image/vip.jpg" alt="Los Angeles" style="width:100%" />
+                                <h3 class="card-title" style="margin-bottom: 10%;"></h3>
                             </div>
                         </div>
                     </div>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-6 movie-item ">
+                                <img src="/image/vip.jpg" alt="Los Angeles" style="width:100%" />
+                                <h3 class="card-title" style="margin-bottom: 10%;"></h3>
+                            </div>
+                            <div class="col-6 movie-item ">
+                                <img src="/image/vip.jpg" alt="Los Angeles" style="width:100%" />
+                                <h3 class="card-title" style="margin-bottom: 10%;"></h3>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="
+                      margin-left: -13%;
+                      width: 10%;
+                      height: 0%;
+                      color: black;
+                      margin-top: 9%;
+                    ">
+
+                    <span><img src="/image/saringan1.png" alt="" width="150px"></span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next" style="
+                      margin-right: -11%;
+                      width: 10%;
+                      height: 0%;
+                      color: black;
+                      margin-top:9%;
+                    ">
+
+                    <span><img src="/image/saringan1.png" alt="" width="150px"></span>
+                </a>
             </div>
-
-
-            <div class="promotion-list-content">
+            <div class="promotion-list-content container"style="color: white;">
                 <div class="title">
-                    <h3><strong>CÁC ƯU ĐÃI</strong></h3>
+                    <h2 style="color: white;"><strong>CÁC ƯU ĐÃI</strong></h2>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col">
+                <div class="row" style="border: 1px solid black;background-color: rgb(58, 41, 58);">
+                    <div class="">
                         <div>
                             <a>
-                                <img src="../image/thu2.png" alt="" align="right" width="500px">
+                                <img src="../image/thu2.png" alt=""  width="500px">
                             </a>
                         </div>
                     </div>
                     <div class="col">
-                        <h5>
-                            <form style="vertical-align: inherit;"><Strong>Thứ Hai</Strong> </form>
-                        </h5>
-                        <h6>
+                        <h3>
+                            <Strong>Thứ Hai</Strong> 
+                        </h3>
+                        <h4>
                             <p>
-                            <form style="vertical-align: inherit;">- Áp dụng vào các buổi diển vào thứ hai.</form>
+                            - Áp dụng vào các buổi diển vào thứ hai.
                             </p>
                             <p>
-                            <form style="vertical-align: inherit;">- Giá vé ưu đãi :45.000đ/vé 2D và 70.000đ/vé 3D.
-                            </form>
+                            - Giá vé ưu đãi :45.000đ/vé 2D và 70.000đ/vé 3D.
                             </p>
                             <p>
-                                - Lưu ý: Không áp dụng cho các ngày lễ/tết.
+                            - Lưu ý: Không áp dụng cho các ngày lễ/tết.
                             </p>
-                        </h6>
+                        </h4>
                     </div>
                 </div>
 
-                <div class="list-wrap row">
-                    <div class="col">
+                <div class="list-wrap row" style="border: 1px solid black;background-color: rgb(58, 41, 58);">
+                    <div class="">
                         <div class="">
                             <a>
-                                <img src="../image/kk.png" alt="" align="right" width="500px">
+                                <img src="../image/kk.png" alt=""  width="500px">
                             </a>
                         </div>
                     </div>
                     <div class="col">
-                        <h5>
-                            <form style="vertical-align: inherit;"><strong> Này Hội Thành Viên</strong> </form>
-                        </h5>
-                        <h6>
+                        <h3>
+                            3<strong> Này Hội Thành Viên</strong> 3
+                        </h3>
+                        <h4>
                             <p>
-                            <form style="vertical-align: inherit;">-Thứ Tư hàng tuần, Hội viên Ticketmen được ưu đãi giá
+                            -Thứ Tư hàng tuần, Hội viên Ticketmen được ưu đãi giá
                                 vé
-                                cho cả C'VIP và C'FRIEND</form>
+                                cho cả C'VIP và C'FRIEND3
                             </p>
                             <p>
-                            <form style="vertical-align: inherit;">- Giá vé: 45.000đ/vé 2D và 70.000đ/vé 3D</form>
+                            - Giá vé: 45.000đ/vé 2D và 70.000đ/vé 3D
                             </p>
                             <p>
-                            <form style="vertical-align: inherit;">- Giảm trực tiếp 10% và 15% trên hóa đơn đồ ăn và đồ
+                            - Giảm trực tiếp 10% và 15% trên hóa đơn đồ ăn và đồ
                                 uống
-                                cho C'FRIEND và C'VIP tương ứng</form>
+                                cho C'FRIEND và C'VIP tương ứng
                             </p>
-                        </h6>
+                        </h4>
                     </div>
                 </div>
 
-                <div class="list-wrap row">
-                    <div class="col">
+                <div class="list-wrap row"style="border: 1px solid black;background-color: rgb(58, 41, 58);">
+                    <div class="">
                         <div class="">
                             <a>
-                                <img src="../image/uu.png" alt="" align="right" width="500px">
+                                <img src="../image/uu.png" alt="" width="500px">
                             </a>
                         </div>
                     </div>
                     <div class="col">
-                        <h5>
-                            <form style="vertical-align: inherit;"><strong>TẸT GA 45K SUỐT TUẦN TOÀN HỆ THỐNG</strong>
-                            </form>
-                        </h5>
-                        <h6 style="color: black;">
+                        <h3>
+                            <strong>TẸT GA 45K SUỐT TUẦN TOÀN HỆ THỐNG</strong>
+                        </h3>
+                        <h4>
                             <p>
-                            <form style="vertical-align: inherit;">ÁP DỤNG MỨC GIÁ 45K / VÉ 2D - CẢ TUẦN - TOÀN HỆ THỐNG
-                            </form>
+                            ÁP DỤNG MỨC GIÁ 45K / VÉ 2D - CẢ TUẦN - TOÀN HỆ THỐNG
+                            
                             </p>
                             <p>
-                            <form style="vertical-align: inherit;">✔️ KHÔNG đắn đo về giá vé<br>
+                           
+                                ✔️ KHÔNG đắn đo về giá vé<br>
                                 ✔️ KHÔNG nhức đầu nghĩ điểm hẹn cuối tuần<br>
-                                ✔️ KHÔNG cần miệt mài lựa chọn phim</form>
+                                ✔️ KHÔNG cần miệt mài lựa chọn phim
+                            
                             </p>
                             <p>
-                            <form style="vertical-align: inherit;">Áp dụng dành cho giáo viên, giảng viên, học sinh,
-                                sinh viên và thanh niên dưới 22 tuổi, trên toàn hệ thống.</form>
+                            Áp dụng dành cho giáo viên, giảng viên, học sinh,
+                                sinh viên và thanh niên dưới 22 tuổi, trên toàn hệ thống.
                             </p>
                             <p>
                                 LƯU Ý:<br>
@@ -160,40 +153,40 @@
 
                                 - Mỗi thẻ mua được một vé.
                             </p>
-                        </h6>
+                        </h4>
                     </div>
                 </div>
-                <div class="list-wrap row">
-                    <div class="col">
+                <div class="list-wrap row"style="border: 1px solid black;background-color: rgb(58, 41, 58);">
+                    <div class="">
                         <div class="">
                             <a>
-                                <img src="../image/km4.jpg" alt="" align="right" width="500px">
+                                <img src="../image/km4.jpg" alt=""  width="500px">
                             </a>
                         </div>
                     </div>
                     <div class="col">
-                        <h5>
-                            <form style="vertical-align: inherit;"><strong>KHUYẾN MÃI TẠI MỐC 10H</strong> </form>
-                        </h5>
-                        <h6>
+                        
+                            <h3 ><strong>KHUYẾN MÃI TẠI MỐC 10H</strong> </h3>
+                        
+                        <h4>
                             <p>
-                            <form style="vertical-align: inherit;">- Áp dụng cho mỗi vé xem phim vào các suất trước 10h
+                            - Áp dụng cho mỗi vé xem phim vào các suất trước 10h
                                 và sau 22h hàng ngày.
-                            </form>
+                            
                             </p>
                             <p>
-                            <form style="vertical-align: inherit;">- Mua vé giá ưu đãi: 45.000 đ / vé 2D, 55.000 đ / vé
-                                3D.</form>
+                            - Mua vé giá ưu đãi: 45.000 đ / vé 2D, 55.000 đ / vé
+                                3D.
                             </p>
                             <p>
-                            <form style="vertical-align: inherit;"> Lưu ý: Chương trình không áp dụng cho ngày lễ/tết.
-                            </form>
+                            Lưu ý: Chương trình không áp dụng cho ngày lễ/tết.
+                            
                             </p>
-                        </h6>
+                        </h4>
                     </div>
                 </div>
             </div>
         </div>
-
     </main>
+
 </div>
