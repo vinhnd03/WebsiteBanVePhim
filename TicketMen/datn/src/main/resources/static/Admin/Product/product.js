@@ -28,12 +28,13 @@ app.controller("product-ctrl", function ($scope, $http) {
         $http.get("/rest/categories").then(resp => {
             $scope.cates = resp.data;
         })
-
+        console.log($scope.cates);
     }
 
     //Khởi đầu
     $scope.initialize();
 
+    
 
     //Xóa form
     $scope.reset = function () {

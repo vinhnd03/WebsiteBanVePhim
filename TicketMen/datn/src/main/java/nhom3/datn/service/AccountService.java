@@ -20,4 +20,6 @@ public interface AccountService {
     Account update(Account account);
 
     void delete(String username);
+
+    List<Account> findAllStaff();
 }
