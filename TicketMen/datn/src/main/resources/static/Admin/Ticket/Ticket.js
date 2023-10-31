@@ -1,6 +1,7 @@
 app.controller("ticket-ctrl", function ($scope, $http) {
     $scope.items = [];
     $scope.cates = [];
+    $scope.rooms = [];
     $scope.form = {};
 
 
@@ -25,9 +26,14 @@ app.controller("ticket-ctrl", function ($scope, $http) {
         });
 
         //load tickettypes
-        $http.get("/rest/tickettypes").then(resp => {
+        $http.get("/rest/movies").then(resp => {
             $scope.cates = resp.data;
         })
+        $http.get("/rest/rooms").then(resp => {
+            $scope.rooms = resp.data;
+        })
+
+        
 
     }
 
@@ -39,7 +45,6 @@ app.controller("ticket-ctrl", function ($scope, $http) {
     $scope.reset = function () {
         $scope.form = {
             createDate: new Date(),
-            poster: 'OIP2.jpg',
             available: true,
         }
     }
@@ -72,6 +77,7 @@ app.controller("ticket-ctrl", function ($scope, $http) {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items[index] = item;
             alert("Cập nhật sản phẩm thành công")
+            $scope.initialize();
         }).catch(error => {
             alert("Lỗi cập nhật sản phẩm");
             console.log("Error", error);

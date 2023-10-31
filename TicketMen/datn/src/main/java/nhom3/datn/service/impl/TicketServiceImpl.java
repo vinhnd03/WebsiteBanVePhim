@@ -25,6 +25,15 @@ public class TicketServiceImpl implements TicketService{
         return tdao.findById(id).get();
     }
 
+    // @Override
+    // public List<Ticket> findByTicketTypeId(String cid) {
+    //     return tdao.findByTicketTypeId(cid);
+    // }
+
+    @Override
+    public List<Ticket> findByRoomId(Integer rid) {
+        return tdao.findByRoomId(rid);
+    }
     @Override
     public Ticket create(Ticket product) {
         return tdao.save(product);
