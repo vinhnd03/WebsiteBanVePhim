@@ -1,6 +1,7 @@
 package nhom3.datn.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,5 +55,10 @@ public class AccountServiceImpl implements AccountService{
         @Override
         public List<Account> findAllStaff() {
             return dao.getStaff();
+        }
+
+        @Override
+        public Optional<Account> findAccount(String username) {
+            return dao.findById(username);
         }
 }

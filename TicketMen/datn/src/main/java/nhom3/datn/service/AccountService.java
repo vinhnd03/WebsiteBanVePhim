@@ -1,6 +1,7 @@
 package nhom3.datn.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import nhom3.datn.entity.Account;
 import nhom3.datn.entity.Category;
@@ -22,4 +23,6 @@ public interface AccountService {
     void delete(String username);
 
     List<Account> findAllStaff();
+
+    Optional<Account> findAccount(String username);
 }

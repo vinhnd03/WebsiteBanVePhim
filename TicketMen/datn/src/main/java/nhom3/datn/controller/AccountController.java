@@ -1,5 +1,6 @@
 package nhom3.datn.controller;
 
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,24 +30,32 @@ public class AccountController {
 
     @PostMapping("account/add")
     public ModelAndView add(ModelMap model, @ModelAttribute("account") Account account,
-            @RequestParam("gender") String gender,  @RequestParam("confirmPassword") String confirmPassword,
-            @RequestParam("password") String password){
+            @RequestParam("gender") String gender, @RequestParam("confirmPassword") String confirmPassword,
+            @RequestParam("password") String password, @RequestParam("username") String username) {
         Authority authority = new Authority();
         Role role = roleService.findById("USER");
 
         authority.setAccount(account);
         authority.setRole(role);
 
-        if(password.equals(confirmPassword)){
-            account.setUsername(account.getUsername().toLowerCase());
+        Optional<Account> user = accountService.findAccount(username);
+
+        if (user.isPresent()) {
+            model.addAttribute("message", "Username đã tồn tại, vui lòng sử dụng username khác.");
+            return new ModelAndView("forward:/", model);
+        } else {
+
+            if (!password.equals(confirmPassword)) {
+                model.addAttribute("message", "Lỗi xác nhận mật khẩu");
+                return new ModelAndView("forward:/", model);
+            }
+
+            account.setUsername(username.toLowerCase());
             account.setPassword(password.toLowerCase());
             accountService.save(account);
             authorityService.create(authority);
             model.addAttribute("message", "Đăng ký thành công");
-            return new ModelAndView("redirect:/home/index", model);
+            return new ModelAndView("forward:/", model);
         }
-
-        model.addAttribute("message", "Lỗi xác nhận mật khẩu");
-        return new ModelAndView("redirect:/home/index", model);
     }
 }

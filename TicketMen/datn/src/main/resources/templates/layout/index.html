@@ -77,22 +77,18 @@
                 
             </div>
         </div>
+        <div hidden id="notification">[[${message}]]</div>
         <script>
             $(document).ready(function () {
                 // Chọn nút "Đăng nhập" bằng jQuery
                 var loginButton = $('#loginButton');
-
                 // Thêm sự kiện click lên nút "Đăng nhập" bằng jQuery
                 loginButton.on('click', function () {
                     // Sử dụng window.history.pushState để thay đổi URL
                     window.history.pushState({}, 'Login', '/security/login/form');
                 });
 
-
-            });
-
-            // Bắt sự kiện khi modal được ẩn
-            $(document).ready(function () {
+                // Bắt sự kiện khi modal được ẩn
                 var myModal = $('#myModal1');
                 var previousPath = window.location.pathname; // Lưu đường dẫn trước đó
 
@@ -102,7 +98,12 @@
                     window.history.pushState({}, 'Previous Path', previousPath);
 
                 });
-            });
+                //Thông báo đăng nhập
+                var noti = $('#notification').text();
+                if (noti.length > 0) {
+                    alert(noti);
+                }
+            })
         </script>
 
         <!-- Button trigger modal -->

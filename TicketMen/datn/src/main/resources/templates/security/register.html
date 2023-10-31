@@ -6,11 +6,11 @@
                 <h4 class="modal-title" id="myModalLabel1"><strong>Đăng Ký</strong> </h4>
             </div>
             <div class="modal-body">
-                <form class="form-register row" th:action="@{/account/add}" method="post" th:object="${account}">
+                <form class="form-register row" th:action="@{/account/add}" method="post" th:object="${account}" ng-controller="register-ctrl">
                     <div class="col-6">
                         <div class="form-group mt-3">
                             <input type="text" class="form-control" name="name" id="" aria-describedby="helpId"
-                                placeholder="Họ và tên">
+                                placeholder="Họ và tên" ng-model="name" ng-change="checkInput()">
                             <small id="helpId" class="form-text text-dark">Họ và tên</small>
                         </div>
                     </div>
@@ -33,48 +33,48 @@
                     <div class="col-12">
                         <div class="form-group">
                             <input type="text" class="form-control" name="address" id="" aria-describedby="helpId"
-                                placeholder="Địa chỉ">
+                                placeholder="Địa chỉ"  ng-model="address" ng-change="checkInput()">
                             <small id="helpId" class="form-text text-dark">Địa chỉ</small>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <input type="text" class="form-control" name="sdt" id="" aria-describedby="helpId"
-                                placeholder="Số điện thoại">
+                                placeholder="Số điện thoại"  ng-model="phone" ng-change="checkInput()">
                             <small id="helpId" class="form-text text-dark">Số điện thoại</small>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <input type="text" class="form-control" name="email" id="" aria-describedby="helpId"
-                                placeholder="Email">
+                                placeholder="Email"  ng-model="email" ng-change="checkInput()">
                             <small id="helpId" class="form-text text-dark">Email</small>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group">
                             <input type="text" class="form-control" name="username" id="" aria-describedby="helpId"
-                                placeholder="Tên đăng nhập">
+                                placeholder="Tên đăng nhập"  ng-model="username" ng-change="checkInput()">
                             <small id="helpId" class="form-text text-dark">Tên đăng nhập</small>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <input type="text" class="form-control" name="password" id="" aria-describedby="helpId"
-                                placeholder="Mật khẩu">
+                                placeholder="Mật khẩu"  ng-model="password" ng-change="checkInput()">
                             <small id="helpId" class="form-text text-dark">Mật khẩu</small>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <input type="text" class="form-control" name="confirmPassword" id="" aria-describedby="helpId"
-                                placeholder="Nhập lại mật khẩu">
+                                placeholder="Nhập lại mật khẩu"  ng-model="confirmPassword" ng-change="checkInput()">
                             <small id="helpId" class="form-text text-dark">Nhập lại mật khẩu</small>
                         </div>
                     </div>
 
                     <div align="center" class="col">
-                    <button align="center" class="btn btn-primary col-md-12">Đăng ký</button><br>
+                    <button align="center" class="btn btn-primary col-md-12" ng-disabled="isDisabled">Đăng ký</button><br>
                     <button type="button" class="btn btn-default col-md-12" data-dismiss="modal">Hủy</button>
                 </div>
                 </form>
