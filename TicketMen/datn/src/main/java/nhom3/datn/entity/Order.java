@@ -34,11 +34,15 @@ public class Order implements Serializable{
     @Column(name = "NgayMua")
     Date ngayMua = new Date();
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "order")
-    List<Ticket> tickets;
+    @ManyToOne
+    @JoinColumn(name = "Ticketid")
+    Ticket ticket; 
 
     @ManyToOne
     @JoinColumn(name = "username")
     Account account;
+
+    @ManyToOne
+    @JoinColumn(name = "Typeid")
+    TicketType ticketType;
 }

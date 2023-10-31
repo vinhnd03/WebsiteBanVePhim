@@ -2,8 +2,8 @@ package nhom3.datn.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import nhom3.datn.entity.Room;
+import nhom3.datn.entity.Seat;
 
-public interface RoomDao extends JpaRepository<Room, Integer>{
+public interface SeatDao extends JpaRepository<Seat, Integer>{
     
 }

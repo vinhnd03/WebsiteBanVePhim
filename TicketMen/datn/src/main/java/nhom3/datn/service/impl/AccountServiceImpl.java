@@ -53,6 +53,6 @@ public class AccountServiceImpl implements AccountService{
 
         @Override
         public List<Account> findAllStaff() {
-            return dao.findAllStaff();
+            return dao.getStaff();
         }
 }

@@ -27,20 +27,27 @@ import lombok.Data;
 public class Movie implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     Long id;
     String name;
-    String studio;
+    String country;
     Integer age;
     String poster;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "Date")
-    Date date = new Date();
+    //New
+    String description;
 
-    @Temporal(TemporalType.TIME)
-    @Column(name = "Time")
-    Date time = new Date();
+    @Column(name = "Moviecontent")
+    String movieContent;
+    
+    Integer duration;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "Releasedate")
+    Date releaseDate = new Date();
+
+    // @Temporal(TemporalType.TIME)
+    // @Column(name = "Time")
+    // Date time = new Date();
 
     // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     // String time;
@@ -52,4 +59,6 @@ public class Movie implements Serializable{
     @ManyToOne
     @JoinColumn(name = "Categoryid")
     Category category;
+
+    
 }

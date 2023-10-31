@@ -12,8 +12,6 @@ public interface TicketService {
 
     Ticket findById(Long id);
 
-    List<Ticket> findByTicketTypeId(String cid);
-
     Ticket create(Ticket movie);
 
     Ticket update(Ticket movie);
