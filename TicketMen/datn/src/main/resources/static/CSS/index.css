@@ -32,9 +32,9 @@ body {
 
 
 
-.menu-item {
-    margin: 0 10px;
-}
+	.menu-item {
+	    margin: 0 10px;
+	}
 
 .menu-item a {
     text-decoration: none;
