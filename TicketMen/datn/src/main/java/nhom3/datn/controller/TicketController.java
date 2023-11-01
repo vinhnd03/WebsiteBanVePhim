@@ -27,7 +27,7 @@ public class TicketController {
     @RequestMapping("/ticket/list")
     public String list(Model model, @RequestParam("cid") Optional<String> cid) {
         if (cid.isPresent()) {
-            List<Ticket> list = ticketService.findByTicketTypeId(cid.get());
+            List<Ticket> list = ticketService.findAll();
             model.addAttribute("items", list);
         } else {
             List<Ticket> list = ticketService.findAll();

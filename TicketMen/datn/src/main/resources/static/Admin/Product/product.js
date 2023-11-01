@@ -9,17 +9,17 @@ app.controller("product-ctrl", function ($scope, $http) {
         $http.get("/rest/movies").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
-                item.date = new Date(item.date)
+                item.releaseDate = new Date(item.releaseDate)
                 // Chuyển đổi thời gian thành đúng định dạng "HH:mm a"
-                const timeParts = item.time.split(':');
-                const hours = parseInt(timeParts[0], 10);
-                const minutes = parseInt(timeParts[1], 10);
-                const timeDate = new Date();
-                timeDate.setHours(hours);
-                timeDate.setMinutes(minutes);
-                timeDate.setSeconds(0);
-                timeDate.setMilliseconds(0);
-                item.time = timeDate;
+                // const timeParts = item.time.split(':');
+                // const hours = parseInt(timeParts[0], 10);
+                // const minutes = parseInt(timeParts[1], 10);
+                // const timeDate = new Date();
+                // timeDate.setHours(hours);
+                // timeDate.setMinutes(minutes);
+                // timeDate.setSeconds(0);
+                // timeDate.setMilliseconds(0);
+                // item.time = timeDate;
             })
             $scope.reset();
         });
@@ -40,7 +40,7 @@ app.controller("product-ctrl", function ($scope, $http) {
     $scope.reset = function () {
         $scope.form = {
             createDate: new Date(),
-            poster: 'OIP2.jpg',
+            poster: 'no-image.png',
             available: true,
         }
     }

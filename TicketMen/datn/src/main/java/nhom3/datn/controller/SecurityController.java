@@ -27,13 +27,13 @@ public class SecurityController {
     @RequestMapping("/security/unauthoried")
     public String unauthoried(Model model){
         model.addAttribute("message", "Không có quyền truy xuất!");
-        return "redirect:/";
+        return "forward:/";
     }
 
     @RequestMapping("/security/logoff/success")
     public String logoutSuccess(Model model){
         model.addAttribute("message", "Bạn đã đăng xuất");
-        return "redirect:/";
+        return "forward:/";
     }
 
 }

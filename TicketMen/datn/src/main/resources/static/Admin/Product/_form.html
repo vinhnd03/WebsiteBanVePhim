@@ -1,11 +1,12 @@
 <div class="card">
     <div class="card-header" style="font-weight: 600; font-size: large; background-color: cornflowerblue; color: white;">
-        PRODUCT EDITION</div>
+        MOVIE EDITION</div>
     <div class="card-boby">
         <div class="row">
             <div class="col-sm-4 text-center">
                 <label for="image" class="mt-4">
-                    <img ng-src="{{'/image/' + form.poster}}" alt="" style="max-width: 90%; max-height: 250px;" class="img-fluid">
+                    <img ng-src="{{'/image/' + form.poster}}" alt="" style="max-width: 100%; max-height: 50%;" class="img-fluid">
+                    
                 </label>
             </div>
             <div class="col-sm-8 mt-3">
@@ -34,25 +35,29 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <div style="font-weight: 500;">Date</div>
-                        <input ng-model="form.date" type="date" class="form-control" style="width: 95%;">
+                        <div style="font-weight: 500;">Release Date</div>
+                        <input ng-model="form.releaseDate" type="date" class="form-control" style="width: 95%;">
                     </div>
                     <div class="form-group col-sm-6">
-                        <div style="font-weight: 500;">Time</div>
-                        <input ng-model="form.time" type="time" class="form-control" style="width: 95%;">
-                        
+                        <div style="font-weight: 500;">Duration</div>
+                        <input ng-model="form.duration" type="number" class="form-control" style="width: 95%;">                       
                     </div>
-                    <!-- <div class="form-group col-sm-6">
-                        <div style="font-weight: 500;">Available?</div>
-                        <div class="form-control" style="width: 95%;">
-                            <label class="radio-inline">
-                                <input ng-model="form.available" type="radio" ng-value="true" name="available">Yes &emsp;
-                            </label>
-                            <label class="radio-inline">
-                                <input ng-model="form.available" type="radio" ng-value="false" name="available">No
-                            </label>
-                        </div>
-                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Country</div>
+                        <input ng-model="form.country" type="text" class="form-control" style="width: 95%;">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Giới thiệu</div>
+                        <input ng-model="form.description" type="text" class="form-control" style="width: 95%;">                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div style="font-weight: 500;">Movie Content</div>
+                        <textarea ng-model="form.movieContent" class="form-control" style="width: 98%;" rows="4"></textarea>
+                    </div>
                 </div>
             </div>
             

@@ -12,5 +12,5 @@ public interface AccountDao extends JpaRepository<Account, String>{
     List<Account> getAdministrators();
 
     @Query("SELECT DISTINCT ar.account FROM Authority ar WHERE ar.role.id IN ('STAFF')")
-    List<Account> findAllStaff();
+    List<Account> getStaff();
 }

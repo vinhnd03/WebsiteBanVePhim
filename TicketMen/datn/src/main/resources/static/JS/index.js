@@ -57,3 +57,30 @@ app.controller("movie-ctrl", function ($scope, $http) {
         }
     }
 });
+app.controller("register-ctrl", function($scope) {
+    $scope.isDisabled = true; // Mặc định nút sẽ bị vô hiệu hóa
+
+    $scope.checkInput = function() {
+        // Kiểm tra tất cả các trường input
+        if ($scope.name && $scope.address && $scope.username && $scope.phone
+            && $scope.email && $scope.password && $scope.confirmPassword) {
+            $scope.isDisabled = false; // Bật nút "Đăng ký"
+        } else {
+            $scope.isDisabled = true; // Tắt nút "Đăng ký"
+            // $scope.
+        }
+    };
+});
+app.controller("login-ctrl", function($scope) {
+    $scope.isDisabled = true; // Mặc định nút sẽ bị vô hiệu hóa
+
+    $scope.checkInput = function() {
+        // Kiểm tra tất cả các trường input
+        if ($scope.username && $scope.password) {
+            $scope.isDisabled = false; // Bật nút "Đăng ký"
+        } else {
+            $scope.isDisabled = true; // Tắt nút "Đăng ký"
+            // $scope.
+        }
+    };
+});

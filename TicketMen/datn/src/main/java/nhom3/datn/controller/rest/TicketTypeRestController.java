@@ -21,8 +21,5 @@ public class TicketTypeRestController {
     @Autowired
     TicketTypeService ticketTypeService;
 
-    @GetMapping()
-    public List<TicketType> getAll(){
-        return ticketTypeService.fillAll();
-    }
+    
 }

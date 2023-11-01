@@ -27,7 +27,7 @@ app.config(function($routeProvider){
         })
         .when("/ticket", {
             templateUrl: "/admin/Ticket/index.html",
-            // controller: "ticket-ctrl"
+            controller: "ticket-ctrl"
         })
         .otherwise({
             template: "<h1 class='text-center'>FPT Polytechnic Adminitration</h1>"
