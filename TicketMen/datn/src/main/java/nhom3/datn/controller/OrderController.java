@@ -1,0 +1,18 @@
+package nhom3.datn.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class OrderController {
+    @RequestMapping("/order/select")
+    public String select(){
+        return "order/select";
+    }
+
+    
+    @RequestMapping("/order/bill")
+    public String bill(){
+        return "order/bill";
+    }
+}

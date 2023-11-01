@@ -19,8 +19,8 @@
                             </p>
                             <div class="detail-footer">
                                 <div class="dcol">
-                                    <b>Ngày chiếu</b>
-                                    <p th:text="${#dates.format(item.date, 'dd/MM/yyyy')}"></p>
+                                    <b>Ngày Ra Mắt</b>
+                                    <p th:text="${#dates.format(item.releaseDate, 'dd/MM/yyyy')}"></p>
                             </div>
                             <div class="dcol" >
                                 <b>Thể loại</b>
@@ -36,7 +36,7 @@
                             <a type="button" class="btn btn-danger" style="border-radius: 5%;">
                                 <i class="fa-brands fa-youtube fa-flip"style="margin-right: 5%;"></i><strong> TRAILER</strong></a>
                        
-                                <a type="button" class="btn btn-success">
+                                <a type="button" class="btn btn-success" th:href="@{/order/select}">
                                 <i class="fa-solid fa-cart-shopping fa-beat"style="margin-right: 5%;"></i><strong>MUA VÉ</strong></a>
                             
                         </div>

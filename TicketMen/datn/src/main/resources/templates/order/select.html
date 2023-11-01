@@ -1,0 +1,308 @@
+<style>
+    .order-title {
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        background-color: #999;
+        border-radius: 50px 0 50px 0;
+    }
+
+    .order-wrap {
+        width: 90%;
+        display: block;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .order-wrap>div {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    .order-overview {
+        width: 700px;
+    }
+
+    .order-overview h2 {
+        font-family: 'MyriadBold';
+        font-weight: normal;
+        font-size: 30px;
+        color: #000000;
+        margin-bottom: 10px;
+        line-height: 30px;
+        text-align: left;
+    }
+
+    .about-ticket {
+        display: block;
+        width: 100%;
+        height: 30px;
+        display: table;
+        border-spacing: 1px;
+    }
+
+    .about-ticket li {
+        width: 104px;
+        display: table-cell;
+        vertical-align: middle;
+        border: 1px solid #ccc;
+        background-color: #e97255;
+        margin-right: 10px;
+    }
+
+
+    .order-clock {
+        bottom: 38px;
+        margin-right: 0px;
+        margin-top: 10px;
+    }
+
+    .order-clock .title {
+        font-weight: bold;
+    }
+
+    #demNguoc {
+        font-weight: bold;
+        font-size: 24px;
+        color: #ff6600;
+    }
+
+
+    .ticket-wrap {
+        width: 90%;
+        display: block;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+
+    .tbl-wrap {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+
+    thead {
+        background-color: #4eaff0;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .ticket-num {
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ticket-num a {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    .ticket-num input {
+        width: 40px;
+        text-align: center;
+        margin: 0 5px;
+    }
+
+    .ticket-price,
+    .ticket-total {
+        font-weight: bold;
+    }
+
+    .ticket-cal {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+
+    .ticket-cal li {
+        font-weight: bold;
+    }
+
+    input[type="button"] {
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    .input-but {
+        display: flex;
+        justify-content: center;
+    }
+
+    #ticket-back {
+        background-color: #ccc;
+    }
+
+    #ticket-back:hover {
+        background-color: #999;
+    }
+
+    #ticket-next:hover {
+        background-color: #000;
+    }
+
+    .input {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    #quaylai {
+        background-color: #8d8989;
+        padding: 10px 20px;
+        font-weight: bold;
+        color: white;
+        border-radius: 50px 0 50px 0;
+    }
+
+    #quaylai:hover {
+        background-color: #ed4bda;
+    }
+
+    #thanhtoan {
+        background-color: #fe40e5;
+        padding: 10px 20px;
+        font-weight: bold;
+        color: white;
+        border-radius: 50px 0 50px 0;
+    }
+
+    #thanhtoan:hover {
+        background-color: #eba23c;
+    }
+</style>
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<main>
+    <div class="order-title">
+        <div class="order-wrap">
+            <!--<div class="order-pic"><img src="https://cinestar.com.vn/pictures/films/6.jpg" /></div>-->
+            <div class="order-overview">
+                <h2>
+                    <strong>Tên Phim</strong><br>
+                    <span>Đất Rừng Phương Nam</span>
+                </h2>
+                <ul class="about-ticket">
+                    <li>
+                        <p class="caption">Select showtime</p>
+                        <p class="value">19:30</p>
+                    </li>
+                    <li>
+                        <p class="caption">Date</p>
+                        <p class="value">30-10-2023</p>
+                    </li>
+                    <li>
+                        <p class="caption">Quantity</p>
+                        <p class="value"><span>0</span>
+                            <sub>vé</sub>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="caption">Total amount</p>
+                        <p class="value">
+                            <span>0</span>
+                            <sup>đ</sup>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="order-clock">
+                <span class="title">Thời gian giữ ghế</span>
+                <span id="demNguoc">5:00</span>
+            </div>
+        </div>
+    </div>
+    <div class="ticket-wrap">
+        <div class="tbl-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticket type</th>
+                        <th>Quantity</th>
+                        <th>Price (VNĐ)</th>
+                        <th>Total amount (VNĐ)</th>
+                    </tr>
+                </thead>
+
+                <tbody id="content-price">
+                    <tr data-seatstyle-id="30" data-ticket-id="26">
+                        <td>Người Lớn (ĐÔI)</td>
+                        <td class="ticket-num">
+                            <a href="javascript:void(0);" class="minus">-</a>
+                            <input type="text" value="0" readonly size="3" class="quantity-input">
+                            <a href="javascript:void(0);" class="add">+</a>
+                        </td>
+                        <td class="ticket-price" data-price="100000">100000
+                            <sup>đ</sup>
+                        </td>
+                        <td class="ticket-total" data-total="0">
+                            <span>0</span>
+                            <sup>đ</sup>
+                        </td>
+                    </tr>
+                    <tr data-seatstyle-id="29" data-ticket-id="26">
+                        <td>Người Lớn (ĐƠN)</td>
+                        <td class="ticket-num">
+                            <a href="javascript:void(0);" class="minus">-</a>
+                            <input type="text" value="0" readonly size="3" class="quantity-input">
+                            <a href="javascript:void(0);" class="add">+</a>
+                        </td>
+                        <td class="ticket-price" data-price="50000">50000<sup>đ</sup></td>
+                        <td class="ticket-total" data-total="0">
+                            <span>0</span>
+                            <sup>đ</sup>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <ul class="ticket-cal">
+            <li class="total-ticket-num">Quantity:<span>0</span><mark>vé</mark></li>
+            <li class="total-ticket-amount">Total amount:<span>0.00</span><sup>đ</sup></li>
+        </ul>
+        <div class="ticket-request">
+            <p></p>
+        </div>
+        <div class="input">
+            <div class="button">
+                <button id="quaylai">QUAY LẠI</button>
+            </div>
+            <div class="button">
+                <button id="thanhtoan" th:href="@{/order/bill}">CHỌN GHẾ</button>
+            </div>
+        </div>
+    </div>
+    <script src="/JS/test6.js"></script>
+
+</main>
+</div>  
