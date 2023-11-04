@@ -2,32 +2,26 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    /* Đưa trang vào giữa màn hình theo chiều ngang */
     align-items: center;
-    /* Đưa trang vào giữa màn hình theo chiều dọc */
     height: 100vh;
-    /* Chiều cao của trang bằng toàn bộ chiều cao của màn hình */
     margin: 0;
-    /* Loại bỏ khoảng trắng mặc định */
 }
 
 .flex {
     display: flex;
     flex-direction: row;
-    /* Hiển thị các phần tử con theo chiều ngang */
     justify-content: space-between;
-    /* Căn cách giữa "cinema-room" và "booking-summary" */
     align-items: center;
-    /* Căn giữa theo chiều dọc */
 }
 
 .cinema-room {
     text-align: center;
     margin-top: 20px;
     max-width: 60%;
-    /* Điều chỉnh chiều rộng tối đa của "cinema-room" */
-    text-align: center;
     background-color: #007BFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -43,6 +37,9 @@ h1 {
     padding: 4px;
     max-width: 400px;
     text-align: center;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .seating-container {
@@ -56,6 +53,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     max-width: 400px;
+    margin: 0 auto;
 }
 
 .seat {
@@ -64,6 +62,7 @@ h1 {
     background: #ccc;
     margin: 5px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .seat.selected {
@@ -87,6 +86,7 @@ h1 {
     width: 20px;
     height: 20px;
     margin-right: 10px;
+    border-radius: 50%;
 }
 
 .legend-item-text {
@@ -109,6 +109,7 @@ h1 {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .action-button:hover {
@@ -117,18 +118,18 @@ h1 {
 
 .booking-summary {
     max-width: 48%;
-    /* Điều chỉnh chiều rộng tối đa của "booking-summary" */
-    text-align: left;
-    margin: 50px;
     background-color: #007BFF;
+    text-align: left;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .showtimes {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
-    background-color: #007BFF;
-    /* Màu nền */
+    margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -136,9 +137,7 @@ h1 {
 
 .showtime-button {
     background-color: #fff;
-    /* Màu nền nút */
     color: #007BFF;
-    /* Màu chữ nút */
     border: none;
     padding: 8px 16px;
     border-radius: 5px;
@@ -148,9 +147,7 @@ h1 {
 
 .showtime-button:hover {
     background-color: #0056b3;
-    /* Màu nền khi di chuột qua */
     color: #fff;
-    /* Màu chữ khi di chuột qua */
 }
 
 .showtime-button:focus {
