@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test9.css">
+</head>
+
+<body>
+    <div class="order-wrap">
+        <div class="order-overview">
+            <h2><strong>Movie's name</strong><br><span>THE WATER FLOWS TO THE SEA (T16)</span></h2>
+
+            <ul class="about-ticket">
+                <li>
+                    <p class="caption">Select showtime</p>
+                    <p class="value">19:30</p>
+                </li>
+                <li>
+                    <p class="caption">Date</p>
+                    <p class="value">30-10-2023</p>
+                </li>
+                <li>
+                    <p class="caption">Quantity</p>
+                    <p class="value"><span>0</span><sub>vé</sub></p>
+                </li>
+                <li>
+                    <p class="caption">Total amount</p>
+                    <p class="value"><span>0</span><sup>đ</sup></p>
+                </li>
+            </ul>
+            <ul class="about-seat">
+                <li>Seat number</li>
+                <li class="seat-number"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="ticket-wrap">
+        <div class="tbl-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticket type</th>
+                        <th>Quantity</th>
+                        <th>Price (VNĐ)</th>
+                        <th>Total amount (VNĐ)</th>
+                    </tr>
+                </thead>
+                <tbody id="content-price">
+                    <tr data-seatstyle-id="30" data-ticket-id="26">
+                        <td>Người Lớn (ĐÔI)</td>
+                        <td class="ticket-num">
+                            <a href="javascript:void(0);" class="minus" data-index="0">-</a>
+                            <input type="text" value="0" readonly size="3" class="quantity-input" data-index="0">
+                            <a href="javascript:void(0);" class="add" data-index="0">+</a>
+                        </td>
+                        <td class="ticket-price" data-price="100000">100000<sup>đ</sup></td>
+                        <td class="ticket-total" data-total="0"><span>0</span><sup>đ</sup></td>
+                    </tr>
+                    <tr data-seatstyle-id="29" data-ticket-id="26">
+                        <td>Người Lớn (ĐƠN)</td>
+                        <td class="ticket-num">
+                            <a href="javascript:void(0);" class="minus" data-index="1">-</a>
+                            <input type="text" value="0" readonly size="3" class="quantity-input" data-index="1">
+                            <a href="javascript:void(0);" class="add" data-index="1">+</a>
+                        </td>
+                        <td class="ticket-price" data-price="50000">50000<sup>đ</sup></td>
+                        <td class="ticket-total" data-total="0"><span>0</span><sup>đ</sup></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul class="ticket-cal">
+            <li class="total-ticket-num">Quantity:<span>0</span><mark>vé</mark></li>
+            <li class="total-ticket-amount">Total amount:<span>0,00</span><sup>đ</sup></li>
+        </ul>
+        <div class="ticket-request">
+            <p></p>
+        </div>
+        <div class="input-but"><input type="button" value="Back" id="ticket-back"><input type="button" value="Select Seat" id="ticket-next"></div>
+    </div>
+    <script src="test9.js"></script>
+</body>
+
+</html>

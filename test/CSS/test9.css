@@ -1,0 +1,132 @@
+.order-wrap {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    /* Đường biên cho order-wrap */
+    padding: 10px;
+}
+
+.order-overview {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    border: 1px solid #ccc;
+    /* Đường biên cho order-overview */
+    padding: 10px;
+}
+
+.about-ticket li,
+.about-seat li {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    /* Thêm đường biên cho mỗi dòng */
+    padding: 5px 10px;
+}
+
+.about-seat li {
+    flex-basis: 50%;
+    text-align: center;
+    border-left: 1px solid;
+    /* Bỏ đường biên trái cho Seat number */
+}
+
+.ticket-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.tbl-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.ticket-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticket-num a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.ticket-num input {
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+}
+
+.ticket-price,
+.ticket-total {
+    font-weight: bold;
+}
+
+.ticket-cal {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.ticket-cal li {
+    font-weight: bold;
+}
+
+input[type="button"] {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.input-but {
+    display: flex;
+    justify-content: center;
+}
+
+#ticket-back {
+    background-color: #ccc;
+}
+
+#ticket-back:hover {
+    background-color: #999;
+}
+
+#ticket-next:hover {
+    background-color: #000;
+}
