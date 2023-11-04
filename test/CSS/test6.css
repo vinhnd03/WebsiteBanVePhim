@@ -27,6 +27,7 @@ body {
     max-width: 60%;
     /* Điều chỉnh chiều rộng tối đa của "cinema-room" */
     text-align: center;
+    background-color: #007BFF;
 }
 
 h1 {
@@ -119,6 +120,7 @@ h1 {
     /* Điều chỉnh chiều rộng tối đa của "booking-summary" */
     text-align: left;
     margin: 50px;
+    background-color: #007BFF;
 }
 
 .showtimes {
