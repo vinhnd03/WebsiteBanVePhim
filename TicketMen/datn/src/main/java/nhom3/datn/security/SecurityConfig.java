@@ -43,6 +43,7 @@ public class SecurityConfig {
             try {
                 Account user = accountService.findById(username.toLowerCase());
                 session.setAttribute("name", user.getName());
+                session.setAttribute("username", user.getUsername());
                 String password = pe.encode(user.getPassword());
 
                 String[] roles = user.getAuthorities().stream()
