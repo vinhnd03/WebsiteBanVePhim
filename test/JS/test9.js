@@ -1,71 +1,65 @@
-var app = angular.module("seatBookingApp", []);
+// Lấy các phần tử HTML bạn cần thao tác
+const quantityInputs = document.querySelectorAll('.ticket-num input');
+const ticketPrices = Array.from(document.querySelectorAll('.ticket-price')).map(ticketPriceElement => parseInt(ticketPriceElement.getAttribute('data-price')));
+const ticketTotalElements = document.querySelectorAll('.ticket-total span');
+const totalTicketNumElement = document.querySelector('.total-ticket-num span');
+const totalTicketAmountElement = document.querySelector('.total-ticket-amount span');
+const orderWrapTotalAmountElement = document.querySelector('.order-wrap .about-ticket li:nth-child(4) .value span');
+const orderWrapQuantityElement = document.querySelector('.order-wrap .about-ticket li:nth-child(3) .value span');
 
-app.controller("SeatBookingController", function($scope, $http) {
-    $scope.showtimes = ["17:00", "18:00", "19:00", "20:00"];
-    $scope.selectedShowtime = "";
+// Khởi tạo mảng lưu trữ số lượng và giá trị tổng
+let quantities = [0, 0];
 
-    // Define rows and seats with labels A to J (10 columns)
-    $scope.rows = Array.from({ length: 12 }, (v, k) => k + 1);
-    $scope.columns = Array.from({ length: 10 }, (v, k) => String.fromCharCode(65 + k)); // A to J
-    $scope.seats = generateSeats($scope.rows, $scope.columns);
+// Hàm cập nhật số lượng và giá trị tổng cho từng loại vé
+function updateQuantityAndTotal(index) {
+    const quantity = quantities[index];
+    const price = ticketPrices[index];
+    const totalAmount = quantity * price;
 
-    $scope.selectedSeats = [];
-    $scope.availableSeats = $scope.rows.length * $scope.columns.length;
-    $scope.pricePerSeat = 50000;
+    quantityInputs[index].value = quantity;
+    ticketTotalElements[index].textContent = totalAmount + 'đ';
+}
 
-    // Replace "URL_OF_MOVIE_LIST" with the actual URL to fetch movie list from the server
-    $http.get("URL_OF_MOVIE_LIST")
-        .then(function(response) {
-            $scope.movies = response.data;
-        })
-        .catch(function(error) {
-            console.error("Error fetching movie list: " + error);
-        });
+// Hàm cập nhật tổng số vé và tổng số tiền
+function updateTotalTicket() {
+    const totalQuantity = quantities.reduce((acc, current) => acc + current, 0);
+    totalTicketNumElement.textContent = totalQuantity;
+    const totalAmount = quantities.reduce((acc, current, index) => acc + current * ticketPrices[index], 0);
+    totalTicketAmountElement.textContent = totalAmount + ',00';
 
-    $scope.selectShowtime = function(showtime) {
-        $scope.selectedShowtime = showtime;
-    };
+    // Cập nhật giá ở order-wrap
+    orderWrapTotalAmountElement.textContent = totalAmount + 'đ';
+    orderWrapQuantityElement.textContent = totalQuantity;
+}
 
-    $scope.toggleSeat = function(seat) {
-        if ($scope.isSeatAvailable(seat)) {
-            $scope.selectedSeats.push(seat);
-            $scope.availableSeats--;
-        } else if ($scope.isSeatSelected(seat)) {
-            var index = $scope.selectedSeats.indexOf(seat);
-            $scope.selectedSeats.splice(index, 1);
-            $scope.availableSeats++;
-        }
-    };
+// Xử lý sự kiện khi tăng số lượng
+function handleIncrease(index) {
+    quantities[index]++;
+    updateQuantityAndTotal(index);
+    updateTotalTicket();
+}
 
-    $scope.isSeatAvailable = function(seat) {
-        return $scope.selectedSeats.indexOf(seat) === -1;
-    };
-
-    $scope.isSeatSelected = function(seat) {
-        return $scope.selectedSeats.indexOf(seat) !== -1;
-    };
-
-    $scope.goBack = function() {
-        $scope.selectedSeats = [];
-        $scope.availableSeats = $scope.rows.length * $scope.columns.length;
-    };
-
-    $scope.continueBooking = function() {
-        if ($scope.selectedShowtime && $scope.selectedSeats.length > 0) {
-            alert("Đã chọn suất chiếu: " + $scope.selectedShowtime);
-            // Add further processing, e.g., redirecting the user to the ticket booking page
-        } else {
-            alert("Vui lòng chọn một suất chiếu và ít nhất một ghế trước khi tiếp tục.");
-        }
-    };
-
-    function generateSeats(rows, columns) {
-        var seats = [];
-        rows.forEach(function(row) {
-            columns.forEach(function(column) {
-                seats.push(column + row);
-            });
-        });
-        return seats;
+// Xử lý sự kiện khi giảm số lượng
+function handleDecrease(index) {
+    if (quantities[index] > 0) {
+        quantities[index]--;
+        updateQuantityAndTotal(index);
+        updateTotalTicket();
     }
+}
+
+// Gán sự kiện cho nút tăng và giảm trên cả hai loại vé
+document.querySelectorAll('.ticket-num .add').forEach((addButton, index) => {
+    addButton.addEventListener('click', () => {
+        handleIncrease(index);
+    });
 });
+
+document.querySelectorAll('.ticket-num .minus').forEach((minusButton, index) => {
+    minusButton.addEventListener('click', () => {
+        handleDecrease(index);
+    });
+});
+
+// Xử lý mặc định khi tải trang
+updateTotalTicket();
