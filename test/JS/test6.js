@@ -1,81 +1,71 @@
-const seatsContainer = document.querySelector(".seats");
-const rows = 12; // Số hàng
-const seatsPerRow = 10; // Số ghế trong mỗi hàng
-const seatAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const pricePerSeat = 50000; // Giá mỗi ghế là 50,000 VNĐ
+var app = angular.module("seatBookingApp", []);
 
-let selectedSeats = [];
-let availableSeats = rows * seatsPerRow;
+app.controller("SeatBookingController", function($scope, $http) {
+    $scope.showtimes = ["17:00", "18:00", "19:00", "20:00"];
+    $scope.selectedShowtime = "";
 
-const selectedSeatsList = document.getElementById('selected-seats');
-const totalAmountElement = document.getElementById('total-amount');
+    // Define rows and seats with labels A to J (10 columns)
+    $scope.rows = Array.from({ length: 12 }, (v, k) => k + 1);
+    $scope.columns = Array.from({ length: 10 }, (v, k) => String.fromCharCode(65 + k)); // A to J
+    $scope.seats = generateSeats($scope.rows, $scope.columns);
 
-// Tạo ghế và theo dõi trạng thái của ghế
-for (let i = 0; i < rows; i++) {
-    for (let j = 1; j <= seatsPerRow; j++) {
-        const seat = document.createElement("div");
-        seat.classList.add("seat");
-        seat.textContent = seatAlphabet[i] + j;
-        seatsContainer.appendChild(seat);
-    }
-}
+    $scope.selectedSeats = [];
+    $scope.availableSeats = $scope.rows.length * $scope.columns.length;
+    $scope.pricePerSeat = 50000;
 
-const updateSeatStatus = () => {
-    selectedSeatsList.textContent = selectedSeats.length;
+    // Replace "URL_OF_MOVIE_LIST" with the actual URL to fetch movie list from the server
+    $http.get("URL_OF_MOVIE_LIST")
+        .then(function(response) {
+            $scope.movies = response.data;
+        })
+        .catch(function(error) {
+            console.error("Error fetching movie list: " + error);
+        });
 
-    let totalAmount = selectedSeats.length * pricePerSeat;
+    $scope.selectShowtime = function(showtime) {
+        $scope.selectedShowtime = showtime;
+    };
 
-    totalAmountElement.textContent = totalAmount;
-};
-
-seatsContainer.addEventListener("click", (e) => {
-    if (e.target.classList.contains("seat")) {
-        const seat = e.target;
-        if (seat.classList.contains("selected")) {
-            seat.classList.remove("selected");
-            seat.classList.add("available");
-            selectedSeats.pop();
-            availableSeats++;
-        } else {
-            seat.classList.add("selected");
-            seat.classList.remove("available");
-            selectedSeats.push(seat);
-            availableSeats--;
+    $scope.toggleSeat = function(seat) {
+        if ($scope.isSeatAvailable(seat)) {
+            $scope.selectedSeats.push(seat);
+            $scope.availableSeats--;
+        } else if ($scope.isSeatSelected(seat)) {
+            var index = $scope.selectedSeats.indexOf(seat);
+            $scope.selectedSeats.splice(index, 1);
+            $scope.availableSeats++;
         }
-        updateSeatStatus();
-    }
-});
+    };
 
-// Xử lý sự kiện khi nút Quay lại được nhấn
-const goBackButton = document.getElementById('back-button');
-goBackButton.addEventListener('click', () => {
-    // Đặt lại trạng thái ghế đã chọn và số tiền
-    selectedSeats.forEach(seat => {
-        seat.classList.remove('selected');
-        seat.classList.add('available');
-    });
-    selectedSeats = [];
-    availableSeats = rows * seatsPerRow;
-    updateSeatStatus();
-});
+    $scope.isSeatAvailable = function(seat) {
+        return $scope.selectedSeats.indexOf(seat) === -1;
+    };
 
-// Xử lý sự kiện khi nút Tiếp tục được nhấn
-const continueButton = document.getElementById('continue-button');
-continueButton.addEventListener('click', () => {
-    // Thêm mã xử lý khi người dùng muốn tiếp tục với việc đặt vé
-    // Ở đây, bạn có thể thêm mã JavaScript để chuyển người dùng đến trang đặt vé hoặc thực hiện các thao tác khác.
-    alert('Đã chuyển đến trang đặt vé.');
+    $scope.isSeatSelected = function(seat) {
+        return $scope.selectedSeats.indexOf(seat) !== -1;
+    };
 
-    // Để thay đổi suất chiếu, bạn có thể sử dụng một số hàm hoặc đoạn mã tùy theo cấu trúc trang web của bạn. 
-    // Dưới đây là một ví dụ đơn giản về cách thay đổi suất chiếu:
-    const showtimeElement = document.querySelector('.showtime-button.selected');
-    if (showtimeElement) {
-        // Lấy giá trị suất chiếu đã chọn
-        const selectedShowtime = showtimeElement.textContent;
+    $scope.goBack = function() {
+        $scope.selectedSeats = [];
+        $scope.availableSeats = $scope.rows.length * $scope.columns.length;
+    };
 
-        // Thực hiện xử lý tiếp theo với suất chiếu đã chọn
-        alert(`Đã chọn suất chiếu: ${selectedShowtime}`);
-    } else {
-        alert('Vui lòng chọn một suất chiếu trước khi tiếp tục.');
+    $scope.continueBooking = function() {
+        if ($scope.selectedShowtime && $scope.selectedSeats.length > 0) {
+            alert("Đã chọn suất chiếu: " + $scope.selectedShowtime);
+            // Add further processing, e.g., redirecting the user to the ticket booking page
+        } else {
+            alert("Vui lòng chọn một suất chiếu và ít nhất một ghế trước khi tiếp tục.");
+        }
+    };
+
+    function generateSeats(rows, columns) {
+        var seats = [];
+        rows.forEach(function(row) {
+            columns.forEach(function(column) {
+                seats.push(column + row);
+            });
+        });
+        return seats;
     }
 });

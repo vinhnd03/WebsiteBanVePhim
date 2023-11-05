@@ -1,49 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="seatBookingApp">
 
 <head>
     <link rel="stylesheet" type="text/css" href="test6.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 </head>
 
-<body>
+<body ng-controller="SeatBookingController">
     <div class="flex">
-        <!-- Phần "cinema-room" -->
         <div class="cinema-room">
             <h1>Chọn ghế xem phim</h1>
             <div class="showtimes">
-                <p class="showtime-label">Đỗi Xuất Chiếu:</p>
-                <button class="showtime-button">17:00</button>
-                <button class="showtime-button">18:00</button>
-                <button class="showtime-button">19:00</button>
-                <button class="showtime-button">20:00</button>
+                <p class="showtime-label">Đổi Xuất Chiếu:</p>
+                <button class="showtime-button" ng-repeat="showtime in showtimes" ng-click="selectShowtime(showtime)">{{showtime}}</button>
             </div>
             <div class="screen">Màn hình</div>
             <div class="seating-container">
-                <div class="seats"></div>
+                <div class="seats">
+                    <div class="seat" ng-class="{'selected': isSeatSelected(seat), 'available': isSeatAvailable(seat)}" ng-repeat="seat in seats" ng-click="toggleSeat(seat)">{{seat}}</div>
+                </div>
                 <div class="legend">
                     <div class="legend-item occupied">
                         <div class="legend-item-icon"></div>
-                        <div class="legend-item-text">Ghế đã đặt: <span id="selected-seats">0</span></div>
+                        <div class="legend-item-text">Ghế đã đặt: <span>{{selectedSeats.length}}</span></div>
                     </div>
                     <div class="legend-item available">
                         <div class="legend-item-icon"></div>
-                        <div class="legend-item-text">Ghế chưa đặt: <span id="available-seats">120</span></div>
+                        <div class="legend-item-text">Ghế còn trống: <span>{{availableSeats}}</span></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Phần "booking-summary" -->
         <div class="booking-summary">
             <img src="URL_OF_YOUR_MOVIE_IMAGE" alt="Tên phim" class="movie-image">
             <h2>Tên phim</h2>
             <p>Rạp số: 1</p>
-            <p>Suất chiếu: <span id="showtime">16:00</span></p>
-            <p>Giá tiền: <span id="total-amount">0</span> VNĐ</p>
-            <button id="back-button" class="action-button">Quay lại</button>
-            <button id="continue-button" class="action-button">Tiếp tục</button>
+            <p>Suất chiếu: {{selectedShowtime}}</p>
+            <p>Tổng giá tiền: {{selectedSeats.length * pricePerSeat}} VNĐ</p>
+            <button id="back-button" class="action-button" ng-click="goBack()">Quay lại</button>
+            <button id="continue-button" class="action-button" ng-click="continueBooking()">Tiếp tục</button>
         </div>
     </div>
-
     <script src="test6.js"></script>
 </body>
 
