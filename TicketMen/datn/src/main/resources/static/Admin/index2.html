@@ -44,6 +44,7 @@
         <li class="center no-padding">
             <div class="indigo darken-2 white-text" style="height: 180px;">
                 <div class="row" style="background-color: gray;">
+                    
                     <img style="margin-top:10% ;margin-left: 10%;" width="200px"
                         src="../image/logo ticketmen_preview_rev_1.png"
                         class="circle responsive-img" />
@@ -159,9 +160,9 @@
             <div class="row">
                 <div class="col s12">
                     <h5 class="white-text">NHÓM: TICKET MAN</h5>
-                    <ul id='credits'>
+                    <ul id='credits' ng-controller="setusername">
                         <h3>Người làm trang web: Hoàng Đẹp trai</h3>
-
+                        <div ng-bind="un"></div>
                     </ul>
                 </div>
             </div>

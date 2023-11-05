@@ -1,4 +1,17 @@
 var app = angular.module("myApp", ["ngRoute"]);
+
+app.controller('username-ctrl', function ($scope, $window) {
+    // Lấy tên từ session.name
+    var name = $(".getname").text();
+    // alert(name)
+    console.log(name)
+
+    // Lưu tên vào local storage
+    $window.localStorage.setItem('name', name);
+
+    
+});
+
 app.controller("movie-ctrl", function ($scope, $http) {
     $scope.items = [];
     $scope.cates = [];
@@ -67,7 +80,7 @@ app.controller("register-ctrl", function($scope) {
             $scope.isDisabled = false; // Bật nút "Đăng ký"
         } else {
             $scope.isDisabled = true; // Tắt nút "Đăng ký"
-            // $scope.
+            
         }
     };
 });
@@ -80,7 +93,41 @@ app.controller("login-ctrl", function($scope) {
             $scope.isDisabled = false; // Bật nút "Đăng ký"
         } else {
             $scope.isDisabled = true; // Tắt nút "Đăng ký"
-            // $scope.
+            
         }
     };
+});
+
+app.controller("seat-selecting", function($scope){
+    $scope.rows = 12;
+    $scope.seatsPerRow = 10;
+    $scope.seatAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $scope.pricePerSeat = 50000;
+    $scope.selectedSeats = [];
+    $scope.availableSeats = $scope.rows * $scope.seatsPerRow;
+
+    $scope.selectSeatsList = 0;
+    $scope.totalAmountElement = 0;
+
+    $scope.getSeatNumbers = function () {
+        // Hàm này trả về một mảng số từ 1 đến seatsPerRow
+        return Array.from({ length: $scope.seatsPerRow }, (_, i) => i + 1);
+      };
+  
+      $scope.getSeatLabel = function (row, seatNumber) {
+        return $scope.seatAlphabet[row] + seatNumber;
+      };
+  
+      $scope.toggleSeat = function (row, seatNumber) {
+        // Xử lý khi người dùng chọn hoặc bỏ chọn ghế
+        const seat = $scope.getSeatLabel(row, seatNumber);
+        const index = $scope.selectedSeats.indexOf(seat);
+  
+        if (index !== -1) {
+          $scope.selectedSeats.splice(index, 1);
+        } else {
+          $scope.selectedSeats.push(seat);
+        }
+      };
+
 });

@@ -7,15 +7,12 @@
                         <img class="col-3" th:src="@{|/image/*{poster}|}" alt="">
                         <div class="col-9 text">
                             <p class="name mt-2" th:text="*{name}"></p>
-                            <p class="time"> 2023 · 130 phút</p>
-                            <i class="description mt-10">Cái chết chỉ là sự khởi đầu.</i>
+                            <p class="time"> 2023 · [[*{duration}]] phút</p>
+                            <i class="description mt-10" th:text="*{description}"></i>
                             <hr>
                             <div class="mt-10"><b>Nội dung</b></div>
-                            <p class="mcontent">
-                                Thám tử nổi tiếng Hercule Poirot, đã nghỉ hưu và sống trong sự tự do ở Venice,
-                                một lần ông miễn cưỡng tham gia một buổi gọi hồn vào đêm Halloween tại một lâu
-                                đài đổ nát, bị ma ám. Khi một trong những vị khách bị giết, thám tử bị cuốn vào
-                                một thế giới u ám của bóng tối và bí mật.
+                            <p class="mcontent" th:text="*{movieContent}">
+                                
                             </p>
                             <div class="detail-footer">
                                 <div class="dcol">
@@ -28,7 +25,7 @@
                             </div>
                             <div class="dcol">
                                 <b>Quốc gia</b>
-                                <p>Mỹ</p>
+                                <p  th:text="*{country}"></p>
                             </div>
                         </div>
                         <div style="color: white;"> 

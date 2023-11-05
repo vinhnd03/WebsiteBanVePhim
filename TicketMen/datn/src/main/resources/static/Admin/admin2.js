@@ -34,3 +34,8 @@ app.config(function($routeProvider){
         })
 
 });
+
+app.controller("setusername", function($scope, $window){
+    var username = $window.localStorage.getItem('name');
+    $scope.un = username;
+})
