@@ -105,7 +105,7 @@ tr:hover {
     font-weight: bold;
 }
 
-input[type="button"] {
+.ticket-page-btn {
     margin: 10px;
     padding: 10px 20px;
     background-color: #333;

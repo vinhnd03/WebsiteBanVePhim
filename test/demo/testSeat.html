@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .square {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body ng-app="gridApp" ng-controller="GridController">
+    <div class="grid">
+        <div ng-repeat="row in rows" class="row">
+            <div ng-repeat="col in cols" class="square">
+                {{ row * cols + col + 1 + 'hello'}}
+            </div>
+        </div>
+    </div>
+    <script>
+        angular.module("gridApp", [])
+            .controller("GridController", function ($scope) {
+                $scope.rows = 12; // Số hàng
+                $scope.cols = 8; // Số cột
+                alert($scope.rows)
+            });
+    </script>
+</body>
+
+</html>

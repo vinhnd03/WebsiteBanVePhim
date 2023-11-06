@@ -55,4 +55,8 @@ public class AccountRestController {
         accountService.delete(id);
     }
 
+    @GetMapping("{id}")
+    public Account getUser(@PathVariable("id") String id){
+        return accountService.findById(id);
+    }
 }
