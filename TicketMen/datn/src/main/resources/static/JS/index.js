@@ -131,3 +131,12 @@ app.controller("seat-selecting", function($scope){
       };
 
 });
+
+app.controller('username-ctrl', function ($scope, $window) {
+    // Lấy tên từ session.name
+    var username = $(".getusername").text();
+    // alert(name)
+    // Lưu tên vào local storage
+    $window.localStorage.setItem('username', username);
+    console.log(username);
+});
