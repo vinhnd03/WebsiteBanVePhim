@@ -48,4 +48,9 @@ public class TicketServiceImpl implements TicketService{
     public void delete(Long id) {
         tdao.deleteById(id);
     }
+
+    @Override
+    public List<String> findTimesByDateAndMovieId(String date, Long id) {
+        return tdao.findTimesByDateAndMovieId(date, id);
+    }
 }

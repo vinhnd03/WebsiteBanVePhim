@@ -31,7 +31,7 @@ app.controller("user_ctrl", function ($scope, $http, $window) {
         promise.then(function (resp) {
             // Thành công: gán dữ liệu người dùng vào $scope.user
             $scope.user = resp.data;
-            console.log($scope.user); // Dữ liệu người dùng sẽ hiển thị sau khi cuộc gọi hoàn thành.
+            // console.log($scope.user); // Dữ liệu người dùng sẽ hiển thị sau khi cuộc gọi hoàn thành.
             $scope.form = angular.copy($scope.user);
             console.log('form:', $scope.form);
         }).catch(function (error) {
@@ -44,12 +44,12 @@ app.controller("user_ctrl", function ($scope, $http, $window) {
     $scope.initialize();
     // Hàm cập nhật thông tin người dùng
     $scope.update = function () {
+        
         var item = angular.copy($scope.form);
         
-        console.log("item.username:", item.username);
+        console.log("item.username:", item);
         
         $http.put(`/rest/accounts/${item.username}`, item).then(resp => {
-            $scope.form = resp.data;
             alert("Cập nhật thông tin thành công");
             console.log('form2:', $scope.form);
             

@@ -50,4 +50,10 @@ public class TicketRestController {
     public void delete(@PathVariable("id") Long id){
         ticketService.delete(id);
     }
+
+    @GetMapping("{date}/{id}")
+    public List<String> getShowtime(@PathVariable("date") String date,
+                    @PathVariable("id") Long id){
+        return ticketService.findTimesByDateAndMovieId(date, id);
+    }
 }

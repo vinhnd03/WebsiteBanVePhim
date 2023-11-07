@@ -68,6 +68,7 @@ app.controller("product-ctrl", function ($scope, $http) {
 
     //Cập nhật sản phẩm
     $scope.update = function () {
+        console.log("form: ", $scope.form);
         var item = angular.copy($scope.form);
         $http.put(`/rest/movies/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);

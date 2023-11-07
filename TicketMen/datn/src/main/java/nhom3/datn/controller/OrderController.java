@@ -16,8 +16,7 @@ public class OrderController {
 
     @RequestMapping("/order/select/{id}")
     public String select(Model model, @PathVariable("id") Long id){
-        Movie item = movieService.findById(id);
-        model.addAttribute("item", item);
+        model.addAttribute("id", id);
         return "order/select";
     }
 

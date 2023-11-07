@@ -1,5 +1,6 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
     <main ng-controller="seatSelectCtrl">
+        <div hidden th:text="${id}"></div>
         <div class="container-fluid row">
             <div class="col-2"></div>
             <div class="cinema-room col-6">

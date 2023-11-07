@@ -20,4 +20,6 @@ public interface TicketService {
     Ticket update(Ticket movie);
 
     void delete(Long id);
+
+    List<String> findTimesByDateAndMovieId(String date, Long id);
 }

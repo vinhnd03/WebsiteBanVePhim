@@ -98,16 +98,43 @@ app.controller("login-ctrl", function($scope) {
     };
 });
 
-app.controller("seat-selecting", function($scope){
-    $scope.rows = 12;
-    $scope.seatsPerRow = 10;
-    $scope.seatAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+app.controller("seatSelectCtrl", function($scope, $http) {
+    $scope.showtimes = [];
+    $scope.selectedShowtime = "";
+
+    // Define rows and seats with labels A to J (10 columns)
+    $scope.rows = Array.from({ length: 10 }, (v, k) => k + 1);
+    $scope.columns = Array.from({ length: 14 }, (v, k) => String.fromCharCode(65 + k)); // A to J
+    $scope.seats = generateSeats($scope.rows, $scope.columns);
+
+    $scope.selectedSeats = [];
+    $scope.availableSeats = $scope.rows.length * $scope.columns.length;
     $scope.pricePerSeat = 50000;
     $scope.selectedSeats = [];
     $scope.availableSeats = $scope.rows * $scope.seatsPerRow;
 
     $scope.selectSeatsList = 0;
     $scope.totalAmountElement = 0;
+    
+
+    // $scope.initialize = function () {
+    //     //load products
+    //     $http.get("/rest/movies/").then(resp => {
+    //         $scope.items = resp.data;
+    //     });
+    // }
+
+    //Khởi đầu
+    // $scope.initialize();
+
+    // Replace "URL_OF_MOVIE_LIST" with the actual URL to fetch movie list from the server
+    // $http.get("URL_OF_MOVIE_LIST")
+    //     .then(function(response) {
+    //         $scope.movies = response.data;
+    //     })
+    //     .catch(function(error) {
+    //         console.error("Error fetching movie list: " + error);
+    //     });
 
     $scope.getSeatNumbers = function () {
         // Hàm này trả về một mảng số từ 1 đến seatsPerRow
