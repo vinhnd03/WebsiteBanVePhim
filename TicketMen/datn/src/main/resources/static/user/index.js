@@ -8,7 +8,7 @@ app.config(function($routeProvider){
         })
         .when("/change_password", {
             templateUrl: "/user/change_password/change_password.html",
-            controller: "change_password-ctrl"
+            controller: "password_ctrl"
         })
 });
 
