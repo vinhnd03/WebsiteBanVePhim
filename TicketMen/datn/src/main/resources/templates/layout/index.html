@@ -34,7 +34,7 @@
     </head>
 </head>
 
-<body ng-app="myApp" style="background-color: 542f50;">
+<body ng-app="myApp" style="background-color: bisque;">
     <div style="background-size: cover; background-repeat: no-repeat;margin-bottom: 10%;">
         <!-- Thanh Menu-->
         <div th:replace="/layout/_menu.html"></div>
@@ -44,7 +44,7 @@
         </div>
         <!-- -->
         <!-- Đăng Nhập - Đăng Ký-->
-        <div class="login" style="background-color: aliceblue;">
+        <div class="login" style="background-color:bisque">
             <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
                 <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
                 <p>Chào mừng Admin!</p>

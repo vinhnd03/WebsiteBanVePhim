@@ -31,9 +31,7 @@ app.controller("user_ctrl", function ($scope, $http, $window) {
         promise.then(function (resp) {
             // Thành công: gán dữ liệu người dùng vào $scope.user
             $scope.user = resp.data;
-            // console.log($scope.user); // Dữ liệu người dùng sẽ hiển thị sau khi cuộc gọi hoàn thành.
             $scope.form = angular.copy($scope.user);
-            console.log('form:', $scope.form);
         }).catch(function (error) {
             // Xử lý lỗi nếu có
             console.error('Lỗi khi tải dữ liệu người dùng: ', error);
@@ -44,22 +42,35 @@ app.controller("user_ctrl", function ($scope, $http, $window) {
     $scope.initialize();
     // Hàm cập nhật thông tin người dùng
     $scope.update = function () {
-        
         var item = angular.copy($scope.form);
-        
-        console.log("item.username:", item);
-        
         $http.put(`/rest/accounts/${item.username}`, item).then(resp => {
+            $scope.form = resp.data;
             alert("Cập nhật thông tin thành công");
-            console.log('form2:', $scope.form);
-            
         }).catch(error => {
             alert("Lỗi cập nhật thông tin");
             console.log("Error", error);
         });
     };
-    // Gọi hàm khởi tạo khi trang được nạp
-    
+
+    $scope.deleteAccountAndLogout = function () {
+        var confirmDelete = confirm("Bạn có chắc chắn muốn xóa tài khoản và đăng xuất?");
+        if (confirmDelete) {
+            $http.delete(`/rest/accounts/${$scope.username}`).then(resp => {
+                alert("Tài khoản đã được xóa thành công");
+
+                $window.location.href = '/security/logoff';
+            }).catch(error => {
+                alert("Lỗi khi xóa tài khoản");
+                console.log("Error", error);
+            });
+        }
+    };
+
+
+    $scope.reset = function(){
+        $scope.initialize();
+        
+    }
 });
 
 
