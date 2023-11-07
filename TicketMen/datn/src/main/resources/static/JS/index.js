@@ -101,31 +101,16 @@ app.controller("login-ctrl", function($scope) {
 app.controller("seatSelectCtrl", function($scope, $http) {
     $scope.showtimes = [];
     $scope.selectedShowtime = "";
+    $scope.currentMovie = {};
 
     // Define rows and seats with labels A to J (10 columns)
-    $scope.rows = Array.from({ length: 10 }, (v, k) => k + 1);
+    $scope.rows = Array.from({ length: 10}, (v, k) => k + 1);
     $scope.columns = Array.from({ length: 14 }, (v, k) => String.fromCharCode(65 + k)); // A to J
     $scope.seats = generateSeats($scope.rows, $scope.columns);
 
     $scope.selectedSeats = [];
     $scope.availableSeats = $scope.rows.length * $scope.columns.length;
     $scope.pricePerSeat = 50000;
-    $scope.selectedSeats = [];
-    $scope.availableSeats = $scope.rows * $scope.seatsPerRow;
-
-    $scope.selectSeatsList = 0;
-    $scope.totalAmountElement = 0;
-    
-
-    // $scope.initialize = function () {
-    //     //load products
-    //     $http.get("/rest/movies/").then(resp => {
-    //         $scope.items = resp.data;
-    //     });
-    // }
-
-    //Khởi đầu
-    // $scope.initialize();
 
     // Replace "URL_OF_MOVIE_LIST" with the actual URL to fetch movie list from the server
     // $http.get("URL_OF_MOVIE_LIST")
@@ -136,27 +121,64 @@ app.controller("seatSelectCtrl", function($scope, $http) {
     //         console.error("Error fetching movie list: " + error);
     //     });
 
-    $scope.getSeatNumbers = function () {
-        // Hàm này trả về một mảng số từ 1 đến seatsPerRow
-        return Array.from({ length: $scope.seatsPerRow }, (_, i) => i + 1);
-      };
-  
-      $scope.getSeatLabel = function (row, seatNumber) {
-        return $scope.seatAlphabet[row] + seatNumber;
-      };
-  
-      $scope.toggleSeat = function (row, seatNumber) {
-        // Xử lý khi người dùng chọn hoặc bỏ chọn ghế
-        const seat = $scope.getSeatLabel(row, seatNumber);
-        const index = $scope.selectedSeats.indexOf(seat);
-  
-        if (index !== -1) {
-          $scope.selectedSeats.splice(index, 1);
-        } else {
-          $scope.selectedSeats.push(seat);
-        }
-      };
+    $scope.initialize = function(){
+        var movieIdSelected = $("#movie_selected").text();
+        console.log(movieIdSelected);
 
+        $http.get("/rest/movie/"+ movieIdSelected).then(resp => {
+            $scope.currentMovie = resp.data;
+        }).catch(error =>{
+            console.error("Error: " + error)
+        })
+        
+    }
+
+    $scope.selectShowtime = function(showtime) {
+        $scope.selectedShowtime = showtime;
+    };
+
+    $scope.toggleSeat = function(seat) {
+        if ($scope.isSeatAvailable(seat)) {
+            $scope.selectedSeats.push(seat);
+            $scope.availableSeats--;
+        } else if ($scope.isSeatSelected(seat)) {
+            var index = $scope.selectedSeats.indexOf(seat);
+            $scope.selectedSeats.splice(index, 1);
+            $scope.availableSeats++;
+        }
+    };
+
+    $scope.isSeatAvailable = function(seat) {
+        return $scope.selectedSeats.indexOf(seat) === -1;
+    };
+
+    $scope.isSeatSelected = function(seat) {
+        return $scope.selectedSeats.indexOf(seat) !== -1;
+    };
+
+    $scope.goBack = function() {
+        $scope.selectedSeats = [];
+        $scope.availableSeats = $scope.rows.length * $scope.columns.length;
+    };
+
+    $scope.continueBooking = function() {
+        if ($scope.selectedShowtime && $scope.selectedSeats.length > 0) {
+            alert("Đã chọn suất chiếu: " + $scope.selectedShowtime);
+            // Add further processing, e.g., redirecting the user to the ticket booking page
+        } else {
+            alert("Vui lòng chọn một suất chiếu và ít nhất một ghế trước khi tiếp tục.");
+        }
+    };
+
+    function generateSeats(rows, columns) {
+        var seats = [];
+        rows.forEach(function(row) {
+            columns.forEach(function(column) {
+                seats.push(column + row);
+            });
+        });
+        return seats;
+    }
 });
 
 app.controller('username-ctrl', function ($scope, $window) {
@@ -165,5 +187,4 @@ app.controller('username-ctrl', function ($scope, $window) {
     // alert(name)
     // Lưu tên vào local storage
     $window.localStorage.setItem('username', username);
-    console.log(username);
 });

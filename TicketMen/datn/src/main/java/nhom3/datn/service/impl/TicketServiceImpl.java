@@ -1,6 +1,7 @@
 package nhom3.datn.service.impl;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class TicketServiceImpl implements TicketService{
     }
 
     @Override
-    public List<String> findTimesByDateAndMovieId(String date, Long id) {
+    public List<Ticket> findTimesByDateAndMovieId(Date date, Long id) {
         return tdao.findTimesByDateAndMovieId(date, id);
     }
 }

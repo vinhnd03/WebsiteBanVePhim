@@ -12,37 +12,63 @@
                             <hr>
                             <div class="mt-10"><b>Nội dung</b></div>
                             <p class="mcontent" th:text="*{movieContent}">
-                                
+
                             </p>
                             <div class="detail-footer">
                                 <div class="dcol">
                                     <b>Ngày Ra Mắt</b>
                                     <p th:text="${#dates.format(item.releaseDate, 'dd/MM/yyyy')}"></p>
+                                </div>
+                                <div class="dcol">
+                                    <b>Thể loại</b>
+                                    <p th:text="*{category.name}"></p>
+                                </div>
+                                <div class="dcol">
+                                    <b>Quốc gia</b>
+                                    <p th:text="*{country}"></p>
+                                </div>
                             </div>
-                            <div class="dcol" >
-                                <b>Thể loại</b>
-                                <p th:text="*{category.name}"></p>
-                            </div>
-                            <div class="dcol">
-                                <b>Quốc gia</b>
-                                <p  th:text="*{country}"></p>
-                            </div>
-                        </div>
-                        <div style="color: white;"> 
-                            
-                            <a type="button" class="btn btn-danger" style="border-radius: 5%;">
-                                <i class="fa-brands fa-youtube fa-flip"style="margin-right: 5%;"></i><strong> TRAILER</strong></a>
-                       
+                            <div style="color: white;">
+
+                                <a type="button" class="btn btn-danger" style="border-radius: 5%;">
+                                    <i class="fa-brands fa-youtube fa-flip" style="margin-right: 5%;"></i><strong>
+                                        TRAILER</strong></a>
+
                                 <a type="button" class="btn btn-success" th:href="@{|/order/select/${id}|}">
-                                <i class="fa-solid fa-cart-shopping fa-beat"style="margin-right: 5%;"></i><strong>MUA VÉ</strong></a>
-                            
+                                    <i class="fa-solid fa-cart-shopping fa-beat"
+                                        style="margin-right: 5%;"></i><strong>MUA VÉ</strong></a>
+
+                                <button id="TButton" type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal">Test</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Vui lòng chọn xuất chiếu</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div th:each="time : ${showtime}">
+                        <a class="btn btn-primary" th:text="${time.time}"></a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
             </div>
         </div>
     </div>
-</main>
+    </main>
 
 </div>

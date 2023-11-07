@@ -1,5 +1,8 @@
 package nhom3.datn.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,17 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import nhom3.datn.entity.Movie;
+import nhom3.datn.entity.Ticket;
 import nhom3.datn.service.MovieService;
+import nhom3.datn.service.TicketService;
 
 @Controller
 public class MovieController {
     @GetMapping("/movie/showtime")
-    public String showtime(){
+    public String showtime() {
         return "movie/showtime";
     }
 
     @Autowired
     MovieService movieService;
+
+    @Autowired
+    TicketService ticketService;
 
     @RequestMapping("/movie/list")
     public String list(Model model, @RequestParam("cid") Optional<String> cid) {
@@ -38,8 +46,21 @@ public class MovieController {
 
     @RequestMapping("/movie/detail/{id}")
     public String detail(Model model, @PathVariable("id") Long id) {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String today = dateFormat.format(date);
+    try {
+        Date selectedDate = dateFormat.parse(today);
+        // Sử dụng selectedDate trong phần còn lại của mã
         Movie item = movieService.findById(id);
+        List<Ticket> showtimes = ticketService.findTimesByDateAndMovieId(selectedDate, id);
         model.addAttribute("item", item);
-        return "movie/detail";
+        model.addAttribute("showtime", showtimes);
+    } catch (ParseException e) {
+        // Xử lý lỗi nếu có lỗi khi chuyển đổi định dạng
+        e.printStackTrace();
+    }
+    
+    return "movie/detail";
     }
 }

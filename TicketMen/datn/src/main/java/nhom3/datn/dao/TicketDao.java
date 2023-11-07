@@ -1,5 +1,6 @@
 package nhom3.datn.dao;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -18,12 +19,12 @@ public interface TicketDao extends JpaRepository<Ticket, Long>{
     @Query("SELECT m FROM Ticket m WHERE m.room.id=?1")
     List<Ticket> findByRoomId(Integer rid);
 
-     @Query("SELECT t.time FROM Ticket t " +
+     @Query("SELECT t FROM Ticket t " +
            "JOIN t.movie m " +
            "WHERE t.date = :selectedDate " +
-           "AND t.date > CURRENT_DATE " +
+        //    "AND t.date > GETDATE() " +
            "AND m.id = :selectedMovieId")
-    List<String> findTimesByDateAndMovieId(
-        @Param("selectedDate") String date,
+    List<Ticket> findTimesByDateAndMovieId(
+        @Param("selectedDate") Date selectedDate,
         @Param("selectedMovieId") Long movieId);
 }
