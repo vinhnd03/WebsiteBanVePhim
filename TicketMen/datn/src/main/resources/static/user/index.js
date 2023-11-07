@@ -10,6 +10,7 @@ app.config(function($routeProvider){
             templateUrl: "/user/change_password/change_password.html",
             controller: "password_ctrl"
         })
+
 });
 
 

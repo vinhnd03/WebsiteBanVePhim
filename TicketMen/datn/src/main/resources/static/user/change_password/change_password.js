@@ -21,12 +21,16 @@ app.controller('password_ctrl', function($scope,$http, $window){
 
 
     $scope.changePassword = function () {
-
+        if (!$scope.form.oldPassword) {
+            alert("Vui lòng nhập mật khẩu cũ");
+            return;
+        }
         if ($scope.form.oldPassword !== $scope.user.password){
-            alert("Nhập Sai Mật Khẩu Cũ. Vui Lòng Nhập Đúng Mật Khẩu Cũ")
+            alert("Nhập Sai Mật Khẩu Cũ \nVui lòng kiểm tra lại");
+            return;
         }
         if ($scope.form.newPassword !== $scope.form.confirmPassword) {
-            alert("Xác nhận mật khẩu mới không khớp. Vui lòng kiểm tra lại.");
+            alert("Xác nhận mật khẩu mới không khớp \nVui lòng kiểm tra lại.");
             return;
         }
         var item = angular.copy($scope.user);

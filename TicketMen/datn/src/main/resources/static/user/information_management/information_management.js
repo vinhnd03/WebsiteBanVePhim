@@ -51,8 +51,26 @@ app.controller("user_ctrl", function ($scope, $http, $window) {
             console.log("Error", error);
         });
     };
-    // Gọi hàm khởi tạo khi trang được nạp
-    
+
+    $scope.deleteAccountAndLogout = function () {
+        var confirmDelete = confirm("Bạn có chắc chắn muốn xóa tài khoản và đăng xuất?");
+        if (confirmDelete) {
+            $http.delete(`/rest/accounts/${$scope.username}`).then(resp => {
+                alert("Tài khoản đã được xóa thành công");
+
+                $window.location.href = '/security/logoff';
+            }).catch(error => {
+                alert("Lỗi khi xóa tài khoản");
+                console.log("Error", error);
+            });
+        }
+    };
+
+
+    $scope.reset = function(){
+        $scope.initialize();
+        
+    }
 });
 
 
