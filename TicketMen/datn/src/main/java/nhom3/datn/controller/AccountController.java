@@ -55,7 +55,7 @@ public class AccountController {
             accountService.save(account);
             authorityService.create(authority);
             model.addAttribute("message", "Đăng ký thành công");
-            return new ModelAndView("forward:/", model);
+            return new ModelAndView("redirect:/", model);
         }
     }
 }

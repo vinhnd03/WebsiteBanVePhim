@@ -36,6 +36,10 @@ public class HomeController {
         return "redirect:/admin/index2.html";
     }
 
+    @RequestMapping({"/user",})
+    public String user(){
+        return "redirect:/user/index.html";
+    }
 
     @RequestMapping("/qna")
     public String qna(){

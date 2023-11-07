@@ -1,0 +1,49 @@
+<style>
+
+
+</style>
+<div class="container">
+    <div class="title">Thông Tin Cá Nhân</div>
+    <form id="profileForm" ng-controller="user_ctrl">
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">Tên Đăng Nhập</span>
+                <input ng-model="form.username" id="username" disabled>
+            </div>
+            <div class="input-box">
+                <span class="details">Họ Và Tên</span>
+                <input ng-model="form.name" type="text" id="fullName">
+            </div>
+            <div class="input-box">
+                <span class="details">Email</span>
+                <input ng-model="form.email" type="email" id="email">
+            </div>
+            <div class="input-box">
+                <span class="details">Ngày Sinh</span>
+                <input ng-model="form.date" type="date" id="date">
+            </div>
+            <div class="input-box">
+                <span class="details">Số Điện Thoại</span>
+                <input ng-model="form.sdt" type="tel" id="phoneNumber">
+            </div>
+            <div class="input-box">
+                <span class="details">Địa Chỉ</span>
+                <input ng-model="form.address" type="text" id="address">
+            </div>
+            <div class="input-radio">
+                <div style="font-weight: 500;">Giới Tính</div>
+                <br>
+                <input type="radio" id="true" ng-model="form.gender" name="gender" value="true"
+                    ng-checked="form.gender == 1">
+                <label for="true">Nam</label>
+                <input type="radio" id="false" ng-model="form.gender" name="gender" value="false"
+                    ng-checked="form.gender == 0">
+                <label for="false">Nữ</label>
+            </div>
+        </div>
+        <button class="btn-custom-btn btn-btn-1" ng-click="update()">Cập Nhập</button>
+        <button class="btn-custom-btn btn-btn-1" ng-click="reset()">Làm Mới</button>
+        
+        <button class="btn-custom-btn btn-btn-1" ng-click="deleteAccountAndLogout()">Xóa tài khoản</button>
+    </form>
+</div>
