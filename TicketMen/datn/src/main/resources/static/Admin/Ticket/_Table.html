@@ -5,11 +5,11 @@
         <thead class="bg-success" style="font-variant: small-caps;">
             <tr>
                 <th>Id</th>
-                <th>Ngày Đặt Vé</th>
+                <th>Ngày chiếu</th>
                 <th>Phim</th>
                 <th>Phòng</th>
                 <th>Thời Gian</th>
-                <th>Số Lượng</th>
+                <th>Giá</th>
                 <th>Có Sẵn ?</th>
                 <th></th>
             </tr>
@@ -21,7 +21,7 @@
                 <td>{{item.movie.name}}</td>
                 <td>{{item.room.name}}</td>
                 <td>{{item.time | date : 'h:mm a'}}</td>
-                <td>{{item.quantity}}</td>
+                <td>{{item.price}}</td>
                 <td>{{item.available ? 'Yes':'No'}}</td>
                 <td>
                     <div class="btn-group btn-group-xs">

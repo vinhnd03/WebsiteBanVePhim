@@ -16,7 +16,8 @@ public class OrderController {
 
     @RequestMapping("/order/select/{id}")
     public String select(Model model, @PathVariable("id") Long id){
-        model.addAttribute("id", id);
+        model.addAttribute("Tid", id);
+        
         return "order/select";
     }
 

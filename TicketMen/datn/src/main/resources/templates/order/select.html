@@ -1,18 +1,15 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
     <main ng-controller="seatSelectCtrl">
-        <div hidden id="movie_selected" th:text="${id}"></div>
+        <div hidden id="Tid" th:text="${Tid}"></div>
         <div class="container-fluid row">
             <div class="col-2"></div>
             <div class="cinema-room col-6">
                 <h1>Chọn ghế xem phim</h1>
-                <div class="showtimes">
-                    <p class="showtime-label">Đổi Xuất Chiếu:</p>
-                    <button class="showtime-button" ng-repeat="showtime in showtimes" ng-click="selectShowtime(showtime)">{{showtime}}</button>
-                </div>
                 <div class="screen">Màn hình</div>
                 <div class="seating-container">
                     <div class="seats">
-                        <div class="seat" ng-class="{'selected': isSeatSelected(seat), 'available': isSeatAvailable(seat)}" 
+                        <div class="seat"
+                            ng-class="{'selected': isSeatSelected(seat), 'available': isSeatAvailable(seat)}"
                             ng-repeat="seat in seats" ng-click="toggleSeat(seat)">{{seat}}</div>
                     </div>
                     <div class="legend">
@@ -29,10 +26,11 @@
             </div>
             <div class="booking-summary col-2">
                 <img src="" alt="Tên phim" class="movie-image">
-                <h2>Tên phim</h2>
-                <p>Rạp số: 1</p>
-                <p>Suất chiếu: {{selectedShowtime}}</p>
-                <p>Tổng giá tiền: {{selectedSeats.length * pricePerSeat}} VNĐ</p>
+                <h2>{{perform.movie.name}}</h2>
+                <p>Rạp chiếu: {{perform.room.name}}</p>
+                <p>Suất chiếu: {{perform.time | date : 'h:mm'}}</p>
+                <p>Ngày chiếu: {{perform.date | date : 'dd-MM-yyyy'}}</p>
+                <p>Tổng giá tiền: {{selectedSeats.length * perform.price}} VNĐ</p>
                 <button id="back-button" class="action-button" ng-click="goBack()">Quay lại</button>
                 <button id="continue-button" class="action-button" ng-click="continueBooking()">Tiếp tục</button>
             </div>

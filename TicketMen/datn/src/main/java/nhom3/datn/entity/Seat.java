@@ -28,4 +28,8 @@ public class Seat {
     @ManyToOne
     @JoinColumn(name = "Roomid")
     Room room;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "seat")
+    List<Order> orders;
 }
