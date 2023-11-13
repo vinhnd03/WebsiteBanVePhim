@@ -28,7 +28,7 @@ public class Ticket implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    int quantity;
+    Float price;
     Boolean available;
 
     @Temporal(TemporalType.DATE)

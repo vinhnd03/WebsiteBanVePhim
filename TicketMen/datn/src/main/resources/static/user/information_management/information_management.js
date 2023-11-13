@@ -40,6 +40,7 @@ app.controller("user_ctrl", function ($scope, $http, $window) {
         //     console.log('form:', $scope.form);
     };
     $scope.initialize();
+    
     // Hàm cập nhật thông tin người dùng
     $scope.update = function () {
         var item = angular.copy($scope.form);

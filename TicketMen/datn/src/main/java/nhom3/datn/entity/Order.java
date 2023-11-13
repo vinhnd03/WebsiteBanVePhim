@@ -31,8 +31,8 @@ public class Order implements Serializable{
     Long id;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "NgayMua")
-    Date ngayMua = new Date();
+    @Column(name = "Buydate")
+    Date buyDate = new Date();
 
     @ManyToOne
     @JoinColumn(name = "Ticketid")
@@ -45,4 +45,8 @@ public class Order implements Serializable{
     @ManyToOne
     @JoinColumn(name = "Typeid")
     TicketType ticketType;
+
+    @ManyToOne
+    @JoinColumn(name = "Seatid")
+    Seat seat;
 }

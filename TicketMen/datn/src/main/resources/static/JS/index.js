@@ -9,7 +9,7 @@ app.controller('username-ctrl', function ($scope, $window) {
     // Lưu tên vào local storage
     $window.localStorage.setItem('name', name);
 
-    
+
 });
 
 app.controller("movie-ctrl", function ($scope, $http) {
@@ -22,9 +22,9 @@ app.controller("movie-ctrl", function ($scope, $http) {
         $http.get("/rest/movies").then(resp => {
             $scope.items = resp.data;
             $scope.items.forEach(item => {
-                
+
             });
-        }).catch(error =>{
+        }).catch(error => {
             console.error("Error: " + error)
         })
         //load categories
@@ -70,47 +70,52 @@ app.controller("movie-ctrl", function ($scope, $http) {
         }
     }
 });
-app.controller("register-ctrl", function($scope) {
+app.controller("register-ctrl", function ($scope) {
     $scope.isDisabled = true; // Mặc định nút sẽ bị vô hiệu hóa
 
-    $scope.checkInput = function() {
+    $scope.checkInput = function () {
         // Kiểm tra tất cả các trường input
         if ($scope.name && $scope.address && $scope.username && $scope.phone
             && $scope.email && $scope.password && $scope.confirmPassword) {
             $scope.isDisabled = false; // Bật nút "Đăng ký"
         } else {
             $scope.isDisabled = true; // Tắt nút "Đăng ký"
-            
+
         }
     };
 });
-app.controller("login-ctrl", function($scope) {
+app.controller("login-ctrl", function ($scope) {
     $scope.isDisabled = true; // Mặc định nút sẽ bị vô hiệu hóa
 
-    $scope.checkInput = function() {
+    $scope.checkInput = function () {
         // Kiểm tra tất cả các trường input
         if ($scope.username && $scope.password) {
             $scope.isDisabled = false; // Bật nút "Đăng ký"
         } else {
             $scope.isDisabled = true; // Tắt nút "Đăng ký"
-            
+
         }
     };
 });
 
-app.controller("seatSelectCtrl", function($scope, $http) {
+app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     $scope.showtimes = [];
     $scope.selectedShowtime = "";
-    $scope.currentMovie = {};
+    $scope.perform = {};
+    $scope.ticket = {};
+    $scope.username = $window.localStorage.getItem('username');
+    $scope.account = {};
+    $scope.dseats = [];
+    $scope.orderedSeats = [];
 
     // Define rows and seats with labels A to J (10 columns)
-    $scope.rows = Array.from({ length: 10}, (v, k) => k + 1);
+    $scope.rows = Array.from({ length: 10 }, (v, k) => k + 1);
     $scope.columns = Array.from({ length: 14 }, (v, k) => String.fromCharCode(65 + k)); // A to J
     $scope.seats = generateSeats($scope.rows, $scope.columns);
 
     $scope.selectedSeats = [];
     $scope.availableSeats = $scope.rows.length * $scope.columns.length;
-    $scope.pricePerSeat = 50000;
+
 
     // Replace "URL_OF_MOVIE_LIST" with the actual URL to fetch movie list from the server
     // $http.get("URL_OF_MOVIE_LIST")
@@ -120,60 +125,110 @@ app.controller("seatSelectCtrl", function($scope, $http) {
     //     .catch(function(error) {
     //         console.error("Error fetching movie list: " + error);
     //     });
+    var ticketId = $('#Tid').text();
+    console.log("tid: ", ticketId);
 
-    $scope.initialize = function(){
-        var movieIdSelected = $("#movie_selected").text();
-        console.log(movieIdSelected);
+    $scope.initialize = function () {
 
-        $http.get("/rest/movie/"+ movieIdSelected).then(resp => {
-            $scope.currentMovie = resp.data;
-        }).catch(error =>{
+        var promise = $http.get("/rest/tickets/" + ticketId);
+
+        promise.then(function (resp) {
+            $scope.ticket = resp.data;
+            // $scope.ticket.date = moment($scope.ticket.date).format('DD-MM-YYYY');
+            // $scope.ticket.time = moment($scope.ticket.time).format('HH:mm:ss');
+
+
+            $scope.perform = angular.copy($scope.ticket);
+            $http.get(`/rest/seats/byDateTimeAndTId/${$scope.ticket.date}/${$scope.ticket.time}/${$scope.ticket.id}`).then(resp => {
+                $scope.orderedSeats = resp.data;
+            }).catch(error => {
+                console.log(error);
+            })
+
+
+            console.log("test: ", $scope.ticket);
+        }).catch(function (error) {
             console.error("Error: " + error)
         })
-        
-    }
 
-    $scope.selectShowtime = function(showtime) {
-        $scope.selectedShowtime = showtime;
+        $http.get("/rest/accounts/" + $scope.username).then(resp => {
+            $scope.account = resp.data;
+        })
+
+        $http.get("/rest/seats").then(resp => {
+            $scope.dseats = resp.data;
+        })
+
+
     };
 
-    $scope.toggleSeat = function(seat) {
+    $scope.initialize();
+    var limit = 0;
+    $scope.toggleSeat = function (seat) {
+
         if ($scope.isSeatAvailable(seat)) {
-            $scope.selectedSeats.push(seat);
-            $scope.availableSeats--;
+            if (limit < 8) {
+                $scope.selectedSeats.push(seat);
+                $scope.availableSeats--;
+                limit++;
+            } else {
+                alert('Chỉ được chọn tối đa 8 ghế 1 lượt')
+            }
         } else if ($scope.isSeatSelected(seat)) {
             var index = $scope.selectedSeats.indexOf(seat);
             $scope.selectedSeats.splice(index, 1);
             $scope.availableSeats++;
+            limit--;
         }
     };
 
-    $scope.isSeatAvailable = function(seat) {
+    $scope.isSeatAvailable = function (seat) {
         return $scope.selectedSeats.indexOf(seat) === -1;
     };
 
-    $scope.isSeatSelected = function(seat) {
+    $scope.isSeatSelected = function (seat) {
         return $scope.selectedSeats.indexOf(seat) !== -1;
     };
 
-    $scope.goBack = function() {
+    $scope.goBack = function () {
         $scope.selectedSeats = [];
+        limit = 0
         $scope.availableSeats = $scope.rows.length * $scope.columns.length;
     };
 
-    $scope.continueBooking = function() {
-        if ($scope.selectedShowtime && $scope.selectedSeats.length > 0) {
-            alert("Đã chọn suất chiếu: " + $scope.selectedShowtime);
-            // Add further processing, e.g., redirecting the user to the ticket booking page
-        } else {
-            alert("Vui lòng chọn một suất chiếu và ít nhất một ghế trước khi tiếp tục.");
+    $scope.continueBooking = function () {
+        var items = [];
+
+        // Duyệt qua mỗi ghế được chọn
+        for (var i = 0; i < $scope.selectedSeats.length; i++) {
+            var item = {
+                buyDate: new Date(),
+                account: $scope.account,
+                ticket: $scope.ticket,
+                seat: $scope.dseats.find(seat => seat.name === $scope.selectedSeats[i])
+            };
+
+            items.push(item);
         }
+
+        // Gửi mỗi đối tượng item lên server
+        items.forEach(item => {
+            $http.post("/rest/orders", item)
+                .then(resp => {
+
+                })
+                .catch(error => {
+                    console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
+                });
+        });
+        // alert($scope.selectedSeats[1])
+        alert("Đặt ghế thành công!")
     };
 
     function generateSeats(rows, columns) {
         var seats = [];
-        rows.forEach(function(row) {
-            columns.forEach(function(column) {
+        rows.forEach(function (row) {
+            columns.forEach(function (column) {
                 seats.push(column + row);
             });
         });

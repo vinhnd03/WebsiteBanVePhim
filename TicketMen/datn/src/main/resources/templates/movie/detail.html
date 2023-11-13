@@ -57,18 +57,19 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body text-center">
-                    <div th:each="time : ${showtime}">
-                        <a class="btn btn-primary" th:text="${time.time}"></a>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <a th:each="ticket : ${showtime}" class="btn btn-primary mr-5 ticket-button"
+                            th:sortedby="${ticket.time}" th:order="ascending"
+                             th:text="${ticket.time}" th:href="@{|/order/select/${ticket.id}|}">
+                        </a>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
                 </div>
             </div>
-        </div>
+        </div>       
     </div>
     </main>
-
 </div>
