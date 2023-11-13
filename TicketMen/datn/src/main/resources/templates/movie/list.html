@@ -1,15 +1,43 @@
 
 <style>
-
-  .boder {
-    border: 1px solid #ffcccc;
-    box-shadow: 10px 10px 10px 0 rgba(0,0,0,0.3), 0 0 50px 0 rgba(0,0,0,0.4) inset;
-    border: 1px solid black;border-radius: 5%;width: 100%;height: 90%;background-color: #c6318f;color: aliceblue;margin-top: 5%;
-  }
   .button{
    
     margin-top: 30%;
   }
+  .text-center h4 {
+    white-space: nowrap; /* Ngăn chặn xuống dòng */
+    overflow: hidden; /* Ẩn nội dung vượt quá chiều rộng */
+    text-overflow: ellipsis; /* Hiển thị dấu elipsis (...) cho nội dung ẩn đi */
+  }
+
+  .boder {
+    position: relative;
+  }
+
+  .details-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .boder:hover .details-button {
+    opacity: 1;
+  }
+  .boder {
+    position: relative;
+    transition: box-shadow 0.3s ease-in-out;
+    border-radius: 5%;
+  }
+
+  .boder:hover {
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.3), 0 0 50px 0 rgba(0, 0, 0, 0.4) inset;
+    border-radius: 5%;
+  }
+
+
 </style>
 
 
@@ -33,25 +61,16 @@
         <ul class="list-group">
           <div class="container-fluid">
             <div>
-              <div class="row ">
-                <div class="col-4 ">
+              <div class="row">
+                <div class="col-3"th:each="movie : ${items}" >
                   <div class="boder">
-                    <div style="width: 50%;float: left;margin-bottom: 3%;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="85%" style="margin: 5%;">
+                    <div style="margin: 3%;">
+                      <a th:href="@{|/movie/detail/${movie.id}|}"><img th:src="@{|/image/${movie.poster}|}" alt="" width="90%" style="margin: 5%;"></a>
+                      
                     </div>
-                    <div style="width: 50%;float: left;margin-top: 2%;margin-right: 2%;margin-left: -3%;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-                      <hr>
-                      <div class="text-center button">
-                        <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                          <i class="fa-brands fa-youtube fa-flip"style="margin-right: 15%;"></i>TRAILER</button>
-                        <button type="submit" class="btn btn-success">
-                          <i class="fa-solid fa-cart-shopping fa-beat"style="margin-right: 15%;"></i>MUA VÉ</button>
-                      </div>
-                    </div>  
-                    
+                    <div style="margin-top: 2%; margin-left: 5%;margin-right: 5%;" class="text-center">
+                      <a th:src="@{|/image/${movie.poster}|}"><h4><strong th:text="${movie.name}">QUỶ ÁM (T18)</strong></h4></a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -61,29 +80,22 @@
       </div>
 
 
+
       <!--PHIM ĐANG CHIẾU-->
-      <div class="tab-pane fade active show in" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab" style="color: white;">
+      <div class="tab-pane fade active show in" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab">
         <ul class="list-group">
           <div class="container-fluid">
             <div>
               <div class="row ">
-                
-                <div class="col-6 text-left"  th:each="movie : ${items}"style="border: 5px solid black;background-color:pink;">
-                  <div class="boder" style="width: 100%;">
-                    <div style="width: 50%;float: left;margin-bottom: 3%;">
-                      <img th:src="@{|/image/${movie.poster}|}" alt="" width="100%" style="padding: 5%;">
-                    </div>
-                    <div style="width: 50%;float: left;padding-right: 5%;">
-                      <h3><strong th:text="${movie.name}"></strong> </h3>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-                      <hr>
+                <div class="col-3"th:each="movie : ${items}" >
+                  <div class="boder">
+                    <div style="margin: 3%;">
+                      <a th:href="@{|/movie/detail/${movie.id}|}"><img th:src="@{|/image/${movie.poster}|}" alt="" width="90%" style="margin: 5%;"></a>
                       
-                  </div>
-                  <div class="text-center button" style="margin-top: 300px;">
-                    <a type="button" class="btn btn-primary" style="border-radius: 5%;" th:href="@{|/movie/detail/${movie.id}|}">
-                      <h4><i class="fa-solid fa-circle-info fa-beat" style="margin-right: 5px;"></i>CHI TIẾT</h4></a>
-                </div>  
+                    </div>
+                    <div style="margin-top: 2%; margin-left: 5%;margin-right: 5%;" class="text-center">
+                      <a th:src="@{|/image/${movie.poster}|}"><h4><strong th:text="${movie.name}">QUỶ ÁM (T18)</strong></h4></a>
+                    </div>
                   </div>
                 </div>
               </div>

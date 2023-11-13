@@ -14,7 +14,7 @@ public interface MovieService {
 
     Movie findById(Long id);
 
-    List<Movie> findByCategoryId(String cid);
+    List<Movie> findByCategoryId(Integer cid);
 
     Movie create(Movie movie);
 

@@ -1,35 +1,46 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" xmlns:th="http://www.thymeleaf.org" 
+<style>
+    /* Đặt chiều rộng của dropdown-toggle bằng với dropdown-item */
+    .menu {
+        width: 101%;
+        
+    }
+    .dropdown-menu.menu {
+        overflow-y: overlay;
+        max-height: 200px; /* Thay đổi giá trị max-height tùy thuộc vào nhu cầu của bạn */
+    }
+</style>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" xmlns:th="http://www.thymeleaf.org"
     style="height: auto;">
     <div>
-    
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="/image/slide1.jpg" alt="First slide" height="260px">
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="/image/slide1.jpg" alt="First slide" height="260px">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/image/slide2.jpg" alt="Second slide" height="260px">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/image/slide3.jpg" alt="Third slide" height="260px">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/image/slide4.jpg" alt="Third slide" height="260px">
+            </div>
         </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="/image/slide2.jpg" alt="Second slide" height="260px">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="/image/slide3.jpg" alt="Third slide" height="260px">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="/image/slide4.jpg" alt="Third slide" height="260px">
+        <div>
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
         </div>
     </div>
-    <div >
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        </ol>
-    </div>
-</div>
 
 </div>
 <div class="container-fluid" style="background-color: bisque;">
     <div class="ticket-buying mt-3 text-center ">
-        <h2  style="color:black;">Mua Vé Online</strong> </h2>
+        <h2 style="color:black;">Mua Vé Online</h2>
     </div>
     <ul class="justify-content-center row" style="color:aliceblue ;">
         <ul class="col-3">
@@ -37,41 +48,40 @@
                 <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">
                             Chọn phim </a>
 
-                        <div class="dropdown-menu">
-
-                            <a class="dropdown-item" href="#">
-                                <div class="detail">
-                                    <p>Naruto</p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <div class="detail">
-                                    <p>One piece</p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <div class="detail">
-                                    <p>Bleach</p>
-                                </div>
-                            </a>
-                        </div>
-                    </strong></h4>
+                    <div class="dropdown-menu menu" >
+                        <a class="nav-link" href="#" align="center">
+                            <div class="detail">
+                                <p>Chọn phim</p>
+                            </div>
+                        </a>
+                        
+                        <a class="dropdown-item" th:each="movie : ${movis}" th:href="@{|/movie/detail/${movie.id}|}">
+                            <div class="detail">
+                                <p style="margin-left: 5%;">[[${movie.name}]]</p>
+                            </div>
+                        </a>
+                    </div>
+                </strong></h4>
             </li>
         </ul>
         <ul class="col-3">
             <li class="nav-item dropdown">
-                <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">Chọn
-                            ngày </a>
+                <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">
+                    Chọn ngày </a>
 
-                        <div class="dropdown-menu">
-
-                            <a class="dropdown-item" href="#">
-                                <div class="detail">
-                                    <p>22-22-2022</p>
-                                </div>
-                            </a>
-                        </div>
-                    </strong></h4>
+                    <div class="dropdown-menu menu">
+                        <a class="nav-link" href="#" align="center">
+                            <div class="detail">
+                                <p> Chọn ngày</p>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <div class="detail">
+                                <p>22-22-2022</p>
+                            </div>
+                        </a>
+                    </div>
+                </strong></h4>
             </li>
         </ul>
         <ul class="col-3">
@@ -79,16 +89,51 @@
                 <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">Chọn
                             suất chiếu </a>
 
-                        <div class="dropdown-menu">
-
-                            <a class="dropdown-item" href="#">
-                                <div class="detail">
-                                    <p>Xuất chiếu</p>
-                                </div>
-                            </a>
-                        </div>
-                    </strong></h4>
+                    <div class="dropdown-menu menu">
+                        <a class="nav-link" href="#" align="center">
+                            <div class="detail">
+                                <p>  suất chiếu </p>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <div class="detail">
+                                <p>Xuất chiếu</p>
+                            </div>
+                        </a>
+                    </div>
+                </strong></h4>
             </li>
         </ul>
     </ul>
+    <ul >
+        <div class="nav-item dropdown "style="color: aliceblue;width: 20%;margin-left: 40%;">
+            <h4 >
+                <strong>
+                    <a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">
+                        Chọn thể loại
+                    </a>
+                    <div class="dropdown-menu menu text-center">
+                        <a class="dropdown-item" th:each="category : ${cates}" th:href="@{|/movie/list?cid=${category.id}|}">
+                            <div class="detail" th:text="${category.name}"></div>
+                        </a>
+                    </div>
+                </strong>   
+            </h4>
+        </div>
+    </ul>
+
 </div>
+<script>
+    // JavaScript để thay thế dropdown-toggle khi click vào dropdown-item
+    const dropdownButtons = document.querySelectorAll(".btn-chon-phim");
+    const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+
+    dropdownButtons.forEach((button, index) => {
+        const dropdownItems = dropdownMenus[index].querySelectorAll(".dropdown-item");
+        dropdownItems.forEach(item => {
+            item.addEventListener("click", function() {
+                button.innerText = item.querySelector(".detail p").innerText;
+            });
+        });
+    });
+</script>

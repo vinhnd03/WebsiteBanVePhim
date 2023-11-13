@@ -10,5 +10,5 @@ import nhom3.datn.entity.Movie;
 
 public interface MovieDao extends JpaRepository<Movie, Long>{
     @Query("SELECT m FROM Movie m WHERE m.category.id=?1")
-    List<Movie> findByCategoryId(String cid);
+    List<Movie> findByCategoryId(Integer cid);
 }
