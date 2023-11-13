@@ -1,344 +1,212 @@
-<style>
-    /* -------*/
-    .final-confirm {
-        width: 90%;
-        /* height: auto; */
-        background: linear-gradient(to right, rgb(107, 225, 150), rgb(55, 101, 174), rgb(147, 51, 234));
-        border-radius: 0 50px 0 50px;
-        text-align: center;
-        margin: 0 auto 40px auto;
-        padding: 30px 50px;
-        max-width: 900px;
-        margin-top: 20px;
-    }
-
-    .final-confirm>p {
-        font-family: 'MyriadRegular';
-        font-style: italic;
-        font-size: 22px;
-        line-height: 1.2;
-    }
-
-    .confirm-filp {
-        /* margin: 0 auto; */
-        padding: 30px 0;
-    }
-
-    .confirm-filp-pic {
-        float: left;
-        margin: 0 15px 0 0;
-    }
-
-    .confirm-filp-text h3 {
-        font-family: 'MyriadBold';
-        text-transform: uppercase;
-    }
-    .confirm-filp-text p {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 15px;
-        margin: 10px 0;
-    }
-    .confirm-ticket {
-        display: table !important;
-        border-spacing: 1px;
-    }
-    .confirm-ticket>.confirm-mark {
-        display: table-cell;
-        vertical-align: middle;
-        min-width: 80px;
-        background-color: #f6e2e2;
-    }
-
-    .confirm-text {
-        background-color: #f6e2e2;
-        padding: 10px;
-        width: 320px;
-    }
-
-    ul {
-        list-style-type: none;
-    }
-    .confirm-mark {
-        font-weight: bold;
-        font-size: 18px;
-    }
-    .tong-tien {
-        margin-top: 25px;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-    }
-
-    .giam-gia {
-        margin-top: 15px;
-    }
-
-    .nut-giam-gia {
-        padding: 10px 20px;
-        background-color: #ee88db;
-        margin: 5px;
-        border-radius: 7px;
-    }
-
-    .gui {
-        padding: 10px 30px;
-        cursor: pointer;
-        margin: 7px;
-        border-radius: 7px;
-        background: linear-gradient(to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
-    }
-
-    .gui:hover {
-        background: linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(234, 179, 8));
-    }
-
-    .ma-giam-gia {
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin: 5px;
-        border-radius: 7px;
-    }
-
-    /* -------*/
-
-    .final-form {
-        width: 90%;
-        background: rgb(238, 211, 211);
-        border-radius: 50px 0 50px 0;
-        margin: 0 auto 40px auto;
-        padding: 30px 50px;
-        max-width: 900px;
-    }
-
-    h2 {
-        text-align: center;
-    }
-
-    .thong-tin {
-        background-color: #eee4e4;
-        padding: 6px;
-        margin-top: 35px;
-        border-radius: 6px;
-        text-align: center;
-    }
-
-    .checkbox {
-        margin-top: 20px;
-        text-align: left;
-        margin: 50px 0 0 20px;
-    }
-
-    .input {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    #quaylai {
-        background-color: #8d8989;
-        padding: 10px 20px;
-        font-weight: bold;
-        color: white;
-        border-radius: 50px 0 50px 0;
-    }
-
-    #quaylai:hover {
-        background-color: #ed4bda;
-    }
-
-    #thanhtoan {
-        background-color: #fe40e5;
-        padding: 10px 20px;
-        font-weight: bold;
-        color: white;
-        border-radius: 50px 0 50px 0;
-    }
-
-    #thanhtoan:hover {
-        background-color: #eba23c;
-    }
-</style>
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
-<main>
-    
-    <div class="final-content" style="display: block;">
-        <div class="final-confirm">
-            <p>Cảm ơn quý khách đã đến với <strong>TICKETMEN!</strong><br>
-                Xin quý khách vui lòng kiễm tra lại thông tin đặt vé.</p>
+    <main ng-controller="seatSelectCtrl">
+        <div hidden id="Tid" th:text="${Tid}"></div>
+        <script>
+            var ticketId = $('#Tid').text();
+            localStorage.setItem('ticketId', ticketId);
+        </script>
+        <div class="final-content" style="display: block;">
+            <div class="final-confirm">
+                <p>Cảm ơn quý khách đã đến với <strong>TICKETMEN!</strong><br>
+                    Xin quý khách vui lòng kiễm tra lại thông tin đặt vé.</p>
 
-            <div class="confirm-box">
-                <div class="confirm-filp">
-                    <div class="confirm-filp-pic">
-                        <img src="../image/khuyenmai2.webp" style="height: 420px; width: 300px;">
+                <div class="confirm-box row">
+                    <div class="col-5 mt-5">
+                        <img ng-src="/image/{{ticket.movie.poster}}" style="height: 420px; width: 300px;">
                     </div>
-                    <div class="confirm-filp-text">
-                        <h3>SIÊU LỪA Gặp SIÊU QUẬY</h3>
-                        <p>
-                            Ngày Chiếu: <strong>12-12-2023</strong>
-                        </p>
-                        <p>
-                            Suất Chiếu: <strong>23:23</strong>
-                        </p>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="confirm-ticket">
-                    <div class="confirm-mark">Ghế</div>
-                    <div class="confirm-mark">B01</div>
-                    <div class="confirm-text">
-                        <ul>
-                            <li>
-                                <div class="value">
-                                    <span>45.000</span>
-                                    <sub>đ</sub>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="tong-tien">
-                    <div class="confirm-mark">Tổng Tiền</div>
-                    <div class="value">
-                        <span>45.000</span>
-                        <sub>đ</sub>
-                    </div>
-                </div>
-                <div class="giam-gia">
-                    <button class="nut-giam-gia">MÃ GIẢM GIÁ</button>
-                    <input type="text" class="ma-giam-gia" placeholder="Nhập mã">
-                    <button class="gui"><strong>Gửi</strong></button>
-                </div>
-                <hr>
-                <div class="tong-tien">
-                    <div class="confirm-mark">Số tiền cần thanh toán</div>
-                    <div class="value">
-                        <span>45.000</span>
-                        <sub>đ</sub>
-                    </div>
-                </div>
+                    <div class="col-7">
+                        <div class="confirm-filp-text">
+                            <h3>{{perform.movie.name}}</h3>
+                            <p>
+                                Ngày Chiếu: <strong>{{perform.date | date : 'dd-MM-yyyy'}}</strong>
+                            </p>
+                            <p>
+                                Suất Chiếu: <strong>{{perform.time | date : 'hh:mm'}}</strong>
+                            </p>
+                            <p></p>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Ghế</th>
+                                    <th scope="col">Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="seat in selectedSeats2">
+                                    <th scope="row">{{$index + 1}}</th>
+                                    <td>{{seat}}</td>
+                                    <td>{{perform.price}}</td>
+                                </tr>
 
+                            </tbody>
+                        </table>
+                        <div class="tong-tien">
+                            <div class="confirm-mark">Tổng Tiền</div>
+                            <div class="value">
+                                <span>{{selectedSeats2  .length * perform.price}}</span>
+                                <sub>đ</sub>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="tong-tien">
+                            <div class="confirm-mark">Số tiền cần thanh toán</div>
+                            <div class="value">
+                                <span>{{selectedSeats2  .length * perform.price}}</span>
+                                <sub>đ</sub>
+                            </div>
+                        </div>
+                        <a class="btn btn-success" ng-click="continueBooking()">Thanh toán</a>
+                    </div>
+                    
+                    <hr>
+                    
+
+                </div>
             </div>
-        </div>
 
-        <div class="final-form">
-            <form id="final">
-                <div class="input-text">
-                    <h2>ĐIỀU KHOẢN CHUNG</h2>
-                    <div class="dieu-khoan">
-                        <div class="content" style="width: 800px; height: 300px; overflow: overlay;">
-                            <div>
-                                <strong>1. Trách nhiệm người sữ dụng:</strong><br>
-                                <p> Khi truy cập vào trang web này, bạn đồng ý chấp nhận mọi rủi ro. Ticketmen và các
-                                    bên
-                                    đối tác khác không chịu trách nhiệm
-                                    về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những thất
-                                    thoát, chi phí (bao gồm chi phí pháp lý,
-                                    chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc gián
-                                    tiếp do việc truy cập trang web hoặc khi
-                                    tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực tiếp
-                                    hay gián tiếp của hệ thống máy tính khác,
-                                    đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi nào
-                                    khác; đường truyền dẫn của máy tính
-                                    hoặc nối kết mạng bị chậm…</p>
+            <!-- <div class="final-form">
+                <form id="final">
+                    <div class="input-text">
+                        <h2>ĐIỀU KHOẢN CHUNG</h2>
+                        <div class="dieu-khoan">
+                            <div class="content" style="width: 800px; height: 300px; overflow: overlay;">
+                                <div>
+                                    <strong>1. Trách nhiệm người sữ dụng:</strong><br>
+                                    <p> Khi truy cập vào trang web này, bạn đồng ý chấp nhận mọi rủi ro. Ticketmen và
+                                        các
+                                        bên
+                                        đối tác khác không chịu trách nhiệm
+                                        về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những
+                                        thất
+                                        thoát, chi phí (bao gồm chi phí pháp lý,
+                                        chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc
+                                        gián
+                                        tiếp do việc truy cập trang web hoặc khi
+                                        tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực
+                                        tiếp
+                                        hay gián tiếp của hệ thống máy tính khác,
+                                        đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi
+                                        nào
+                                        khác; đường truyền dẫn của máy tính
+                                        hoặc nối kết mạng bị chậm…</p>
+                                </div>
+                                <div>
+                                    <strong>2. Về nội dung trên Website :</strong>
+                                    <p> Tất cả những thông tin ở đây được cung cấp cho bạn một cách trung thực như bản
+                                        thân
+                                        sự việc. Ticketmen và các bên liên quan không
+                                        bảo đảm, hay có bất kỳ tuyên bố nào liên quan đến tính chính xác, tin cậy của
+                                        việc
+                                        sử dụng hay kết quả của việc sử dụng nội dung
+                                        trên trang web này. Nột dung trên website được cung cấp vì lợi ích của cộng đồng
+                                        và
+                                        có tính phi thương mại. Các cá nhân và tổ
+                                        chức không được phếp sử dụng nội dung trên website này với mục đích thương mại
+                                        mà
+                                        không có sự ưng thuận của Ticketmen bằng văn bản. </p>
+                                </div>
+                                <div>
+                                    <strong>3. Về bản quyền:</strong>
+                                    <p> Ticketmen là chủ bản quyền của trang web này. Việc chỉnh sửa trang, nội dung, và
+                                        sắp
+                                        xếp thuộc về thẩm quyền của Ticketmen. Sự chỉnh sửa,
+                                        thay đổi, phân phối hoặc tái sử dụng những nội dung trong trang này vì bất kì
+                                        mục
+                                        đích nào khác được xem như vi phạm quyền lợi hợp
+                                        pháp của Ticketmen.</p>
+                                </div>
+                                <div>
+                                    <strong>4. Về việc sữ dụng thông tin:</strong>
+                                    <p> Chúng tôi sẽ không sử dụng thông tin cá nhân của bạn trên website này nếu không
+                                        được
+                                        phép. Nếu bạn đồng ý cung cấp thông tin cá nhân,
+                                        bạn sẽ được bảo vệ. Thông tin của bạn sẽ được sử dụng với mục đích, liên lạc với
+                                        bạn
+                                        để thông báo các thông tin cập nhật của Ticketmen
+                                        như lịch chiếu phim, khuyến mại qua email hoặc bưu điện. Thông tin cá nhân của
+                                        bạn
+                                        sẽ không được gửi cho bất kỳ ai sử dụng ngoài
+                                        trang web Ticketmen, ngoại trừ những mở rộng cần thiết để bạn có thể tham gia
+                                        vào
+                                        trang web (những nhà cung cấp dịch vụ, đối tác,
+                                        các công ty quảng cáo) và yêu cầu cung cấp bởi luật pháp.</p>
+                                </div>
+                                <div>
+                                    <strong>5. Về việc tải dữ liêu:</strong>
+                                    <p> Nếu bạn tải về máy những phần mềm từ trang này, thì phần mềm và các dữ liệu tải
+                                        sẽ
+                                        thuộc bản quyền của Ticketmen và cho phép bạn sử dụng.
+                                        Bạn không được sở hữu những phầm mềm đã tải và Ticketmen không nhượng quyền cho
+                                        bạn.
+                                        Bạn cũng không được phép bán, phân phối lại, hay
+                                        bẻ khóa phần mềm…</p>
+                                </div>
+                                <div>
+                                    <strong>6. Thay đổi nội dung:</strong>
+                                    <p> Ticketmen giữ quyền thay đổi, chỉnh sửa và loại bỏ những thông tin hợp pháp vào
+                                        bất
+                                        kỳ thời điểm nào vì bất kỳ lý do nào.</p>
+                                </div>
+                                <div>
+                                    <strong>7. Liên kết với các trang khác:</strong>
+                                    <p> Mặc dù trang web này có thể được liên kết với những trang khác, Ticketmen không
+                                        trực
+                                        tiếp hoặc gián tiếp tán thành, tổ chức, tài trợ,
+                                        đứng sau hoặc sát nhập với những trang đó, trừ phi điều này được nêu ra rõ ràng.
+                                        Khi
+                                        truy cập vào trang web bạn phải hiểu và chấp
+                                        nhận rằng Ticketmen không thể kiểm soát tất cả những trang liên kết với trang
+                                        Ticketmen và cũng không chịu trách nhiệm cho nội dung
+                                        của những trang liên kết.</p>
+                                </div>
                             </div>
-                            <div>
-                                <strong>2. Về nội dung trên Website :</strong>
-                                <p> Tất cả những thông tin ở đây được cung cấp cho bạn một cách trung thực như bản thân
-                                    sự việc. Ticketmen và các bên liên quan không
-                                    bảo đảm, hay có bất kỳ tuyên bố nào liên quan đến tính chính xác, tin cậy của việc
-                                    sử dụng hay kết quả của việc sử dụng nội dung
-                                    trên trang web này. Nột dung trên website được cung cấp vì lợi ích của cộng đồng và
-                                    có tính phi thương mại. Các cá nhân và tổ
-                                    chức không được phếp sử dụng nội dung trên website này với mục đích thương mại mà
-                                    không có sự ưng thuận của Ticketmen bằng văn bản. </p>
-                            </div>
-                            <div>
-                                <strong>3. Về bản quyền:</strong>
-                                <p> Ticketmen là chủ bản quyền của trang web này. Việc chỉnh sửa trang, nội dung, và sắp
-                                    xếp thuộc về thẩm quyền của Ticketmen. Sự chỉnh sửa,
-                                    thay đổi, phân phối hoặc tái sử dụng những nội dung trong trang này vì bất kì mục
-                                    đích nào khác được xem như vi phạm quyền lợi hợp
-                                    pháp của Ticketmen.</p>
-                            </div>
-                            <div>
-                                <strong>4. Về việc sữ dụng thông tin:</strong>
-                                <p> Chúng tôi sẽ không sử dụng thông tin cá nhân của bạn trên website này nếu không được
-                                    phép. Nếu bạn đồng ý cung cấp thông tin cá nhân,
-                                    bạn sẽ được bảo vệ. Thông tin của bạn sẽ được sử dụng với mục đích, liên lạc với bạn
-                                    để thông báo các thông tin cập nhật của Ticketmen
-                                    như lịch chiếu phim, khuyến mại qua email hoặc bưu điện. Thông tin cá nhân của bạn
-                                    sẽ không được gửi cho bất kỳ ai sử dụng ngoài
-                                    trang web Ticketmen, ngoại trừ những mở rộng cần thiết để bạn có thể tham gia vào
-                                    trang web (những nhà cung cấp dịch vụ, đối tác,
-                                    các công ty quảng cáo) và yêu cầu cung cấp bởi luật pháp.</p>
-                            </div>
-                            <div>
-                                <strong>5. Về việc tải dữ liêu:</strong>
-                                <p> Nếu bạn tải về máy những phần mềm từ trang này, thì phần mềm và các dữ liệu tải sẽ
-                                    thuộc bản quyền của Ticketmen và cho phép bạn sử dụng.
-                                    Bạn không được sở hữu những phầm mềm đã tải và Ticketmen không nhượng quyền cho bạn.
-                                    Bạn cũng không được phép bán, phân phối lại, hay
-                                    bẻ khóa phần mềm…</p>
-                            </div>
-                            <div>
-                                <strong>6. Thay đổi nội dung:</strong>
-                                <p> Ticketmen giữ quyền thay đổi, chỉnh sửa và loại bỏ những thông tin hợp pháp vào bất
-                                    kỳ thời điểm nào vì bất kỳ lý do nào.</p>
-                            </div>
-                            <div>
-                                <strong>7. Liên kết với các trang khác:</strong>
-                                <p> Mặc dù trang web này có thể được liên kết với những trang khác, Ticketmen không trực
-                                    tiếp hoặc gián tiếp tán thành, tổ chức, tài trợ,
-                                    đứng sau hoặc sát nhập với những trang đó, trừ phi điều này được nêu ra rõ ràng. Khi
-                                    truy cập vào trang web bạn phải hiểu và chấp
-                                    nhận rằng Ticketmen không thể kiểm soát tất cả những trang liên kết với trang
-                                    Ticketmen và cũng không chịu trách nhiệm cho nội dung
-                                    của những trang liên kết.</p>
-                            </div>
+                        </div>
+
+
+                        <div class="checkbox">
+                            <label for="checkbox1">
+                                <input type="checkbox" id="checkbox1" name="option1"> Tôi đảm bao mua vé xem phim này
+                                theo
+                                đúng độ tuổi quy định.
+                            </label>
+                            <br>
+                            <label for="checkbox2">
+                                <input type="checkbox" id="checkbox2" name="option2"> Nội địa
+                                <img src="../image/Screenshot 2023-10-30 160307.png"
+                                    style="width: 230px; height: 27px;">
+                            </label>
+                        </div>
+
+                        <div class="thong-tin">
+                            <p>Vui lòng nhập tên, điện thoại và Email</p>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="fullName" placeholder="HỌ TÊN(*)"
+                                        style="background-image: url(/image/ten.png);">
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="phone" placeholder="ĐIỆN THOẠI(*)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" placeholder="EMAIL(*)">
+                                </div>
+                            </form>
                         </div>
                     </div>
 
 
-                    <div class="checkbox">
-                        <label for="checkbox1">
-                            <input type="checkbox" id="checkbox1" name="option1"> Tôi đảm bao mua vé xem phim này theo
-                            đúng độ tuổi quy định.
-                        </label>
-                        <br>
-                        <label for="checkbox2">
-                            <input type="checkbox" id="checkbox2" name="option2"> Nội địa
-                            <img src="../image/Screenshot 2023-10-30 160307.png" style="width: 230px; height: 27px;">
-                        </label>
+                    <div class="input">
+                        <div class="button">
+                            <button id="quaylai">QUAY LẠI</button>
+                        </div>
+                        <div class="button">
+                            <button id="thanhtoan">THANH TOÁN</button>
+                        </div>
                     </div>
-
-                    <div class="thong-tin">
-                        <p>Vui lòng nhập tên, điện thoại và Email</p>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="fullName" placeholder="HỌ TÊN(*)"
-                                    style="background-image: url(/image/ten.png);">
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-control" id="phone" placeholder="ĐIỆN THOẠI(*)">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="email" placeholder="EMAIL(*)">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-
-                <div class="input">
-                    <div class="button">
-                        <button id="quaylai">QUAY LẠI</button>
-                    </div>
-                    <div class="button">
-                        <button id="thanhtoan">THANH TOÁN</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div> -->
         </div>
-    </div>
-</main>
+    </main>
 </div>

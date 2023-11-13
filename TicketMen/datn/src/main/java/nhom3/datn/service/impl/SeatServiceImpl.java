@@ -31,7 +31,7 @@ public class SeatServiceImpl implements SeatService{
     }
 
     @Override
-    public List<Seat> findByDateTimeAndTicketId(String date, Date time, Long tid) {
+    public List<Seat> findByDateTimeAndTicketId(Date date, Date time, Long tid) {
         return seatDao.findSeatsByDateAndTimeAndTicketId(date, time, tid);
     }
 

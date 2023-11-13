@@ -809,17 +809,24 @@ h1 {
     background: #59dbff;
 }
 
+.seat.booked {
+    background-color: #e74c3c; /* Màu ghế đã đặt */
+    pointer-events: none; /* Vô hiệu hóa sự kiện click */
+}
+
 .legend {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: inline-flex;
+    flex-direction: row;
+    /* align-items: flex-start; */
     margin-top: 20px;
+    width: 100%;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    margin-left: 10% ;
 }
 
 .legend-item-icon {
@@ -834,11 +841,15 @@ h1 {
 }
 
 .legend-item.occupied .legend-item-icon {
-    background: #f5a623;
+    background: #59dbff;
+}
+
+.legend-item.ordered .legend-item-icon {
+    background: #e74c3c;
 }
 
 .legend-item.available .legend-item-icon {
-    background: #ccc;
+    background: #ffc342;
 }
 
 .action-button {
@@ -859,11 +870,31 @@ h1 {
 .booking-summary {
     height: auto;
     background-color: #fff;
-    margin: 20px;
-    padding: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.movie-image{
+    margin: 5% 15% 2% 15%;
+    width: 70%;
+}
+
+.movie-ticket-info{
+    margin: 2% 10%;
+}
+
+.movie-ticket-info h3{
+    font-weight: 600;
+    margin-bottom: 5%;
+}
+
+.movie-ticket-info p{
+    font-weight: 600;
+    margin: 1%;
+}
+
 
 .showtimes {
     display: flex;
@@ -910,4 +941,166 @@ h1 {
     color: black;
     text-align: center;
     font-weight: 600;
+}
+
+
+/* -----------------Tuong's BILL-------------------- */
+/* -------*/
+.final-confirm {
+    width: 90%;
+    /* height: auto; */
+    /* background: linear-gradient(to right, rgb(107, 225, 150), rgb(55, 101, 174), rgb(147, 51, 234)); */
+    background-color: white;
+    border-radius: 0 50px 0 50px;
+    text-align: center;
+    margin: 0 auto 40px auto;
+    padding: 30px 50px;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+.final-confirm>p {
+    font-family: 'MyriadRegular';
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.confirm-filp {
+    /* margin: 0 auto; */
+    padding: 30px 0;
+}
+
+.confirm-filp-pic {
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+.confirm-filp-text h3 {
+    font-family: 'MyriadBold';
+    text-transform: uppercase;
+}
+.confirm-filp-text p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin: 10px 0;
+}
+.confirm-ticket {
+    display: table !important;
+    border-spacing: 1px;
+}
+.confirm-ticket>.confirm-mark {
+    display: table-cell;
+    vertical-align: middle;
+    min-width: 80px;
+    background-color: #f6e2e2;
+}
+
+.confirm-text {
+    background-color: #f6e2e2;
+    padding: 10px;
+    width: 320px;
+}
+
+/* ul {
+    list-style-type: none;
+} */
+.confirm-mark {
+    font-weight: bold;
+    font-size: 18px;
+}
+.tong-tien {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.giam-gia {
+    margin-top: 15px;
+}
+
+.nut-giam-gia {
+    padding: 10px 20px;
+    background-color: #ee88db;
+    margin: 5px;
+    border-radius: 7px;
+}
+
+.gui {
+    padding: 10px 30px;
+    cursor: pointer;
+    margin: 7px;
+    border-radius: 7px;
+    background: linear-gradient(to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
+}
+
+.gui:hover {
+    background: linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(234, 179, 8));
+}
+
+.ma-giam-gia {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    border-radius: 7px;
+}
+
+/* -------*/
+
+.final-form {
+    width: 90%;
+    background: rgb(238, 211, 211);
+    border-radius: 50px 0 50px 0;
+    margin: 0 auto 40px auto;
+    padding: 30px 50px;
+    max-width: 900px;
+}
+
+/* h2 {
+    text-align: center;
+} */
+
+.thong-tin {
+    background-color: #eee4e4;
+    padding: 6px;
+    margin-top: 35px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.checkbox {
+    margin-top: 20px;
+    text-align: left;
+    margin: 50px 0 0 20px;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#quaylai {
+    background-color: #8d8989;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    border-radius: 50px 0 50px 0;
+}
+
+#quaylai:hover {
+    background-color: #ed4bda;
+}
+
+#thanhtoan {
+    background-color: #fe40e5;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    border-radius: 50px 0 50px 0;
+}
+
+#thanhtoan:hover {
+    background-color: #eba23c;
 }

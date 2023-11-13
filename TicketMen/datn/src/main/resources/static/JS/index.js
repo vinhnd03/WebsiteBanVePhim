@@ -113,9 +113,9 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     $scope.columns = Array.from({ length: 14 }, (v, k) => String.fromCharCode(65 + k)); // A to J
     $scope.seats = generateSeats($scope.rows, $scope.columns);
 
-    $scope.selectedSeats = [];
-    $scope.availableSeats = $scope.rows.length * $scope.columns.length;
-
+    $scope.selectedSeats = []
+    $scope.availableSeats = ($scope.rows.length * $scope.columns.length) - $scope.orderedSeats.length;
+    $scope.selectedSeats2 = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
 
     // Replace "URL_OF_MOVIE_LIST" with the actual URL to fetch movie list from the server
     // $http.get("URL_OF_MOVIE_LIST")
@@ -126,21 +126,34 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     //         console.error("Error fetching movie list: " + error);
     //     });
     var ticketId = $('#Tid').text();
+    
     console.log("tid: ", ticketId);
 
     $scope.initialize = function () {
-
         var promise = $http.get("/rest/tickets/" + ticketId);
 
         promise.then(function (resp) {
+            
             $scope.ticket = resp.data;
-            // $scope.ticket.date = moment($scope.ticket.date).format('DD-MM-YYYY');
+            console.log($scope.ticket);
+            // $scope.ticket.date = moment($scope.ticket.date).format('MM-DD-YYYY');
             // $scope.ticket.time = moment($scope.ticket.time).format('HH:mm:ss');
-
+            $scope.ticket.date = new Date($scope.ticket.date);
+            
+            var formattedDate = moment($scope.ticket.date).format('MM-DD-YYYY');
+            
 
             $scope.perform = angular.copy($scope.ticket);
-            $http.get(`/rest/seats/byDateTimeAndTId/${$scope.ticket.date}/${$scope.ticket.time}/${$scope.ticket.id}`).then(resp => {
+            $http.get(`/rest/seats/byDateTimeAndTId/${formattedDate}/${$scope.ticket.time}/${$scope.ticket.id}`).then(resp => {
                 $scope.orderedSeats = resp.data;
+                console.log("orderedSeats: ", $scope.orderedSeats);
+                // Thiết lập trạng thái cho mỗi ghế
+                $scope.seats.forEach(seat => {
+                    seat.isBooked = $scope.orderedSeats.some(orderedSeat => orderedSeat.name === seat);
+                });
+
+                $scope.availableSeats = ($scope.rows.length * $scope.columns.length) - $scope.orderedSeats.length;
+                $scope.ticket.time = new Date($scope.ticket.time);
             }).catch(error => {
                 console.log(error);
             })
@@ -150,6 +163,8 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
         }).catch(function (error) {
             console.error("Error: " + error)
         })
+
+    
 
         $http.get("/rest/accounts/" + $scope.username).then(resp => {
             $scope.account = resp.data;
@@ -190,14 +205,29 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
         return $scope.selectedSeats.indexOf(seat) !== -1;
     };
 
+    $scope.isSeatOrdered = function (seat) {
+        return $scope.orderedSeats.some(orderedSeat => orderedSeat.name === seat);
+    };
+
     $scope.goBack = function () {
         $scope.selectedSeats = [];
         limit = 0
-        $scope.availableSeats = $scope.rows.length * $scope.columns.length;
+        $scope.availableSeats = $scope.rows.length * $scope.columns.length - $scope.orderedSeats.length;
     };
+
+    $scope.goToPayment = function (){
+        $window.localStorage.setItem("selectedSeats", JSON.stringify($scope.selectedSeats));
+    }
+
+    // $scope.getSelectedSeatsFromLocalStorage = function () {
+    //     var storedSeats = $window.localStorage.getItem("selectedSeats");
+    //     return storedSeats ? JSON.parse(storedSeats) : [];
+    // }
 
     $scope.continueBooking = function () {
         var items = [];
+        $scope.selectedSeats = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
+        console.log("selectedSeats: ", $scope.selectedSeats);
 
         // Duyệt qua mỗi ghế được chọn
         for (var i = 0; i < $scope.selectedSeats.length; i++) {
@@ -221,6 +251,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
                     console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
                 });
         });
+        $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
         // alert($scope.selectedSeats[1])
         alert("Đặt ghế thành công!")
     };

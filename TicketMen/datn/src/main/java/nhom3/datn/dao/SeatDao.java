@@ -16,8 +16,8 @@ public interface SeatDao extends JpaRepository<Seat, Integer>{
     @Query("SELECT B FROM Order A " +
            "INNER JOIN Seat B ON B.id = A.seat.id " +
            "INNER JOIN Ticket C ON A.ticket.id = C.id " +
-           "WHERE C.date = :dateParam AND C.time = :timeParam AND C.id = :ticketIdParam")
-    List<Seat> findSeatsByDateAndTimeAndTicketId(@Param("dateParam") String date,
+           "WHERE C.date = :dateParam AND C.time = CONVERT(time, :timeParam) AND C.id = :ticketIdParam")
+    List<Seat> findSeatsByDateAndTimeAndTicketId(@Param("dateParam") Date date,
                                                  @Param("timeParam") Date time,
                                                  @Param("ticketIdParam") Long ticketId);
 }

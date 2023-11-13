@@ -1,5 +1,6 @@
 package nhom3.datn.controller.rest;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -39,10 +40,22 @@ public class SeatRestController {
 
     @GetMapping("/byDateTimeAndTId/{date}/{time}/{tid}")
     public List<Seat> getByDateTimeAndTicketId(
-            @PathVariable("date") String date,
-            @PathVariable("time") @DateTimeFormat(pattern = "HH:mm:ss") Date time,
+            @PathVariable("date") String dateString,
+            @PathVariable("time")  String timeString,
             @PathVariable("tid") Long tid) {
-        return seatService.findByDateTimeAndTicketId(date, time, tid);
+        
+        try{
+            Date date = new SimpleDateFormat("MM-dd-yyyy").parse(dateString);
+            Date time = new SimpleDateFormat("HH:mm:ss").parse(timeString);
+            
+            return seatService.findByDateTimeAndTicketId(date, time, tid);          
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return null;
+        }
+
+        
     }
 
     //  @DateTimeFormat(pattern = "dd-MM-yyyy")

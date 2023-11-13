@@ -2,20 +2,24 @@
     <main ng-controller="seatSelectCtrl">
         <div hidden id="Tid" th:text="${Tid}"></div>
         <div class="container-fluid row">
-            <div class="col-2"></div>
-            <div class="cinema-room col-6">
+            <div class="col-1"></div>
+            <div class="cinema-room col-7">
                 <h1>Chọn ghế xem phim</h1>
                 <div class="screen">Màn hình</div>
                 <div class="seating-container">
                     <div class="seats">
                         <div class="seat"
-                            ng-class="{'selected': isSeatSelected(seat), 'available': isSeatAvailable(seat)}"
+                            ng-class="{'selected': isSeatSelected(seat), 'available': isSeatAvailable(seat), 'booked': isSeatOrdered(seat)}"
                             ng-repeat="seat in seats" ng-click="toggleSeat(seat)">{{seat}}</div>
                     </div>
                     <div class="legend">
                         <div class="legend-item occupied">
                             <div class="legend-item-icon"></div>
-                            <div class="legend-item-text">Ghế đã đặt: <span>{{selectedSeats.length}}</span></div>
+                            <div class="legend-item-text">Ghế đang chọn: <span>{{selectedSeats.length}}</span></div>
+                        </div>
+                        <div class="legend-item ordered">
+                            <div class="legend-item-icon"></div>
+                            <div class="legend-item-text">Ghế đã được đặt: <span>{{orderedSeats.length}}</span></div>
                         </div>
                         <div class="legend-item available">
                             <div class="legend-item-icon"></div>
@@ -24,17 +28,21 @@
                     </div>
                 </div>
             </div>
-            <div class="booking-summary col-2">
-                <img src="" alt="Tên phim" class="movie-image">
-                <h2>{{perform.movie.name}}</h2>
-                <p>Rạp chiếu: {{perform.room.name}}</p>
-                <p>Suất chiếu: {{perform.time | date : 'h:mm'}}</p>
-                <p>Ngày chiếu: {{perform.date | date : 'dd-MM-yyyy'}}</p>
-                <p>Tổng giá tiền: {{selectedSeats.length * perform.price}} VNĐ</p>
-                <button id="back-button" class="action-button" ng-click="goBack()">Quay lại</button>
-                <button id="continue-button" class="action-button" ng-click="continueBooking()">Tiếp tục</button>
+            <div class="booking-summary col-3">
+                <img ng-src="/image/{{perform.movie.poster}}" alt="Tên phim" class="movie-image">
+                <div class="movie-ticket-info">
+                    <h3>{{perform.movie.name}}</h3>
+                    <p>Rạp chiếu: {{perform.room.name}}</p>
+                    <p>Suất chiếu: {{perform.time | date : 'h:mm'}}</p>
+                    <p>Ngày chiếu: {{perform.date | date : 'dd-MM-yyyy'}}</p>
+                    <p>Tổng giá tiền: {{selectedSeats.length * perform.price}} VNĐ</p>
+                </div>
+                <div class="text-center">
+                    <button id="back-button" class="btn btn-danger" ng-click="goBack()">Hủy chọn</button>
+                    <a id="continue-button" class="btn btn-success" ng-click="goToPayment()" th:href="@{|/order/bill/${Tid}|}">Tiếp tục</a>
+                </div>                            
             </div>
-            <div class="col-2"></div>
+            <div class="col-1"></div>
         </div>
     </main>
 </div>

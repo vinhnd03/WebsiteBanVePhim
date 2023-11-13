@@ -14,6 +14,6 @@ public interface SeatService {
 
     Seat findByName(String name);
 
-    List<Seat> findByDateTimeAndTicketId(String date, Date time, Long tid);
+    List<Seat> findByDateTimeAndTicketId(Date date, Date time, Long tid);
     
 }
