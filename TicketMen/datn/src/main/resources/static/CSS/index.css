@@ -730,14 +730,14 @@ footer {
     margin-right: 20px;
 }
 
-@keyframes mslide{
+/* @keyframes mslide{
     0% {
         transform: translateX(-100%);
     }
     100% {
         transform: translateX(0);
     }
-}
+} */
 
 .mlist{
     animation: mslide 2s ease;
@@ -933,6 +933,7 @@ h1 {
     color: white !important;
 }
 
+/* tên phim */
 .card-title1{
     font-family: 'Futurab';
     /* font-weight: normal; */
@@ -1103,4 +1104,17 @@ h1 {
 
 #thanhtoan:hover {
     background-color: #eba23c;
+}
+.card-title2{
+    font-family: 'Futurab';
+    /* font-weight: normal; */
+    font-size: 16px;
+    text-transform: uppercase;
+    color: black;
+    font-weight: 600;
+}
+
+/* //home */
+.mlist{
+    background-image: url('../image/menu.png');
 }

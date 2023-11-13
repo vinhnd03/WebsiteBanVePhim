@@ -20,11 +20,14 @@
    
     margin-top: 30%;
   }
+  .card-title1{
+    /* color: wheat; */
+  }
 </style>
 
 <div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org" ng-controller="movie-ctrl" >
-  <main class=""style="margin-top: 2%;">
-
+  <main style="margin-top: 2%;">
+<div>
     <ul class="nav nav-tabs container ">
       <li class="nav-item active" >
         <a  class="nav-link active" id="tinDienAnh-tab" data-toggle="tab" href="#tinDienAnh" role="tab"
@@ -41,40 +44,75 @@
       <div class="tab-pane fade" id="tuyenDung" role="tabpanel" aria-labelledby="tuyenDung-tab">
         <ul class="list-group">
           
-          <div class="container-fluid">
-
-            <div>
-              <div class="row ">
-                
-                <div class="col-6 text-left"  th:each="movie : ${items}"style="border: 5px solid black;background-color:pink;">
-                  <div class="boder" style="width: 100%;">
-                    <div style="width: 50%;float: left;margin-bottom: 3%;">
-                      <img th:src="@{|/image/${movie.poster}|}" alt="" width="100%" style="padding: 5%;">
+          <div class="mlist">
+            <div class="tab-content" id="myContent">
+              <div class="tab-pane show active" id="edit" role="tabpanel" aria-labelledby="videoEdit-tab" style="color: rgb(143, 10, 130);">
+                <div class=" mt-5 container" >
+                  <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                      <div class="item active">
+                        <div class="row">
+                          <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" th:if="${iterStat.index < 4}">
+                            <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width:230px" />
+                               <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="row">
+                          <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" 
+                               th:if="${iterStat.index >= 4 and iterStat.index < 8}">
+                              <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
+                              <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
+                          </div>
+                      </div>
+                      </div>
+                      <div class="item ">
+                        <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" 
+                               th:if="${iterStat.index >= 8 and iterStat.index < 12}">
+                              <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
+                              <h3 class="card-title1" th:text="${m.name} "style="margin-bottom: 10%;"></h3>
+                          </div>
+                      </div>
                     </div>
-                    <div style="width: 50%;float: left;padding-right: 5%;">
-                      <h3><strong th:text="${movie.name}"></strong> </h3>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-                      <hr>
+          
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel1" data-slide="prev" style="
+                        margin-left: -14%;
+                        width: 10%;
+                        height: 0%;
+                        color: black;
+                        margin-top:15%;
+                      ">
                       
-                  </div>
-                  <div class="text-center button" style="margin-top: 300px;">
-                    <a type="button" class="btn btn-primary" style="border-radius: 5%;" th:href="@{|/movie/detail/${movie.id}|}">
-                      <i class="fa-solid fa-circle-info fa-beat" style="margin-right: 5px;"></i>CHI TIẾT</a>
-                </div>  
+                      <span ><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel1" data-slide="next" style="
+                        margin-right: -11%;
+                        width: 10%;
+                        height: 0%;
+                        color: black;
+                        margin-top:15%;
+                      ">
+                       
+                      <span ><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
+                    </a>
                   </div>
                 </div>
               </div>
+          
             </div>
           </div>
+          
         </ul>
       </div>
 
 
       <!--PHIM ĐANG CHIẾU-->
-      <div class="tab-pane fade active show in" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab" style="color: white;">
+      <div class="tab-pane fade active show in" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab" >
         <ul class="list-group">
-          <div class="container-fluid" style="background-color: ffcccc;">
+          <div class="mlist">
             <div class="tab-content" id="myContent">
               <div class="tab-pane show active" id="edit" role="tabpanel" aria-labelledby="videoEdit-tab" style="color: rgb(143, 10, 130);">
                 <div class=" mt-5 container" >
@@ -113,20 +151,20 @@
                         width: 10%;
                         height: 0%;
                         color: black;
-                        margin-top: 9%;
+                        margin-top: 15%;
                       ">
                       
-                      <span ><img src="/image/saringan.png" alt="" width="150px"></span>
+                      <span ><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
                     </a>
                     <a class="right carousel-control" href="#myCarousel" data-slide="next" style="
                         margin-right: -11%;
                         width: 10%;
                         height: 0%;
                         color: black;
-                        margin-top:9%;
+                        margin-top:15%;
                       ">
                       
-                      <span><img src="/image/saringan.png" alt="" width="150px"></span>
+                      <span><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
                     </a>
                   </div>
                 </div>
@@ -135,10 +173,10 @@
             </div>
           </div>
           
-          </div>
         </ul>
       </div>
     </div>
+  </div>
     <div class="container-fluid">
       <div class="title">
         <h3><strong>CHƯƠNG TRÌNH KHUYẾN MÃI</strong></h3>

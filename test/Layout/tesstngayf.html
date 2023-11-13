@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <label for="currentDate">Ngày hôm nay là:</label>
+    <input type="text" id="currentDate" readonly>
+
+    <table id="myTable" border="1">
+        <tr>
+            <td data-date="10/11/2023">10/11/2023</td>
+            <td>thứ 6</td>
+        </tr>
+        <tr>
+            <td data-date="11/11/2023">11/11/2023</td>
+            <td>thứ 7</td>
+        </tr>
+        <tr>
+            <td data-date="12/11/2023">12/11/2023</td>
+            <td>chủ nhật</td>
+        </tr>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Lấy ngày hiện tại
+        var today = new Date();
+
+        // Định dạng ngày thành chuỗi MM/DD/YYYY
+        var formattedDate = today.getDate() + '/' + (today.getMonth() + 1) + '/' +  today.getFullYear();
+
+        // Đặt giá trị cho trường input
+        document.getElementById('currentDate').value = formattedDate;
+
+        // Hiển thị chỉ bảng cho ngày hiện tại
+        var tableRows = document.getElementById('myTable').getElementsByTagName('tr');
+        for (var i = 1; i < tableRows.length; i++) {
+            var rowDate = tableRows[i].getElementsByTagName('td')[0].getAttribute('data-date');
+            if (rowDate !== formattedDate) {
+                tableRows[i].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

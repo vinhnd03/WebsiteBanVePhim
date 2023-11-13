@@ -32,11 +32,12 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+
     
     </head>
 </head>
 
-<body ng-app="myApp" style="background-color: bisque;">
+<body ng-app="myApp" style="background-color: white;">
     <div style="background-size: cover; background-repeat: no-repeat;margin-bottom: 10%;">
         <!-- Thanh Menu-->
         <div th:replace="/layout/_menu.html"></div>
@@ -46,7 +47,7 @@
         </div>
         <!-- -->
         <!-- Đăng Nhập - Đăng Ký-->
-        <div class="login" style="background-color:bisque">
+        <div class="login" style="background-color:white">
             <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
                 <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
                 <p>Chào mừng Admin!</p>
@@ -73,7 +74,7 @@
             </th:block>
             <div class="input-group" >
                 <div  >
-                    <button style="background-color: bisque; float: right;" class="btn" type="button" id="button-addon2">Tìm kiếm</button>
+                    <button style="background-color: white; float: right;" class="btn" type="button" id="button-addon2">Tìm kiếm</button>
                   </div>
                 <input style="width: 20%; z-index: inherit;" type="text" class="form-control float-right" placeholder="Tìm kiếm phim"
                      aria-label="Tìm kiếm phim" aria-describedby="button-addon2">

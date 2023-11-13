@@ -33,7 +33,7 @@ public class MovieController {
     TicketService ticketService;
 
     @RequestMapping("/movie/list")
-    public String list(Model model, @RequestParam("cid") Optional<String> cid) {
+    public String list(Model model, @RequestParam("cid") Optional<Integer> cid) {
         if (cid.isPresent()) {
             List<Movie> list = movieService.findByCategoryId(cid.get());
             model.addAttribute("items", list);

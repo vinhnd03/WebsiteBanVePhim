@@ -26,7 +26,7 @@ public class MovieServiceImpl implements MovieService{
     }
 
     @Override
-    public List<Movie> findByCategoryId(String cid) {
+    public List<Movie> findByCategoryId(Integer cid) {
         return mdao.findByCategoryId(cid);
     }
 
