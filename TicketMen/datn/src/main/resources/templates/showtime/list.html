@@ -4,6 +4,18 @@
     box-shadow: 0px 0px 5px 5px #999999;
 
   }
+
+  .phim {
+    border: 1px solid black;
+    border-radius: 5%;
+    width: 100%;
+    height: 350px;
+    background-color: #999999;
+  }
+
+  .lap {
+    height: auto;
+  }
 </style>
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
 
@@ -13,15 +25,14 @@
 
     <!-- phim -->
 
-    <div th:each="movie : ${movis}">
-      <div>
+    <div th:each="movie : ${movis}" class="lap">
+      <!-- <div>
         <div style="margin-top: 3%;">
-          <div class="border"
-            style="border: 1px solid black; border-radius: 5%; width: 100%;height: 350px; background-color: #999999;">
+          <div class="border phim">
             <div style="width: 25%; float: left;">
               <img th:src="@{|/image/${movie.poster}|}" alt="" width="210px" style="margin: 5%;">
             </div>
-            <div style="width: 74%; float: left;">
+            <div style="width: 74%; float: left;" class="gio">
               <h4><strong th:text="${movie.name}"></strong> </h4>
               <p th:text="${movie.movieContent}"></p>
               <hr>
@@ -49,7 +60,53 @@
 
           </div>
         </div>
+      </div> -->
+      <div class="container mt-5" style="display: flex; flex-wrap: wrap;background-color: #999999;">
+        <div class="left"
+          style=" flex: 1; min-height: 260px;  display: flex; align-items: center; justify-content: center;margin-left: 5%;">
+          <div class="a">
+            <div style="width: 25%; float: left; margin-left: -10%; ">
+              <img th:src="@{|/image/${movie.poster}|}" alt="..." width="150px"
+                style="border: 5px solid darkmagenta; border-radius: 8px;">
+            </div>
+            <div style="width: 70%; float: left; margin-left: 48px;">
+              <h4><strong th:text="${movie.name}"></strong> </h4>
+              <p th:text="${movie.movieContent}"></p>
+              <hr>
+              <!-- <h5><strong>Quốc gia : [[${movie.country}]]</strong> </h5> -->
+              <!-- <h5>Ngôn ngữ: Tiếng Anh - Phụ đề Tiếng Việt</h5> -->
+              <h5>Thể loại : <strong style="color: chocolate;">[[${movie.category.name}]]</strong></h5>
+              <div th:each="ticket : ${tickets}" th:if="${ticket.movie.id == movie.id}">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right" style="flex: 1; min-height: 260px;float: right; display: flex; align-items: center;">
+          <div class="p"
+            style="justify-content: center; display: flex; flex-direction: column; align-items: flex-start;">
+
+            <div style="margin-bottom: 5%;display: flex;" th:each="ticket : ${tickets}"
+              th:if="${ticket.movie.id == movie.id}">
+              <div>
+              <strong style="margin-left: 5%;">Ngày chiếu</strong> 
+              <div style="background-color: goldenrod;margin-right: 5%;" class="btn" type="button">
+                <strong th:text="${ticket.date}">Thứ 3 ngày 01 tháng 10 năm 2023</strong>
+              </div>
+            </div>
+              <div>
+                <strong >Thời gian chiếu  </strong>
+                <a style="background-color: bisque;margin-right: 5%;margin-left: 6%;" class="btn" type="button"
+                  th:text="${ticket.time}">
+                  19:00
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
+
     </div>
     <!-- Hiển thị danh sách phim -->
 

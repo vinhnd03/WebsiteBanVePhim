@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Menu của tôi</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/test/owlcarousel/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="/test/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/test/owlcarousel/assets/owl.theme.default.min.css">
+</head>
+
+<body>
+
+    <h1 align="center">PHIM</h1>
+    <div class="container mt-5" style="display: flex; flex-wrap: wrap;background-color: #999999;">
+        <div class="left"
+            style=" flex: 1; min-height: 260px;  display: flex; align-items: center; justify-content: center;margin-left: 5%;">
+            <div class="a">
+                <div style="width: 25%; float: left; margin-left: -10%; ">
+                    <img src="/test/image/khuyến mãi 1.jpg" alt="..." width="150px"
+                        style="border: 5px solid darkmagenta; border-radius: 8px;">
+                </div>
+                <div style="width: 70%; float: left; margin-left: 48px;">
+                    <h4><strong th:text="${movie.name}"></strong> </h4>
+                    <p th:text="${movie.movieContent}"></p>
+                    <hr>
+                    <h5><strong>Quốc gia : [[${movie.country}]]</strong> </h5>
+                    <h5>Ngôn ngữ: Tiếng Anh - Phụ đề Tiếng Việt</h5>
+                    <h5>Thể loại : <strong style="color: chocolate;">[[${movie.category.name}]]</strong></h5>
+                    <div th:each="ticket : ${tickets}" th:if="${ticket.movie.id == movie.id}">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right" style="flex: 1; min-height: 260px;float: right; display: flex; align-items: center;">
+            <div class="p"
+                style="justify-content: center; display: flex; flex-direction: column; align-items: flex-start;">
+                <div style="margin-bottom: 5%;display: flex;">
+                    <div style="background-color: goldenrod;" class="btn" type="button">
+                        <strong>Thứ 3 ngày 01 tháng 10 năm 2023</strong>
+                    </div>
+                    <div>
+                        <div style="background-color: bisque;margin-right: 5%;" class="btn" type="button">
+                            19:00
+                        </div>
+                        <div style="background-color: bisque;margin-right: 5%;" class="btn" type="button">
+                            19:00
+                        </div>
+                        <div style="background-color: bisque;margin-right: 5%;" class="btn" type="button">
+                            1
+                        </div>
+                        <div style="background-color: bisque;margin-right: 5%;" class="btn" type="button">
+                            19:00
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

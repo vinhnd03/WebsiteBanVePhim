@@ -23,6 +23,41 @@
   .card-title1{
     /* color: wheat; */
   }
+
+  /* hover img */
+  .movie-item {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .movie-item:hover {
+            /* border: 2px solid #d14bcf; */
+            transform: scale(1.05);
+        }
+
+        .movie-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .movie-item .card-title1 {
+            margin-bottom: 10%;
+        }
+
+        .movie-item .btn-details {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            background-color: #c6318f;
+        }
+
+        .movie-item:hover .btn-details {
+            opacity: 1;
+        }
 </style>
 
 <div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org" ng-controller="movie-ctrl" >
@@ -56,6 +91,7 @@
                           <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" th:if="${iterStat.index < 4}">
                             <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width:230px" />
                                <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
+                               <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
                           </div>
                         </div>
                       </div>
@@ -65,6 +101,7 @@
                                th:if="${iterStat.index >= 4 and iterStat.index < 8}">
                               <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
                               <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
+                              <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
                           </div>
                       </div>
                       </div>
@@ -73,6 +110,7 @@
                                th:if="${iterStat.index >= 8 and iterStat.index < 12}">
                               <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
                               <h3 class="card-title1" th:text="${m.name} "style="margin-bottom: 10%;"></h3>
+                              <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
                           </div>
                       </div>
                     </div>
@@ -124,6 +162,7 @@
                           <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" th:if="${iterStat.index < 4}">
                             <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width:230px" />
                                <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
+                               <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
                           </div>
                         </div>
                       </div>
@@ -133,6 +172,7 @@
                                th:if="${iterStat.index >= 4 and iterStat.index < 8}">
                               <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
                               <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
+                              <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
                           </div>
                       </div>
                       </div>
@@ -141,6 +181,7 @@
                                th:if="${iterStat.index >= 8 and iterStat.index < 12}">
                               <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
                               <h3 class="card-title1" th:text="${m.name} "style="margin-bottom: 10%;"></h3>
+                              <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
                           </div>
                       </div>
                     </div>
