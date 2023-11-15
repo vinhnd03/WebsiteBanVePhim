@@ -582,6 +582,8 @@ body {
     text-align: center;
     padding: 20px;
     background-image: url(../image/hh.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .contact h1 {
@@ -1100,6 +1102,12 @@ h1 {
     font-weight: bold;
     color: white;
     border-radius: 50px 0 50px 0;
+}
+
+.confirm-box{
+    border: 1px solid #008cba;
+    padding-bottom: 3%;
+    border-radius: 2%;
 }
 
 #thanhtoan:hover {
