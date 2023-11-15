@@ -1,46 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Dropdown Bootstrap</title>
-    <!-- Bao gồm tệp CSS Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Menu của tôi</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .movie-item {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .movie-item:hover {
+            border: 2px solid #d14bcf;
+            transform: scale(1.05);
+        }
+
+        .movie-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .movie-item .card-title1 {
+            margin-bottom: 10%;
+        }
+
+        .movie-item .btn-details {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .movie-item:hover .btn-details {
+            opacity: 1;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container mt-4">
-        <!-- Menu dropdown -->
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Lựa chọn
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" id="item1">Mục 1</a>
-                <a class="dropdown-item" href="#" id="item2">Mục 2</a>
-                <a class="dropdown-item" href="#" id="item3">Mục 3</a>
+
+    <h1 align="center">PHIM</h1>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="movie-item show" th:each="m, iterStat : ${items}" th:if="${iterStat.index < 4}">
+                    <img src="/test/image/khuyến mãi 1.jpg" alt="...">
+                    <h3 class="card-title1" th:text="${m.name}"></h3>
+                    <a href="#" class="btn btn-primary btn-details">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="movie-item show" th:each="m, iterStat : ${items}" th:if="${iterStat.index >= 4 and iterStat.index < 8}">
+                    <img src="/test/image/khuyến mãi 1.jpg" alt="...">
+                    <h3 class="card-title1" th:text="${m.name}"></h3>
+                    <a href="#" class="btn btn-primary btn-details">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="movie-item show" th:each="m, iterStat : ${items}" th:if="${iterStat.index >= 8 and iterStat.index < 12}">
+                    <img src="/test/image/khuyến mãi 1.jpg" alt="...">
+                    <h3 class="card-title1" th:text="${m.name}"></h3>
+                    <a href="#" class="btn btn-primary btn-details">Xem chi tiết</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Bao gồm các tệp JavaScript cần thiết của Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-    <script>
-        // JavaScript để thay thế dropdown-toggle khi click vào dropdown-item
-        const dropdownButton = document.getElementById("dropdownMenuButton");
-        const dropdownItems = document.querySelectorAll(".dropdown-item");
-
-        dropdownItems.forEach(item => {
-            item.addEventListener("click", function() {
-                dropdownButton.innerText = item.innerText;
-            });
-        });
-    </script>
 </body>
+
 </html>
