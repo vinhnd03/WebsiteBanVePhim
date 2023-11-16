@@ -84,7 +84,7 @@
               <div class="tab-pane show active" id="edit" role="tabpanel" aria-labelledby="videoEdit-tab" style="color: rgb(143, 10, 130);">
                 <div class=" mt-5 container" >
                   <!-- ========================== -->
-                  <div id="movieCarousel" class="carousel slide" data-ride="carousel">
+                  <div id="myCarousel1" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div th:each="group : ${#numbers.sequence(0, items.size() / 4 - 1)}" class="carousel-item" th:classappend="${group == 0} ? 'active' : ''">
                             <div class="d-flex justify-content-around">
