@@ -25,4 +25,6 @@ public interface AccountService {
     List<Account> findAllStaff();
 
     Optional<Account> findAccount(String username);
+
+    Optional<Account> findByEmail(String email);
 }

@@ -60,4 +60,9 @@ public class AccountServiceImpl implements AccountService{
         public Optional<Account> findAccount(String username) {
             return dao.findById(username);
         }
+
+        @Override
+        public Optional<Account> findByEmail(String email) {
+           return dao.findByEmail(email);
+        }
 }

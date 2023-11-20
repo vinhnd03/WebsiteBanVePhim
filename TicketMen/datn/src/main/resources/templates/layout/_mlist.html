@@ -83,45 +83,28 @@
             <div class="tab-content" id="myContent">
               <div class="tab-pane show active" id="edit" role="tabpanel" aria-labelledby="videoEdit-tab" style="color: rgb(143, 10, 130);">
                 <div class=" mt-5 container" >
+                  <!-- ========================== -->
                   <div id="myCarousel1" class="carousel slide" data-ride="carousel">
-                    <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                      <div class="item active">
-                        <div class="row">
-                          <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" th:if="${iterStat.index < 4}">
-                            <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width:230px" />
-                               <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
-                               <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="row">
-                          <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" 
-                               th:if="${iterStat.index >= 4 and iterStat.index < 8}">
-                              <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
-                              <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
-                              <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
+                      <div th:if="${not #lists.isEmpty(items)}">
+                          <div th:each="group : ${#numbers.sequence(0, (items.size() - 1) / 5)}" class="carousel-item" th:classappend="${group == 0} ? 'active' : ''">
+                              <div class="d-flex justify-content-around">
+                                  <div th:each="m : ${items.subList(group * 5, (group + 1) * 5 > items.size() ? items.size() : (group + 1) * 5)}" class="movie-item">
+                                      <img th:src="@{|/image/${m.poster}|}" alt="Movie Poster" style="width:200px" />
+                                      <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
+                                      <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
+                                  </div>
+                              </div>
                           </div>
                       </div>
-                      </div>
-                      <div class="item ">
-                        <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" 
-                               th:if="${iterStat.index >= 8 and iterStat.index < 12}">
-                              <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
-                              <h3 class="card-title1" th:text="${m.name} "style="margin-bottom: 10%;"></h3>
-                              <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
-                          </div>
-                      </div>
-                    </div>
-          
+                  </div>
                     <!-- Left and right controls -->
                     <a class="left carousel-control" href="#myCarousel1" data-slide="prev" style="
                         margin-left: -14%;
                         width: 10%;
                         height: 0%;
                         color: black;
-                        margin-top:15%;
+                        margin-top:13%;
                       ">
                       
                       <span ><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
@@ -131,13 +114,14 @@
                         width: 10%;
                         height: 0%;
                         color: black;
-                        margin-top:15%;
+                        margin-top:13%;
                       ">
                        
                       <span ><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
                     </a>
                   </div>
                 </div>
+                <!-- ======================================== -->
               </div>
           
             </div>

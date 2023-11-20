@@ -216,7 +216,17 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     };
 
     $scope.goToPayment = function (){
-        $window.localStorage.setItem("selectedSeats", JSON.stringify($scope.selectedSeats));
+        if($scope.selectedSeats.length === 0){
+            alert("Vui lòng chọn ít nhất 1 ghế để tiếp tục!");
+        } else {
+            $window.localStorage.setItem("selectedSeats", JSON.stringify($scope.selectedSeats));
+            // Chuyển trang ở đây nếu điều kiện được đáp ứng
+            $window.location.href = "/order/bill/" + ticketId;
+        }
+    }
+
+    $scope.back = function(){
+        $window.history.back();
     }
 
     // $scope.getSelectedSeatsFromLocalStorage = function () {

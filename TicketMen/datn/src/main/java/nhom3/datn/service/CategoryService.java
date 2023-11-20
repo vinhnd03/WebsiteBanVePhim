@@ -4,8 +4,6 @@ import java.util.List;
 
 
 import nhom3.datn.entity.Category;
-import nhom3.datn.entity.Movie;
-
 
 public interface CategoryService {
     List<Category> fillAll();

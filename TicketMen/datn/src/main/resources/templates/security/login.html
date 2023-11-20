@@ -23,7 +23,7 @@
             </div>
             <div class="col" align="center">
               <button class="btn btn-primary col-md-12" ng-disabled="isDisabled">Đăng nhập</button> <br>
-              <button  type="button" class="btn btn-default text-center col-md-12" data-dismiss="modal">Quên mật khẩu</button><br>
+              <a th:href="@{/security/forgot}" class="btn btn-default text-center col-md-12" >Quên mật khẩu</a><br>
               <i class="text-right pull-right" th:text="${message}" id="error-message"></i>
             </div>
           </form>
