@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiển Thị Ngày</title>
+</head>
+
+<body>
+    <div id="currentDate"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy đối tượng Date hiện tại
+            var currentDate = new Date();
+
+            // Mảng chứa tên các ngày trong tuần
+            var daysOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+
+            // Lấy thứ hiện tại (0-6)
+            var dayOfWeek = currentDate.getDay();
+
+            // Lấy ngày, tháng và năm
+            var day = currentDate.getDate();
+            var month = currentDate.getMonth() + 1; // Tháng bắt đầu từ 0
+            var year = currentDate.getFullYear();
+
+            // Hiển thị thông tin ngày
+            var displayDate = daysOfWeek[dayOfWeek] + ', ' + day + '/' + month + '/' + year;
+            document.getElementById('currentDate').innerText = displayDate;
+        });
+    </script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiển Thị Ngày</title>
+</head>
+
+<body>
+    <div id="currentDate"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy đối tượng Date hiện tại
+            var currentDate = new Date();
+
+            // Mảng chứa tên các ngày trong tuần
+            var daysOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+
+            // Lấy thứ hiện tại (0-6)
+            var dayOfWeek = currentDate.getDay();
+
+            // Lấy ngày, tháng và năm
+            var day = currentDate.getDate();
+            var month = currentDate.getMonth() + 1; // Tháng bắt đầu từ 0
+            var year = currentDate.getFullYear();
+
+            // Hiển thị thông tin ngày
+            var displayDate = daysOfWeek[dayOfWeek] + ', ' + day + '/' + month + '/' + year;
+            document.getElementById('currentDate').innerText = displayDate;
+        });
+    </script>
+</body>
+
+</html>

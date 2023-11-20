@@ -16,54 +16,23 @@
   .lap {
     height: auto;
   }
+
+  /* test */
 </style>
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
 
   <main class="container" style="color: black;">
-    <h2 class="text-center"><strong>LỊCH CHIẾU PHIM</strong> </h2>
-
-
+    <div class="text-center"> 
+    <h2 ><strong>LỊCH CHIẾU PHIM</strong> </h2>
+      <h3 id="currentDate"></h3>
+    </div>
     <!-- phim -->
 
     <div th:each="movie : ${movis}" class="lap">
-      <!-- <div>
-        <div style="margin-top: 3%;">
-          <div class="border phim">
-            <div style="width: 25%; float: left;">
-              <img th:src="@{|/image/${movie.poster}|}" alt="" width="210px" style="margin: 5%;">
-            </div>
-            <div style="width: 74%; float: left;" class="gio">
-              <h4><strong th:text="${movie.name}"></strong> </h4>
-              <p th:text="${movie.movieContent}"></p>
-              <hr>
-              <h5><strong>Quốc gia : [[${movie.country}]]</strong>  </h5>
-              <h5>Ngôn ngữ: Tiếng Anh - Phụ đề Tiếng Việt</h5>
-              <h5>Thể loại : <strong style="color: chocolate;">[[${movie.category.name}]]</strong></h5>
-              <div th:each="ticket : ${tickets}" th:if="${ticket.movie.id == movie.id}">
-                <h5><strong>Giờ chiếu :</strong>
-                  <p style="background-color: bisque; " class="btn" type="button" th:text="${ticket.time}"></p>
-               
-                <strong>ngày chiếu :</strong>
-                  <p style="background-color: bisque; " class="btn" type="button" th:text="${ticket.date}">Thứ 3 ngày 01
-                    tháng 10 năm 2023</p>
-                </h5>
-              </div>
-              <hr>
-              <div style="margin-bottom: 5%;">
-                <a type="button" class="btn btn-primary" style="border-radius: 5%;"
-                  th:href="@{|/movie/detail/${movie.id}|}">
-                  <h6><i class="fa-solid fa-circle-info fa-beat" style="margin-right: 5px;"></i>CHI TIẾT</h6>
-                </a>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div> -->
-      <div class="container mt-5" style="display: flex; flex-wrap: wrap;background-color: #999999;">
+    
+      <div class="container mt-5" style="display: flex; flex-wrap: wrap;">
         <div class="left"
-          style=" flex: 1; min-height: 260px;  display: flex; align-items: center; justify-content: center;margin-left: 5%;">
+          style=" flex: 1; min-height: 260px;  display: flex; align-items: center; justify-content: center;margin-left: 5%;background-color: rgb(157, 108, 161);color: white;">
           <div class="a">
             <div style="width: 25%; float: left; margin-left: -10%; ">
               <img th:src="@{|/image/${movie.poster}|}" alt="..." width="150px"
@@ -82,27 +51,29 @@
             </div>
           </div>
         </div>
-        <div class="right" style="flex: 1; min-height: 260px;float: right; display: flex; align-items: center;">
+        <div class="right"
+          style="flex: 1; min-height: 260px;float: right; display: flex; align-items: center;background-color: white; ">
           <div class="p"
             style="justify-content: center; display: flex; flex-direction: column; align-items: flex-start;">
+            <div th:each="ticket : ${tickets}" th:if="${ticket.movie.id == movie.id}">
+              <div style="display: flex;width: 500px;">
+                <div>
+                  <h4 style="background-image: url(/image/ngay.png); background-size: cover; /* Ảnh sẽ tự điều chỉnh kích thước để che phủ hoàn toàn phần tử */
+                  background-position: center; /* Đặt ảnh vào giữa */
+                  background-repeat: no-repeat; /* Không lặp lại ảnh */
+                  padding: 20px;
+                  margin-top: 20px;
+                  text-align: center;
+                  color: black;position: relative;"><strong th:text="${ticket.date}">22/12/2022</strong> </h4>
+                </div>
 
-            <div style="margin-bottom: 5%;display: flex;" th:each="ticket : ${tickets}"
-              th:if="${ticket.movie.id == movie.id}">
-              <div>
-              <strong style="margin-left: 5%;">Ngày chiếu</strong> 
-              <div style="background-color: goldenrod;margin-right: 5%;" class="btn" type="button">
-                <strong th:text="${ticket.date}">Thứ 3 ngày 01 tháng 10 năm 2023</strong>
+                <div style="margin-top: 32px;width: 200px;">
+                  <button style="background-color: bisque; " class="btn" type="button" th:text="${ticket.time}">09:00</button>
+                  <button style="background-color: bisque; " class="btn" type="button" >09:00:00</button>
+                </div>
               </div>
-            </div>
-              <div>
-                <strong >Thời gian chiếu  </strong>
-                <a style="background-color: bisque;margin-right: 5%;margin-left: 6%;" class="btn" type="button"
-                  th:text="${ticket.time}">
-                  19:00
-                </a>
-              </div>
-            </div>
 
+            </div>
           </div>
         </div>
       </div>
@@ -444,5 +415,45 @@
 
       </div>
     </div>
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      document.addEventListener("DOMContentLoaded", function () {
+          // Lấy đối tượng Date hiện tại
+          var currentDate = new Date();
+  
+          // Mảng chứa tên các ngày trong tuần
+          var daysOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+  
+          // Lấy thứ hiện tại (0-6)
+          var dayOfWeek = currentDate.getDay();
+  
+          // Lấy ngày, tháng và năm
+          var day = currentDate.getDate();
+          var month = currentDate.getMonth() + 1; // Tháng bắt đầu từ 0
+          var year = currentDate.getFullYear();
+  
+          // Hiển thị thông tin ngày
+          var displayDate =day + '-' + month + '-' + year;
+          document.getElementById('currentDate').innerText = displayDate;
+  
+          // Lọc các phim dựa trên ngày hiện tại
+          var movies = document.querySelectorAll('.lap');
+          movies.forEach(function (movie) {
+              var ticketDates = movie.querySelectorAll('div[th\\:each="ticket : ${tickets}"] h4[th\\:text="${ticket.date}"]');
+              var showMovie = false;
+  
+              ticketDates.forEach(function (ticketDate) {
+                  if (ticketDate.innerText.trim() === displayDate) {
+                      showMovie = true;
+                  }
+              });
+  
+              if (!showMovie) {
+                  movie.style.display = 'none';
+              }
+          });
+      });
+      /*]]>*/
+  </script>
   </main>
 </div>
