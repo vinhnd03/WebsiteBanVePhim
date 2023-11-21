@@ -1,9 +1,9 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
     <main>
-        <div >
+        <div th:object="${item}">
             <div class="detail-container">
                 <div class="container detail">
-                    <div class="row" th:object="${item}">
+                    <div class="row" >
                         <img class="col-3" th:src="@{|/image/*{poster}|}" alt="">
                         <div class="col-9 text">
                             <p class="name mt-2" th:text="*{name}"></p>
@@ -46,21 +46,30 @@
             </div>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+            aria-hidden="true" ng-controller="ticketSelectCtrl">
+            <div hidden id="Mid" th:text="*{id}"></div>
         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Vui lòng chọn xuất chiếu</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Chọn vé</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="text-center">
-                        <a th:each="ticket : ${showtime}" class="btn btn-primary mr-5 ticket-button"
-                            th:sortedby="${ticket.time}" th:order="ascending"
-                             th:text="${ticket.time}" th:href="@{|/order/select/${ticket.id}|}">
+                    <div class="text-center ">                        
+                        <p>Ngày chiếu</p>
+                        <select class="w-50 custom-select" ng-model="selectedDate" ng-change="findTime(selectedDate)">
+                            <option value="" selected>Chọn ngày</option>
+                            <option ng-repeat="d in dayInWeek" value="{{d}}">{{d}}</option>
+                        </select>
+                        <div class="mt-4">
+                            <a ng-repeat="t in time" class="btn btn-primary mr-5 ticket-button"
+                             th:order="ascending"
+                              th:href="@{|/order/select/{{t.id}}|}">{{t.time}}
                         </a>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="modal-footer">

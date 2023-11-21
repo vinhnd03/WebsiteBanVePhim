@@ -53,7 +53,7 @@ public class MovieController {
         Date selectedDate = dateFormat.parse(today);
         // Sử dụng selectedDate trong phần còn lại của mã
         Movie item = movieService.findById(id);
-        List<Ticket> showtimes = ticketService.findTimesByDateAndMovieId(selectedDate, id);
+        List<Ticket> showtimes = ticketService.findTicketByDateAndMovieId(selectedDate, id);
         model.addAttribute("item", item);
         model.addAttribute("showtime", showtimes);
     } catch (ParseException e) {

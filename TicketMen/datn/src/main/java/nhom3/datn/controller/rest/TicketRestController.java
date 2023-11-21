@@ -1,5 +1,7 @@
 package nhom3.datn.controller.rest;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,4 +58,24 @@ public class TicketRestController {
     //                 @PathVariable("id") Long id){
     //     return ticketService.findTimesByDateAndMovieId(date, id);
     // }
+
+    @GetMapping("getTicketByMovie/{movieId}")
+    public List<Ticket> getTicketByMovie(@PathVariable("movieId") Long id){
+        return ticketService.findTicketByMovieId(id);
+    }
+
+    @GetMapping("findTicketByMovieAndDate/{movieId}/{date}")
+    public List<Ticket> findTicketByMovieAndDate(@PathVariable("movieId") Long id, @PathVariable("date") String dateString){
+
+        try{
+            Date date = new SimpleDateFormat("MM-dd-yyyy").parse(dateString);
+            
+            return ticketService.findTicketByDateAndMovieId(date, id);         
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return null;
+        }
+        
+    }
 }

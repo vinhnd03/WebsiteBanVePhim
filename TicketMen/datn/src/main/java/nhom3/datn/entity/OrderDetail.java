@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -23,32 +24,29 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "Tickets")
-public class Ticket implements Serializable{
+@Table(name = "Orderdetails")
+public class OrderDetail implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    Float price;
-    Boolean available;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "Date")
-    Date date = new Date();
-
-    @Temporal(TemporalType.TIME)
-    @Column(name = "Time")
-    Date time = new Date();
+    // @Temporal(TemporalType.DATE)
+    // @Column(name = "Buydate")
+    // Date buyDate = new Date();
 
     @ManyToOne
-    @JoinColumn(name = "Movieid")
-    Movie movie;
+    @JoinColumn(name = "Ticketid")
+    Ticket ticket; 
 
     @ManyToOne
-    @JoinColumn(name = "Roomid")
-    Room room;
+    @JoinColumn(name = "Orderid")
+    Order order;
 
+    @ManyToOne
+    @JoinColumn(name = "Typeid")
+    TicketType ticketType;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "ticket")
-    List<OrderDetail> orders;
+    @ManyToOne
+    @JoinColumn(name = "Seatid")
+    Seat seat;
 }

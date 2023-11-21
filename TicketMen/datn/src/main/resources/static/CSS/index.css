@@ -168,7 +168,6 @@ body {
 .login {
     display: flex;
     align-items: center;
-    background-image: url(image/);
 }
 
 /* CSS để căn giữa nút đăng ký và đăng nhập */
@@ -581,7 +580,7 @@ body {
 .contact {
     text-align: center;
     padding: 20px;
-    background-image: url(../image/hh.jpg);
+    background-image: url('../image/hh.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -625,7 +624,7 @@ body {
     margin-bottom: 10px;
 }   
 .box{
-    background-image: url(../image/ss.jpg);
+    background-image: url('../image/ss.jpg');
 }
 .lh{
     text-align: center;

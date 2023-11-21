@@ -1,6 +1,5 @@
 package nhom3.datn.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -24,29 +22,23 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "Orders")
-public class Order implements Serializable{
+@Table(name =  "Orders")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "Buydate")
+    @Column(name = "Createdate")
     Date buyDate = new Date();
-
-    @ManyToOne
-    @JoinColumn(name = "Ticketid")
-    Ticket ticket; 
 
     @ManyToOne
     @JoinColumn(name = "username")
     Account account;
 
-    @ManyToOne
-    @JoinColumn(name = "Typeid")
-    TicketType ticketType;
+    String email;
 
-    @ManyToOne
-    @JoinColumn(name = "Seatid")
-    Seat seat;
+    @JsonIgnore
+    @OneToMany(mappedBy = "order")
+    List<OrderDetail> orderDetails;
 }

@@ -11,234 +11,223 @@
   }
 
   .dire-button .btn-right {}
+
   .boder {
     border: 1px solid #ffcccc;
-    box-shadow: 10px 10px 10px 0 rgba(0,0,0,0.3), 0 0 50px 0 rgba(0,0,0,0.4) inset;
-    border: 1px solid black;border-radius: 5%;width: 100%;height: 90%;background-color: #c6318f;color: aliceblue;margin-top: 5%;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.3), 0 0 50px 0 rgba(0, 0, 0, 0.4) inset;
+    border: 1px solid black;
+    border-radius: 5%;
+    width: 100%;
+    height: 90%;
+    background-color: #c6318f;
+    color: aliceblue;
+    margin-top: 5%;
   }
-  .button{
-   
+
+  .button {
+
     margin-top: 30%;
   }
-  .card-title1{
+
+  .card-title1 {
     /* color: wheat; */
   }
 
   /* hover img */
   .movie-item {
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
 
-        .movie-item:hover {
-            /* border: 2px solid #d14bcf; */
-            transform: scale(1.05);
-        }
+  .movie-item:hover {
+    /* border: 2px solid #d14bcf; */
+    transform: scale(1.05);
+  }
 
-        .movie-item img {
-            width: 100%;
-            height: auto;
-        }
+  .movie-item img {
+    width: 100%;
+    height: auto;
+  }
 
-        .movie-item .card-title1 {
-            margin-bottom: 10%;
-        }
+  .movie-item .card-title1 {
+    margin-bottom: 10%;
+  }
 
-        .movie-item .btn-details {
-            position: absolute;
-            bottom: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            background-color: #c6318f;
-        }
+  .movie-item .btn-details {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: #c6318f;
+  }
 
-        .movie-item:hover .btn-details {
-            opacity: 1;
-        }
+  .movie-item:hover .btn-details {
+    opacity: 1;
+  }
 </style>
 
-<div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org" ng-controller="movie-ctrl" >
+<div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org" ng-controller="movie-ctrl">
   <main style="margin-top: 2%;">
-<div>
-    <ul class="nav nav-tabs container ">
-      <li class="nav-item active" >
-        <a  class="nav-link active" id="tinDienAnh-tab" data-toggle="tab" href="#tinDienAnh" role="tab"
-          aria-controls="tinDienAnh" aria-selected="true"><strong>PHIM ĐANG CHIẾU</strong></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="tuyenDung-tab" data-toggle="tab" href="#tuyenDung" role="tab" aria-controls="tuyenDung"
-          aria-selected="false"><strong>PHIM SẮP CHIẾU</strong></a>
-      </li>
-    </ul>
+    <div>
+      <ul class="nav nav-tabs container ">
+        <li class="nav-item active">
+          <a class="nav-link active" id="tinDienAnh-tab" data-toggle="tab" href="#tinDienAnh" role="tab"
+            aria-controls="tinDienAnh" aria-selected="true"><strong>PHIM ĐANG CHIẾU</strong></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="tuyenDung-tab" data-toggle="tab" href="#tuyenDung" role="tab"
+            aria-controls="tuyenDung" aria-selected="false"><strong>PHIM SẮP CHIẾU</strong></a>
+        </li>
+      </ul>
 
-    <!--PHIM SẮP CHIẾU-->
-    <div class="tab-content mt-3">
-      <div class="tab-pane fade" id="tuyenDung" role="tabpanel" aria-labelledby="tuyenDung-tab">
-        <ul class="list-group">
-          
-          <div class="mlist">
-            <div class="tab-content" id="myContent">
-              <div class="tab-pane show active" id="edit" role="tabpanel" aria-labelledby="videoEdit-tab" style="color: rgb(143, 10, 130);">
-                <div class=" mt-5 container" >
-                  <!-- ========================== -->
-                  <div id="myCarousel1" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                      <div th:if="${not #lists.isEmpty(items)}">
-                          <div th:each="group : ${#numbers.sequence(0, (items.size() - 1) / 5)}" class="carousel-item" th:classappend="${group == 0} ? 'active' : ''">
-                              <div class="d-flex justify-content-around">
-                                  <div th:each="m : ${items.subList(group * 5, (group + 1) * 5 > items.size() ? items.size() : (group + 1) * 5)}" class="movie-item">
-                                      <img th:src="@{|/image/${m.poster}|}" alt="Movie Poster" style="width:200px" />
-                                      <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
-                                      <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
-                                  </div>
+      <!--PHIM SẮP CHIẾU-->
+      <div class="tab-content mt-3">
+        <div class="tab-pane fade" id="tuyenDung" role="tabpanel" aria-labelledby="tuyenDung-tab">
+          <ul class="list-group">
+
+            <div class="mlist">
+              <div class="tab-content" id="myContent">
+                <div class="tab-pane show active" id="edit" role="tabpanel" aria-labelledby="videoEdit-tab"
+                  style="color: rgb(143, 10, 130);">
+                  <div class=" mt-5 container">
+                    <!-- ========================== -->
+                    <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                        <div th:if="${not #lists.isEmpty(futures)}">
+                          <div th:each="group : ${#numbers.sequence(0, (futures.size() - 1) / 5)}" class="carousel-item"
+                            th:classappend="${group == 0} ? 'active' : ''">
+                            <div class="d-flex justify-content-around">
+                              <div
+                                th:each="m : ${futures.subList(group * 5, (group + 1) * 5 > futures.size() ? futures.size() : (group + 1) * 5)}"
+                                class="movie-item">
+                                <img th:src="@{|/image/${m.poster}|}" alt="Movie Poster" style="width:200px" />
+                                <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
+                                <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
                               </div>
-                          </div>
-                      </div>
-                  </div>
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel1" data-slide="prev" style="
-                        margin-left: -14%;
-                        width: 10%;
-                        height: 0%;
-                        color: black;
-                        margin-top:13%;
-                      ">
-                      
-                      <span ><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel1" data-slide="next" style="
-                        margin-right: -11%;
-                        width: 10%;
-                        height: 0%;
-                        color: black;
-                        margin-top:13%;
-                      ">
-                       
-                      <span ><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
-                    </a>
-                  </div>
-                </div>
-                <!-- ======================================== -->
-              </div>
-          
-            </div>
-          </div>
-          
-        </ul>
-      </div>
-
-
-      <!--PHIM ĐANG CHIẾU-->
-      <div class="tab-pane fade active show in" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab" >
-        <ul class="list-group">
-          <div class="mlist">
-            <div class="tab-content" id="myContent">
-              <div class="tab-pane show active" id="edit" role="tabpanel" aria-labelledby="videoEdit-tab" style="color: rgb(143, 10, 130);">
-                <div class=" mt-5 container" >
-                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                      <div class="item active">
-                        <div class="row">
-                          <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" th:if="${iterStat.index < 4}">
-                            <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width:230px" />
-                               <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
-                               <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="item">
-                        <div class="row">
-                          <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" 
-                               th:if="${iterStat.index >= 4 and iterStat.index < 8}">
-                              <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
-                              <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
-                              <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
-                          </div>
-                      </div>
-                      </div>
-                      <div class="item ">
-                        <div class="col-md-3 movie-item show" th:each="m, iterStat : ${items}" 
-                               th:if="${iterStat.index >= 8 and iterStat.index < 12}">
-                              <img th:src="@{|/image/${m.poster}|}" alt="Los Angeles" style="width: 230px" />
-                              <h3 class="card-title1" th:text="${m.name} "style="margin-bottom: 10%;"></h3>
-                              <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
-                          </div>
-                      </div>
+                      <!-- Left and right controls -->
+                      <a class="left carousel-control" href="#myCarousel1" data-slide="prev" style="margin-left: -14%;width: 10%;
+                                height: 0%; color: black;margin-top:13%;">
+
+                        <span><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
+                      </a>
+                      <a class="right carousel-control" href="#myCarousel1" data-slide="next" style=" margin-right: -11%; width: 10%;
+                        height: 0%; color: black;  margin-top:13%;">
+
+                        <span><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
+                      </a>
                     </div>
-          
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="
+                  </div>
+                  <!-- ======================================== -->
+                </div>
+
+              </div>
+            </div>
+
+          </ul>
+        </div>
+
+
+        <!--PHIM ĐANG CHIẾU-->
+        <div class="tab-pane fade active show in" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab">
+          <ul class="list-group">
+            <div class="mlist">
+              <div class="tab-content" id="myContent">
+                <div class="tab-pane show active" id="edit" role="tabpanel" aria-labelledby="videoEdit-tab"
+                  style="color: rgb(143, 10, 130);">
+                  <div class=" mt-5 container">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner">
+                        <div th:if="${not #lists.isEmpty(todays)}">
+                          <div th:each="group : ${#numbers.sequence(0, (todays.size() - 1) / 5)}" class="carousel-item"
+                            th:classappend="${group == 0} ? 'active' : ''">
+                            <div class="d-flex justify-content-around">
+                              <div
+                                th:each="m : ${todays.subList(group * 5, (group + 1) * 5 > todays.size() ? todays.size() : (group + 1) * 5)}"
+                                class="movie-item">
+                                <img th:src="@{|/image/${m.poster}|}" alt="Movie Poster" style="width:200px" />
+                                <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
+                                <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Left and right controls -->
+                      <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="
                         margin-left: -14%;
                         width: 10%;
                         height: 0%;
                         color: black;
                         margin-top: 15%;
                       ">
-                      
-                      <span ><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next" style="
+
+                        <span><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
+                      </a>
+                      <a class="right carousel-control" href="#myCarousel" data-slide="next" style="
                         margin-right: -11%;
                         width: 10%;
                         height: 0%;
                         color: black;
                         margin-top:15%;
                       ">
-                      
-                      <span><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
-                    </a>
+
+                        <span><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
+                      </a>
+                    </div>
                   </div>
                 </div>
+
               </div>
-          
             </div>
-          </div>
-          
-        </ul>
+
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
     <div class="container-fluid">
       <div class="title">
         <h3><strong>CHƯƠNG TRÌNH KHUYẾN MÃI</strong></h3>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-          <a href="#" style="text-decoration: none">
-              <div class="panel panel-primary">
-                  <div class="panel-body"><img src="/image/km3.jpg" class="img-responsive"
-                          style="width:100%" alt="Image"></div>
-                  <div class="panel-body"><strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong></div>
-              </div>
-          </a>
       </div>
-      <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-4">
           <a href="#" style="text-decoration: none">
-              <div class="panel panel-primary">
-                  <div class="panel-body"><img src="/image/km3.jpg" class="img-responsive"
-                          style="width:100%" alt="Image"></div>
-                  <div class="panel-body"><strong>CINESTAR LÂM ĐỒNG (ĐỨC TRỌNG) - TUYỂN DỤNG NHÂN SỰ</strong>
-                  </div>
+            <div class="panel panel-primary">
+              <div class="panel-body"><img src="/image/km3.jpg" class="img-responsive" style="width:100%" alt="Image">
               </div>
+              <div class="panel-body"><strong>RẠP PHIM CINESTAR TUYỂN NHÂN VIÊN PARTIME</strong></div>
+            </div>
           </a>
-      </div>
-      <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
           <a href="#" style="text-decoration: none">
-              <div class="panel panel-primary">
-                  <div class="panel-body"><img src="/image/km3.jpg" class="img-responsive"
-                          style="width:100%" alt="Image"></div>
-                  <div class="panel-body"><strong>Chung kết Hoa hậu Nhân ái Việt Nam 2023 sẽ diễn ra tại Đà
-                          Lạt</strong></div>
+            <div class="panel panel-primary">
+              <div class="panel-body"><img src="/image/km3.jpg" class="img-responsive" style="width:100%" alt="Image">
               </div>
+              <div class="panel-body"><strong>CINESTAR LÂM ĐỒNG (ĐỨC TRỌNG) - TUYỂN DỤNG NHÂN SỰ</strong>
+              </div>
+            </div>
           </a>
+        </div>
+        <div class="col-sm-4">
+          <a href="#" style="text-decoration: none">
+            <div class="panel panel-primary">
+              <div class="panel-body"><img src="/image/km3.jpg" class="img-responsive" style="width:100%" alt="Image">
+              </div>
+              <div class="panel-body"><strong>Chung kết Hoa hậu Nhân ái Việt Nam 2023 sẽ diễn ra tại Đà
+                  Lạt</strong></div>
+            </div>
+          </a>
+        </div>
       </div>
-  </div>
   </main>
- 
+
 </div>
-
-

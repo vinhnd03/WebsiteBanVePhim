@@ -31,5 +31,5 @@ public class Seat {
 
     @JsonIgnore
     @OneToMany(mappedBy = "seat")
-    List<Order> orders;
+    List<OrderDetail> orders;
 }

@@ -12,31 +12,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nhom3.datn.entity.Movie;
-import nhom3.datn.entity.Order;
 import nhom3.datn.entity.OrderDetail;
 import nhom3.datn.service.OrderDetailService;
-import nhom3.datn.service.OrderService;
 
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/rest/orders")
-public class OrderRestController {
+@RequestMapping("/rest/orderDetails")
+public class OrderDetailRestController {
     @Autowired
-    OrderService orderService;
+    OrderDetailService orderService;
 
     @GetMapping("{id}")
-    public Order getOne(@PathVariable("id") Long id){
+    public OrderDetail getOne(@PathVariable("id") Long id){
         return orderService.findById(id);
     }
 
     @GetMapping()
-    public List<Order> getAll(){
+    public List<OrderDetail> getAll(){
         return orderService.findAll();
     }
 
     @PostMapping()
-    public Order create(@RequestBody Order order){
+    public OrderDetail create(@RequestBody OrderDetail order){
         return orderService.create(order);
     }
 }

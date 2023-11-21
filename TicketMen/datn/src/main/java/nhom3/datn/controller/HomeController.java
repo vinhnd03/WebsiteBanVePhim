@@ -25,8 +25,14 @@ public class HomeController {
 
     @RequestMapping({"/home/index","/"})
     public String home(Model model){
-        List<Movie> list = movieService.findAll();
-        model.addAttribute("items", list);
+        List<Movie> todayList = movieService.findTodayMovie();
+        model.addAttribute("todays", todayList);
+
+        List<Movie> futureList = movieService.findFutureMovie();
+        model.addAttribute("futures", futureList);
+
+        // List<Movie> list = movieService.findAll();
+        // model.addAttribute("items", list);
         return "layout/home";
     }
 

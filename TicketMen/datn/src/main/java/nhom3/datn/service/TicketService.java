@@ -22,5 +22,8 @@ public interface TicketService {
 
     void delete(Long id);
 
-    List<Ticket> findTimesByDateAndMovieId(Date date, Long id);
+    List<Ticket> findTicketByMovieId(Long id);
+
+    List<Ticket> findTicketByDateAndMovieId(Date selectedDate, Long id);
+
 }

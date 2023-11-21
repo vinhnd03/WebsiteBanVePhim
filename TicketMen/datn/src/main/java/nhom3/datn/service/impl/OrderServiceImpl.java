@@ -6,28 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.OrderDao;
-import nhom3.datn.entity.Movie;
 import nhom3.datn.entity.Order;
 import nhom3.datn.service.OrderService;
 
 @Service
 public class OrderServiceImpl implements OrderService{
     @Autowired
-    OrderDao odao;
-
-    @Override
-    public List<Order> findAll() {
-        return odao.findAll();
-    }
+    OrderDao dao;
 
     @Override
     public Order findById(Long id) {
-        return odao.findById(id).get();
+        return dao.findById(id).get();
+    }
+
+    @Override
+    public List<Order> findAll() {
+        return dao.findAll();
     }
 
     @Override
     public Order create(Order order) {
-        return odao.save(order);
+        return dao.save(order);
     }
+
     
 }
