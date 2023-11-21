@@ -44,4 +44,14 @@ public class MovieServiceImpl implements MovieService{
     public void delete(Long id) {
         mdao.deleteById(id);
     }
+
+    @Override
+    public List<Movie> findTodayMovie() {
+        return mdao.findTodayMovie();
+    }
+
+    @Override
+    public List<Movie> findFutureMovie() {
+        return mdao.findFutureMovie();
+    }
 }

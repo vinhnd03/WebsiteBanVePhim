@@ -98,6 +98,57 @@ app.controller("login-ctrl", function ($scope) {
     };
 });
 
+app.controller("ticketSelectCtrl", function ($scope, $http, $window) {
+    $scope.tickets = [];
+    $scope.dayInWeek = [];
+    var movieId = $('#Mid').text();
+
+    $scope.set7Day = function () {
+        moment.locale('vi');
+        var today = moment();
+
+        $scope.dayInWeek.push(capitalizeFirstLetter("Hôm nay, " + today.format("DD/MM/YYYY")));
+
+        for (var i = 1; i <= 6; i++) {
+            today.add(1, 'days');
+            $scope.dayInWeek.push(capitalizeFirstLetter(today.format("dddd, DD/MM/YYYY")));
+        }
+
+        console.log("day in week: ", $scope.dayInWeek);
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    }
+
+
+    $scope.initialize = function () {
+        $http.get("/rest/tickets/getTicketByMovie/" + movieId).then(resp => {
+            $scope.tickets = resp.data;
+            console.log("tickets: ", $scope.tickets);
+        }).catch(error => {
+            console.log(error);
+        })
+
+        $scope.set7Day();
+    }
+    $scope.initialize();
+
+    $scope.findTime = function(day){
+        $scope.time = [];
+
+        var formattedDay = moment(day, "dddd, DD/MM/YYYY").format("MM-DD-YYYY");
+
+        $http.get(`/rest/tickets/findTicketByMovieAndDate/${movieId}/${formattedDay}`).then(resp => {
+            $scope.time = resp.data;
+            console.log("showtime: ", $scope.time);
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+    
+});
+
 app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     $scope.showtimes = [];
     $scope.selectedShowtime = "";
@@ -108,7 +159,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     $scope.dseats = [];
     $scope.orderedSeats = [];
 
-    // Define rows and seats with labels A to J (10 columns)
+    // Define rows and seats with labels A to N (10 columns)
     $scope.rows = Array.from({ length: 10 }, (v, k) => k + 1);
     $scope.columns = Array.from({ length: 14 }, (v, k) => String.fromCharCode(65 + k)); // A to J
     $scope.seats = generateSeats($scope.rows, $scope.columns);
@@ -126,22 +177,22 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     //         console.error("Error fetching movie list: " + error);
     //     });
     var ticketId = $('#Tid').text();
-    
+
     console.log("tid: ", ticketId);
 
     $scope.initialize = function () {
         var promise = $http.get("/rest/tickets/" + ticketId);
 
         promise.then(function (resp) {
-            
+
             $scope.ticket = resp.data;
             console.log($scope.ticket);
             // $scope.ticket.date = moment($scope.ticket.date).format('MM-DD-YYYY');
             // $scope.ticket.time = moment($scope.ticket.time).format('HH:mm:ss');
             $scope.ticket.date = new Date($scope.ticket.date);
-            
+
             var formattedDate = moment($scope.ticket.date).format('MM-DD-YYYY');
-            
+
 
             $scope.perform = angular.copy($scope.ticket);
             $http.get(`/rest/seats/byDateTimeAndTId/${formattedDate}/${$scope.ticket.time}/${$scope.ticket.id}`).then(resp => {
@@ -164,7 +215,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
             console.error("Error: " + error)
         })
 
-    
+
 
         $http.get("/rest/accounts/" + $scope.username).then(resp => {
             $scope.account = resp.data;
@@ -215,8 +266,8 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
         $scope.availableSeats = $scope.rows.length * $scope.columns.length - $scope.orderedSeats.length;
     };
 
-    $scope.goToPayment = function (){
-        if($scope.selectedSeats.length === 0){
+    $scope.goToPayment = function () {
+        if ($scope.selectedSeats.length === 0) {
             alert("Vui lòng chọn ít nhất 1 ghế để tiếp tục!");
         } else {
             $window.localStorage.setItem("selectedSeats", JSON.stringify($scope.selectedSeats));
@@ -225,7 +276,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
         }
     }
 
-    $scope.back = function(){
+    $scope.back = function () {
         $window.history.back();
     }
 
@@ -235,35 +286,55 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     // }
 
     $scope.continueBooking = function () {
+        $scope.order = {};
         var items = [];
         $scope.selectedSeats = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
         console.log("selectedSeats: ", $scope.selectedSeats);
 
-        // Duyệt qua mỗi ghế được chọn
-        for (var i = 0; i < $scope.selectedSeats.length; i++) {
-            var item = {
-                buyDate: new Date(),
-                account: $scope.account,
-                ticket: $scope.ticket,
-                seat: $scope.dseats.find(seat => seat.name === $scope.selectedSeats[i])
-            };
-
-            items.push(item);
+        var order = {
+            createDate: new Date(),
+            account: $scope.account,
+            email: null
         }
 
-        // Gửi mỗi đối tượng item lên server
-        items.forEach(item => {
-            $http.post("/rest/orders", item)
-                .then(resp => {
+        $http.post("/rest/orders", order).then(resp => {
+            $scope.order = resp.data;
+            console.log("order", $scope.order);
 
-                })
-                .catch(error => {
-                    console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
-                });
-        });
-        $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
-        // alert($scope.selectedSeats[1])
-        alert("Đặt ghế thành công!")
+            // Duyệt qua mỗi ghế được chọn
+            for (var i = 0; i < $scope.selectedSeats.length; i++) {
+                var item = {
+                    buyDate: new Date(),
+                    order: $scope.order,
+                    ticket: $scope.ticket,
+                    seat: $scope.dseats.find(seat => seat.name === $scope.selectedSeats[i])
+                };
+
+                items.push(item);
+            }
+
+            // Gửi mỗi đối tượng item lên server
+            items.forEach(item => {
+                $http.post("/rest/orderDetails", item)
+                    .then(resp => {
+
+                    })
+                    .catch(error => {
+                        console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
+                    });
+            });
+
+            $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
+            // alert($scope.selectedSeats[1])
+            alert("Đặt ghế thành công!")
+        }).catch(error => {
+            console.log(error);
+            alert("Đặt ghế thất bại do lỗi!")
+        })
+
+
+
+
     };
 
     function generateSeats(rows, columns) {

@@ -21,4 +21,8 @@ public interface MovieService {
     Movie update(Movie movie);
 
     void delete(Long id);
+
+    List<Movie> findTodayMovie();
+
+    List<Movie> findFutureMovie();
 }

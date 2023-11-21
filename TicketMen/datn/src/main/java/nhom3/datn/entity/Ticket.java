@@ -50,5 +50,5 @@ public class Ticket implements Serializable{
 
     @JsonIgnore
     @OneToMany(mappedBy = "ticket")
-    List<Order> orders;
+    List<OrderDetail> orders;
 }

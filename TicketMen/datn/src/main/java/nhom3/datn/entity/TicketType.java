@@ -28,5 +28,5 @@ public class TicketType implements Serializable{
 
     @JsonIgnore
     @OneToMany(mappedBy = "ticketType")
-    List<Order> orders;
+    List<OrderDetail> orders;
 }

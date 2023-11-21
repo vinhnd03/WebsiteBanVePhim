@@ -13,7 +13,7 @@ public interface SeatDao extends JpaRepository<Seat, Integer>{
 
     Seat findByName(String name);
     
-    @Query("SELECT B FROM Order A " +
+    @Query("SELECT B FROM OrderDetail A " +
            "INNER JOIN Seat B ON B.id = A.seat.id " +
            "INNER JOIN Ticket C ON A.ticket.id = C.id " +
            "WHERE C.date = :dateParam AND C.time = CONVERT(time, :timeParam) AND C.id = :ticketIdParam")
