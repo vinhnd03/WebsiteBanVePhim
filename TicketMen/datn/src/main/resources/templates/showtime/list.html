@@ -69,7 +69,6 @@
 
                 <div style="margin-top: 32px;width: 200px;">
                   <button style="background-color: bisque; " class="btn" type="button" th:text="${ticket.time}">09:00</button>
-                  <button style="background-color: bisque; " class="btn" type="button" >09:00:00</button>
                 </div>
               </div>
 
@@ -433,13 +432,13 @@
           var year = currentDate.getFullYear();
   
           // Hiển thị thông tin ngày
-          var displayDate =day + '-' + month + '-' + year;
+          var displayDate = year + '-' + month + '-' + day;
           document.getElementById('currentDate').innerText = displayDate;
   
           // Lọc các phim dựa trên ngày hiện tại
           var movies = document.querySelectorAll('.lap');
           movies.forEach(function (movie) {
-              var ticketDates = movie.querySelectorAll('div[th\\:each="ticket : ${tickets}"] h4[th\\:text="${ticket.date}"]');
+              var ticketDates = movie.querySelectorAll('div[th\\:each="ticket : ${tickets}"] strong[th\\:text="${ticket.date}"]');
               var showMovie = false;
   
               ticketDates.forEach(function (ticketDate) {
@@ -453,7 +452,6 @@
               }
           });
       });
-      /*]]>*/
   </script>
   </main>
 </div>
