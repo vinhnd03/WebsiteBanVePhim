@@ -29,11 +29,15 @@ public class UploadRestController {
     public JsonNode upload(@RequestParam("file") MultipartFile file
         // ,@PathVariable("folder") String folder
         ) {
+
+        // String filePath = "/image/upload/";
+
         File savedFile = uploadService.save(file);
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode node = mapper.createObjectNode();
         node.put("name", savedFile.getName());
         node.put("size", savedFile.length());
+        // node.put("path", filePath);
         // System.out.println("File name sent in response: " + savedFile.getName());
         return node;
     }

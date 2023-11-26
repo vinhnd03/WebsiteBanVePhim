@@ -17,11 +17,10 @@ public class UploadServiceImpl implements UploadService {
     @Autowired
     ServletContext app;
 
-    
     @Override
     public File save(MultipartFile file) {
 
-        File dir = new File(app.getRealPath("/images/upload/"));
+        File dir = new File(System.getProperty("user.dir"), "/static/image/upload/");
         if (!dir.exists()) {
             dir.mkdirs();
         }
@@ -43,24 +42,6 @@ public class UploadServiceImpl implements UploadService {
             throw new RuntimeException(e);
         }
     }
+
 }
 
-// @Override
-    // public File save(MultipartFile file, String folder) {
-    // File dir = new File(app.getRealPath("/image/" + folder));
-    // if(!dir.exists()){
-    // dir.mkdirs();
-    // }
-    // // String s = System.currentTimeMillis() + file.getOriginalFilename();
-    // // String name = Integer.toHexString(s.hashCode()) +
-    // s.substring(s.lastIndexOf("."));
-    // String name = file.getOriginalFilename();
-    // try{
-    // File savedFile = new File(dir, name);
-    // file.transferTo(savedFile);
-    // // System.out.println(savedFile.getAbsolutePath());
-    // return savedFile;
-    // } catch (Exception e){
-    // throw new RuntimeException(e);
-    // }
-    // }
