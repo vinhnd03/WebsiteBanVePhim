@@ -3,7 +3,7 @@
         <div th:object="${item}">
             <div class="detail-container">
                 <div class="container detail">
-                    <div class="row" >
+                    <div class="row">
                         <img class="col-3" th:src="@{|/image/*{poster}|}" alt="">
                         <div class="col-9 text">
                             <p class="name mt-2" th:text="*{name}"></p>
@@ -30,7 +30,7 @@
                             </div>
                             <div style="color: white;">
 
-                                <a type="button" class="btn btn-danger" style="border-radius: 5%;">
+                                <a type="button" class="btn btn-danger" style="border-radius: 5%;" data-toggle="modal" data-target="#exampleModal1">
                                     <i class="fa-brands fa-youtube fa-flip" style="margin-right: 5%;"></i><strong>
                                         TRAILER</strong></a>
 
@@ -45,6 +45,7 @@
                 </div>
             </div>
         </div>
+        <!-- muave -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true" ng-controller="ticketSelectCtrl">
             <div hidden id="Mid" th:text="*{id}"></div>
@@ -78,5 +79,15 @@
             </div>
         </div>       
     </div>
+    <!-- traller -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <iframe style="margin-left: -250px;" width="984" height="492" th:src="${item.trailer}" title="Ticking Away ft. Grabbitz &amp; bbno$ (MV Chính Thức) // Bài Hát Chủ Đề VALORANT Champions 2023" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
     </main>
 </div>

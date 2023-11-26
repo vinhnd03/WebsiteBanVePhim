@@ -32,7 +32,7 @@ public class Movie implements Serializable{
     String country;
     Integer age;
     String poster;
-
+    String trailer;
     //New
     String description;
 
@@ -45,6 +45,7 @@ public class Movie implements Serializable{
     @Column(name = "Releasedate")
     Date releaseDate = new Date();
 
+    
     // @Temporal(TemporalType.TIME)
     // @Column(name = "Time")
     // Date time = new Date();
