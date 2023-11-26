@@ -30,8 +30,9 @@ public interface TicketDao extends JpaRepository<Ticket, Long>{
         @Param("selectedMovieId") Long movieId);
 
 
-    @Query("SELECT t FROM Ticket t WHERE t.movie.id = ?1")
+    @Query("SELECT DISTINCT t FROM Ticket t WHERE t.movie.id = ?1")
     List<Ticket> findTicketByMovieId(Long id);
 
-
+    @Query("SELECT t.date FROM Ticket t WHERE t.movie.id = ?1 GROUP BY t.date ORDER BY t.date ASC ")
+    List<Date> findTicketDateByMovieId(Long id);
 }
