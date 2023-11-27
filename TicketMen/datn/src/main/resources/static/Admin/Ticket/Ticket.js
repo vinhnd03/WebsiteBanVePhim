@@ -4,6 +4,14 @@ app.controller("ticket-ctrl", function ($scope, $http) {
     $scope.rooms = [];
     $scope.form = {};
 
+    //Hiển thị thông báo
+    $scope.sweetAlert = function (icon, message) {
+        Swal.fire({
+            icon: icon,
+            title: message,
+            theme: 'bootstrap 4',
+        });
+    }
 
     $scope.initialize = function () {
         //load tickets
@@ -62,10 +70,10 @@ app.controller("ticket-ctrl", function ($scope, $http) {
             resp.data.createDate = new Date(resp.data.createDate)
             $scope.items.push(resp.data);
             $scope.reset();
-            alert("Them moi thanh cong");
+            $scope.sweetAlert("success", "Tạo vé thành công!");
             $scope.initialize();
         }).catch(error => {
-            alert("Loi them moi san pham");
+            $scope.sweetAlert("error", "Tạo vé thất bại!");
             console.log("Error", error);
         })
     }
@@ -76,10 +84,10 @@ app.controller("ticket-ctrl", function ($scope, $http) {
         $http.put(`/rest/tickets/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items[index] = item;
-            alert("Cập nhật sản phẩm thành công")
+            $scope.sweetAlert("success", "Cập nhật vé thành công!");
             $scope.initialize();
         }).catch(error => {
-            alert("Lỗi cập nhật sản phẩm");
+            $scope.sweetAlert("error", "Cập nhật vé thất bại!");
             console.log("Error", error);
         })
     }
@@ -91,9 +99,9 @@ app.controller("ticket-ctrl", function ($scope, $http) {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items.splice(index, 1);
             $scope.reset();
-            alert("Xóa sản phẩm thành công")
+            $scope.sweetAlert("success", "Xóa vé thành công!");
         }).catch(error => {
-            alert("Lỗi xóa sản phẩm");
+            $scope.sweetAlert("error", "Xóa vé thất bại!");
             console.log("Error", error);
         })
     }
@@ -108,7 +116,7 @@ app.controller("ticket-ctrl", function ($scope, $http) {
         }).then(resp => {
             $scope.form.poster = resp.data.name;
         }).catch(error => {
-            $scope.showAlertMessage("Lỗi Update ảnh")
+            $scope.sweetAlert("error", "Lỗi tải lên ảnh!");
             console.log("Error", error);
         })
     }

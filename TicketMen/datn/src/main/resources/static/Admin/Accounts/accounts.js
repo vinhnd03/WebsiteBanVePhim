@@ -5,6 +5,15 @@ app.controller("accounts-ctrl", function ($scope, $http) {
     $scope.auths = [];
     $scope.roles = [];
 
+
+    $scope.sweetAlert = function (icon, message) {
+        Swal.fire({
+            icon: icon,
+            title: message,
+            theme: 'bootstrap 4',
+        });
+    }
+
     $scope.initialize = function () {
         //load products
         $http.get("/rest/accounts").then(resp => {
@@ -67,11 +76,11 @@ app.controller("accounts-ctrl", function ($scope, $http) {
             // resp.data.createDate = new Date(resp.data.createDate)
             $scope.items.push(resp.data);
             setAuthority(resp.data.username)
-            alert("Them moi thanh cong");  
+            $scope.sweetAlert("success", "Thêm mới thành công!")
             
             $scope.reset();
         }).catch(error => {
-            alert("Loi them moi san pham");
+            $scope.sweetAlert("error", "Thêm mới thất bại!")
             console.log("Error", error);
         })
 
@@ -84,10 +93,10 @@ app.controller("accounts-ctrl", function ($scope, $http) {
         $http.put(`/rest/accounts/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items[index] = item;
-            alert("Cập nhật sản phẩm thành công")
+            $scope.sweetAlert("success","Cập nhật tài khoản thành công!")
             $scope.initialize();
         }).catch(error => {
-            alert("Lỗi cập nhật sản phẩm");
+            $scope.sweetAlert("error","Cập nhật tài khoản thất bại!")
             console.log("Error", error);
         })
     }
@@ -99,9 +108,9 @@ app.controller("accounts-ctrl", function ($scope, $http) {
             var index = $scope.items.findIndex(s => s.username == item.username);
             $scope.items.splice(index, 1);
             $scope.reset();
-            alert("Xóa sản phẩm thành công")
+            $scope.sweetAlert("success", "Xóa tài khoản thành công!")
         }).catch(error => {
-            alert("Lỗi xóa sản phẩm");
+            $scope.sweetAlert("error", "Xóa tài khoản thất bại!")
             console.log("Error", error);
         })
     }

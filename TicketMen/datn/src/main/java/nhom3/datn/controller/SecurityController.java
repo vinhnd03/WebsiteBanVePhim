@@ -50,7 +50,7 @@ public class SecurityController {
     @RequestMapping("/security/logoff/success")
     public String logoutSuccess(Model model){
         model.addAttribute("message", "Bạn đã đăng xuất");
-        return "forward:/";
+        return "redirect:/";
     }
 
     @RequestMapping("/security/forgot")

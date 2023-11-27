@@ -5,6 +5,15 @@ app.controller("product-ctrl", function ($scope, $http) {
     $scope.file = null;
     $scope.folder = null;
 
+    //Hiển thị thông báo
+    $scope.sweetAlert = function (icon, message) {
+        Swal.fire({
+            icon: icon,
+            title: message,
+            theme: 'bootstrap 4',
+        });
+    }
+
     $scope.initialize = function () {
         //load products
         $http.get("/rest/movies").then(resp => {
@@ -71,10 +80,10 @@ app.controller("product-ctrl", function ($scope, $http) {
             $http.post(`/rest/movies`, item).then(resp => {
                 resp.data.createDate = new Date(resp.data.createDate)
                 $scope.items.push(resp.data);
-                alert("Them moi thanh cong");
+                $scope.sweetAlert("success", "Thêm mới phim thành công!");
                 $scope.initialize();
             }).catch(error => {
-                alert("Loi them moi san pham");
+                $scope.sweetAlert("error", "Thêm mới phim thất bại!");
                 console.log("Error", error);
             })
             $scope.reset();
@@ -104,9 +113,9 @@ app.controller("product-ctrl", function ($scope, $http) {
             $http.put(`/rest/movies/${item.id}`, item).then(resp => {
                 var index = $scope.items.findIndex(p => p.id == item.id);
                 $scope.items[index] = item;
-                alert("Cập nhật sản phẩm thành công")
+                $scope.sweetAlert("success", "Cập nhật phim thành công!");
             }).catch(error => {
-                alert("Lỗi cập nhật sản phẩm");
+                $scope.sweetAlert("error", "Cập nhật phim thất bại!");
                 console.log("Error", error);
             })
 
@@ -129,9 +138,9 @@ app.controller("product-ctrl", function ($scope, $http) {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items.splice(index, 1);
             $scope.reset();
-            alert("Xóa sản phẩm thành công")
+            $scope.sweetAlert("success", "Xóa phim thành công!");
         }).catch(error => {
-            alert("Lỗi xóa sản phẩm");
+            $scope.sweetAlert("error", "Xóa phim thất bại!");
             console.log("Error", error);
         })
     }

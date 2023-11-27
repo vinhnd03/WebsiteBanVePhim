@@ -2,14 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Menu của tôi</title>
     <link rel="stylesheet" href="/CSS/index.css">
     <!-- AngularJS-->
 
-    <head>
         <meta charset="UTF-8">
-        <title>Menu của tôi</title>
+        <title>Ticketmen</title>
+        <link rel="icon" href="image/logo ticketmen_preview_rev_1.png" type="image/png">
         <!-- CSS -->
         <link rel="stylesheet" href="/CSS/index.css">
         <link rel="stylesheet" href="/owlcarousel/assets/owl.carousel.min.css">
@@ -19,6 +17,7 @@
         <!-- <link rel="stylesheet" href="/TicketMen/datn/src/main/resources/static/CSS/fontawesome-free-6.2.1-web/css/all.min.css"> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
         <!-- JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
@@ -36,7 +35,6 @@
 
 
 
-    </head>
 </head>
 
 <body ng-app="myApp" style="background-color: white;">
@@ -50,16 +48,16 @@
         <!-- -->
         <!-- Đăng Nhập - Đăng Ký-->
         <div class="login" style="background-color:white">
-                <div style="width: 15%; margin-left: 1%;" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
-                    <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
-                    <p style="font-size: large; font-weight: 600;">Chào mừng Admin</p>
-                </div>
-    
-                <div style="width: 15%; margin-left: 1%;" th:if="${#authorization.expression('hasRole(''USER'')')}">
-                    <!-- Hiển thị nội dung cho người dùng có vai trò USER -->
-                    <p style="font-size: large; font-weight: 600;">Chào mừng bạn</p>
-                </div>
-            
+            <div style="width: 15%; margin-left: 1%;" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
+                <p style="font-size: large; font-weight: 600;">Chào mừng Admin</p>
+            </div>
+
+            <div style="width: 15%; margin-left: 1%;" th:if="${#authorization.expression('hasRole(''USER'')')}">
+                <!-- Hiển thị nội dung cho người dùng có vai trò USER -->
+                <p style="font-size: large; font-weight: 600;">Chào mừng bạn</p>
+            </div>
+
             <th:block th:unless="${#request.remoteUser}">
                 <ul>
                     <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
@@ -107,7 +105,11 @@
                 //Thông báo đăng nhập
                 var noti = $('#notification').text();
                 if (noti.length > 0) {
-                    alert(noti);
+                    Swal.fire({
+                        icon: "info",
+                        title: noti,
+                        theme: 'bootstrap 4',
+                    });
                 }
             })
         </script>

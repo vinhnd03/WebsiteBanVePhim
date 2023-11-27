@@ -4,19 +4,13 @@ app.controller("authority-ctrl", function($scope, $http, $location){
     $scope.authorities = [];
 
     //Hiển thị thông báo
-    $scope.showAlert = false; // Không hiển thị thông báo ban đầu
-
-    $scope.alertMessage = ""; // Chuỗi thông báo
-
-    $scope.showAlertMessage = function (message) {
-        $scope.alertMessage = message;
-        $scope.showAlert = true;
-    };
-
-    $scope.closeAlert = function () {
-        $scope.showAlert = false;
-        $scope.alertMessage = "";
-    };
+    $scope.sweetAlert = function (icon, message) {
+        Swal.fire({
+            icon: icon,
+            title: message,
+            theme: 'bootstrap 4',
+        });
+    }
 
     $scope.initialize = function(){
         //load all roles
@@ -58,9 +52,9 @@ app.controller("authority-ctrl", function($scope, $http, $location){
     $scope.grant_authority = function(authority){
         $http.post(`/rest/authorities`, authority).then(resp => {
             $scope.authorities.push(resp.data)
-            $scope.showAlertMessage("Cấp quyền sử dụng thành công")
+            $scope.sweetAlert("success", "Cấp quyền sử dụng thành công!")
         }).catch(error => {
-            $scope.showAlertMessage("Cấp quyền sử dụng thất bại")
+            $scope.sweetAlert("error", "Cấp quyền sử dụng thất bại!")
             console.log("Error", error);
         })
     }
@@ -70,9 +64,9 @@ app.controller("authority-ctrl", function($scope, $http, $location){
         $http.delete(`/rest/authorities/${authority.id}`).then(resp => {
             var index = $scope.authorities.findIndex(a => a.id == authority.id);
             $scope.authorities.splice(index, 1);
-            $scope.showAlertMessage("Thu hồi quyền sử dụng thành công")
+            $scope.sweetAlert("success", "Thu hồi quyền sử dụng thành công!")
         }).catch(error => {
-            $scope.showAlertMessage("Thu hồi quyền sử dụng thất bại")
+            $scope.sweetAlert("error", "Thu hồi quyền sử dụng thành công!")
             console.log("Error", error);
         })
     }
