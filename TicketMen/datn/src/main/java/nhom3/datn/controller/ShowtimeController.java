@@ -1,6 +1,7 @@
 package nhom3.datn.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,28 +31,28 @@ public class ShowtimeController {
         List<Movie> movies = movieService.findAll();
         model.addAttribute("movies", movies);
 
-        // Lấy danh sách ID phim
         List<Long> movieIds = movies.stream().map(Movie::getId).collect(Collectors.toList());
-        System.out.println(movieIds);
-
         model.addAttribute("movieIds", movieIds);
 
-        // Thêm danh sách vé cho từng phim vào model
-        Map<Long, List<String>> ticketsByMovieId = new HashMap<>();
+        Map<Long, Map<String, List<Ticket>>> showtimesByMovieId = new HashMap<>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         for (Long movieId : movieIds) {
             List<Date> dates = ticketService.findTicketDateByMovieId(movieId);
-            List<String> formattedDates = dates.stream()
-                    .map(date -> dateFormat.format(date))
-                    .collect(Collectors.toList());
-            ticketsByMovieId.put(movieId, formattedDates);
+
+            Map<String, List<Ticket>> showtimesByDate = new HashMap<>();
+
+            for (Date date : dates) {
+                List<Ticket> showtimes = ticketService.findShowtimeByMovieIdAndDate(movieId, date);
+                showtimesByDate.put(dateFormat.format(date), showtimes);
+            }
+
+            showtimesByMovieId.put(movieId, showtimesByDate);
         }
 
-        model.addAttribute("ticketsByMovieId", ticketsByMovieId);
-
-        
+        model.addAttribute("showtimesByMovieId", showtimesByMovieId);
 
         return "showtime/list";
     }
+
 }

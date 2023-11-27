@@ -22,20 +22,19 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
 
   <main class="container" style="color: black;">
-    <div class="text-center"> 
-    <h2 ><strong>LỊCH CHIẾU PHIM</strong> </h2>
+    <div class="text-center">
+      <h2><strong>LỊCH CHIẾU PHIM</strong> </h2>
       <h3 id="currentDate"></h3>
     </div>
     <!-- phim -->
 
-    <div th:each="movie : ${movis}" class="lap">
-    
+    <div th:each="movie : ${movies}" class="lap">
       <div class="container mt-5" style="display: flex; flex-wrap: wrap;">
         <div class="left"
           style=" flex: 1; min-height: 260px;  display: flex; align-items: center; justify-content: center;margin-left: 5%;background-color: rgb(157, 108, 161);color: white;">
           <div class="a">
             <div style="width: 25%; float: left; margin-left: -10%; ">
-              <img th:src="@{|/image/${movie.poster}|}" alt="..." width="150px"
+              <img th:src="@{|/image/upload/${movie.poster}|}" alt="..." width="150px"
                 style="border: 5px solid darkmagenta; border-radius: 8px;">
             </div>
             <div style="width: 70%; float: left; margin-left: 48px;">
@@ -44,376 +43,44 @@
               <hr>
               <!-- <h5><strong>Quốc gia : [[${movie.country}]]</strong> </h5> -->
               <!-- <h5>Ngôn ngữ: Tiếng Anh - Phụ đề Tiếng Việt</h5> -->
-              <h5>Thể loại : <strong style="color: chocolate;">[[${movie.category.name}]]</strong></h5>
-              <div th:each="ticket : ${tickets}" th:if="${ticket.movie.id == movie.id}">
-
-              </div>
+              <h5>Thể loại : <strong style="color: chocolate;" th:text="${movie.category.name}"></strong></h5>
+              <!-- <div th:each="ticket : ${tickets}" th:if="${ticket.movie.id == movie.id}">
+              </div> -->
             </div>
           </div>
         </div>
         <div class="right"
-          style="flex: 1; min-height: 260px;float: right; display: flex; align-items: center;background-color: white; ">
+          style="flex: 1; min-height: 260px;float: right; display: flex; align-items: center;background-color: white;">
           <div class="p"
             style="justify-content: center; display: flex; flex-direction: column; align-items: flex-start;">
-            <div th:each="ticket : ${tickets}" th:if="${ticket.movie.id == movie.id}">
-              <div style="display: flex;width: 500px;">
+            <div th:each="showtimesByDate : ${showtimesByMovieId[movie.id]}">
+              <div style="display: flex; width: 500px;">
                 <div>
-                  <h4 style="background-image: url(/image/ngay.png); background-size: cover; /* Ảnh sẽ tự điều chỉnh kích thước để che phủ hoàn toàn phần tử */
-                  background-position: center; /* Đặt ảnh vào giữa */
-                  background-repeat: no-repeat; /* Không lặp lại ảnh */
-                  padding: 20px;
-                  margin-top: 20px;
-                  text-align: center;
-                  color: black;position: relative;"><strong th:text="${ticket.date}">22/12/2022</strong> </h4>
+                  <h4
+                    style="background-image: url(/image/ngay.png); background-size: cover; background-position: center;  
+                              background-repeat: no-repeat; padding: 20px; margin-top: 20px; text-align: center; color: black;position: relative;">
+                    <strong th:text="${showtimesByDate.key}"></strong>
+                  </h4>
                 </div>
-
-                <div style="margin-top: 32px;width: 200px;">
-                  <button style="background-color: bisque; " class="btn" type="button" th:text="${ticket.time}">09:00</button>
+                <div style="margin-top: 32px; width: 200px;">
+                  <div th:each="ticket : ${showtimesByDate.value}" style="display: inline-flex;">
+                    <a style="background-color: bisque; " class="btn" type="button" th:href="@{|/order/select/${ticket.id}|}"
+                      th:text="${ticket.time}"></a>
+                  </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
+
       </div>
 
     </div>
     <!-- Hiển thị danh sách phim -->
 
-    <div class="movies-selecting  mt-3 ">
-      <ul class="nav nav-tabs container" style="color: black  ;">
-        <li class="nav-item active">
-          <a class="nav-link active" data-toggle="tab" role="tab" data-target="#thu2" aria-selected="true">
-            <strong>Thứ 2</strong> </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" data-toggle="tab" role="tab" data-target="#thu3" aria-selected="false">
-            <strong>Thứ 3</strong>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" data-toggle="tab" role="tab" data-target="#thu4" aria-selected="false">
-            <strong>Thứ 4</strong></a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" data-toggle="tab" role="tab" data-target="#thu5" aria-selected="false">
-            <strong>Thứ 5</strong></a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" data-toggle="tab" role="tab" data-target="#thu6" aria-selected="false">
-            <strong>Thứ 6</strong></a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" data-toggle="tab" role="tab" data-target="#thu7" aria-selected="false">
-            <strong>Thứ 7</strong></a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" data-toggle="tab" role="tab" data-target="#CN" aria-selected="false">
-            <strong>Chủ nhật</strong></a>
-        </li>
-      </ul>
+    <!-- end  -->
 
-      <!-- Thứ 2 -->
-      <div class="tab-content col" id="myContent">
-        <div class="tab-pane fade show in active" id="thu2">
-          <div class="centered-content">
-            <div class="bx">
-              <div class="">
-                <div style="margin-top: 3%;">
-                  <div class="boder"
-                    style="border: 1px solid black;border-radius: 5%;width: 100%;height: 350px ;background-color: #999999;">
-                    <div style="width: 25%;float: left;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="210px" style="margin: 5%;">
-                    </div>
-                    <div style="width: 75%;float: left;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí
-                        ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-
-                      <hr>
-                      <h5 style="color: red;">Song Of The South · K · 1h50'</h5>
-                    </div>
-                    <div style="margin-bottom: 30px;">
-                      <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                        <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                      <button type="submit" class="btn btn-success">
-                        <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                    </div>
-                    <h5>D Phụ Đề Anh</h5>
-
-                    <button style="background-color: bisque; " class="btn" type="button">09:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">10:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">13:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">15:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">20:00</button>
-                    <h5>Thứ 2 ngày 20 tháng 10 năm 2023</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Thứ 3 -->
-        <div class="tab-pane fade " id="thu3" role="tabpanel">
-          <div class="centered-content">
-            <div class="bx">
-              <div class="">
-                <div style="margin-top: 3%;">
-                  <div class="boder"
-                    style="border: 1px solid black;border-radius: 5%;width: 100%;height: 350px ;background-color: #999999;">
-                    <div style="width: 25%;float: left;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="210px" style="margin: 5%;">
-                    </div>
-                    <div style="width: 75%;float: left;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí
-                        ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-
-                      <hr>
-                      <h5 style="color: red;">Song Of The South · K · 1h50'</h5>
-                    </div>
-                    <div style="margin-bottom: 30px;">
-                      <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                        <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                      <button type="submit" class="btn btn-success">
-                        <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                    </div>
-                    <h5>D Phụ Đề Anh</h5>
-
-                    <button style="background-color: bisque; " class="btn" type="button">09:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">10:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">13:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">15:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">20:00</button>
-                    <h5>Thứ 3 ngày 01 tháng 10 năm 2023</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Thứ 4 -->
-        <div class="tab-pane fade " id="thu4" role="tabpanel">
-          <div class="centered-content">
-            <div class="bx">
-              <div class="">
-                <div style="margin-top: 3%;">
-                  <div class="boder"
-                    style="border: 1px solid black;border-radius: 5%;width: 100%;height: 350px ;background-color: #999999;">
-                    <div style="width: 25%;float: left;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="210px" style="margin: 5%;">
-                    </div>
-                    <div style="width: 75%;float: left;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí
-                        ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-
-                      <hr>
-                      <h5 style="color: red;">Song Of The South · K · 1h50'</h5>
-                    </div>
-                    <div style="margin-bottom: 30px;">
-                      <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                        <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                      <button type="submit" class="btn btn-success">
-                        <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                    </div>
-                    <h5>D Phụ Đề Anh</h5>
-
-                    <button style="background-color: bisque; " class="btn" type="button">09:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">10:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">13:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">15:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">20:00</button>
-                    <h5>Thứ 4 ngày 1 tháng 10 năm 2023</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Thứ 5 -->
-        <div class="tab-pane fade " id="thu5" role="tabpanel">
-          <div class="centered-content">
-            <div class="bx">
-              <div class="">
-                <div style="margin-top: 3%;">
-                  <div class="boder"
-                    style="border: 1px solid black;border-radius: 5%;width: 100%;height: 350px ;background-color: #999999;">
-                    <div style="width: 25%;float: left;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="210px" style="margin: 5%;">
-                    </div>
-                    <div style="width: 75%;float: left;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí
-                        ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-
-                      <hr>
-                      <h5 style="color: red;">Song Of The South · K · 1h50'</h5>
-                    </div>
-                    <div style="margin-bottom: 30px;">
-                      <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                        <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                      <button type="submit" class="btn btn-success">
-                        <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                    </div>
-                    <h5>D Phụ Đề Anh</h5>
-
-                    <button style="background-color: bisque; " class="btn" type="button">09:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">10:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">13:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">15:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">20:00</button>
-                    <h5>Thứ 5 ngày 02 tháng 10 năm 2023</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Thứ 6 -->
-        <div class="tab-pane fade " id="thu6" role="tabpanel">
-          <div class="centered-content">
-            <div class="bx">
-              <div class="">
-                <div style="margin-top: 3%;">
-                  <div class="boder"
-                    style="border: 1px solid black;border-radius: 5%;width: 100%;height: 350px ;background-color: #999999;">
-                    <div style="width: 25%;float: left;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="210px" style="margin: 5%;">
-                    </div>
-                    <div style="width: 75%;float: left;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí
-                        ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-
-                      <hr>
-                      <h5 style="color: red;">Song Of The South · K · 1h50'</h5>
-                    </div>
-                    <div style="margin-bottom: 30px;">
-                      <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                        <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                      <button type="submit" class="btn btn-success">
-                        <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                    </div>
-                    <h5>D Phụ Đề Anh</h5>
-
-                    <button style="background-color: bisque; " class="btn" type="button">09:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">10:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">13:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">15:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">20:00</button>
-                    <h5>Thứ 6 ngày 20 tháng 10 năm 2023</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- THứ 7 -->
-        <div class="tab-pane fade " id="thu7" role="tabpanel">
-          <div class="centered-content">
-            <div class="bx">
-              <div class="">
-                <div style="margin-top: 3%;">
-                  <div class="boder"
-                    style="border: 1px solid black;border-radius: 5%;width: 100%;height: 350px ;background-color: #999999;">
-                    <div style="width: 25%;float: left;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="210px" style="margin: 5%;">
-                    </div>
-                    <div style="width: 75%;float: left;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí
-                        ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-
-                      <hr>
-                      <h5 style="color: red;">Song Of The South · K · 1h50'</h5>
-                    </div>
-                    <div style="margin-bottom: 30px;">
-                      <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                        <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                      <button type="submit" class="btn btn-success">
-                        <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                    </div>
-                    <h5>D Phụ Đề Anh</h5>
-                    <button style="background-color: bisque; " class="btn" type="button">09:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">10:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">13:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">15:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">20:00</button>
-                    <h5>Thứ 7 ngày 20 tháng 10 năm 2023</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CN -->
-        <div class="tab-pane fade " id="CN" role="tabpanel">
-          <div class="centered-content">
-            <div class="bx">
-              <div class="">
-                <div style="margin-top: 3%;">
-                  <div class="boder"
-                    style="border: 1px solid black;border-radius: 5%;width: 100%;height: 350px ;background-color: #999999;">
-                    <div style="width: 25%;float: left;">
-                      <img src="../image/don-hang-tu-sat-nhan.jpg" alt="" width="210px" style="margin: 5%;">
-                    </div>
-                    <div style="width: 75%;float: left;">
-                      <h4><strong>QUỶ ÁM (T18)</strong> </h4>
-                      <p>Phần tiếp theo của bộ phim năm 1973 kể về một cô bé 12 tuổi bị ám bởi một thực thể ma quỷ bí
-                        ẩn, buộc
-                        mẹ cô phải tìm đến sự giúp đỡ của hai linh mục để cứu cô.</p>
-
-                      <hr>
-                      <h5 style="color: red;">Song Of The South · K · 1h50'</h5>
-                    </div>
-                    <div style="margin-bottom: 30px;">
-                      <button type="submit" class="btn btn-danger" style="border-radius: 5%;">
-                        <i class="fa-brands fa-youtube fa-flip"></i>TRAILER</button>
-                      <button type="submit" class="btn btn-success">
-                        <i class="fa-solid fa-cart-shopping fa-beat"></i>MUA VÉ</button>
-                    </div>
-                    <h5>D Phụ Đề Anh</h5>
-
-                    <button style="background-color: bisque; " class="btn" type="button">09:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">10:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">13:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">15:00</button>
-                    <button style="background-color: bisque; " class="btn" type="button">20:00</button>
-                    <h5>Chủ nhật ngày 20 tháng 10 năm 2023</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- giowi thieu -->
-        <div class="tab-pane fade " id="rapchieu" role="tabpanel">
-          <div class="centered-content">
-            <div class="bx">
-              <div class="row">
-                <h1>thứ 3</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <script th:inline="javascript">
+    <!-- <script th:inline="javascript">
       /*<![CDATA[*/
       document.addEventListener("DOMContentLoaded", function () {
           // Lấy đối tượng Date hiện tại
@@ -431,13 +98,13 @@
           var year = currentDate.getFullYear();
   
           // Hiển thị thông tin ngày
-          var displayDate = day + '-' + month + '-' + year;
+          var displayDate =day + '-' + month + '-' + year;
           document.getElementById('currentDate').innerText = displayDate;
   
           // Lọc các phim dựa trên ngày hiện tại
           var movies = document.querySelectorAll('.lap');
           movies.forEach(function (movie) {
-              var ticketDates = movie.querySelectorAll('div[th\\:each="ticket : ${tickets}"] strong[th\\:text="${ticket.date}"]');
+              var ticketDates = movie.querySelectorAll('div[th\\:each="ticket : ${tickets}"] h4[th\\:text="${ticket.date}"]');
               var showMovie = false;
   
               ticketDates.forEach(function (ticketDate) {
@@ -451,6 +118,7 @@
               }
           });
       });
-  </script>
+      /*]]>*/
+  </script> -->
   </main>
 </div>

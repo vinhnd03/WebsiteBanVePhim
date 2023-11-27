@@ -27,4 +27,6 @@ public interface TicketService {
     List<Ticket> findTicketByDateAndMovieId(Date selectedDate, Long id);
 
     List<Date> findTicketDateByMovieId(Long id);
+
+    List<Ticket> findShowtimeByMovieIdAndDate(Long movieId, Date date);
 }

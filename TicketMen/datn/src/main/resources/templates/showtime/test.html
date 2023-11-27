@@ -1,0 +1,124 @@
+<style>
+    .boder {
+      border: 3px solid #ffcccc;
+      box-shadow: 0px 0px 5px 5px #999999;
+  
+    }
+  
+    .phim {
+      border: 1px solid black;
+      border-radius: 5%;
+      width: 100%;
+      height: 350px;
+      background-color: #999999;
+    }
+  
+    .lap {
+      height: auto;
+    }
+  
+    /* test */
+  </style>
+  <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+  
+    <main class="container" style="color: black;">
+      <div class="text-center"> 
+      <h2 ><strong>LỊCH CHIẾU PHIM</strong> </h2>
+        <h3 id="currentDate"></h3>
+      </div>
+      <!-- phim -->
+  
+      <div th:each="movie : ${movies}" class="lap">  
+        <div class="container mt-5" style="display: flex; flex-wrap: wrap;">
+          <div class="left"
+            style=" flex: 1; min-height: 260px;  display: flex; align-items: center; justify-content: center;margin-left: 5%;background-color: rgb(157, 108, 161);color: white;">
+            <div class="a">
+              <div style="width: 25%; float: left; margin-left: -10%; ">
+                <img th:src="@{|/image/upload/${movie.poster}|}" alt="..." width="150px"
+                  style="border: 5px solid darkmagenta; border-radius: 8px;">
+              </div>
+              <div style="width: 70%; float: left; margin-left: 48px;">
+                <h4><strong th:text="${movie.name}"></strong> </h4>
+                <p th:text="${movie.movieContent}"></p>
+                <hr>
+                <!-- <h5><strong>Quốc gia : [[${movie.country}]]</strong> </h5> -->
+                <!-- <h5>Ngôn ngữ: Tiếng Anh - Phụ đề Tiếng Việt</h5> -->
+                <h5>Thể loại : <strong style="color: chocolate;" th:text="${movie.category.name}"></strong></h5>
+                <!-- <div th:each="ticket : ${tickets}" th:if="${ticket.movie.id == movie.id}">
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="right" style="flex: 1; min-height: 260px;float: right; display: flex; align-items: center;background-color: white;"
+               
+               >
+            <div class="p" style="justify-content: center; display: flex; flex-direction: column; align-items: flex-start;">
+              <div th:each="ticket : ${ticketsByMovieId[movie.id]}">
+                <div style="display: flex;width: 500px;">
+                  <!--  th:each="ticket : ${ticketsByMovieId[movie.id]}" -->
+                  <div>
+                    <h4 style="background-image: url(/image/ngay.png); background-size: cover; background-position: center;  
+                    background-repeat: no-repeat; padding: 20px; margin-top: 20px; text-align: center; color: black;position: relative;"
+                    >
+                      <strong th:text="${ticket}"></strong> </h4>
+                  </div>
+  
+                  <div style="margin-top: 32px;width: 200px;">
+                    <button style="background-color: bisque; " class="btn" type="button"></button>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+          
+        </div>
+  
+      </div>
+      <!-- Hiển thị danh sách phim -->
+  
+      <!-- end  -->
+      
+      <!-- <script th:inline="javascript">
+        /*<![CDATA[*/
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy đối tượng Date hiện tại
+            var currentDate = new Date();
+    
+            // Mảng chứa tên các ngày trong tuần
+            var daysOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+    
+            // Lấy thứ hiện tại (0-6)
+            var dayOfWeek = currentDate.getDay();
+    
+            // Lấy ngày, tháng và năm
+            var day = currentDate.getDate();
+            var month = currentDate.getMonth() + 1; // Tháng bắt đầu từ 0
+            var year = currentDate.getFullYear();
+    
+            // Hiển thị thông tin ngày
+            var displayDate =day + '-' + month + '-' + year;
+            document.getElementById('currentDate').innerText = displayDate;
+    
+            // Lọc các phim dựa trên ngày hiện tại
+            var movies = document.querySelectorAll('.lap');
+            movies.forEach(function (movie) {
+                var ticketDates = movie.querySelectorAll('div[th\\:each="ticket : ${tickets}"] h4[th\\:text="${ticket.date}"]');
+                var showMovie = false;
+    
+                ticketDates.forEach(function (ticketDate) {
+                    if (ticketDate.innerText.trim() === displayDate) {
+                        showMovie = true;
+                    }
+                });
+    
+                if (!showMovie) {
+                    movie.style.display = 'none';
+                }
+            });
+        });
+        /*]]>*/
+    </script> -->
+    </main>
+  </div>
+  

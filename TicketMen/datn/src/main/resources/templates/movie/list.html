@@ -65,7 +65,7 @@
                 <div class="col-3"th:each="movie : ${items}" >
                   <div class="boder">
                     <div style="margin: 3%;">
-                      <a th:href="@{|/movie/detail/${movie.id}|}"><img th:src="@{|/image/${movie.poster}|}" alt="" width="90%" style="margin: 5%;"></a>
+                      <a th:href="@{|/movie/detail/${movie.id}|}"><img th:src="@{|/image/upload/${movie.poster}|}" alt="" width="90%" style="margin: 5%;"></a>
                       
                     </div>
                     <div style="margin-top: 2%; margin-left: 5%;margin-right: 5%;" class="text-center">
@@ -90,7 +90,7 @@
                 <div class="col-3"th:each="movie : ${items}" >
                   <div class="boder">
                     <div style="margin: 3%;">
-                      <a th:href="@{|/movie/detail/${movie.id}|}"><img th:src="@{|/image/${movie.poster}|}" alt="" width="90%" style="margin: 5%;"></a>
+                      <a th:href="@{|/movie/detail/${movie.id}|}"><img th:src="@{|/image/upload/${movie.poster}|}" alt="" width="90%" style="margin: 5%;"></a>
                       
                     </div>
                     <div style="margin-top: 2%; margin-left: 5%;margin-right: 5%;" class="text-center">

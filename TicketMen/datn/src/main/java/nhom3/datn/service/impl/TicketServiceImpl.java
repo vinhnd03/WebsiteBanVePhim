@@ -64,4 +64,9 @@ public class TicketServiceImpl implements TicketService{
     public List<Date> findTicketDateByMovieId(Long id) {
         return tdao.findTicketDateByMovieId(id);
     }
+
+    @Override
+    public List<Ticket> findShowtimeByMovieIdAndDate(Long movieId, Date date) {
+        return tdao.findShowtimeByMovieIdAndDate(movieId, date);
+    }
 }

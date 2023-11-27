@@ -2,6 +2,7 @@ package nhom3.datn.service;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -25,4 +26,5 @@ public interface MovieService {
     List<Movie> findTodayMovie();
 
     List<Movie> findFutureMovie();
+
 }
