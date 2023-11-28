@@ -168,14 +168,16 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     $scope.availableSeats = ($scope.rows.length * $scope.columns.length) - $scope.orderedSeats.length;
     $scope.selectedSeats2 = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
 
-    // Replace "URL_OF_MOVIE_LIST" with the actual URL to fetch movie list from the server
-    // $http.get("URL_OF_MOVIE_LIST")
-    //     .then(function(response) {
-    //         $scope.movies = response.data;
-    //     })
-    //     .catch(function(error) {
-    //         console.error("Error fetching movie list: " + error);
-    //     });
+    //Hiển thị thông báo
+    $scope.sweetAlert = function (icon, message) {
+        Swal.fire({
+            icon: icon,
+            title: message,
+            theme: 'bootstrap 4',
+        });
+    }
+
+
     var ticketId = $('#Tid').text();
 
     console.log("tid: ", ticketId);
