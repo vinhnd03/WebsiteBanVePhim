@@ -1,6 +1,8 @@
 <div xmlns:th="http://www.thymeleaf.org"
     th:replace="~{/layout/index :: dynamic(~{::main})}">
     <main>
+        <!-- Slide Show-->
+        <div th:replace="/layout/_slideshow.html"></div>
         
         <div th:replace="/layout/_select.html"></div>
         <!--Danh sách phim -->
