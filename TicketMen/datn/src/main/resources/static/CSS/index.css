@@ -15,7 +15,7 @@ body {
     position: fixed;
     z-index: 1;
     transition: all 0.3s ease;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
 }
 
 
@@ -232,6 +232,16 @@ body {
 
 
 /* CSS cho slide show */
+
+.movie-slide{
+    margin-bottom: 5px;
+}
+
+.movie-slide .carousel-item img{
+    border: 1px solid orangered;
+    border-radius: 5px;
+}
+
 .slide_BG {
     /* height: 20%; */
     /* background-image: url('/image/nen1.jpg'); */
@@ -252,9 +262,10 @@ body {
 
 }
 
-img {
+/* img {
     border-radius: 10px;
-}
+} */
+
 
 /* Chỉnh kích thước hình ảnh trong slide show */
 .mySlides img {
@@ -520,10 +531,10 @@ img {
 
 /* gửi câu hỏi và đặt vé */
 
-body {
+/* body {
     font-family: Arial, sans-serif;
     padding: 20px;
-}
+} */
 
 .container-css {
     width: 50%;
@@ -620,12 +631,12 @@ li {
 
 /* ----------LIÊN HỆ-------------*/
 
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 
-}
+} */
 
 .contact {
     text-align: center;
@@ -1013,7 +1024,7 @@ h1 {
 
 /* tên phim */
 .card-title1 {
-    font-family: 'Futurab';
+    font-family: monospace;
     /* font-weight: normal; */
     font-size: 16px;
     text-transform: uppercase;
