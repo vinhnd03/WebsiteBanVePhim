@@ -39,7 +39,7 @@ public class HomeController {
     @RequestMapping({"/admin", "/admin/home/index"})
     public String admin(Model model){
         model.addAttribute("username", "hello");
-        return "redirect:/admin/index2.html";
+        return "redirect:/admin/index3.html";
     }
 
     @RequestMapping({"/user",})
