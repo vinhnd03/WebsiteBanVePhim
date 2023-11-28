@@ -240,7 +240,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
                 $scope.availableSeats--;
                 limit++;
             } else {
-                alert('Chỉ được chọn tối đa 8 ghế 1 lượt')
+                $scope.sweetAlert("info", "Chỉ được chọn tối đa 8 ghế 1 lượt")
             }
         } else if ($scope.isSeatSelected(seat)) {
             var index = $scope.selectedSeats.indexOf(seat);
@@ -270,7 +270,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
 
     $scope.goToPayment = function () {
         if ($scope.selectedSeats.length === 0) {
-            alert("Vui lòng chọn ít nhất 1 ghế để tiếp tục!");
+            $scope.sweetAlert("info", "Vui lòng chọn ít nhất 1 ghế để tiếp tục!")
         } else {
             $window.localStorage.setItem("selectedSeats", JSON.stringify($scope.selectedSeats));
             // Chuyển trang ở đây nếu điều kiện được đáp ứng
@@ -328,10 +328,10 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
 
             $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
             // alert($scope.selectedSeats[1])
-            alert("Đặt ghế thành công!")
+            $scope.sweetAlert("success", "Đặt ghế thành công!")
         }).catch(error => {
             console.log(error);
-            alert("Đặt ghế thất bại do lỗi!")
+            $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
         })
 
 
