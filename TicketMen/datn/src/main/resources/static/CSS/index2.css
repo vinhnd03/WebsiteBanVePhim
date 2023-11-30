@@ -4002,7 +4002,7 @@ button.btn-floating {
 .btn-block {
   display: block;
 }
-.dropdown-content {
+/* .dropdown-content {
   background-color: #fff;
   margin: 0;
   display: none;
@@ -4052,7 +4052,8 @@ button.btn-floating {
 .dropdown-content li > a > i {
   height: inherit;
   line-height: inherit;
-} /*!
+}  */
+/*!
  * Waves v0.6.0
  * http://fian.my.id/Waves
  *
