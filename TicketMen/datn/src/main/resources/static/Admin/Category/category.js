@@ -3,6 +3,9 @@ app.controller("category-ctrl", function ($scope, $http) {
     $scope.cates = [];
     $scope.form = {};
 
+    $scope.updateBtn = true;
+    $scope.createBtn = true;
+
     //Hiển thị thông báo
     $scope.sweetAlert = function (icon, message) {
         Swal.fire({
@@ -15,20 +18,7 @@ app.controller("category-ctrl", function ($scope, $http) {
     $scope.initialize = function () {
         //load products
         $http.get("/rest/categories").then(resp => {
-            $scope.items = resp.data;
-            $scope.items.forEach(item => {
-                item.date = new Date(item.date)
-                // Chuyển đổi thời gian thành đúng định dạng "HH:mm a"
-                const timeParts = item.time.split(':');
-                const hours = parseInt(timeParts[0], 10);
-                const minutes = parseInt(timeParts[1], 10);
-                const timeDate = new Date();
-                timeDate.setHours(hours);
-                timeDate.setMinutes(minutes);
-                timeDate.setSeconds(0);
-                timeDate.setMilliseconds(0);
-                item.time = timeDate;
-            })
+            $scope.items = resp.data;            
             $scope.reset();
         });
 
@@ -50,12 +40,17 @@ app.controller("category-ctrl", function ($scope, $http) {
             poster: 'OIP2.jpg',
             available: true,
         }
+
+        $scope.updateBtn = true;
+        $scope.createBtn = false;
     }
 
     //Hiển thị lên form
     $scope.edit = function (item) {
         $scope.form = angular.copy(item);
         $(".nav-tabs a:eq(0)").tab('show')
+        $scope.updateBtn = false;
+        $scope.createBtn = true;
     }
 
     //Thêm sản phẩm mới

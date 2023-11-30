@@ -5,6 +5,9 @@ app.controller("product-ctrl", function ($scope, $http) {
     $scope.file = null;
     $scope.folder = null;
 
+    $scope.updateBtn = true;
+    $scope.createBtn = true;
+
     //Hiển thị thông báo
     $scope.sweetAlert = function (icon, message) {
         Swal.fire({
@@ -55,6 +58,9 @@ app.controller("product-ctrl", function ($scope, $http) {
             available: true,
         }
 
+        $scope.updateBtn = true;
+        $scope.createBtn = false;    
+
         // Xóa giá trị file để tránh giữ lại tên ảnh cũ
         $scope.file = null;
         // Xóa giá trị trong trường chọn tệp
@@ -68,6 +74,8 @@ app.controller("product-ctrl", function ($scope, $http) {
         $scope.folder = "/image/upload/";
         $scope.form = angular.copy(item);
         $(".nav-tabs a:eq(0)").tab('show')
+        $scope.updateBtn = false;
+        $scope.createBtn = true;
     }
 
     //Thêm sản phẩm mới

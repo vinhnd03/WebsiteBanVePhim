@@ -4,6 +4,9 @@ app.controller("ticket-ctrl", function ($scope, $http) {
     $scope.rooms = [];
     $scope.form = {};
 
+    $scope.updateBtn = true;
+    $scope.createBtn = true;
+
     //Hiển thị thông báo
     $scope.sweetAlert = function (icon, message) {
         Swal.fire({
@@ -55,12 +58,17 @@ app.controller("ticket-ctrl", function ($scope, $http) {
             createDate: new Date(),
             available: true,
         }
+
+        $scope.updateBtn = true;
+        $scope.createBtn = false;
     }
 
     //Hiển thị lên form
     $scope.edit = function (item) {
         $scope.form = angular.copy(item);
         $(".nav-tabs a:eq(0)").tab('show')
+        $scope.updateBtn = false;
+        $scope.createBtn = true;
     }
 
     //Thêm sản phẩm mới

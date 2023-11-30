@@ -13,13 +13,13 @@
                 </div>
             </div>
             <div class="card-footer text-center">
-                <button ng-click="create()" class="btn btn-primary">
+                <button ng-click="create()" class="btn" ng-disabled="createBtn">
                     <i class="fa fa-plus" aria-hidden="true"></i> Create
                 </button>
-                <button ng-click="update()" class="btn btn-success">
+                <button ng-click="update()" class="btn" ng-disabled="updateBtn">
                     <i class="fa fa-stack-overflow" aria-hidden="true"></i> Save
                 </button>
-                <button ng-click="delete(form)" class="btn btn-danger">
+                <button ng-click="delete(form)" class="btn" ng-disabled="updateBtn">
                     <i class="fa fa-trash" aria-hidden="true"></i> Delete
                 </button>
                 <button ng-click="reset()" class="btn btn-info">
