@@ -5,6 +5,8 @@ app.controller("accounts-ctrl", function ($scope, $http) {
     $scope.auths = [];
     $scope.roles = [];
 
+    $scope.updateBtn = true;
+    $scope.createBtn = true;
 
     $scope.sweetAlert = function (icon, message) {
         Swal.fire({
@@ -47,12 +49,16 @@ app.controller("accounts-ctrl", function ($scope, $http) {
             createDate: new Date(),
             gender: true
         }
+        $scope.updateBtn = true;
+        $scope.createBtn = false;
     }
 
     //Hiển thị lên form
     $scope.edit = function (item) {
         $scope.form = angular.copy(item);
         $(".nav-tabs a:eq(0)").tab('show')
+        $scope.updateBtn = false;
+        $scope.createBtn = true;
     }
 
     //
