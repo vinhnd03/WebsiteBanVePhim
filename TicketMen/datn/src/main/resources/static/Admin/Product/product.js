@@ -54,6 +54,12 @@ app.controller("product-ctrl", function ($scope, $http) {
             poster: '/image/no-image.png',
             available: true,
         }
+
+        // Xóa giá trị file để tránh giữ lại tên ảnh cũ
+        $scope.file = null;
+        // Xóa giá trị trong trường chọn tệp
+        angular.element("input[type='file']").val(null);
+
         console.log($scope.folder);
     }
 
@@ -89,6 +95,11 @@ app.controller("product-ctrl", function ($scope, $http) {
             $scope.reset();
             $scope.initialize();
             console.log($scope.form.poster);
+
+            // Xóa giá trị file để tránh giữ lại tên ảnh cũ
+            $scope.file = null;
+            // Xóa giá trị trong trường chọn tệp
+            angular.element("input[type='file']").val(null);
         }).catch(error => {
             console.log("Error", error);
         })
@@ -97,39 +108,76 @@ app.controller("product-ctrl", function ($scope, $http) {
     }
 
     //Cập nhật sản phẩm
+    // $scope.update = function () {
+
+    //     var data = new FormData();
+    //     data.append('file', $scope.file);
+
+
+    //     $http.post(`/rest/upload`, data, {
+    //         transformRequest: angular.identity,
+    //         headers: { 'Content-Type': undefined }
+    //     }).then(resp => {
+    //         $scope.form.poster = resp.data.name;
+
+
+    //         console.log("form: ", $scope.form);
+    //         var item = angular.copy($scope.form);
+    //         $http.put(`/rest/movies/${item.id}`, item).then(resp => {
+    //             var index = $scope.items.findIndex(p => p.id == item.id);
+    //             $scope.items[index] = item;
+    //             $scope.sweetAlert("success", "Cập nhật phim thành công!");
+    //         }).catch(error => {
+    //             $scope.sweetAlert("error", "Cập nhật phim thất bại!");
+    //             console.log("Error", error);
+    //         })
+
+    //         $scope.reset();
+    //         $scope.initialize();
+    //         console.log($scope.form.poster);
+    //     }).catch(error => {
+    //         console.log("Error", error);
+    //     })
+
+    //     console.log($scope.folder);
+    // }
+
     $scope.update = function () {
+        if ($scope.file) { // Kiểm tra xem có ảnh mới hay không
+            var data = new FormData();
+            data.append('file', $scope.file);
 
-        var data = new FormData();
-        data.append('file', $scope.file);
-        $http.post(`/rest/upload`, data, {
-            transformRequest: angular.identity,
-            headers: { 'Content-Type': undefined }
-        }).then(resp => {
-            $scope.form.poster = resp.data.name;
+            $http.post(`/rest/upload`, data, {
+                transformRequest: angular.identity,
+                headers: { 'Content-Type': undefined }
+            }).then(resp => {
+                $scope.form.poster = resp.data.name;
+                updateMovie(); // Gọi hàm cập nhật phim sau khi lưu ảnh
 
+                // Xóa giá trị file để tránh giữ lại tên ảnh cũ
+                $scope.file = null;
+                // Xóa giá trị trong trường chọn tệp
+                angular.element("input[type='file']").val(null);
+            }).catch(error => {
+                console.log("Error uploading image", error);
+            });
+        } else {
+            updateMovie(); // Nếu không có ảnh mới, chỉ cập nhật thông tin phim
+        }
 
-            console.log("form: ", $scope.form);
+        function updateMovie() {
             var item = angular.copy($scope.form);
             $http.put(`/rest/movies/${item.id}`, item).then(resp => {
                 var index = $scope.items.findIndex(p => p.id == item.id);
                 $scope.items[index] = item;
                 $scope.sweetAlert("success", "Cập nhật phim thành công!");
+                $scope.reset();
+                $scope.initialize();
             }).catch(error => {
                 $scope.sweetAlert("error", "Cập nhật phim thất bại!");
-                console.log("Error", error);
-            })
-
-            $scope.reset();
-            $scope.initialize();
-            console.log($scope.form.poster);
-        }).catch(error => {
-            console.log("Error", error);
-        })
-
-        console.log($scope.folder);
-
-
-
+                console.log("Error updating movie", error);
+            });
+        }
     }
 
     //Xóa sản phẩm
@@ -170,14 +218,12 @@ app.controller("product-ctrl", function ($scope, $http) {
         $scope.file = input.files[0];
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
                 $scope.$apply(function () {
                     $scope.form.poster = e.target.result;
                 });
             };
             reader.readAsDataURL(input.files[0]);
-
         }
     };
 
