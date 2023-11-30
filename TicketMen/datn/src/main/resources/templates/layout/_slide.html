@@ -9,7 +9,7 @@
     <div class="container">
         <h2>PHIM MỚI</h2>
         <div class="row">
-            <div class="categories__slider owl-carousel">
+            <div class="categories__slider owl-carousel" style="z-index: 0;">
                 <div class="col-lg-3" th:each="movie : ${items}">
                     <div class="categories__item set-bg" th:data-setbg="@{|/image/upload/${movie.poster}|}">
                         <!-- <h5><a href="#" th:text="${movie.name}">Fresh Fruit</a></h5> -->

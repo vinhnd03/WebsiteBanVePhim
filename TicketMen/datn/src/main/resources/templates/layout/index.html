@@ -48,29 +48,30 @@
         <!-- -->
         <!-- Đăng Nhập - Đăng Ký-->
         <div class="login" style="background-color:white;">
-            <div style="width: 50%; margin-left: 1%;" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+            <div style="width: 80%; margin-left: 1%; position: absolute; right: 20%; z-index: 0;">
                 <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
-                <p style="font-size: large; font-weight: 600;">Chào mừng [[${session.name}]]</p>
+                <!-- <p style="font-size: large; font-weight: 600;"></p> -->
+                <marquee behavior="scroll" direction="left" style="font-size: medium; font-weight: 500; color: orangered;">
+                    Chào mừng bạn đến với website bán vé online của rạp phim TicketMen.
+                </marquee>
             </div>
 
-            <div style="width: 15%; margin-left: 1%;" th:if="${#authorization.expression('hasRole(''USER'')')}">
-                <!-- Hiển thị nội dung cho người dùng có vai trò USER -->
-                <p style="font-size: large; font-weight: 600;">Chào mừng [[${session.name}]]</p>
+            <div style="z-index: 0; display: inline-flex; background-color: white; width: 30%;">
+                <th:block th:unless="${#request.remoteUser}">
+                    <ul>
+                        <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
+                        <button data-toggle="modal" data-target="#myModal2" class="btn-register"
+                            style="width: 130px;"><strong>Đăng ký</strong>
+                        </button>
+                    </ul>
+                    <ul>
+                        <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
+                        <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login"
+                            style="width: 130px;"><strong>Đăng nhập</strong> </button>
+                    </ul>
+                </th:block>
             </div>
 
-            <th:block th:unless="${#request.remoteUser}">
-                <ul>
-                    <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
-                    <button data-toggle="modal" data-target="#myModal2" class="btn-register"
-                        style="width: 130px;"><strong>Đăng ký</strong>
-                    </button>
-                </ul>
-                <ul>
-                    <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
-                    <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login"
-                        style="width: 130px;"><strong>Đăng nhập</strong> </button>
-                </ul>
-            </th:block>
             <div class="input-group mt-3 mb-3">
                 <div>
                     <button style="background-color: white; float: right;" class="btn" type="button"
@@ -114,7 +115,7 @@
                 }
 
                 //back to top
-                
+
             })
         </script>
 
@@ -125,7 +126,7 @@
         <!-- Modal DANG KÝ-->
         <div th:replace="/security/register.html"></div>
 
-        
+
 
 
         <!-- Ticket Select-->
@@ -136,7 +137,7 @@
         <!--Danh sách phim -->
         <div th:replace="/layout/_slide.html"></div>
     </div>
-    
+
     <div th:replace="/layout/_footer.html"></div>
 
 
