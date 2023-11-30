@@ -58,7 +58,7 @@ body {
 .menu-item a:hover {
     animation: zoomIn 0.2s ease-in-out forwards;
     text-decoration: none;
-    box-shadow: 0 2px 0 orangered;
+    box-shadow: 0 3px 1px -1px orangered;
     /* backface-visibility: hidden; */
 }
 
