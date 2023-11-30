@@ -2,7 +2,9 @@
     th:replace="~{/layout/index :: dynamic(~{::main})}">
     <main>
         <!-- Slide Show-->
-        <div th:replace="/layout/_slideshow.html"></div>
+        <div style="background-image: url('/image/baner2.jpg');background-repeat: no-repeat; background-size: cover;">
+            <div th:replace="/layout/_slideshow.html"></div>
+        </div>
         
         <div th:replace="/layout/_select.html"></div>
         <!--Danh sách phim -->
