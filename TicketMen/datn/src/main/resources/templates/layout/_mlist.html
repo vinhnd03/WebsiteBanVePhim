@@ -57,12 +57,12 @@
 
   .movie-item .btn-details {
     position: absolute;
-    bottom: 50%;
+    bottom: -27%;
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    background-color: #c6318f;
+    background-color: rgba(0, 0, 0, 0.7);
   }
 
   .movie-item:hover .btn-details {
@@ -72,8 +72,8 @@
 </style>
 
 <div class="movies-selecting text-center mt-3" xmlns:th="http://www.thymeleaf.org" ng-controller="movie-ctrl">
-  <main >
-    <div style="background-color: rgb(215, 219, 222);padding-top: 1%;">
+  <main style="margin-top: 2%;">
+    <div >
       <ul class="nav nav-tabs container ">
         <li class="nav-item active">
           <a class="nav-link active" id="tinDienAnh-tab" data-toggle="tab" href="#tinDienAnh" role="tab"
@@ -107,28 +107,37 @@
                                 class="movie-item">
                                 <img th:src="@{|/image/upload/${m.poster}|}" alt="Movie Poster" style="width:200px" />
                                 <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
-                                <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
+                                <div class="btn-details" style="width: 200px; height: 300px;">
+                                  <div style="
+                                    margin-top: 20%; 
+                                    color: white; 
+                                    margin-left: 5%; 
+                                    margin-right: 5%; 
+                                    overflow: hidden;">
+                                    <p th:text="${m.movieContent}" 
+                                    style="
+                                    max-height: 100px; 
+                                    overflow: hidden; 
+                                    text-overflow: ellipsis; 
+                                    "></p>... <br>
+                                    <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary chitiet">
+                                      <h6>Xem chi tiết</h6>
+                                    </a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       <!-- Left and right controls -->
-                      <a class="left carousel-control" href="#myCarousel1" data-slide="prev" 
-                      style="
-                      margin-left: -14%;
-                      width: 10%;
-                      height: 0%; color: black;
-                      margin-top:15%;">
+                      <a class="left carousel-control" href="#myCarousel1" data-slide="prev" style="margin-left: -14%;width: 10%;
+                                height: 0%; color: black;margin-top:13%;">
 
                         <span><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
                       </a>
-                      <a class="right carousel-control" href="#myCarousel1" data-slide="next" 
-                      style=" 
-                      margin-right: -11%; 
-                      width: 10%;
-                      height: 0%; color: black;  
-                      margin-top:15%;">
+                      <a class="right carousel-control" href="#myCarousel1" data-slide="next" style=" margin-right: -11%; width: 10%;
+                        height: 0%; color: black;  margin-top:13%;">
 
                         <span><i class="fa-solid fa-star fa-2xl" style="color: d14bcf;"></i></span>
                       </a>
@@ -164,7 +173,24 @@
                                 class="movie-item">
                                 <img th:src="@{|/image/upload/${m.poster}|}" alt="Movie Poster" style="width:200px" />
                                 <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
-                                <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary btn-details chitiet">Xem chi tiết</a>
+                                <div class="btn-details" style="width: 200px; height: 300px;">
+                                  <div style="
+                                    margin-top: 20%; 
+                                    color: white; 
+                                    margin-left: 5%; 
+                                    margin-right: 5%; 
+                                    overflow: hidden;">
+                                    <p th:text="${m.movieContent}" 
+                                    style="
+                                    max-height: 100px; 
+                                    overflow: hidden; 
+                                    text-overflow: ellipsis; 
+                                    "></p>... <br>
+                                    <a th:href="@{|/movie/detail/${m.id}|}" class="btn btn-primary chitiet">
+                                      <h6>Xem chi tiết</h6>
+                                    </a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
