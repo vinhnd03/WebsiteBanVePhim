@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/CSS/slideCSS/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/CSS/slideCSS/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/CSS/slideCSS/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/CSS/slideCSS/style.css" type="text/css">
+
+<div  xmlns:th="http://www.thymeleaf.org">
+    
+    <!-- Mua vé online -->
+    <div class="container">
+        <h2>PHIM MỚI</h2>
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                <div class="col-lg-3" th:each="movie : ${items}">
+                    <div class="categories__item set-bg" th:data-setbg="@{|/image/upload/${movie.poster}|}">
+                        <!-- <h5><a href="#" th:text="${movie.name}">Fresh Fruit</a></h5> -->
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    <script src="/JS/slidejs/jquery-3.3.1.min.js"></script>
+
+    <script src="/JS/slidejs/jquery.slicknav.js"></script>
+
+    <script src="/JS/slidejs/owl.carousel.min.js"></script>
+    <script src="/JS/slidejs/main.js"></script>
+</div>

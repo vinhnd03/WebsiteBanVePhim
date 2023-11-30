@@ -48,14 +48,14 @@
         <!-- -->
         <!-- Đăng Nhập - Đăng Ký-->
         <div class="login" style="background-color:white;">
-            <div style="width: 15%; margin-left: 1%;" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+            <div style="width: 50%; margin-left: 1%;" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
                 <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
-                <p style="font-size: large; font-weight: 600;">Chào mừng Admin</p>
+                <p style="font-size: large; font-weight: 600;">Chào mừng [[${session.name}]]</p>
             </div>
 
             <div style="width: 15%; margin-left: 1%;" th:if="${#authorization.expression('hasRole(''USER'')')}">
                 <!-- Hiển thị nội dung cho người dùng có vai trò USER -->
-                <p style="font-size: large; font-weight: 600;">Chào mừng bạn</p>
+                <p style="font-size: large; font-weight: 600;">Chào mừng [[${session.name}]]</p>
             </div>
 
             <th:block th:unless="${#request.remoteUser}">
@@ -134,8 +134,9 @@
         <!--Content -->
         <div th:replace="${main}"></div>
         <!--Danh sách phim -->
-
+        <div th:replace="/layout/_slide.html"></div>
     </div>
+    
     <div th:replace="/layout/_footer.html"></div>
 
 
