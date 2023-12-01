@@ -18,11 +18,11 @@
 // });
 
 
-app.controller("user_ctrl", function ($scope, $http, $window) {
-    $scope.username = $window.localStorage.getItem('username');
-    $scope.user = {};
-    $scope.items = [];
-    $scope.form = {};
+    app.controller("user_ctrl", function ($scope, $http, $window) {
+        $scope.username = $window.localStorage.getItem('username');
+        $scope.user = {};
+        $scope.items = [];
+        $scope.form = {};
 
     $scope.initialize = function () {
         // Tạo một Promise để đảm bảo cuộc gọi API hoàn thành trước khi truyền dữ liệu vào $scope.user
@@ -53,24 +53,41 @@ app.controller("user_ctrl", function ($scope, $http, $window) {
         });
     };
 
-    $scope.deleteAccountAndLogout = function () {
-        var confirmDelete = confirm("Bạn có chắc chắn muốn xóa tài khoản và đăng xuất?");
-        if (confirmDelete) {
-            $http.delete(`/rest/accounts/${$scope.username}`).then(resp => {
-                alert("Tài khoản đã được xóa thành công");
-
-                $window.location.href = '/security/logoff';
-            }).catch(error => {
-                alert("Lỗi khi xóa tài khoản");
-                console.log("Error", error);
-            });
+    $scope.confirmDelete = function () {
+        var confirmPassword = $scope.passwordToDelete;
+    
+        // Kiểm tra mật khẩu ở đây
+        if (confirmPassword === $scope.user.password) {
+            // Sử dụng hộp thoại xác nhận
+            var confirmDelete = confirm("Bạn có chắc chắn muốn xóa tài khoản?");
+    
+            if (confirmDelete) {
+                // Nếu người dùng xác nhận, thực hiện xóa tài khoản
+                $http.delete(`/rest/accounts/${$scope.username}`).then(resp => {
+                    alert("Tài khoản đã được xóa thành công");
+                    $window.location.href = '/security/logoff';
+                }).catch(error => {
+                    alert("Lỗi khi xóa tài khoản");
+                    console.log("Error", error);
+                });
+            } else {
+                // Người dùng không xác nhận, không thực hiện xóa tài khoản
+                alert("Hủy xóa tài khoản");
+            }
+        } else {
+            // Mật khẩu không hợp lệ, hiển thị thông báo lỗi
+            alert("Mật khẩu không đúng. Vui lòng thử lại.");
         }
     };
-
-
+    $scope.showDeleteForm = false;
+    // Hàm hủy bỏ
+    $scope.cancelDelete = function () {
+        // Ẩn form khi hủy bỏ
+        $scope.showDeleteForm = false;
+        $scope.passwordToDelete = '';
+    };
     $scope.reset = function(){
-        $scope.initialize();
-        
+        $scope.initialize(); 
     }
 });
 

@@ -357,3 +357,21 @@ app.controller('username-ctrl', function ($scope, $window) {
     // Lưu tên vào local storage
     $window.localStorage.setItem('username', username);
 });
+
+
+
+app.config(function($routeProvider){
+    $routeProvider
+        .when("/information_management", {
+            templateUrl: "/user/information_management/information_management.html",
+            controller: "user_ctrl"
+        })
+        .when("/change_password", {
+            templateUrl: "/user/change_password/change_password.html",
+            controller: "password_ctrl"
+        })
+        .otherwise( {
+            templateUrl: "/user/information_management/information_management.html",
+            controller: "user_ctrl"
+        })
+});
