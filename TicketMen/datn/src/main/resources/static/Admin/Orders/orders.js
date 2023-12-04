@@ -1,6 +1,6 @@
 app.controller("orders-ctrl", function ($scope, $http) {
     $scope.items = [];
-    $scope.details = [];
+    $scope.details1 = [];
     $scope.form = {};
     $scope.totalTicketPrice = 0;
 
@@ -18,7 +18,7 @@ app.controller("orders-ctrl", function ($scope, $http) {
     $scope.view = function(item){
         $scope.form = angular.copy(item);
         $http.get("/rest/orderDetails/getOrderDetail/" + item.id).then(resp => {
-            $scope.details = resp.data;   
+            $scope.details1 = resp.data;   
         });
     }
 

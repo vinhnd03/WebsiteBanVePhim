@@ -14,6 +14,6 @@ public interface OrderDetailDao extends JpaRepository<OrderDetail, Long> {
     @Query("SELECT d FROM OrderDetail d WHERE d.order.id=?1 and d.ticket.id=?2")
     List<OrderDetail> findDetailByOrderId(Long id, Long tid);
 
-
+    
     
 }

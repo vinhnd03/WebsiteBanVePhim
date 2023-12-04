@@ -36,15 +36,18 @@
                                         <div class="col-1"></div>
                                         <table class="col-10">
                                             <tr >
-                                                <td>Tên Phim: <strong>{{details[0].ticket.movie.name}}</strong></td>
+                                                <td>Tên Người Mua: <Strong>{{form.account.name}}</Strong></td>
+                                                <td>Tên Phim: <strong>{{details1[0].ticket.movie.name}}</strong></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>Số Lượng Vé: <strong>{{details1.length}}</strong></td>
                                                 <td>Ngày Mua: <strong>{{form.buyDate | date : 'dd-MM-yyyy'}}</strong></td>
                                             </tr>
                                             <tr>
-                                                <td>Số Lượng Vé: <strong>{{details.length}}</strong></td>
+                                               
                                                 <td>Tổng tiền: <strong> {{totalTicketPrice}} VNĐ</strong></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Địa chỉ Email: <strong>{{form.ticket.movie.name}}</strong></td>
+                                                <td>Địa chỉ Email: <strong>{{form.ticket.movie.name}}</strong></td>
                                             </tr>
                                         </table>
                                         <div class="col-1"></div>
@@ -54,16 +57,14 @@
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Order</th>
                                                 <th>Seat</th>
                                                 <th>MOVIE</th>
                                                 <th>Price</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="item in details" ng-init="updateTotalTicketPrice()">
+                                            <tr ng-repeat="item in details1" ng-init="updateTotalTicketPrice()">
                                                 <td>{{item.id}}</td>
-                                                <td>{{item.order.account.username}}</td>
                                                 <td>{{item.seat.name}}</td>
                                                 <td>{{item.ticket.movie.name}}</td>
                                                 <td>{{item.ticket.price}} VNĐ</td>

@@ -1,14 +1,20 @@
-app.controller("history-ctrl", function ($scope, $http) {
+app.controller("history_ctrl", function ($scope, $http, $window) {
     $scope.items = [];
     $scope.details = [];
     $scope.form = {};
     $scope.totalTicketPrice = 0;
-
+    var username = $window.localStorage.getItem('username');
 
     $scope.initialize = function () {
         //load products
-        $http.get("/rest/orders").then(resp => {
-            $scope.items = resp.data;            
+        $http.get("/rest/orders/getOrderUsername/" + username).then(resp => {
+            $scope.items = resp.data;
+            
+            resp.data.forEach(order => {
+                $http.get("/rest/orderDetails/getOrderDetail/" + order.id).then(resp => {
+                    order.details = resp.data;  
+                });
+            });
         });
     }
 
@@ -22,13 +28,14 @@ app.controller("history-ctrl", function ($scope, $http) {
     //Khởi đầu
     $scope.initialize();    
 
-
     $scope.updateTotalTicketPrice = function() {
         $scope.totalTicketPrice = 0;
         angular.forEach($scope.details, function(item) {
             $scope.totalTicketPrice += item.ticket.price;
         });
     };
+
+
     $scope.pager = {
         page: 0,
         size: 5,

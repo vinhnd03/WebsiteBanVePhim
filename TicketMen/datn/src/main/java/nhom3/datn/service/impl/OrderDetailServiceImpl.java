@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.OrderDetailDao;
-import nhom3.datn.entity.Movie;
 import nhom3.datn.entity.OrderDetail;
 import nhom3.datn.service.OrderDetailService;
 

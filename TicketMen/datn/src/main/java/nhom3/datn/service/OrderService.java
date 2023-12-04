@@ -11,5 +11,7 @@ public interface OrderService {
     List<Order> findAll();
 
     Order create(Order order);
+
+    List<Order> findByUsername(String username);
  
 }
