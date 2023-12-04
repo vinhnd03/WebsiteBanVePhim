@@ -370,6 +370,10 @@ app.config(function($routeProvider){
             templateUrl: "/user/change_password/change_password.html",
             controller: "password_ctrl"
         })
+        .when("/history", {
+            templateUrl: "/user/history/history.html",
+            controller: "history_ctrl"
+        })
         .otherwise( {
             templateUrl: "/user/information_management/information_management.html",
             controller: "user_ctrl"

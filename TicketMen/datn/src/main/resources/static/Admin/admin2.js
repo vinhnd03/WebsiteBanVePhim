@@ -9,6 +9,10 @@ app.config(function($routeProvider){
             templateUrl: "/admin/product/index.html",
             controller: "product-ctrl"
         })
+        .when("/orders", {
+            templateUrl: "/admin/orders/index.html",
+            controller: "orders-ctrl"
+        })
         .when("/category", {
             templateUrl: "/admin/category/index.html",
             controller: "category-ctrl"

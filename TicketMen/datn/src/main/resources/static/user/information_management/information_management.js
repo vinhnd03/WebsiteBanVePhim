@@ -41,6 +41,7 @@
     };
     $scope.initialize();
     
+    
     // Hàm cập nhật thông tin người dùng
     $scope.update = function () {
         var item = angular.copy($scope.form);

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import nhom3.datn.entity.Account;
-import nhom3.datn.entity.Category;
 
 public interface AccountService {
 

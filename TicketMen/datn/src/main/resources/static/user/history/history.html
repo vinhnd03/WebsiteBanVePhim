@@ -1,0 +1,66 @@
+<div class="container3">
+    <div class="title">Lịch Sử Mua Vé</div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th >ID</th>
+            <th >Tên Phim</th>
+            <th >Ngày Mua</th>
+            <th >Xem Chi Tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>Biệt Đội Anh Hùng</td>
+            <td>22-11-2023</td>
+            <td>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" ng-click="view(item)">
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Chi Tiết</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              <table class="table">
+                                  <thead class="thead-dark">
+                                      <tr>
+                                          <th>ID</th>
+                                          <th>TÊN PHIM</th>
+                                          <th>GHẾ</th>
+                                          <th>GIỜ CHIẾU</th>
+                                          <th>NGÀY MUA</th>
+                                          <th>GIÁ</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr  ng-init="updateTotalTicketPrice()">
+                                          <th>1</th>
+                                          <td>Biệt Đội Anh Hùng</td>
+                                          <td>E4</td>
+                                          <td>19:00</td>
+                                          <td>22-11-2023</td>
+                                          <td>150,000 VNĐ</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                          <div class="modal-footer">
+                              <strong>Tổng Tiền: {{totalTicketPrice}} VNĐ</strong>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

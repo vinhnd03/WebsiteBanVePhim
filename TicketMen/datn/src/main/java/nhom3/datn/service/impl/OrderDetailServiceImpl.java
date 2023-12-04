@@ -29,5 +29,15 @@ public class OrderDetailServiceImpl implements OrderDetailService{
     public OrderDetail create(OrderDetail order) {
         return odao.save(order);
     }
+
+    @Override
+    public List<OrderDetail> findDetailByOrderId(Long id) {
+        return odao.findDetailByOrderId(id);
+    }
+
+    @Override
+    public List<OrderDetail> findDetailByOrderId(Long id, Long tid) {
+        return odao.findDetailByOrderId(id , tid);
+    }
     
 }
