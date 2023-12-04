@@ -38,12 +38,12 @@
                                         <td>Phòng: <strong>{{form.details[0].ticket.room.name}}</strong></td>
                                     </tr>
                                     <tr>
+                                        <td>Giờ Chiếu: <strong>{{form.details[0].ticket.time}}</strong></td>
                                         <td>Số Lượng Vé: <strong>{{form.details.length}}</strong></td>
-                                        <td>Ngày Mua: <strong>{{form.buyDate | date : 'dd-MM-yyyy'}}</strong></td>
                                     </tr>
                                     <tr>
+                                        <td>Ngày Mua: <strong>{{form.buyDate | date : 'dd-MM-yyyy'}}</strong></td>
                                         <td>Tổng tiền: <strong> {{totalTicketPrice}} VNĐ</strong></td>
-                                        <td>Mã QR:</td>
                                     </tr>
                                 </table>
                                 <div class="col-1"></div>
