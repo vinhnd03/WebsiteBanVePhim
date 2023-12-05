@@ -134,7 +134,7 @@ app.controller("ticketSelectCtrl", function ($scope, $http, $window) {
     }
     $scope.initialize();
 
-    $scope.findTime = function(day){
+    $scope.findTime = function (day) {
         $scope.time = [];
 
         var formattedDay = moment(day, "dddd, DD/MM/YYYY").format("MM-DD-YYYY");
@@ -146,10 +146,10 @@ app.controller("ticketSelectCtrl", function ($scope, $http, $window) {
             console.log(error);
         })
     }
-    
+
 });
 
-app.controller("seatSelectCtrl", function ($scope, $http, $window) {
+app.controller("seatSelectCtrl", function ($scope, $http, $window,$interval) {
     $scope.showtimes = [];
     $scope.selectedShowtime = "";
     $scope.perform = {};
@@ -159,11 +159,39 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     $scope.dseats = [];
     $scope.orderedSeats = [];
 
+    $scope.selectedOrderId = "";
+    //Timer
+    // $scope.countdown = {
+    //     minutes: 0,
+    //     seconds: 5
+    // };
+
+    // var totalSeconds = $scope.countdown.minutes * 60 + $scope.countdown.seconds;
+
+    // var interval = $interval(function () {
+    //     totalSeconds--;
+
+    //     $scope.countdown.minutes = Math.floor(totalSeconds / 60);
+    //     $scope.countdown.seconds = totalSeconds % 60;
+
+    //     if (totalSeconds <= 0) {
+    //         $interval.cancel(interval);
+    //         alert('Countdown timer reached zero!');
+    //     }
+    // }, 1000);
+
+    // $scope.$on('$destroy', function () {
+    //     $interval.cancel(interval);
+    // });
+
+
+
     // Define rows and seats with labels A to N (10 columns)
     $scope.rows = Array.from({ length: 10 }, (v, k) => k + 1);
     $scope.columns = Array.from({ length: 14 }, (v, k) => String.fromCharCode(65 + k)); // A to J
     $scope.seats = generateSeats($scope.rows, $scope.columns);
 
+    $scope.choosing = [];
     $scope.selectedSeats = []
     $scope.availableSeats = ($scope.rows.length * $scope.columns.length) - $scope.orderedSeats.length;
     $scope.selectedSeats2 = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
@@ -262,6 +290,11 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
         return $scope.orderedSeats.some(orderedSeat => orderedSeat.name === seat);
     };
 
+    $scope.isSeatChoosing = function (seat) {
+        $scope.choosing = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
+        return $scope.choosing.some(orderedSeat => orderedSeat.name === seat);
+    };
+
     $scope.goBack = function () {
         $scope.selectedSeats = [];
         limit = 0
@@ -272,6 +305,49 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
         if ($scope.selectedSeats.length === 0) {
             $scope.sweetAlert("info", "Vui lòng chọn ít nhất 1 ghế để tiếp tục!")
         } else {
+            $scope.order = {};
+            var items = [];
+            var order = {
+                createDate: new Date(),
+                account: $scope.account,
+                email: null
+            }
+
+            $http.post("/rest/orders", order).then(resp => {
+                $scope.order = resp.data;
+
+                console.log("order", $scope.order);
+    
+                // Duyệt qua mỗi ghế được chọn
+                for (var i = 0; i < $scope.selectedSeats.length; i++) {
+                    var item = {
+                        buyDate: new Date(),
+                        order: $scope.order,
+                        ticket: $scope.ticket,
+                        seat: $scope.dseats.find(seat => seat.name === $scope.selectedSeats[i])
+                    };
+    
+                    items.push(item);
+                }
+    
+                // Gửi mỗi đối tượng item lên server
+                items.forEach(item => {
+                    $http.post("/rest/orderDetails", item)
+                        .then(resp => {
+    
+                        })
+                        .catch(error => {
+                            console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
+                        });
+                });
+    
+                $scope.sweetAlert("success", "Đặt ghế thành công!")
+            }).catch(error => {
+                console.log(error);
+                $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
+            })
+
+
             $window.localStorage.setItem("selectedSeats", JSON.stringify($scope.selectedSeats));
             // Chuyển trang ở đây nếu điều kiện được đáp ứng
             $window.location.href = "/order/bill/" + ticketId;
@@ -288,51 +364,52 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window) {
     // }
 
     $scope.continueBooking = function () {
+        // $interval.cancel(interval);
         $scope.order = {};
         var items = [];
-        $scope.selectedSeats = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
-        console.log("selectedSeats: ", $scope.selectedSeats);
+        // $scope.selectedSeats = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
+        // console.log("selectedSeats: ", $scope.selectedSeats);
 
-        var order = {
-            createDate: new Date(),
-            account: $scope.account,
-            email: null
-        }
+        // var order = {
+        //     createDate: new Date(),
+        //     account: $scope.account,
+        //     email: null
+        // }
 
-        $http.post("/rest/orders", order).then(resp => {
-            $scope.order = resp.data;
-            console.log("order", $scope.order);
+        // $http.post("/rest/orders", order).then(resp => {
+        //     $scope.order = resp.data;
+        //     console.log("order", $scope.order);
 
-            // Duyệt qua mỗi ghế được chọn
-            for (var i = 0; i < $scope.selectedSeats.length; i++) {
-                var item = {
-                    buyDate: new Date(),
-                    order: $scope.order,
-                    ticket: $scope.ticket,
-                    seat: $scope.dseats.find(seat => seat.name === $scope.selectedSeats[i])
-                };
+        //     // Duyệt qua mỗi ghế được chọn
+        //     for (var i = 0; i < $scope.selectedSeats.length; i++) {
+        //         var item = {
+        //             buyDate: new Date(),
+        //             order: $scope.order,
+        //             ticket: $scope.ticket,
+        //             seat: $scope.dseats.find(seat => seat.name === $scope.selectedSeats[i])
+        //         };
 
-                items.push(item);
-            }
+        //         items.push(item);
+        //     }
 
-            // Gửi mỗi đối tượng item lên server
-            items.forEach(item => {
-                $http.post("/rest/orderDetails", item)
-                    .then(resp => {
+        //     // Gửi mỗi đối tượng item lên server
+        //     items.forEach(item => {
+        //         $http.post("/rest/orderDetails", item)
+        //             .then(resp => {
 
-                    })
-                    .catch(error => {
-                        console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
-                    });
-            });
+        //             })
+        //             .catch(error => {
+        //                 console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
+        //             });
+        //     });
 
             $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
             // alert($scope.selectedSeats[1])
             $scope.sweetAlert("success", "Đặt ghế thành công!")
-        }).catch(error => {
-            console.log(error);
-            $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
-        })
+        // }).catch(error => {
+        //     console.log(error);
+        //     $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
+        // })
 
 
 
@@ -360,7 +437,7 @@ app.controller('username-ctrl', function ($scope, $window) {
 
 
 
-app.config(function($routeProvider){
+app.config(function ($routeProvider) {
     $routeProvider
         .when("/information_management", {
             templateUrl: "/user/information_management/information_management.html",
@@ -370,7 +447,7 @@ app.config(function($routeProvider){
             templateUrl: "/user/change_password/change_password.html",
             controller: "password_ctrl"
         })
-        .otherwise( {
+        .otherwise({
             templateUrl: "/user/information_management/information_management.html",
             controller: "user_ctrl"
         })

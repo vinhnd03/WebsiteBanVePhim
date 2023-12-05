@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ticketmen</title>
+    <link rel="icon" href="image/logo ticketmen_preview_rev_1.png" type="image/png">
     <!-- <link rel="stylesheet" href="../CSS/thuvien.css"> -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/font/material-design-icons/Material-Design-Icons.woff'>
   <link rel="stylesheet" href="../CSS/index3.css">
@@ -84,10 +85,11 @@
         </ul>
       </ul>
     
-      <header>
-        <ul class="dropdown-content" id="user_dropdown">
+
+      <header ng-controller="menu-ctrl">
+        <ul class="dropdown-content" id="user_dropdown" ng-style="isDisplay">
           <li><a class="indigo-text" href="#!" style="text-decoration: none;">Profile</a></li>
-          <li><a class="indigo-text" href="#!" style="text-decoration: none;">Logout</a></li>
+          <li><a class="indigo-text" href="/security/logoff" style="text-decoration: none;">Logout</a></li>
         </ul>
     
         <nav class="indigo" role="navigation">
@@ -96,7 +98,7 @@
               <img style="margin-top: 17px; margin-left: 5px;" src="https://res.cloudinary.com/dacg0wegv/image/upload/t_media_lib_thumb/v1463989873/smaller-main-logo_3_bm40iv.gif" /></a>
     
             <ul class="right hide-on-med-and-down">
-              <li>
+              <li ng-click="toggleDisplay()">
                 <a class='right dropdown-button' href='' data-activates='user_dropdown'><i class=' material-icons'>account_circle</i></a>
               </li>
             </ul>

@@ -38,5 +38,21 @@ app.config(function($routeProvider){
 app.controller("setusername", function($scope, $window){
     var username = $window.localStorage.getItem('name');
     $scope.un = username;
+
+})
+
+app.controller("menu-ctrl", function($scope){
+
+    $scope.display = false;
+
+    $scope.toggleDisplay = function() {
+        $scope.display = !$scope.display;
+        $scope.isDisplay = { 'display': $scope.display ? 'block' : 'none' };
+        // $scope.displayText = $scope.display ? 'true' : 'false';
+      };
+
+      $scope.isDisplay = { 'display': $scope.display ? 'block' : 'none' };
+//   $scope.displayText = $scope.display ? 'true' : 'false';
+      
 })
 
