@@ -11,11 +11,11 @@
         </thead>
         <tbody>
           <tr ng-repeat="item in pager.items">
-            <th>{{item.id}}</th>
+            <th>{{$index + 1 + (pager.page * pager.size)}}</th>
             <td>{{item.details[0].ticket.movie.name}}</td>
             <td>{{item.buyDate | date : 'dd-MM-yyyy'}}</td>
             <td>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" ng-click="view(item)">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" ng-click="view(item)" >
                   <i class="fa fa-eye" aria-hidden="true"></i>
               </button>
               <!-- Modal -->
@@ -61,7 +61,7 @@
                                   </thead>
                                   <tbody>
                                       <tr  ng-repeat="item in details" ng-init="updateTotalTicketPrice()">
-                                          <th>{{item.id}}</th>
+                                          <th>{{ $index + 1 }}</th>
                                           <td></td>
                                           <td>{{item.seat.name}}</td>
                                           <td></td> 
@@ -77,19 +77,19 @@
           </tr>
         </tbody>
       </table>
-      <div class="card-footer text-center">
-        <button ng-click="pager.first()" class="btn btn-danger">
-            <i class="fa fa-hand-o-up" aria-hidden="true"></i>
+      <div class="card-footer1 text-center">
+        <button ng-click="pager.first()" class="btn btn-primary">
+            <i class="fa fa-backward" aria-hidden="true"></i>
         </button>
         <button ng-click="pager.prev()" class="btn btn-primary">
-            <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
         </button>
         <button class="btn btn-default">{{pager.page + 1}} of {{pager.count}}</button>
-        <button ng-click="pager.next()" class="btn btn-success">
-            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+        <button ng-click="pager.next()" class="btn btn-primary">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
         </button>
-        <button ng-click="pager.last()" class="btn btn-info">
-            <i class="fa fa-hand-o-down" aria-hidden="true"></i>
+        <button ng-click="pager.last()" class="btn btn-primary">
+            <i class="fa fa-forward" aria-hidden="true"></i>
         </button>
     </div>
 </div>

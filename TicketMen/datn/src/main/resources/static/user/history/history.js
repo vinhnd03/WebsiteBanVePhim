@@ -13,6 +13,7 @@ app.controller("history_ctrl", function ($scope, $http, $window) {
             resp.data.forEach(order => {
                 $http.get("/rest/orderDetails/getOrderDetail/" + order.id).then(resp => {
                     order.details = resp.data;  
+                   
                 });
             });
         });
@@ -21,7 +22,7 @@ app.controller("history_ctrl", function ($scope, $http, $window) {
     $scope.view = function(item){
         $scope.form = angular.copy(item);
         $http.get("/rest/orderDetails/getOrderDetail/" + item.id).then(resp => {
-            $scope.details = resp.data;            
+            $scope.details = resp.data;          
         });
     }
 
@@ -34,8 +35,6 @@ app.controller("history_ctrl", function ($scope, $http, $window) {
             $scope.totalTicketPrice += item.ticket.price;
         });
     };
-
-
     $scope.pager = {
         page: 0,
         size: 5,

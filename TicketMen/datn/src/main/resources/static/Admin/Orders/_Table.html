@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="item in pager.items">
-                <td>{{item.id}}</td>
+                <td>{{$index + 1 + (pager.page * pager.size)}}</td>
                 <td>{{item.account.username}}</td>
                 <td>{{item.buyDate | date : 'dd-MM-yyyy'}}</td>
                 <td>
@@ -64,7 +64,7 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="item in details1" ng-init="updateTotalTicketPrice()">
-                                                <td>{{item.id}}</td>
+                                                <td>{{$index + 1 }}</td>
                                                 <td>{{item.seat.name}}</td>
                                                 <td>{{item.ticket.movie.name}}</td>
                                                 <td>{{item.ticket.price}} VNĐ</td>
