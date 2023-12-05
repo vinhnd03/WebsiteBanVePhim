@@ -37,4 +37,14 @@ public class OrderDetailRestController {
     public OrderDetail create(@RequestBody OrderDetail order){
         return orderService.create(order);
     }
+
+    @GetMapping("/getOrderDetail/{id}")
+    public List<OrderDetail> getorderdetail(@PathVariable("id") Long id){
+        return orderService.findDetailByOrderId(id);
+    }
+
+        @GetMapping("/getOrderDetail/{id}/{tid}")
+    public List<OrderDetail> getorderdetail2(@PathVariable("id") Long id,@PathVariable("tid") Long tid){
+        return orderService.findDetailByOrderId(id, tid);
+    }
 }
