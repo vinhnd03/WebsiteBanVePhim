@@ -17,7 +17,7 @@
         .noty_theme_custom {
             background: #3498db;
             color: #ffffff;
-            width: 300px;
+            width: 100px;
             padding: 10px;
         }
     </style>
@@ -25,13 +25,24 @@
 
 <body>
     <script>
-        var n = new Noty({
-            text: 'Thông báo của bạn ở đây!',
-            theme: 'custom', // Chọn theme (optional)
-            timeout: 3000 // Thời gian hiển thị thông báo (optional)
-        });
+        $scope.noty = function (message) {
+            var n = new Noty({
+                text: message,
+                timeout: 3000, // Thời gian hiển thị thông báo (optional)
+                callbacks: {
+                    onShow: function () {
+                        // Update the style after the notification is shown
+                        this.barDom.style.backgroundColor = '#3498db';
+                        this.barDom.style.color = '#ffffff';
+                        this.barDom.style.width = '500px';
+                        this.barDom.style.padding = '10px';
+                    }
+                }
+            });
+            n.show();
+        }
 
-        n.show();
+
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
