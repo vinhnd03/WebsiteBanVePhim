@@ -346,17 +346,17 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window,$interval) {
                             console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
                         });
                 });
-    
-                $scope.sweetAlert("success", "Đặt ghế thành công!")
+                // Chuyển trang ở đây nếu điều kiện được đáp ứng
+                    $window.location.href = "/order/bill/" + ticketId;
+                // $scope.sweetAlert("success", "Đặt ghế thành công!")
             }).catch(error => {
                 console.log(error);
-                $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
+                // $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
             })
 
 
             
-            // Chuyển trang ở đây nếu điều kiện được đáp ứng
-            $window.location.href = "/order/bill/" + ticketId;
+            
         }
     }
 
