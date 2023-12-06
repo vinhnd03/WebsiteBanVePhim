@@ -63,4 +63,26 @@ public class MovieController {
     
     return "movie/detail";
     }
+    // @GetMapping("/movie/search")
+    // public String searchMovies(Model model, @RequestParam(value = "name", required = false) String name,
+    //                            @RequestParam(value = "country", required = false) String country,
+    //                            @RequestParam(value = "categoryId", required = false) Integer categoryId) {
+    //     if (name != null && country != null && categoryId != null) {
+    //         // Tìm kiếm theo tên, quốc gia và ID danh mục
+    //         List<Movie> movies = movieService.searchMoviesByNameCountryAndCategory(name, country, categoryId);
+    //         model.addAttribute("movies", movies);
+    //     } else if (name != null && country != null) {
+    //         // Tìm kiếm theo tên và quốc gia
+    //         List<Movie> movies = movieService.searchMoviesByNameAndCountry(name, country);
+    //         model.addAttribute("movies", movies);
+    //     } else if (name != null) {
+    //         // Tìm kiếm theo tên
+    //         List<Movie> movies = movieService.searchMoviesByNameAndCountry(name, country);
+    //         model.addAttribute("movies", movies);
+    //     } else {
+    //         // Hiển thị form tìm kiếm nếu không có thông tin tìm kiếm được cung cấp
+    //         return "movie/search";
+    //     }
+    //     return "movie/list";
+    // }
 }
