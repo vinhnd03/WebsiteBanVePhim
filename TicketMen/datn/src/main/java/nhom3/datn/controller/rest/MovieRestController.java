@@ -52,5 +52,8 @@ public class MovieRestController {
         movieService.delete(id);
     }
 
-    
+    @GetMapping("/findMovieByName/{name}")
+    public List<Movie> getMoviesbynamMovies(@PathVariable("name") String name){
+        return movieService.searchMoviesByName(name);
+    }
 }

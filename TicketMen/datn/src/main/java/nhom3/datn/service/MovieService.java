@@ -26,4 +26,12 @@ public interface MovieService {
 
     List<Movie> findFutureMovie();
 
+    List<Movie> searchMoviesByNameAndCountry(String name, String country);
+
+    List<Movie> searchMoviesByNameCountryAndCategory(String name, String country, Integer categoryId);
+
+    List<Movie> searchMoviesByName(String name);
+
+   
+
 }
