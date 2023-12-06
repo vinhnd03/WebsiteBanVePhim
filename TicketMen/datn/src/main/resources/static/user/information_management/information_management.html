@@ -1,6 +1,6 @@
-
-<div class="container">
+<div class="container2">
     <div class="title">Thông Tin Cá Nhân</div>
+    <hr>
     <form id="profileForm" ng-controller="user_ctrl">
         <div class="user-details">
             <div class="input-box">
@@ -11,7 +11,7 @@
                 <span class="details">Họ Và Tên</span>
                 <input ng-model="form.name" type="text" id="fullName">
             </div>
-            
+
             <div class="input-box">
                 <span class="details">Ngày Sinh</span>
                 <input ng-model="form.date" type="date" id="date">
@@ -43,14 +43,28 @@
         <hr>
         <button class="btn-custom-btn btn-btn-1" ng-click="update()">Cập Nhập</button>
         <button class="btn-custom-btn btn-btn-1" ng-click="reset()">Làm Mới</button>
-        <button class="btn-custom-btn btn-btn-1" ng-click="showDeleteForm = true">Xóa tài khoản</button>
-        <!-- Form nhập mật khẩu xóa tài khoản -->
-        <div class="user-details" ng-show="showDeleteForm">
-            <div class="input-box1">
-                <input type="password" ng-model="passwordToDelete" placeholder="Nhập mật khẩu">
-                <button ng-click="confirmDelete()"class="btn-custom-btn1 btn-btn-1">Xác nhận xóa tài khoản</button>
-                <button ng-click="cancelDelete()"class="btn-custom-btn2 btn-btn-1">Hủy bỏ</button>
+        <button class="btn-custom-btn btn-btn-1" ng-click="showDeleteForm = true" type="button" data-toggle="modal"
+            data-target="#exampleModalCenter"> Xóa tài khoản</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Xác Nhận Xóa Tài Khoản</h5>
+                    </div>
+                    <div class="modal-body" >
+                        <input type="password" ng-model="passwordToDelete" placeholder="Nhập mật khẩu">
+                    </div>
+                    <div class="modal-footer">
+                        <button ng-click="confirmDelete()" class="btn-custom-btn btn-btn-1">Xóa tài
+                            khoản</button>
+                        <button ng-click="cancelDelete()" class="btn-custom-btn btn-btn-1" data-dismiss="modal" >Hủy bỏ</button>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- Form nhập mật khẩu xóa tài khoản -->
     </form>
 </div>

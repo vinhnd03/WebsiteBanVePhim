@@ -9,6 +9,10 @@ app.config(function($routeProvider){
             templateUrl: "/admin/product/index.html",
             controller: "product-ctrl"
         })
+        .when("/orders", {
+            templateUrl: "/admin/orders/index.html",
+            controller: "orders-ctrl"
+        })
         .when("/category", {
             templateUrl: "/admin/category/index.html",
             controller: "category-ctrl"
@@ -38,5 +42,21 @@ app.config(function($routeProvider){
 app.controller("setusername", function($scope, $window){
     var username = $window.localStorage.getItem('name');
     $scope.un = username;
+
+})
+
+app.controller("menu-ctrl", function($scope){
+
+    $scope.display = false;
+
+    $scope.toggleDisplay = function() {
+        $scope.display = !$scope.display;
+        $scope.isDisplay = { 'display': $scope.display ? 'block' : 'none' };
+        // $scope.displayText = $scope.display ? 'true' : 'false';
+      };
+
+      $scope.isDisplay = { 'display': $scope.display ? 'block' : 'none' };
+//   $scope.displayText = $scope.display ? 'true' : 'false';
+      
 })
 

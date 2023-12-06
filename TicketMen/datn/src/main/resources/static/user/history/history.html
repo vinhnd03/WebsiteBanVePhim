@@ -1,0 +1,95 @@
+<div class="container3">
+    <div class="title">Lịch Sử Mua Vé</div>
+    <table class="table">
+        <thead>
+          <tr >
+            <th >ID</th>
+            <th >Tên Phim</th>
+            <th >Ngày Mua</th>
+            <th >Xem Chi Tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in pager.items">
+            <th>{{$index + 1 + (pager.page * pager.size)}}</th>
+            <td>{{item.details[0].ticket.movie.name}}</td>
+            <td>{{item.buyDate | date : 'dd-MM-yyyy'}}</td>
+            <td>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" ng-click="view(item)" >
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Thông Tin Vé</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <table class="col-10">
+                                    <tr >
+                                        <td>Tên Phim: <strong>{{form.details[0].ticket.movie.name}}</strong></td>
+                                        <td>Phòng: <strong>{{form.details[0].ticket.room.name}}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giờ Chiếu: <strong>{{form.details[0].ticket.time}}</strong></td>
+                                        <td>Số Lượng Vé: <strong>{{form.details.length}}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ngày Mua: <strong>{{form.buyDate | date : 'dd-MM-yyyy'}}</strong></td>
+                                        <td>Tổng tiền: <strong> {{totalTicketPrice}} VNĐ</strong></td>
+                                    </tr>
+                                </table>
+                                <div class="col-1"></div>
+                            </div>
+                            <strong>Chi tiết: </strong>
+                              <table class="table">
+                                  <thead class="thead-dark">
+                                      <tr>
+                                          <th>ID</th>
+                                          <th></th>
+                                          <th>GHẾ</th>
+                                          <th></th>
+                                          <th>GIÁ</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr  ng-repeat="item in details" ng-init="updateTotalTicketPrice()">
+                                          <th>{{ $index + 1 }}</th>
+                                          <td></td>
+                                          <td>{{item.seat.name}}</td>
+                                          <td></td> 
+                                          <td>{{item.ticket.price}} VNĐ</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="card-footer1 text-center">
+        <button ng-click="pager.first()" class="btn btn-primary">
+            <i class="fa fa-backward" aria-hidden="true"></i>
+        </button>
+        <button ng-click="pager.prev()" class="btn btn-primary">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button class="btn btn-default">{{pager.page + 1}} of {{pager.count}}</button>
+        <button ng-click="pager.next()" class="btn btn-primary">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </button>
+        <button ng-click="pager.last()" class="btn btn-primary">
+            <i class="fa fa-forward" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>

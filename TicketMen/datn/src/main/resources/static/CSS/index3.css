@@ -59,6 +59,9 @@ a{
   position: absolute;
   z-index: 999;
   will-change: width, height;
+
+  top: 12%;
+  right: 1%;
 }
 .dropdown-content li {
   clear: both;

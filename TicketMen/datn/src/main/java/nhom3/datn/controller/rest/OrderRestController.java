@@ -39,4 +39,9 @@ public class OrderRestController {
     public Order create(@RequestBody Order order){
         return orderService.create(order);
     }
+
+    @GetMapping("/getOrderUsername/{username}")
+    public List<Order> getorderusername(@PathVariable("username") String username){
+        return orderService.findByUsername(username);
+    }
 }

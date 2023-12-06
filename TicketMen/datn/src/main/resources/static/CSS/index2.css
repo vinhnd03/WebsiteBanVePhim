@@ -4155,7 +4155,7 @@ button.btn-floating {
 a.waves-effect .waves-ripple {
   z-index: -1;
 }
-.modal {
+/* .modal {
   display: none;
   position: fixed;
   left: 0;
@@ -4168,8 +4168,8 @@ a.waves-effect .waves-ripple {
   overflow-y: auto;
   border-radius: 2px;
   will-change: top, opacity;
-}
-@media only screen and (max-width: 992px) {
+} */
+/* @media only screen and (max-width: 992px) {
   .modal {
     width: 80%;
   }
@@ -4198,7 +4198,7 @@ a.waves-effect .waves-ripple {
 .modal .modal-footer .btn-flat {
   float: right;
   margin: 6px 0;
-}
+} */
 .lean-overlay {
   position: fixed;
   z-index: 999;
@@ -4212,7 +4212,7 @@ a.waves-effect .waves-ripple {
   display: none;
   will-change: opacity;
 }
-.modal.modal-fixed-footer {
+/* .modal.modal-fixed-footer {
   padding: 0;
   height: 70%;
 }
@@ -4236,7 +4236,7 @@ a.waves-effect .waves-ripple {
   max-height: 45%;
   border-radius: 0;
   will-change: bottom, opacity;
-}
+} */
 .collapsible {
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;

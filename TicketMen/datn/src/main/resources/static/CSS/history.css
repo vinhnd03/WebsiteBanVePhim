@@ -1,0 +1,20 @@
+.container3{
+    margin: 10px auto;
+    max-width: 1000px;
+    width: 100%;
+    padding: 25px 30px;
+    background-color: rgb(253, 253, 253);
+    border-radius: 5%;
+    margin-bottom: 5%;
+}
+.container3 .title{
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+}
+
+.card-footer1{
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
