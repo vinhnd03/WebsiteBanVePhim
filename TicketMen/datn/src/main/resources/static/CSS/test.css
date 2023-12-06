@@ -5,7 +5,7 @@ body {
 nav.menu1{    
 	position: relative;
 	margin: 10px auto 0;
-	width: 450px;
+	width: 495px;
 	height: 50px;
 	border-radius: 8px;
 	font-size: 0;
@@ -46,9 +46,9 @@ nav.menu1 a:nth-child(2):hover~.animation{
 	left: 180px;
 }
 nav.menu1 a:nth-child(3){
-	width: 100px;
+	width: 150px;
 }
 nav.menu1 a:nth-child(3):hover~.animation{
-	width: 100px;
-	left: 340px;
+	width: 150px;
+	left: 345px;
 }
