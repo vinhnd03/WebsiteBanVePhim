@@ -160,6 +160,11 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window,$interval) {
     $scope.orderedSeats = [];
 
     $scope.selectedOrderId = "";
+    
+    $scope.seatHoding = function(available){
+
+    }
+
     //Timer
     // $scope.countdown = {
     //     minutes: 0,
@@ -261,7 +266,6 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window,$interval) {
     $scope.initialize();
     var limit = 0;
     $scope.toggleSeat = function (seat) {
-
         if ($scope.isSeatAvailable(seat)) {
             if (limit < 8) {
                 $scope.selectedSeats.push(seat);
@@ -305,6 +309,8 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window,$interval) {
         if ($scope.selectedSeats.length === 0) {
             $scope.sweetAlert("info", "Vui lòng chọn ít nhất 1 ghế để tiếp tục!")
         } else {
+            $window.localStorage.setItem("selectedSeats", JSON.stringify($scope.selectedSeats));
+
             $scope.order = {};
             var items = [];
             var order = {
@@ -348,7 +354,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window,$interval) {
             })
 
 
-            $window.localStorage.setItem("selectedSeats", JSON.stringify($scope.selectedSeats));
+            
             // Chuyển trang ở đây nếu điều kiện được đáp ứng
             $window.location.href = "/order/bill/" + ticketId;
         }
@@ -365,8 +371,8 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window,$interval) {
 
     $scope.continueBooking = function () {
         // $interval.cancel(interval);
-        $scope.order = {};
-        var items = [];
+        // $scope.order = {};
+        // var items = [];
         // $scope.selectedSeats = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
         // console.log("selectedSeats: ", $scope.selectedSeats);
 
