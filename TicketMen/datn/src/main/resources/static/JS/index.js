@@ -162,13 +162,8 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
     $scope.countdown = {};
 
     $scope.selectedOrderId = "";
-<<<<<<< Updated upstream
-
-    $scope.seatHoding = function(available) {
-=======
     
     
->>>>>>> Stashed changes
 
 
     //Timer
@@ -353,13 +348,9 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
                         });
                 });
                 // Chuyển trang ở đây nếu điều kiện được đáp ứng
-<<<<<<< Updated upstream
-                $window.location.href = "/order/bill/" + ticketId;
-=======
                     $window.location.href = "/order/bill/" + ticketId;
                     $scope.seatHoding(true);
                     // $scope.seatHoding = function('true');
->>>>>>> Stashed changes
                 // $scope.sweetAlert("success", "Đặt ghế thành công!")
             }).catch(error => {
                 console.log(error);
@@ -372,9 +363,6 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
         }
     }
 
-<<<<<<< Updated upstream
-    $scope.back = function() {
-=======
     $scope.seatHoding = function(stopCountdown) {
         $scope.countdown = {
             minutes: 0,
@@ -411,7 +399,6 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
     };
 
     $scope.back = function () {
->>>>>>> Stashed changes
         $window.history.back();
     }
 
@@ -459,16 +446,6 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
         //                 console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
         //             });
         //     });
-<<<<<<< Updated upstream
-
-        $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
-        // alert($scope.selectedSeats[1])
-        $scope.sweetAlert("success", "Đặt ghế thành công!")
-            // }).catch(error => {
-            //     console.log(error);
-            //     $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
-            // })
-=======
             $scope.seatHoding(false);
             $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
             // alert($scope.selectedSeats[1])
@@ -477,7 +454,6 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
         //     console.log(error);
         //     $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
         // })
->>>>>>> Stashed changes
 
 
 
