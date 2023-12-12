@@ -159,11 +159,12 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
     $scope.dseats = [];
     $scope.orderedSeats = [];
 
+    $scope.countdown = {};
+
     $scope.selectedOrderId = "";
+    
+    
 
-    $scope.seatHoding = function(available) {
-
-    }
 
     //Timer
     // $scope.countdown = {
@@ -347,7 +348,9 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
                         });
                 });
                 // Chuyển trang ở đây nếu điều kiện được đáp ứng
-                $window.location.href = "/order/bill/" + ticketId;
+                    $window.location.href = "/order/bill/" + ticketId;
+                    $scope.seatHoding(true);
+                    // $scope.seatHoding = function('true');
                 // $scope.sweetAlert("success", "Đặt ghế thành công!")
             }).catch(error => {
                 console.log(error);
@@ -360,7 +363,42 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
         }
     }
 
-    $scope.back = function() {
+    $scope.seatHoding = function(stopCountdown) {
+        $scope.countdown = {
+            minutes: 0,
+            seconds: 5
+        }
+        var totalSeconds = $scope.countdown.minutes * 60 + $scope.countdown.seconds;
+    
+        if (available) {
+            var interval = $interval(function () {
+                totalSeconds--;
+    
+                $scope.countdown.minutes = Math.floor(Math.max(totalSeconds / 60, 0));
+                $scope.countdown.seconds = Math.max(totalSeconds % 60, 0);
+    
+                if (stopCountdown) {
+                    $interval.cancel(interval);
+    
+                    // Thực hiện hành động khi dừng đếm theo ý muốn
+                    if (typeof onCustomStop === 'function') {
+                        onCustomStop();
+                    }
+                }
+    
+                if (totalSeconds <= 0 && !stopCountdown) {
+                    $interval.cancel(interval);
+    
+                    // Thực hiện hành động khi hết thời gian
+                    if (typeof onTimeout === 'function') {
+                        onTimeout();
+                    }
+                }
+            }, 1000);
+        }
+    };
+
+    $scope.back = function () {
         $window.history.back();
     }
 
@@ -408,14 +446,14 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval) {
         //                 console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
         //             });
         //     });
-
-        $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
-        // alert($scope.selectedSeats[1])
-        $scope.sweetAlert("success", "Đặt ghế thành công!")
-            // }).catch(error => {
-            //     console.log(error);
-            //     $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
-            // })
+            $scope.seatHoding(false);
+            $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
+            // alert($scope.selectedSeats[1])
+            $scope.sweetAlert("success", "Đặt ghế thành công!")
+        // }).catch(error => {
+        //     console.log(error);
+        //     $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
+        // })
 
 
 
