@@ -1,110 +1,30 @@
-<div class="row">
-    <div class="col s6">
-      <div style="padding: 35px;" align="center" class="card">
-        <div class="row">
-          <div class="left card-title">
-            <b>Quản lý nhân viên</b>
-          </div>
-        </div>
-
-        <div class="row">
-          <a href="#!accounts">
-            <div style="padding: 50px;" class="grey lighten-3 s5 waves-effect">
-              <i class="indigo-text text-lighten-1 large material-icons">person</i>
-              <span class="indigo-text text-lighten-1"><h5>Staff</h5></span>
-            </div>
-          </a>
-          <div class="col s1">&nbsp;</div>
-          <div class="col s1">&nbsp;</div>
-
-          <a href="#!authorize">
-            <div style="padding: 50px 45px " class="grey lighten-3  s5 waves-effect">
-              <i class="indigo-text text-lighten-1 large material-icons">engineering</i>
-              <span class="indigo-text text-lighten-1"><h5>Authority</h5></span>
-            </div>
-          </a>
-         
-        </div>
-      </div>
-    </div>
-    <div class="col s6">
-      <div style="padding: 35px;" align="center" class="card">
-        <div class="row">
-          <div class="left card-title">
-            <b>Quản lý phim</b>
-          </div>
-        </div>
-        <div class="row">
-          <a href="#!product">
-            <div style="padding: 50px;" class="grey lighten-3  s5 waves-effect">
-              <i class="indigo-text text-lighten-1 large material-icons">movie</i>
-              <span class="indigo-text text-lighten-1"><h5>Movie</h5></span>
-            </div>
-          </a>
-
-          <div class="col s1">&nbsp;</div>
-          <div class="col s1">&nbsp;</div>
-
-          <a href="#!category">
-            <div style="padding: 50px;" class="grey lighten-3  s5 waves-effect">
-              <i class="indigo-text text-lighten-1 large material-icons">view_list</i>
-              <span class="indigo-text text-lighten-1"><h5>Category</h5></span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
+<div style="margin-left: 10%;margin-right: 10%;">
+<ul class="nav nav-tabs">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" data-toggle="tab" href="" role="tab" data-target="#ngay" aria-selected="true">DOANH THU TRONG NGÀY</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#tuan" aria-selected="false">DOANH THU TRONG TUẦN</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#thang" aria-selected="false">DOANH THU TRONG THÁNG</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" data-toggle="tab" href="" role="tab" data-target="#nam" aria-selected="false">DOANH THU TRONG NĂM</a>
+  </li>
+</ul>
+<div class="tab-content" id="myContent">
+  <div class="tab-pane fade show active" id="ngay">
+    <div ng-include="'/admin/home/_ngay.html'"></div>
   </div>
-
-  <div class="row">
-    <div class="col s6">
-      <div style="padding: 35px;" align="center" class="card">
-        <div class="row">
-          <div class="left card-title">
-            <b>Quản lý vé</b>
-          </div>
-        </div>
-
-        <div class="row">
-          <a href="#!ticket">
-            <div style="padding: 50px" class="grey lighten-3  s5 waves-effect">
-              <i class="indigo-text text-lighten-1 large material-icons">confirmation_number</i>
-              <span class="indigo-text text-lighten-1"><h5>Ticket</h5></span>
-            </div>
-          </a>
-          <div class="col s1">&nbsp;</div>
-          <div class="col s1">&nbsp;</div>
-          <a href="#!orders">
-            <div style="padding: 50px;" class="grey lighten-3  s5 waves-effect">
-              <i class="indigo-text text-lighten-1 large material-icons">assignment</i>
-              <span class="indigo-text text-lighten-1"><h5>Orders</h5></span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s6">
-      <div style="padding: 35px;" align="center" class="card">
-        <div class="row">
-          <div class="left card-title">
-            <b>Quản lý khách hàng</b>
-          </div>
-        </div>
-        <div class="row">
-           <a href="#!">
-            <div style="padding: 50px" class="grey lighten-3  s5 waves-effect">
-              <i class="indigo-text text-lighten-1 large material-icons">people</i>
-              <span class="indigo-text text-lighten-1"><h5>Customer</h5></span>
-            </div>
-          </a>
-          <!-- <div class="col s1">&nbsp;</div>
-          <div class="col s1">&nbsp;</div> -->
-
-          <a href="#!">
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
+  <div class="tab-pane fade" id="tuan" role="tabpanel" aria-labelledby="videoList-tab">
+    <div ng-include="'/admin/home/_tuan.html'"></div>
   </div>
+  <div class="tab-pane fade" id="thang" role="tabpanel" aria-labelledby="videoList-tab">
+    <div ng-include="'/admin/home/_table.html'"></div>
+  </div>
+  <div class="tab-pane fade" id="nam" role="tabpanel" aria-labelledby="videoList-tab">
+    <div ng-include="'/admin/home/_form.html'"></div>
+  </div>
+</div>
+</div>
