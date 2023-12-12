@@ -28,6 +28,6 @@ public interface MovieDao extends JpaRepository<Movie, Long> {
        @Query("SELECT m FROM Movie m WHERE m.name = ?1 AND m.country = ?2 AND m.category.id = ?3")
        List<Movie> findByNameAndCountryAndCategoryId(String name, String country, Integer categoryId);
 
-       @Query("SELECT m FROM Movie m WHERE m.name LIKE LOWER(CONCAT('%', :name, '%'))")
+       @Query("SELECT m FROM Movie m WHERE m.name  LIKE LOWER(CONCAT('%', :name, '%'))")
        List<Movie> findByName(String name);
 }

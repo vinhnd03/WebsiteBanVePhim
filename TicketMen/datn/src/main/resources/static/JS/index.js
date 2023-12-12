@@ -463,30 +463,32 @@ app.config(function($routeProvider) {
         })
 });
 app.controller('MovieController', function($scope, $http) {
-    var name = "a";
     $scope.search = function() {
-
-        $http.get(`/rest/movies/findMovieByName/${name}`)
-            .then(function(resp) {
-                $scope.results = resp.data;
-                console.log("result: ", $scope.results);
-                // Gọi hàm để hiển thị kết quả
-                $scope.displayResults();
-            })
-            .catch(function(error) {
-                console.error('Error:', error);
-            });
+        const query = $scope.searchInput;
+        if (query.length > 0) {
+            $http.get(`/rest/movies/findMovieByName/${query}`)
+                .then(function(resp) {
+                    $scope.searchResults = resp.data;
+                    console.log("result: ", $scope.searchResults);
+                    $scope.displayResults($scope.searchResults); // Hiển thị kết quả
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                });
+        } else {
+            $scope.searchResults = [];
+        }
     };
 
-    $scope.search()
-    $scope.displayResults = function() {
-        const searchSuggestList = document.getElementById('search-suggest-list');
-        searchSuggestList.innerHTML = '';
-
-        angular.forEach($scope.results, function(movie) {
-            const li = document.createElement('li');
-            li.textContent = `${movie.name} - ${movie.country}`;
-            searchSuggestList.appendChild(li);
+    $scope.displayResults = function(results) {
+        var formattedResults = [];
+        results.forEach(function(movie) {
+            var formattedMovie = {
+                name: movie.name,
+                country: movie.country
+            };
+            formattedResults.push(formattedMovie);
         });
+        $scope.displayedResults = formattedResults;
     };
 });
