@@ -33,7 +33,21 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
+    <style>
+        .movie-list-container {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .panel {
+            margin-bottom: 10px; /* Cách giữa giữa các phần tử */
+            /* Thêm các thuộc tính CSS khác nếu cần */
+        }
+    
+        .list-group-item {
+            /* Thêm các thuộc tính CSS cho mỗi phần tử trong danh sách */
+        }
+    </style>
 
 </head>
 
@@ -80,24 +94,14 @@
                     <div id="searchResults" class="search-results" style="position: absolute; top:50px; z-index:999;
                      right: 70px; background: white; color:black; height: 20rem; width: 40rem;">
 
-                        <div class="panel panel-primany">
-                            <div class="card-header" style="background: violet;">
-                                <i class="fa fa-list" aria-hidden="true"></i> Danh muc
+                        <div class="movie-list-container">
+                            <div class="panel panel-primany" ng-repeat="movie in displayedResults">
+                                <div class="list-group">
+                                    <a class="list-group-item list-group-item-action" title="{{ movie.name }} n\">{{ movie.name }} </a>
+                                </div>
                             </div>
-                            <div class="list-group">
-                                <ul>
-                                    <li ng-repeat="movie in displayedResults">
-                                        <div>
-                                            <a class="list-group-item list-group-item-action" title="{{ movie.name }} n\">{{ movie.name }} </a>
-
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </ul>
-                            </div>
-
-
                         </div>
+
                     </div>
                 </div>
 
