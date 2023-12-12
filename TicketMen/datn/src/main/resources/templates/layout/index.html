@@ -59,6 +59,7 @@
         <div style="height: 85px;">
 
         </div>
+        
         <!-- -->
         <!-- Đăng Nhập - Đăng Ký-->
         <div class="login" style="background-color:white;">
@@ -83,6 +84,9 @@
                     </ul>
                 </th:block>
             </div>
+            <div style="height: 85px;">
+
+            </div>
             <div ng-app="searchApp" ng-controller="MovieController" class="search-container">
                 <div class="input-container">
                     <button style="background-color: white; height: 34px;" class="btn" type="button" id="button-addon2" ng-click="search()">
@@ -97,7 +101,7 @@
                         <div class="movie-list-container">
                             <div class="panel panel-primany" ng-repeat="movie in displayedResults">
                                 <div class="list-group">
-                                    <a class="list-group-item list-group-item-action" title="{{ movie.name }} n\">{{ movie.name }} </a>
+                                    <a class="list-group-item list-group-item-action" title="{{ movie.name }}">{{ movie.name }} </a>
                                 </div>
                             </div>
                         </div>
