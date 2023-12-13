@@ -1,6 +1,5 @@
 package nhom3.datn.service.impl;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +9,14 @@ import nhom3.datn.dao.MovieDao;
 import nhom3.datn.entity.Movie;
 import nhom3.datn.service.MovieService;
 
-@Service 
-public class MovieServiceImpl implements MovieService{
+@Service
+public class MovieServiceImpl implements MovieService {
     @Autowired
     MovieDao mdao;
 
     @Override
     public List<Movie> findAll() {
-       return mdao.findAll();
+        return mdao.findAll();
     }
 
     @Override
@@ -54,4 +53,34 @@ public class MovieServiceImpl implements MovieService{
     public List<Movie> findFutureMovie() {
         return mdao.findFutureMovie();
     }
+
+    @Override
+    public List<Movie> searchMoviesByNameAndCountry(String name, String country) {
+        return mdao.findByNameAndCountry(name, country);
+    }
+
+    @Override
+    public List<Movie> searchMoviesByNameCountryAndCategory(String name, String country, Integer categoryId) {
+        return mdao.findByNameAndCountryAndCategoryId(name, country, categoryId);
+    }
+
+    @Override
+    public List<Movie> searchMoviesByName(String name) {
+       return mdao.findByName(name);
+       
+    }
+
+    @Override
+    public List<Movie> findAllSorted() {
+        return mdao.findAllSorted();
+    }
+
+    @Override
+    public List<Movie> findAllAvailable() {
+        return mdao.findAllAvailable();
+    }
+
+   
+
+
 }

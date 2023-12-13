@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header" style="font-weight: 600; font-size: large; background-color: cornflowerblue; color: white;">
+        MOVIE LIST</div>
+    <table class="table table-condensed">
+        <thead class="bg-success" style="font-variant: small-caps;">
+            <tr>
+                <th>Tên Phim</th>
+                <th>Doanh thu</th>
+                <th>Vé</th>
+                <th>Xuất chiếu</th>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ĐƠN HÀNG TỪ SÁT NHÂN</td>
+                <td></td>
+                <td>{{item.name}}</td>
+                <td>{{item.age }}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" ng-click="view(item)">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                </td>
+
+            </tr>
+        </tbody>
+        
+    </table>
+    <div align="right" style="margin-right: 5%;"><Strong>Tổng doanh thu : {{item.name}}vnd </Strong></div>
+    <div class="card-footer text-center">
+        <button ng-click="pager.first()" class="btn btn-danger">
+            <i class="fa fa-hand-o-up" aria-hidden="true"></i>
+        </button>
+        <button ng-click="pager.prev()" class="btn btn-primary">
+            <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        </button>
+        <button class="btn btn-default">{{pager.page + 1}} of {{pager.count}}</button>
+        <button ng-click="pager.next()" class="btn btn-success">
+            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+        </button>
+        <button ng-click="pager.last()" class="btn btn-info">
+            <i class="fa fa-hand-o-down" aria-hidden="true"></i>
+        </button>
+    </div>
+
+      
+</div>
