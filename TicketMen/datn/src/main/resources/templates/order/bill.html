@@ -9,7 +9,10 @@
             <div class="final-confirm">
                 <p>Cảm ơn quý khách đã đến với <strong>TICKETMEN!</strong><br>
                     Xin quý khách vui lòng kiễm tra lại thông tin đặt vé.</p>
-
+                <strong style="font-size: larger;">Thời gian giữ vé: <span style="font-size: 20px; color: orangered;">
+                        <span>{{ countdown.minutes }}:</span>
+                        <span>{{ countdown.seconds | number }}</span></span>
+                </strong>
                 <div class="confirm-box row">
                     <div class="col-5 mt-5">
                         <img ng-src="/image/upload/{{ticket.movie.poster}}" style="height: 420px; width: 300px;">
@@ -194,7 +197,8 @@
                             <button id="quaylai">QUAY LẠI</button>
                         </div>
                         <div class="button">
-                            <button id="thanhtoan"><a href="/pay/{{selectedSeats2 .length * perform.price}}">THANH TOÁN</a></button>
+                            <button id="thanhtoan"><a href="/pay/{{selectedSeats2 .length * perform.price}}">THANH
+                                    TOÁN</a></button>
                         </div>
                     </div>
 
