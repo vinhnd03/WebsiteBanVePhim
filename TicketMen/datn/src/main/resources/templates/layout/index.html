@@ -33,7 +33,21 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
+    <style>
+        .movie-list-container {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .panel {
+            margin-bottom: 10px; /* Cách giữa giữa các phần tử */
+            /* Thêm các thuộc tính CSS khác nếu cần */
+        }
+    
+        .list-group-item {
+            /* Thêm các thuộc tính CSS cho mỗi phần tử trong danh sách */
+        }
+    </style>
 
 </head>
 
@@ -45,6 +59,7 @@
         <div style="height: 85px;">
 
         </div>
+        
         <!-- -->
         <!-- Đăng Nhập - Đăng Ký-->
         <div class="login" style="background-color:white;">
@@ -69,26 +84,35 @@
                     </ul>
                 </th:block>
             </div>
+            <div style="height: 85px;">
 
-            <div class="input-group mt-3 mb-3" ng-controller="MovieController">
-                <div>
-                    <!-- Sử dụng ng-click để gọi hàm search khi button được nhấn -->
-                    <button style="background-color: white; float: right;" class="btn" type="button" id="button-addon2" ng-click="search()">
+            </div>
+            <div ng-app="searchApp" ng-controller="MovieController" class="search-container">
+                <div class="input-container">
+                    <button style="background-color: white; height: 34px;" class="btn" type="button" id="button-addon2" ng-click="search()">
                         <i class="fa-solid fa-magnifying-glass fa-xl"></i>
                     </button>
+                    <input type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim" id="searchInput" ng-model="searchInput">
+
+
+                    <div id="searchResults" class="search-results" style="position: absolute; top:50px; z-index:999;
+                     right: 70px; background: white; color:black; height: 20rem; width: 40rem;">
+
+                        <div class="movie-list-container">
+                            <div class="panel panel-primany" ng-repeat="movie in displayedResults">
+                                <div class="list-group">
+                                    <a class="list-group-item list-group-item-action" title="{{ movie.name }}">{{ movie.name }} </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <!-- Sử dụng ng-model để liên kết dữ liệu với biến searchInput trong controller -->
-                <input style="width: 20%; z-index: inherit;" type="text" class="form-control float-right" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim" aria-describedby="button-addon2" id="searchInput" ng-model="searchInput">
+
+
             </div>
 
-            <div class="search-suggest" style="">
-                <!-- Sử dụng ng-repeat để lặp qua kết quả và hiển thị chúng -->
-                <ul style="margin-bottom: 0;" id="search-suggest-list">
-                    <li ng-repeat="movie in searchResults">
-                        {{ movie.name }} - {{ movie.country }}
-                    </li>
-                </ul>
-            </div>
+
 
         </div>
         <div hidden id="notification">[[${message}]]</div>
