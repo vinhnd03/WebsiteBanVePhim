@@ -54,7 +54,7 @@ public class PaymentController {
 
         vnp_Params.put("vnp_BankCode", bankCode);
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-        vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
+        vnp_Params.put("vnp_OrderInfo", "Thanh Toan Don Hang:" + vnp_TxnRef);
         vnp_Params.put("vnp_OrderType", orderType);
 
         vnp_Params.put("vnp_Locale", "vn");
@@ -107,7 +107,7 @@ public class PaymentController {
     }
 
     @RequestMapping("/vnpay_callback")
-    public String vnpayCallback(HttpServletRequest request) {
+    public ModelAndView vnpayCallback(HttpServletRequest request) {
         String vnp_ResponseCode = request.getParameter("vnp_ResponseCode");
         String vnp_TxnRef = request.getParameter("vnp_TxnRef");
         String vnp_Amount = request.getParameter("vnp_Amount");
@@ -116,12 +116,19 @@ public class PaymentController {
 
         // Xử lý dữ liệu callback ở đây
 
-        if ("00".equals(vnp_ResponseCode) && "00".equals(vnp_TransactionStatus)) {
-            return "Thanh toán thành công";
-        } else {
-            return "Thanh toán không thành công";
-        }
-    }
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("vnp_ResponseCode", vnp_ResponseCode);
+        modelAndView.addObject("vnp_TxnRef", vnp_TxnRef);
+        modelAndView.addObject("vnp_Amount", vnp_Amount);
+        modelAndView.addObject("vnp_OrderInfo", vnp_OrderInfo);
+        modelAndView.addObject("vnp_TransactionStatus", vnp_TransactionStatus);
 
-    // Các phương thức khác của Controller
+        if ("00".equals(vnp_ResponseCode) && "00".equals(vnp_TransactionStatus)) {
+            modelAndView.setViewName("/payment/paymentSuccessPage"); 
+        } else {
+            modelAndView.setViewName("/payment/paymentFailurePage"); 
+        }
+
+        return modelAndView;
+    }
 }

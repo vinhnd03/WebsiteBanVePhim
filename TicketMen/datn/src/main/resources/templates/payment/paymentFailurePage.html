@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán không thành công</title>
+</head>
+<body>
+    <h1>Thanh toán không thành công</h1>
+    
+    <p>Mã giao dịch: <span th:text="${vnp_TxnRef}"></span></p>
+    <p>Số tiền: <span th:text="${vnp_Amount}"></span> VND</p>
+    <p>Thông tin đơn hàng: <span th:text="${vnp_OrderInfo}"></span></p>
+    <p>Trạng thái giao dịch: Không thành công</p>
+    
+    <!-- Bạn có thể thêm các thông tin khác nếu cần -->
+</body>
+</html>
