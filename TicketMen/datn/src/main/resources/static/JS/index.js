@@ -282,6 +282,11 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window,$interval) {
         }
     };
 
+
+    $scope.openVNPay = function(price){
+        $window.location.href = "/pay/" + price;
+    }
+
     $scope.isSeatAvailable = function (seat) {
         return $scope.selectedSeats.indexOf(seat) === -1;
     };

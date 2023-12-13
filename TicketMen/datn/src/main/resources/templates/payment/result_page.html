@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KẾT QUẢ THANH TOÁN</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/vnpay_jsp/assets/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Custom styles for this template -->
+    <link href="/vnpay_jsp/assets/jumbotron-narrow.css" rel="stylesheet"> 
+</head>
+<main>
+    <div class="container">
+        <div class="header clearfix">
+            <h3 class="text-muted">KẾT QUẢ THANH TOÁN</h3>
+        </div>
+        <div class="table-responsive">
+            <div class="form-group">
+                <label>Mã giao dịch thanh toán:</label>
+                <label th:text="${vnp_TxnRef}"></label>
+            </div>
+            <div class="form-group">
+                <label>Số tiền:</label>
+                <label th:text="${vnp_Amount}"></label>
+            </div>
+            <div class="form-group">
+                <label>Mô tả giao dịch:</label>
+                <label th:text="${vnp_OrderInfo}"></label>
+            </div>
+            <div class="form-group">
+                <label>Mã lỗi thanh toán:</label>
+                <label th:text="${vnp_ResponseCode}"></label>
+            </div>
+            <div class="form-group">
+                <label>Tình trạng giao dịch:</label>
+                <label th:text="${vnp_TransactionStatus}"></label>
+            </div>
+            <div class="form-group">
+                <label>Chi tiết hóa đơn:</label>
+                <p th:text="${invoiceDetails}"></p>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        <footer class="footer">
+            <p>&copy; VNPAY 2020</p>
+        </footer>
+    </div>
+</main>
+</html>
