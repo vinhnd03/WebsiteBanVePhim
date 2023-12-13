@@ -1,0 +1,22 @@
+<div xmlns:th="http://www.thymeleaf.org">
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kết Quả Thanh Toán</title>
+    </head>
+
+    <main>
+        <h2>Thông Tin Thanh Toán</h2>
+        <p><strong>Mã Giao Dịch:</strong> {{vnp_TxnRef}}</p>
+        <p><strong>Số Tiền:</strong> {{vnp_Amount}} VND</p>
+        <p><strong>Mô Tả Đơn Hàng:</strong> {{vnp_OrderInfo}}</p>
+        <p><strong>Mã Ngân Hàng:</strong> {{vnp_BankCode}}</p>
+        <p><strong>Ngày Thanh Toán:</strong> {{vnp_PayDate}}</p>
+        <p><strong>Trạng Thái:</strong> {{transactionStatus}}</p>
+    </main>
+
+    
+</div>

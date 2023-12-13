@@ -70,6 +70,16 @@ public class MovieServiceImpl implements MovieService {
        
     }
 
+    @Override
+    public List<Movie> findAllSorted() {
+        return mdao.findAllSorted();
+    }
+
+    @Override
+    public List<Movie> findAllAvailable() {
+        return mdao.findAllAvailable();
+    }
+
    
 
 

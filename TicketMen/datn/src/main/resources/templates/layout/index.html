@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
 
 <head>
-    <link rel="icon" href="image/logo ticketmen_preview_rev_1.png" type="image/x-icon">
+
     <link rel="stylesheet" href="/CSS/index.css">
     <!-- AngularJS-->
 
     <meta charset="UTF-8">
     <title>Ticketmen</title>
-
+    <link rel="icon" href="/image/logo ticketmen_preview_rev_1.png" type="image/x-icon" sizes="16x16">
     <!-- CSS -->
     <link rel="stylesheet" href="/CSS/index.css">
     <link rel="stylesheet" href="/owlcarousel/assets/owl.carousel.min.css">
@@ -21,7 +21,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
-    <!-- <script src="/JS/SlideShow.js"></script> -->
+    <script src="https://cdn.rawgit.com/siddii/angular-timer/0.5.0/dist/angular-timer.js"></script>
     <script src="/owlcarousel/owl.carousel.min.js"></script>
     <script src="/JS/index.js"></script>
     <script src="/JS/moment.js"></script>
@@ -30,7 +30,6 @@
 
     <!-- menu -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
@@ -38,12 +37,13 @@
             display: flex;
             flex-direction: column;
         }
-    
+        
         .panel {
-            margin-bottom: 10px; /* Cách giữa giữa các phần tử */
+            margin-bottom: 10px;
+            /* Cách giữa giữa các phần tử */
             /* Thêm các thuộc tính CSS khác nếu cần */
         }
-    
+        
         .list-group-item {
             /* Thêm các thuộc tính CSS cho mỗi phần tử trong danh sách */
         }
@@ -59,7 +59,7 @@
         <div style="height: 85px;">
 
         </div>
-        
+
         <!-- -->
         <!-- Đăng Nhập - Đăng Ký-->
         <div class="login" style="background-color:white;">
