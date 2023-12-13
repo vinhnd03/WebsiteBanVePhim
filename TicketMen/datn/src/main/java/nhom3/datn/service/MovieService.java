@@ -32,6 +32,10 @@ public interface MovieService {
 
     List<Movie> searchMoviesByName(String name);
 
+    List<Movie> findAllSorted();
+
+    List<Movie> findAllAvailable();
+
    
 
 }
