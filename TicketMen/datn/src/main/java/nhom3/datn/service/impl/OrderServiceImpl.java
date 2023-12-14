@@ -34,5 +34,10 @@ public class OrderServiceImpl implements OrderService{
         return dao.findByUsername(username);
     }
 
+    @Override
+    public void delete(Long id) {
+        dao.deleteById(id);      
+    }
+
     
 }

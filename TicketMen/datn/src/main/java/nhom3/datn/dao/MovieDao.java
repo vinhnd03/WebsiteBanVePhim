@@ -11,7 +11,7 @@ public interface MovieDao extends JpaRepository<Movie, Long> {
        @Query("SELECT m FROM Movie m WHERE m.category.id=?1")
        List<Movie> findByCategoryId(Integer cid);
 
-       @Query("SELECT DISTINCT m FROM Movie m INNER JOIN Ticket t ON m.id = t.movie.id WHERE t.date >= CURRENT_DATE()")
+       @Query("SELECT DISTINCT m FROM Movie m INNER JOIN Ticket t ON m.id = t.movie.id WHERE CONVERT(DATE, t.date) >= CONVERT(DATE, CURRENT_TIMESTAMP)")
        List<Movie> findAllAvailable();
 
        @Query("SELECT m FROM Movie m INNER JOIN Ticket t ON m.id = t.movie.id ORDER BY t.date ASC")
