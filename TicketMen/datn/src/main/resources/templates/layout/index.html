@@ -96,12 +96,13 @@
 
 
                     <div id="searchResults" class="search-results" style="position: absolute; top:50px; z-index:999;
-                     right: 70px; background: white; color:black; height: 20rem; width: 40rem;">
+                     right: 70px; background: white; color:black; height: 25rem; width: 40rem; overflow: scroll;">
 
                         <div class="movie-list-container">
                             <div class="panel panel-primany" ng-repeat="movie in displayedResults">
                                 <div class="list-group">
-                                    <a class="list-group-item list-group-item-action" title="{{ movie.name }}">{{ movie.name }} </a>
+                                    <a href="/movie/detail/{{movie.id}}">
+                                        <img src="/image/upload/{{movie.poster}}" style="height: 60px; width: 40px;"> {{ movie.name}} </a>
                                 </div>
                             </div>
                         </div>
