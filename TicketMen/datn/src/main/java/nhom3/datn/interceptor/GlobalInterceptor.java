@@ -28,6 +28,6 @@ public class GlobalInterceptor implements HandlerInterceptor{
             ModelAndView modelAndView) throws Exception {
         request.setAttribute("cates", categoryService.fillAll());
         request.setAttribute("items", movieService.findAll());
-        
+        request.setAttribute("tikets", ticketService.findAll());
     } 
 }
