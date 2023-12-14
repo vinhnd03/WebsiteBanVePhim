@@ -1,6 +1,7 @@
 package nhom3.datn.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class MovieServiceImpl implements MovieService {
     public Movie findById(Long id) {
         return mdao.findById(id).get();
     }
+
+    
 
     @Override
     public List<Movie> findByCategoryId(Integer cid) {
@@ -78,6 +81,11 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<Movie> findAllAvailable() {
         return mdao.findAllAvailable();
+    }
+
+    @Override
+    public Optional<Movie> findById2(Long id) {
+        return mdao.findById(id);
     }
 
    

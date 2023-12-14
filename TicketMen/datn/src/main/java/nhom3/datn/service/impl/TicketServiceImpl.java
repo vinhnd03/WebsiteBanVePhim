@@ -3,6 +3,7 @@ package nhom3.datn.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,5 +69,10 @@ public class TicketServiceImpl implements TicketService{
     @Override
     public List<Ticket> findShowtimeByMovieIdAndDate(Long movieId, Date date) {
         return tdao.findShowtimeByMovieIdAndDate(movieId, date);
+    }
+
+    @Override
+    public Optional<Ticket> findById2(Long id) {
+        return tdao.findById(id);
     }
 }

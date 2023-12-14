@@ -2,6 +2,7 @@ package nhom3.datn.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import nhom3.datn.entity.Ticket;
 
@@ -29,4 +30,6 @@ public interface TicketService {
     List<Date> findTicketDateByMovieId(Long id);
 
     List<Ticket> findShowtimeByMovieIdAndDate(Long movieId, Date date);
+
+    Optional<Ticket> findById2(Long id);
 }
