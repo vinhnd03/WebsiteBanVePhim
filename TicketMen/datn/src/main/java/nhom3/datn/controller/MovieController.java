@@ -46,15 +46,19 @@ public class MovieController {
 
     @RequestMapping("/movie/detail/{id}")
     public String detail(Model model, @PathVariable("id") Long id) {
+        
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String today = dateFormat.format(date);
     try {
         Date selectedDate = dateFormat.parse(today);
         // Sử dụng selectedDate trong phần còn lại của mã
-        Movie item = movieService.findById(id);
+        Optional<Movie> item = movieService.findById2(id);
+        if(!item.isPresent()){
+            return "redirect:/";
+        }
         List<Ticket> showtimes = ticketService.findTicketByDateAndMovieId(selectedDate, id);
-        model.addAttribute("item", item);
+        model.addAttribute("item", item.get());
         model.addAttribute("showtime", showtimes);
     } catch (ParseException e) {
         // Xử lý lỗi nếu có lỗi khi chuyển đổi định dạng

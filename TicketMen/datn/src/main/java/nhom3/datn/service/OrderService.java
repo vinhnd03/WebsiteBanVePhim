@@ -13,5 +13,7 @@ public interface OrderService {
     Order create(Order order);
 
     List<Order> findByUsername(String username);
+
+    void delete(Long id);
  
 }

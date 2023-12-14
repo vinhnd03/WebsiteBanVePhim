@@ -3,7 +3,7 @@ package nhom3.datn.service;
 
 
 import java.util.List;
-
+import java.util.Optional;
 
 import nhom3.datn.entity.Movie;
 
@@ -36,6 +36,7 @@ public interface MovieService {
 
     List<Movie> findAllAvailable();
 
+    Optional<Movie> findById2(Long id);
    
 
 }
