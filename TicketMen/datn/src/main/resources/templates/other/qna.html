@@ -40,9 +40,17 @@
                 font-family: 'Times New Roman', Times, serif;
             }
         
+            .ask p{
+                margin-top: 10px;
+                padding: 5px;
+                font-size: 24px;
+            }
+
             .ask:hover {
-                border: 4px solid #3b6df5;
-                background-color: #3b6df5;
+                box-shadow: 2px 2px 4px orangered;
+                /* border: 4px solid orangered; */
+                background-color: #d14bcf;
+                color: white;
             }
         
             .answer-detail p {
@@ -84,7 +92,21 @@
             }
         
            
-        
+            .qinput{
+                border: 2px solid orangered;
+            }
+
+
+            .qbtn{
+                align-self: center;
+                width: 100px;
+                background-color: #f0ad4e;
+                
+            }
+
+            .qlable{
+                color: #d14bcf;
+            }
         </style>
         <script>
             function toggleAnswer(element) {
@@ -113,7 +135,7 @@
                     <div>
                         <div class="ask" onclick="toggleAnswer(this)">
                             <span class="cycle-num"><strong>01</strong></span>
-                            <h3>Làm thế nào để mua vé Online? </h3>
+                            <p>Làm thế nào để mua vé Online? </p>
                             <span class="toggle-button"> </span>
                         </div>
                         <div class="answer">
@@ -121,16 +143,16 @@
                             <div class="answer-detail">
                                 <p><strong>HƯỚNG DẪN MUA VÉ ONLINE</strong></p>
                                 <p style="text-align: center;">
-                                    <u>
+                                    <b>
                                         Điều Kiện:
-                                    </u>
+                                    </b>
                                 </p>
-                                <p>-Bạn phải là thành viên của TICKETMEN</p>
-                                <p>-Nếu không là thành viên vui lòng đăng kí thành viên trên Website để được mua vé</p>
+                                <p>Bạn phải là thành viên của TICKETMEN</p>
+                                <p>Nếu không là thành viên vui lòng đăng kí thành viên trên Website để được mua vé</p>
                                 <p style="text-align: center;">
-                                    <u>
-                                        Bước 2:
-                                    </u>
+                                    <b>
+                                        Bước 1:
+                                    </b>
                                 </p>
                                 <p>Đăng nhập vào tài khoản thành viên</p>
                                 <p>Đăng nhập</p>
@@ -139,27 +161,26 @@
                                 <p>Rạp Ticketmen Hà Nội:</p>
                                 <p>Rạp Ticketmen TP.Hồ Chí Minh:</p>
                                 <p style="text-align: center;">
-                                    <u>Bước 3:</u>
+                                    <b>Bước 2:</b>
                                 </p>
-                                <p>-Chọn loại vé và số lượng:</p>
+                                <p>Chọn loại vé và số lượng:</p>
                                 <p style="text-align: center;">
-                                    <u>Bước 4:</u>
+                                    <b>Bước 3:</b>
                                 </p>
-                                <p>-Chọn ghế:</p>
-                                <p>-Chọn thức ăn:</p>
+                                <p>Chọn ghế:</p>
+                                <p>Chọn thức ăn:</p>
                                 <p style="text-align: center;">
-                                    <u>Bước 5:</u>
+                                    <b>Bước 4:</b>
                                 </p>
-                                <p>-Đồng ý</p>
-                                <p>-Đồng ý các điều khoản</p>
-                                <p>-Chọn loại thẻ thanh toán</p>
-                                <p>-Thanh toán.</p>
+                                <p>Đồng ý</p>
+                                <p>Đồng ý các điều khoản</p>
+                                <p>Chọn loại thẻ thanh toán</p>
+                                <p>Thanh toán.</p>
     
                                 <p style="text-align: center;">
-                                    Bước 6: Nhập thông tin tài khoản để được thanh toán việc mua Online.
+                                    <b>Bước 5: </b> 
                                 </p>
-                                <p style="text-align: center;"> HOÀN TẤT </p>
-    
+                                <p>Nhập thông tin tài khoản để được thanh toán việc mua Online.</p>
                             </div>
                         </div>
                     </div>
@@ -169,7 +190,7 @@
                     <div>
                         <div class="ask" onclick="toggleAnswer(this)">
                             <span class="cycle-num"><strong>02</strong></span>
-                            <h3>Thủ tục đặt vé Online và phương thức thanh toán như thế nào?</h3>
+                            <p>Thủ tục đặt vé Online và phương thức thanh toán như thế nào?</p>
                             <span class="toggle-button"> </span>
                         </div>
                         <div class="answer">
@@ -182,7 +203,7 @@
                                 <p>4/ Bạn chọn phương thức thanh toán.</p>
                                 <p>5/Sau khi hoàn tất thanh toán hệ thống sẽ gửi thông tin vé đến liên hệ của bạn. Vui long
                                     xuất thông tin đặt vé khi đến rap.</p>
-                                <p><strong>CHÚC BẠN XEM PHIM VUI VẼ</strong></p>
+                                <p><strong>CHÚC BẠN XEM PHIM VUI VẺ</strong></p>
                             </div>
                         </div>
                     </div>
@@ -192,7 +213,7 @@
                     <div>
                         <div class="ask" onclick="toggleAnswer(this)">
                             <span class="cycle-num"><strong>03</strong></span>
-                            <h3>Làm sao để được cấp thẻ thành viên?</h3>
+                            <p>Làm sao để được cấp thẻ thành viên?</p>
                             <span class="toggle-button"> </span>
                         </div>
                         <div class="answer">
@@ -210,7 +231,7 @@
                     <div>
                         <div class="ask" onclick="toggleAnswer(this)">
                             <span class="cycle-num"><strong>04</strong></span>
-                            <h3>Lợi ích khi tham gia thẻ thành viên?</h3>
+                            <p>Lợi ích khi tham gia thẻ thành viên?</p>
                             <span class="toggle-button"> </span>
                         </div>
                         <div class="answer">
@@ -246,7 +267,7 @@
                     <div>
                         <div class="ask" onclick="toggleAnswer(this)">
                             <span class="cycle-num"><strong>05</strong></span>
-                            <h3>Làm sao để biết được số điễm đã tích lũy?</h3>
+                            <p>Làm sao để biết được số điễm đã tích lũy?</p>
                             <span class="toggle-button"> </span>
                         </div>
                         <div class="answer">
@@ -264,7 +285,7 @@
                     <div>
                         <div class="ask" onclick="toggleAnswer(this)">
                             <span class="cycle-num"><strong>06</strong></span>
-                            <h3>Làm thế nào để đăng nhập vào Website khi đã có thẻ Friend?</h3>
+                            <p>Làm thế nào để đăng nhập vào Website khi đã có thẻ Friend?</p>
                             <span class="toggle-button"> </span>
                         </div>
                         <div class="answer">
@@ -300,26 +321,26 @@
         </div>
     
     
-        <div class="container col-8" style="border: 3px solid #d14bcf; border-radius: 5px;">
+        <div class="container col-8 mt-4" style="border: 3px solid orangered; border-radius: 5px;">
             <h2 class="title" style="color: black;"><strong>Gửi Câu Hỏi Của Bạn</strong> </h2>
             <form >
-                <div class="form-group" >
+                <div class="form-group">
                     <label for="fullName">Họ và tên:</label>
-                    <input type="text" class="form-control" id="fullName" placeholder="Nhập họ và tên">
+                    <input type="text" class="form-control qinput" id="fullName" placeholder="Nhập họ và tên">
                 </div>
                 <div class="form-group">
                     <label for="phone">Số điện thoại:</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="Nhập số điện thoại">
+                    <input type="tel" class="form-control qinput" id="phone" placeholder="Nhập số điện thoại">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Nhập địa chỉ email">
+                    <input type="email" class="form-control qinput" id="email" placeholder="Nhập địa chỉ email">
                 </div>
                 <div class="form-group">
-                    <label for="comment">Bình luận:</label>
-                    <textarea class="form-control" id="comment" rows="5" placeholder="Nhập bình luận"></textarea>
+                    <label for="comment">Câu hỏi:</label>
+                    <textarea class="form-control qinput" id="comment" rows="5" placeholder="Nhập bình luận"></textarea>
                 </div>
-                <a type="button" class="btn btn-primary">Gửi</a>
+                <a type="button" class="btn btn-primary qbtn ">Gửi</a>
             </form>
         </div>
     </main>
