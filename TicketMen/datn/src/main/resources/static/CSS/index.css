@@ -1259,22 +1259,23 @@ h1 {
 
 .input-container {
     position: relative;
-    width: 100%;
+    /* width: 100%; */
 }
 
-#searchInput {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20%;
-    height: 34px;
-}
+/* #searchInput { */
+    /* position: absolute; */
+   /* top: 0; */
+    /* right:30px;
+    width: 20%; */
+    /* height: 34px; */
+/* } */
 
-#button-addon2 {
-    position: absolute;
-    top: 0;
-    right: 299px;
-}
+/* #button-addon2 { */
+    /* position: absolute; */
+    /* top: 0; */
+    /* right: 22px;
+    z-index: 1;
+} */
 
 .search-results {
     display: none;
