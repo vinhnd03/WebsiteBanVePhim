@@ -390,10 +390,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
 
 
-    $scope.openVNPay = function(price) {
-        $scope.run = false;
-        $window.location.href = "/pay/" + price;
-    }
+  
 
     $scope.isSeatAvailable = function(seat) {
         return $scope.selectedSeats.indexOf(seat) === -1;
@@ -507,6 +504,14 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
     //     var storedSeats = $window.localStorage.getItem("selectedSeats");
     //     return storedSeats ? JSON.parse(storedSeats) : [];
     // }
+
+    $scope.openVNPay = function(price) {
+        // $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
+        // $window.localStorage.setItem("order", JSON.stringify({}));
+        $scope.run = false;
+        $window.location.href = "/pay/" + price;
+        
+    }
 
     $scope.continueBooking = function() {
         // $interval.cancel(interval);

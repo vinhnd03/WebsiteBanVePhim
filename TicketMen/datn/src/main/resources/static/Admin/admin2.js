@@ -22,11 +22,11 @@ app.config(function($routeProvider){
             controller: "accounts-ctrl"
         })
         .when("/authorize", {
-            templateUrl: "/admin/authority/index.html",
+            templateUrl: "/admin/Authority/index.html",
             controller: "authority-ctrl"
         })
         .when("/unauthorized", {
-            templateUrl: "/admin/authority/unauthorized.html",
+            templateUrl: "/admin/Authority/unauthorized.html",
             
         })
         .when("/ticket", {

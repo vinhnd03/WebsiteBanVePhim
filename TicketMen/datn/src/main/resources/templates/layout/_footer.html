@@ -1,117 +1,70 @@
-<div class="container-fluid" style="background-color: black;color: white;" xmlns:th="http://www.thymeleaf.org">
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-        <!-- Left -->
-        <div class="me-5 d-none d-lg-block">
-            <span>Trang web của nhóm 3</span>
-        </div>
-        <!-- Left -->
-
-        <!-- Right -->
-        <div>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
-        <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section>
-        <div class="container-fluid text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>TicketMen
-                    </h6>
-                    <p>
-                        <!-- <div th:text="${session.username}"></div> -->
-                        <div>[[${session.username}]]</div>
-                    </p>
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="index.html"><img src="/image/logo ticketmen_preview_rev_1.png" alt=""
+                        class="img-fluid logo-footer"></a>
+                <div class="footer-about">
+                    <p>TicketMen mang đến cho bạn trải nghiệm tuyệt vời với sự lôi cuốn từ nhưng bộ phim đầy tính hấp dẩn và lảng mạng.</p>
                 </div>
-                <!-- Grid column -->
+              <div class="address-links">
+                <li><a href=""><i class="fa-solid fa-phone"></i> +91 90904500112</a></li>
+                <li><a href=""><i class="fa-solid fa-envelope"></i> ticketmen123@gmail.com</a></li>
+              </div>
 
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Products
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-reset">Angular</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">JS</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">HTML</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">CSS</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Useful links
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-reset">Pricing</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Settings</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Orders</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Help</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                    <p><i class="fas fa-home me-3"></i> Đà Nẵng</p>
-                    <p>
-                        <i class="fas fa-envelope me-3"></i>
-                        hoangpnpd05646@fpt.edu.vn
-                    </p>
-                    <p><i class="fas fa-phone me-3"></i> 0766536921</p>
-                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-                </div>
-                <!-- Grid column -->
             </div>
-            <!-- Grid row -->
-        </div>
-    </section>
-    <!-- Section: Links  -->
+            <div class="col-md-3">
+                <div class="useful-link">
+                    <h2>Useful Links</h2>
+                    <img src="./assets/images/about/home_line.png" alt="" class="img-fluid">
+                    <div class="use-links">
+                        <li><a href="index.html"><i class="fa-solid fa-angles-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fa-solid fa-angles-right"></i> About Us</a></li>
+                        <li><a href="gallery.html"><i class="fa-solid fa-angles-right"></i> Gallery</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-angles-right"></i> Contact</a></li>
+                    </div>
+                </div>
 
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        <p>FPT Polytechnic &copy; Nhóm 3 - TicketMen</p>
+            </div>
+            <div class="col-md-3">
+                <div class="social-links">
+                    <h2>Follow Us</h2>
+                    <img src="./assets/images/about/home_line.png" alt="">
+                    <div class="social-icons">
+                        <li><a href=""><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href=""><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                        <li><a href=""><i class="fa-brands fa-linkedin-in"></i> Linkedin</a></li>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-3">
+                <div class="address">
+                    <h2>Address</h2>
+                    <img src="./assets/images/about/home_line.png" alt="" class="img-fluid">
+                    <div class="address-links">
+                        <li class="address1"><i class="fa-solid fa-location-dot"></i> 137 Nguyển Thị Thập-Đà Nẳng</li>
+                        <li class="address1"><i class="fa-solid fa-location-dot"></i> Tòa nhà QTSC9-Tô Ký-TP.Hồ Chí Minh
+                        </li>
+                        <li class="address1"><i class="fa-solid fa-location-dot"></i> 13 Trịnh Văn Bô-Nam Từ Liêm-Hà Nội
+                        </li>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
+
+</footer>
+<!-- footer section end -->
+<!-- footer copy right section start -->
+<section id="copy-right">
+    <div class="copy-right-sec">2023 <i class="fa-solid fa-copyright"></i>
+        FPT Polytechnic &copy; Nhóm 3 - TicketMen <a href="#">#</a>
+
+
+    </div>
+
+</section>
+<!-- footer copy right section end -->
