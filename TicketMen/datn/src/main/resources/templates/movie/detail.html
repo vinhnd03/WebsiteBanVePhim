@@ -30,11 +30,13 @@
                             </div>
                             <div style="color: white;">
 
-                                <a type="button" class="btn btn-danger" style="border-radius: 5%;" data-toggle="modal" data-target="#exampleModal1">
+                                <a type="button" class="btn btn-danger" style="border-radius: 5%;" data-toggle="modal"
+                                    data-target="#trailer">
                                     <i class="fa-brands fa-youtube fa-flip" style="margin-right: 5%;"></i><strong>
                                         TRAILER</strong></a>
 
-                                <a type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                                <a type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#exampleModal">
                                     <i class="fa-solid fa-cart-shopping fa-beat"
                                         style="margin-right: 5%;"></i><strong>MUA VÉ</strong></a>
 
@@ -49,45 +51,72 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true" ng-controller="ticketSelectCtrl">
             <div hidden id="Mid" th:text="*{id}"></div>
-        <div class="modal-dialog modal-dialog-centered " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Chọn vé</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="text-center ">                        
-                        <p>Ngày chiếu</p>
-                        <select class="w-50 custom-select" ng-model="selectedDate" ng-change="findTime(selectedDate)">
-                            <option value="" selected>Chọn ngày</option>
-                            <option ng-repeat="d in dayInWeek" value="{{d}}">{{d}}</option>
-                        </select>
-                        <div class="mt-4">
-                            <a ng-repeat="t in time" class="btn btn-primary mr-5 ticket-button"
-                             th:order="ascending"
-                              th:href="@{|/order/select/{{t.id}}|}">{{t.time}}
-                        </a>
+            <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Chọn vé</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center ">
+                            <p>Ngày chiếu</p>
+                            <select class="w-50 custom-select" ng-model="selectedDate"
+                                ng-change="findTime(selectedDate)">
+                                <option value="" selected>Chọn ngày</option>
+                                <option ng-repeat="d in dayInWeek" value="{{d}}">{{d}}</option>
+                            </select>
+                            <div class="mt-4">
+                                <a ng-repeat="t in time" class="btn btn-primary mr-5 ticket-button" th:order="ascending"
+                                    th:href="@{|/order/select/{{t.id}}|}">{{t.time}}
+                                </a>
+                            </div>
+
                         </div>
-                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
             </div>
-        </div>       
-    </div>
-    <!-- traller -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <iframe style="margin-left: -250px;" width="984" height="492" th:src="${item.trailer}" title="Ticking Away ft. Grabbitz &amp; bbno$ (MV Chính Thức) // Bài Hát Chủ Đề VALORANT Champions 2023" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen></iframe>
-          </div>
         </div>
-      </div>
+       <!-- traller -->
+<div class="modal fade" id="trailer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="video-container">
+                <iframe th:src="${item.trailer}" title="Movie trailer" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio, adjust as needed */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    // Sự kiện khi modal được ẩn
+    $('#trailer').on('hidden.bs.modal', function () {
+        // Tìm và dừng video trong modal
+        var iframe = $('#trailer').find('iframe');
+        var src = iframe.attr('src');
+        iframe.attr('src', src);
+    });
+</script>
     </main>
 </div>

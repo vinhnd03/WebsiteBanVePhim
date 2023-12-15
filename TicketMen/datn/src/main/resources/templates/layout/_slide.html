@@ -11,9 +11,10 @@
         <div class="row" style="">
             <div class="categories__slider owl-carousel" style="z-index: 0;">
                 <div class="col-lg-3" th:each="movie : ${items}">
-                    <a th:href="@{/admin}">
+                    <a th:href="@{|/movie/detail/${movie.id}|}" >
                         <img class="categories__item set-bg" th:src="@{|/image/upload/${movie.poster}|}" style="height: 100%;">
                         <!-- <h5><a href="#" th:text="${movie.name}">Fresh Fruit</a></h5> -->
+                        
                     </img>
                     </a>
                     
