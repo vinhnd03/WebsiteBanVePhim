@@ -1116,6 +1116,8 @@ h1 {
 .giam-gia {
     margin-top: 15px;
 }
+
+
 /* 
 .nut-giam-gia {
     padding: 10px 20px;
@@ -1124,6 +1126,7 @@ h1 {
     border-radius: 7px;
 } */
 
+
 /* .gui {
     padding: 10px 30px;
     cursor: pointer;
@@ -1131,10 +1134,13 @@ h1 {
     border-radius: 7px;
     background: linear-gradient(to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
 } */
+
+
 /* 
 .gui:hover {
     background: linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(234, 179, 8));
 } */
+
 
 /* .ma-giam-gia {
     padding: 10px;
@@ -1262,18 +1268,36 @@ h1 {
     /* width: 100%; */
 }
 
+
 /* #searchInput { */
-    /* position: absolute; */
-   /* top: 0; */
-    /* right:30px;
+
+
+/* position: absolute; */
+
+
+/* top: 0; */
+
+
+/* right:30px;
     width: 20%; */
-    /* height: 34px; */
+
+
+/* height: 34px; */
+
+
 /* } */
 
+
 /* #button-addon2 { */
-    /* position: absolute; */
-    /* top: 0; */
-    /* right: 22px;
+
+
+/* position: absolute; */
+
+
+/* top: 0; */
+
+
+/* right: 22px;
     z-index: 1;
 } */
 
@@ -1281,6 +1305,6 @@ h1 {
     display: none;
 }
 
-.input-container>input:focus~.search-results {
+.input-container>.search-results {
     display: block;
 }

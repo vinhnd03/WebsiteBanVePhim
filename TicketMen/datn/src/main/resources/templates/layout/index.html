@@ -37,13 +37,13 @@
             display: flex;
             flex-direction: column;
         }
-
+        
         .panel {
             margin-bottom: 10px;
             /* Cách giữa giữa các phần tử */
             /* Thêm các thuộc tính CSS khác nếu cần */
         }
-
+        
         .list-group-item {
             /* Thêm các thuộc tính CSS cho mỗi phần tử trong danh sách */
         }
@@ -66,8 +66,7 @@
             <div style="width: 80%; margin-left: 1%; position: absolute; right: 20%; z-index: 0;">
                 <!-- Hiển thị nội dung cho người dùng có vai trò ADMIN -->
                 <!-- <p style="font-size: large; font-weight: 600;"></p> -->
-                <marquee behavior="scroll" direction="left"
-                    style="font-size: medium; font-weight: 500; color: orangered;">
+                <marquee behavior="scroll" direction="left" style="font-size: medium; font-weight: 500; color: orangered;">
                     Chào mừng bạn đến với website bán vé online của rạp phim TicketMen.
                 </marquee>
             </div>
@@ -76,61 +75,60 @@
                 <th:block th:unless="${#request.remoteUser}">
                     <ul>
                         <img src="/image/logodangnhap_preview_rev_1.png" alt="Logo" class="logo-login">
-                        <button data-toggle="modal" data-target="#myModal2" class="btn-register"
-                            style="width: 130px;"><strong>Đăng ký</strong>
+                        <button data-toggle="modal" data-target="#myModal2" class="btn-register" style="width: 130px;"><strong>Đăng ký</strong>
                         </button>
                     </ul>
                     <ul>
                         <img src="/image/logodangky_preview_rev_1.png" alt="Logo" class="logo-login">
-                        <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login"
-                            style="width: 130px;"><strong>Đăng nhập</strong> </button>
+                        <button id="loginButton" data-toggle="modal" data-target="#myModal1" class="btn-login" style="width: 130px;"><strong>Đăng nhập</strong> </button>
                     </ul>
                 </th:block>
             </div>
             <div style="height: 60px;">
 
             </div>
+
             <div ng-app="searchApp" ng-controller="MovieController" class="search-container">
                 <div class="float-right input-container" style="width: 27%;display: inline-flex;">
 
-                    <input type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim"
-                        id="searchInput" ng-model="searchInput" style="width: 80%;">
-                    <a style="background-color: white; ; display: inline-flex;" class="btn" type="button" id=""
-                        ng-click="search()">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim" id="searchInput" ng-model="searchInput" style="width: 80%;">
+                    <a style="background-color: white; ; display: inline-flex;" class="btn" type="button" id="" ng-click="search()">
                         <i class="fa-solid fa-magnifying-glass" style="font-size: large;"></i>
                     </a>
 
 
-                    <div id="searchResults" class="search-results" style="position: absolute; top:50px; z-index:999;
-                     right: 70px; background: white; color:black; height: 25rem; width: 40rem; overflow: scroll;">
+                    <div id="searchResults" class="search-results" ng-show="displayedResults.length > 0" style="position: absolute; top:50px; z-index:999; right: 70px; background: white; color:black; height: 25rem; width: 40rem; overflow: scroll;">
 
                         <div class="movie-list-container">
                             <div class="panel panel-primany" ng-repeat="movie in displayedResults">
                                 <div class="list-group">
                                     <a href="/movie/detail/{{movie.id}}">
-                                        <img alt="pic" ng-src="/image/upload/{{movie.poster}}"
-                                            style="height: 60px; width: 40px;"> {{ movie.name}} </a>
+                                        <img alt="pic" ng-src="/image/upload/{{movie.poster}}" style="height: 60px; width: 40px;"> {{ movie.name}} </a>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+
+                    <div id="noResults" class="no-results" ng-show="displayedResults.length === 0" style="position: absolute; top:50px; z-index:999; right: 70px; background: white; color:black; height: 25rem; width: 40rem;">
+                        <p>No results found.</p>
+                    </div>
+
                 </div>
 
 
             </div>
 
 
-
         </div>
         <div hidden id="notification">[[${message}]]</div>
         <!-- <div style="text-align:center; font-size:30px;"><a href='#' title="Back to top">&#710;</a></div> -->
         <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // Chọn nút "Đăng nhập" bằng jQuery
                 var loginButton = $('#loginButton');
                 // Thêm sự kiện click lên nút "Đăng nhập" bằng jQuery
-                loginButton.on('click', function () {
+                loginButton.on('click', function() {
                     // Sử dụng window.history.pushState để thay đổi URL
                     window.history.pushState({}, 'Login', '/security/login/form');
                 });
@@ -140,7 +138,7 @@
                 var previousPath = window.location.pathname; // Lưu đường dẫn trước đó
 
 
-                myModal.on('hidden.bs.modal', function () {
+                myModal.on('hidden.bs.modal', function() {
                     // Khi modal bị ẩn, thực hiện các thay đổi bạn muốn ở đây
                     window.history.pushState({}, 'Previous Path', previousPath);
 
@@ -184,15 +182,9 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -200,12 +192,12 @@
         var offset = 500; // thời gian di trượt 0.75s ( 1000 = 1s ) 
 
         var duration = 750;
-        $(function () {
-            $(window).scroll(function () {
+        $(function() {
+            $(window).scroll(function() {
                 if ($(this).scrollTop() > offset) $('#top-up').fadeIn(duration);
                 else $('#top-up').fadeOut(duration);
             });
-            $('#top-up').click(function () {
+            $('#top-up').click(function() {
                 $('body,html').animate({
                     scrollTop: 0
                 }, duration);
