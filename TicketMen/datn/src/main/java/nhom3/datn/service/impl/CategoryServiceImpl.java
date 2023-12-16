@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.CategoryDao;
 import nhom3.datn.entity.Category;
-import nhom3.datn.entity.Movie;
 import nhom3.datn.service.CategoryService;
 
 @Service 

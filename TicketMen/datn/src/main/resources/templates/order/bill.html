@@ -1,3 +1,8 @@
+<style>
+    .food-order{
+        display: none;
+    }
+</style>
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
     <main ng-controller="seatSelectCtrl">
         <div hidden id="Tid" th:text="${Tid}"></div>
@@ -42,13 +47,40 @@
                                     <td>{{seat}}</td>
                                     <td>{{perform.price}}</td>
                                 </tr>
-
                             </tbody>
                         </table>
+                        <div class="form-check text-left" style="">
+                          <label class="form-check-label">
+                            <input type="checkbox" style="display: inline-flex;" name="" id="" value="checkedValue" ng-model="showTable" ng-change="checkboxChanged()">
+                           <p  style="display: inline-flex;"> Đặt kèm thức ăn?</p>
+                          </label>
+                        </div>
+                        <table class="table" ng-show="showTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Món ăn</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="food in foods">
+                                    <th scope="row">{{$index + selectedSeats2.length + 1}}</th>
+                                    <td>{{food.name}}</td>
+                                    <td>
+                                        <input type="number" style="width: 100px;" ng-model="food.quantity" min="0" ng-change="foodPrice()">
+                                    </td>
+                                    <td>{{food.price}}</td>
+                                </tr>
+        
+                            </tbody>
+                        </table>
+                        
                         <div class="tong-tien">
-                            <div class="confirm-mark">Tổng Tiền</div>
+                            <div class="confirm-mark">Tổng tiền</div>
                             <div class="value">
-                                <span>{{selectedSeats2 .length * perform.price}}</span>
+                                <span>{{(selectedSeats2.length * perform.price) + foodTotalPrice}}</span>
                                 <sub>đ</sub>
                             </div>
                         </div>
@@ -56,13 +88,13 @@
                         <div class="tong-tien">
                             <div class="confirm-mark">Số tiền cần thanh toán</div>
                             <div class="value">
-                                <span>{{selectedSeats2 .length * perform.price}}</span>
+                                <span>{{(selectedSeats2.length * perform.price) + foodTotalPrice}}</span>
                                 <sub>đ</sub>
                             </div>
                         </div>
                         <a class="btn btn-warning" ng-click="back()">Trở về</a>
                         <a class="btn btn-success" ng-click="continueBooking()">Thanh toán</a>
-
+                        
                     </div>
 
                     <hr>

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import nhom3.datn.entity.Movie;
 import nhom3.datn.entity.OrderDetail;
 import nhom3.datn.service.OrderDetailService;
 

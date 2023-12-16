@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import nhom3.datn.entity.Account;
-import nhom3.datn.entity.Category;
-import nhom3.datn.entity.Movie;
 import nhom3.datn.service.AccountService;
 
 @CrossOrigin("*")
