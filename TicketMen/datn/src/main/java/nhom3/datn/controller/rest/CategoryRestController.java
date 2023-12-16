@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nhom3.datn.entity.Category;
-import nhom3.datn.entity.Movie;
 import nhom3.datn.service.CategoryService;
 
 @CrossOrigin("*")
