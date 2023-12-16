@@ -26,6 +26,7 @@ public class Account implements Serializable{
     String sdt;
     String address;
     Boolean gender;
+    String token;
 
     @JsonIgnore
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)

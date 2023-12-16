@@ -178,8 +178,8 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
     $scope.selectedOrderId = "";
     $scope.run = false;
-
-
+    $scope.foods = [];
+    $scope.foodTotalPrice = 0;
     //Timer
     // $scope.countdown = {
     //     minutes: 0,
@@ -285,17 +285,18 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
                 $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
             }
             $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
-            $scope.cancelOrder($scope.order.id);
+            // $scope.cancelOrder($scope.order.id);
         }
     });
 
     $scope.initialize = function() {
+
         $scope.run = true;
         var currentPath = window.location.pathname;
         if (currentPath.indexOf('/order/bill') !== -1) {
             // Đường dẫn chứa chuỗi con
             if (!$scope.selectedSeats2.length) {
-                $window.location.href = "/";
+                // $window.location.href = "/";
             }
             $scope.seatHoding();
         } else {
@@ -305,6 +306,17 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         // else {
         //     $scope.seatHoding(false);
         // }
+
+        $http.get("/rest/foods").then(resp => {
+            $scope.foods = resp.data
+            $scope.foods.forEach(item => {
+                item.quantity = 0;
+                
+            })
+            console.log("foods: ", $scope.foods);
+        }).catch(error => {
+            console.log("Foods Getting Error: ", error);
+        })
 
 
 
@@ -489,8 +501,38 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
         }
     }
+    $scope.checkboxChanged = function() {
+        if (!$scope.showTable) {
+            // Nếu checkbox được hủy chọn, đặt quantity của mỗi item trong foods thành 0
+            $scope.foods.forEach(item => {
+                item.quantity = 0;
+            });
+        }
+    };
 
 
+    $scope.test = function(){
+        var item = $scope.foods.filter(function(item) {
+            return item.quantity >= 1;
+        });
+        $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
+        console.log("item: ", item);
+        console.log("order: ", $scope.order);
+
+        item.forEach(i => {
+            var orderFood = {
+                food: i,
+                quantity: i.quantity,
+                order: $scope.order
+            }
+            $http.post("/rest/foods", orderFood).then(resp => {
+
+            }).catch(error => {
+                console.log(error);
+            })
+        })
+        // $http.post("/rest/foods")
+    }
 
     $scope.back = function() {
         $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
@@ -513,45 +555,41 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         
     }
 
+    $scope.foodPrice = function () {
+        $scope.foodTotalPrice = 0;
+        $scope.foods.forEach(i => {
+            $scope.foodTotalPrice += i.quantity * i.price;
+        })
+        
+    }
+
     $scope.continueBooking = function() {
-        // $interval.cancel(interval);
-        // $scope.order = {};
-        // var items = [];
-        // $scope.selectedSeats = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
-        // console.log("selectedSeats: ", $scope.selectedSeats);
+        
+        var item = $scope.foods.filter(function(item) {
+            return item.quantity >= 1;
+        });
+        $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
+        // console.log("item: ", item);
+        // console.log("order: ", $scope.order);
 
-        // var order = {
-        //     createDate: new Date(),
-        //     account: $scope.account,
-        //     email: null
-        // }
+        
 
-        // $http.post("/rest/orders", order).then(resp => {
-        //     $scope.order = resp.data;
-        //     console.log("order", $scope.order);
+        item.forEach(i => {
+            var orderFood = {
+                food: i,
+                quantity: i.quantity,
+                order: $scope.order
+            }
+            // 
 
-        //     // Duyệt qua mỗi ghế được chọn
-        //     for (var i = 0; i < $scope.selectedSeats.length; i++) {
-        //         var item = {
-        //             buyDate: new Date(),
-        //             order: $scope.order,
-        //             ticket: $scope.ticket,
-        //             seat: $scope.dseats.find(seat => seat.name === $scope.selectedSeats[i])
-        //         };
+            $http.post("/rest/foods", orderFood).then(resp => {
 
-        //         items.push(item);
-        //     }
+            }).catch(error => {
+                console.log(error);
+            })
+        })
 
-        //     // Gửi mỗi đối tượng item lên server
-        //     items.forEach(item => {
-        //         $http.post("/rest/orderDetails", item)
-        //             .then(resp => {
-
-        //             })
-        //             .catch(error => {
-        //                 console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
-        //             });
-        //     });
+        console.log("Price: ", $scope.foodTotalPrice);
 
         $scope.run = false;
         $window.localStorage.setItem("selectedSeats", JSON.stringify([]));

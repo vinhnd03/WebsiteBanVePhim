@@ -1,32 +1,33 @@
 package nhom3.datn.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "Types")
-public class TicketType implements Serializable{
+@Table(name = "Foodorders")
+public class FoodOrder implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    Long id;
 
-    String name;
-    Double price;
+    Integer quantity;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "ticketType")
-    List<OrderDetail> orders;
+    @ManyToOne
+    @JoinColumn(name = "Foodid")
+    Food food;
+
+    @ManyToOne
+    @JoinColumn(name = "Orderid")
+    Order order;
 }

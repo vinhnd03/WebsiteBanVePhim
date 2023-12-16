@@ -35,9 +35,9 @@ public class OrderDetail implements Serializable{
     @JoinColumn(name = "Orderid")
     Order order;
 
-    @ManyToOne
-    @JoinColumn(name = "Typeid")
-    TicketType ticketType;
+    // @ManyToOne
+    // @JoinColumn(name = "Foodid")
+    // Food food;
 
     @ManyToOne
     @JoinColumn(name = "Seatid")

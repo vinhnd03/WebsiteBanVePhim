@@ -47,6 +47,7 @@ app.controller("product-ctrl", function ($scope, $http) {
     //Khởi đầu
     $scope.initialize();
 
+    
 
 
     //Xóa form

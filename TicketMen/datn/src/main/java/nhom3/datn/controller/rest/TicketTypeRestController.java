@@ -9,17 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import nhom3.datn.entity.TicketType;
-import nhom3.datn.service.TicketTypeService;
+import nhom3.datn.service.FoodService;
 
 
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/rest/ticketTypes")
+@RequestMapping("/rest/foods")
 public class TicketTypeRestController {
     @Autowired
-    TicketTypeService ticketTypeService;
+    FoodService foodService;
 
     
 }
