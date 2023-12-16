@@ -648,10 +648,13 @@ app.config(function($routeProvider) {
 
 });
 
+
 app.controller('MovieController', function($scope, $http) {
+    $scope.showSearch = false;
+
     $scope.search = function() {
         const query = $scope.searchInput;
-        if (query.length > 0) {
+        if (query && query.length > 0) {
             $http.get(`/rest/movies/findMovieByName/${query}`)
                 .then(function(resp) {
                     $scope.searchResults = resp.data;
@@ -664,6 +667,7 @@ app.controller('MovieController', function($scope, $http) {
         } else {
             $scope.searchResults = [];
         }
+        $scope.showSearch = !$scope.showSearch; // Toggle show/hide on search
     };
 
     $scope.displayResults = function(results) {
@@ -678,6 +682,9 @@ app.controller('MovieController', function($scope, $http) {
         });
 
         $scope.displayedResults = formattedResults;
-
     };
-})
+
+    $scope.hideSearch = function() {
+        $scope.showSearch = false; // Hide search when clicked outside
+    };
+});
