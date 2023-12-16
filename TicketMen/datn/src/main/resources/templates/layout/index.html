@@ -89,45 +89,42 @@
             </div>
 
             <div ng-app="searchApp" ng-controller="MovieController" class="search-container">
-                <div class="float-right input-container" style="width: 27%;display: inline-flex;">
-
-                    <input type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim" id="searchInput" ng-model="searchInput" style="width: 80%;">
-                    <a style="background-color: white; ; display: inline-flex;" class="btn" type="button" id="" ng-click="search()">
+                <div class="float-right input-container" style="width: 27%; display: inline-flex; position: relative;">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim" id="searchInput" ng-model="searchInput" style="width: 80%;" ng-change="search()">
+                    <a style="background-color: white; display: inline-flex;" class="btn" type="button" id="" ng-click="search()">
                         <i class="fa-solid fa-magnifying-glass" style="font-size: large;"></i>
                     </a>
 
-
-                    <div id="searchResults" class="search-results" ng-show="displayedResults.length > 0" style="position: absolute; top:50px; z-index:999; right: 70px; background: white; color:black; height: 25rem; width: 40rem; overflow: scroll;">
-
+                    <div id="searchResults" class="search-results" ng-show="showSearch" style="position: absolute;z-index:999; top: 100%; right: 75px; background: white; color: black; width: 31.2rem; height: 30rem; overflow-y: auto; border: 2px solid #ccc;">
                         <div class="movie-list-container">
-                            <div class="panel panel-primany" ng-repeat="movie in displayedResults">
+                            <div class="panel panel-primary" ng-repeat="movie in displayedResults">
                                 <div class="list-group">
-                                    <a href="/movie/detail/{{movie.id}}">
-                                        <img alt="pic" ng-src="/image/upload/{{movie.poster}}" style="height: 60px; width: 40px;"> {{ movie.name}} </a>
+                                    <a href="/movie/detail/{{movie.id}}" style="text-decoration: none;">
+                                        <img alt="pic" ng-src="/image/upload/{{movie.poster}}" style="height: 60px; width: 40px;"> {{ movie.name}}
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    <div id="noResults" class="no-results" ng-show="displayedResults.length === 0" style="position: absolute; top:50px; z-index:999; right: 70px; background: white; color:black; height: 25rem; width: 40rem;">
-                        <p>No results found.</p>
-                    </div>
 
+
+                    <div class="no-results " ng-show="displayedResults.length===0 " style="position: absolute; top: 100%; z-index:999; right: 75px;; background: white; color: black; width:31.2rem; height: 30rem; ">
+                        <p style="font-size: 50px; text-align: center; ">No results found.</p>
+                    </div>
                 </div>
-
-
             </div>
 
 
+
         </div>
-        <div hidden id="notification">[[${message}]]</div>
-        <!-- <div style="text-align:center; font-size:30px;"><a href='#' title="Back to top">&#710;</a></div> -->
+        <div hidden id="notification ">[[${message}]]</div>
+        <!-- <div style="text-align:center; font-size:30px; "><a href='#' title="Back to top ">&#710;</a></div> -->
         <script>
             $(document).ready(function() {
-                // Chọn nút "Đăng nhập" bằng jQuery
+                // Chọn nút "Đăng nhập " bằng jQuery
                 var loginButton = $('#loginButton');
-                // Thêm sự kiện click lên nút "Đăng nhập" bằng jQuery
+                // Thêm sự kiện click lên nút "Đăng nhập " bằng jQuery
                 loginButton.on('click', function() {
                     // Sử dụng window.history.pushState để thay đổi URL
                     window.history.pushState({}, 'Login', '/security/login/form');
@@ -147,7 +144,7 @@
                 var noti = $('#notification').text();
                 if (noti.length > 0) {
                     Swal.fire({
-                        icon: "info",
+                        icon: "info ",
                         title: noti,
                         theme: 'bootstrap 4',
                     });
@@ -161,9 +158,9 @@
         <!-- Button trigger modal -->
         <!--Modal-->
         <!-- Modal DANG NHAP-->
-        <div th:replace="/security/login.html"></div>
+        <div th:replace="/security/login.html "></div>
         <!-- Modal DANG KÝ-->
-        <div th:replace="/security/register.html"></div>
+        <div th:replace="/security/register.html "></div>
 
 
 
@@ -172,21 +169,21 @@
 
 
         <!--Content -->
-        <div th:replace="${main}"></div>
+        <div th:replace="${main} "></div>
         <!--Danh sách phim -->
-        <div th:replace="/layout/_slide.html"></div>
+        <div th:replace="/layout/_slide.html "></div>
     </div>
 
-    <div th:replace="/layout/_footer.html"></div>
+    <div th:replace="/layout/_footer.html "></div>
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
     <script>
         // kéo xuống khoảng cách 500px thì xuất hiện nút Top-up
         var offset = 500; // thời gian di trượt 0.75s ( 1000 = 1s ) 
@@ -204,7 +201,7 @@
             });
         });
     </script>
-    <div title="Về đầu trang" id="top-up"> <i class="fa-solid fa-2x fa-circle-arrow-up"></i></div>
+    <div title="Về đầu trang " id="top-up "> <i class="fa-solid fa-2x fa-circle-arrow-up "></i></div>
 </body>
 
 </html>

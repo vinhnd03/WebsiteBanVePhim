@@ -390,7 +390,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
 
 
-  
+
 
     $scope.isSeatAvailable = function(seat) {
         return $scope.selectedSeats.indexOf(seat) === -1;
@@ -510,7 +510,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         // $window.localStorage.setItem("order", JSON.stringify({}));
         $scope.run = false;
         $window.location.href = "/pay/" + price;
-        
+
     }
 
     $scope.continueBooking = function() {
@@ -621,15 +621,16 @@ app.controller('MovieController', function($scope, $http) {
                 .then(function(resp) {
                     $scope.searchResults = resp.data;
                     console.log("result: ", $scope.searchResults);
-                    $scope.displayResults($scope.searchResults); // Hiển thị kết quả
+                    $scope.displayResults($scope.searchResults); // Display results
+                    $scope.showSearch = true; // Show the search results
                 })
                 .catch(function(error) {
                     console.error('Error:', error);
                 });
         } else {
             $scope.searchResults = [];
+            $scope.showSearch = false; // Hide results if query is empty
         }
-        $scope.showSearch = !$scope.showSearch; // Toggle show/hide on search
     };
 
     $scope.displayResults = function(results) {
