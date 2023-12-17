@@ -46,8 +46,8 @@
                                             </tr>
                                             <tr>
                                                
-                                                <td>Tổng tiền: <strong> {{totalTicketPrice}} VNĐ</strong></td>
-                                                <td>Địa chỉ Email: <strong>{{form.ticket.movie.name}}</strong></td>
+                                                <td>Tổng tiền: <strong> {{totalTicketPrice + totalFoodPrice}} VNĐ</strong></td>
+                                                <td>Địa chỉ Email: <strong>{{form.account.email}}</strong></td>
                                             </tr>
                                         </table>
                                         <div class="col-1"></div>
@@ -56,18 +56,50 @@
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th>ID</th>
+                                                <th>STT</th>
+                                                <th></th>
                                                 <th>Seat</th>
                                                 <th>MOVIE</th>
-                                                <th>Price</th>
+                                                <th>Price Ticket</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="item in details1" ng-init="updateTotalTicketPrice()">
                                                 <td>{{$index + 1 }}</td>
+                                                <td></td>
                                                 <td>{{item.seat.name}}</td>
                                                 <td>{{item.ticket.movie.name}}</td>
                                                 <td>{{item.ticket.price}} VNĐ</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <strong>Đồ Ăn - Đồ Uống: </strong>
+                                    <table class="table">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>Food</th>
+                                                <th>Quantity</th>
+                                                <th>Price Food</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in details1" ng-init="updateTotalTicketPrice()">
+                                                <td ng-if="$first">
+                                                    <div ng-repeat="food in form.details1">
+                                                        {{food.food.name}}
+                                                    </div>
+                                                </td>
+                                                <td ng-if="$first">
+                                                    <div ng-repeat="food in form.details1">
+                                                        {{food.quantity}}
+                                                    </div>
+                                                </td>   
+                                                <td ng-if="$first">
+                                                    <div  ng-repeat="food in form.details1">
+                                                        {{food.food.price}} VNĐ
+                                                    </div>
+                                                </td>
+                                                
                                             </tr>
                                         </tbody>
                                     </table>

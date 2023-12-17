@@ -65,4 +65,9 @@ public class AccountServiceImpl implements AccountService{
         public Optional<Account> findByEmail(String email) {
            return dao.findByEmail(email);
         }
+
+        @Override
+        public Optional <Account> findByToken(String token) {
+            return dao.findByToken(token);
+        }
 }

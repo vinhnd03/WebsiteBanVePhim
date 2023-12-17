@@ -8,6 +8,13 @@
             "type": "java",
             "name": "test",
             "request": "launch",
+            "mainClass": "nhom3.datn.test",
+            "projectName": "datn"
+        },
+        {
+            "type": "java",
+            "name": "test",
+            "request": "launch",
             "mainClass": "nhom3.datn.test.test",
             "projectName": "datn"
         },
