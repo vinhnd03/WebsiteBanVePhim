@@ -745,6 +745,8 @@ app.controller('MovieController', function($scope, $http) {
         }
     };
 
+    $scope.yourInputModel = '';
+
     $scope.displayResults = function(results) {
         var formattedResults = [];
         results.forEach(function(movie) {

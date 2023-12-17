@@ -1308,9 +1308,9 @@ h1 {
     display: none;
 }
 
-.input-container>.search-results {
-    display: block;
-}
+/* .input-container>.search-results {
+    display: none;
+} */
 
 
 /* Hiệu ứng khi nhấn vào */

@@ -1,6 +1,7 @@
 package nhom3.datn.controller.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,8 +36,13 @@ public class OrderRestController {
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") Long id){
-        orderService.delete(id);
+        Optional<Order> order = orderService.findOrder(id);
+        if(order.isPresent()){
+            orderService.delete(id);
+        }
+    
     }
+
 
     @PostMapping()
     public Order create(@RequestBody Order order){

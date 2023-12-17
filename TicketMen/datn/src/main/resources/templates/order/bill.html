@@ -45,7 +45,7 @@
                                 <tr ng-repeat="seat in selectedSeats2">
                                     <th scope="row">{{$index + 1}}</th>
                                     <td>{{seat}}</td>
-                                    <td>{{perform.price}}</td>
+                                    <td>{{perform.price | number}} VND</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -71,7 +71,7 @@
                                     <td>
                                         <input type="number" style="width: 100px;" ng-model="food.quantity" min="0" ng-change="foodPrice()">
                                     </td>
-                                    <td>{{food.price}}</td>
+                                    <td>{{food.price | number}} VND</td>
                                 </tr>
         
                             </tbody>
@@ -80,16 +80,14 @@
                         <div class="tong-tien">
                             <div class="confirm-mark">Tổng tiền</div>
                             <div class="value">
-                                <span>{{(selectedSeats2.length * perform.price) + foodTotalPrice}}</span>
-                                <sub>đ</sub>
+                                <span>{{(selectedSeats2.length * perform.price) + foodTotalPrice | number}} VND</span>
                             </div>
                         </div>
                         <hr>
                         <div class="tong-tien">
                             <div class="confirm-mark">Số tiền cần thanh toán</div>
                             <div class="value">
-                                <span>{{(selectedSeats2.length * perform.price) + foodTotalPrice}}</span>
-                                <sub>đ</sub>
+                                <span>{{(selectedSeats2.length * perform.price) + foodTotalPrice | number}} VND</span>
                             </div>
                         </div>
                         <a class="btn btn-warning" ng-click="back()">Trở về</a>
