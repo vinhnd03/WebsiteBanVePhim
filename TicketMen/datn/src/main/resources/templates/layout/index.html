@@ -91,12 +91,12 @@
 
             </div>
             <div ng-app="searchApp" ng-controller="MovieController" class="search-container">
-                <div class="float-right input-container" style="width: 27%; display: inline-flex; position: relative;">
+                <div class="float-right input-container" style="width: 30%; display: inline-flex; position: relative;">
                     <input type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim" id="searchInput" ng-model="searchInput" style="width: 80%;" ng-change="search()">
                     <button class="btn" type="button" id="" ng-click="search()" style="background-color: white; display: inline-flex;">
                         <i class="fa-solid fa-magnifying-glass" style="font-size: large;"></i>
                     </button>
-                    <div id="searchResults" class="search-results-container" ng-show="showSearch" ng-init="initialLoadCompleted = true" style="position: absolute; z-index: 999; top: 100%; right: 75px; background: white; color: black; width: 31.2rem; max-height: 30rem; overflow-y: auto; border: 2px solid #ccc;">
+                    <div id="searchResults" class="search-results-container" ng-show="showSearch" ng-init="initialLoadCompleted = true" style="position: absolute; z-index: 1; top: 100%; right: 70px; background: white; color: black; width: 30rem; max-height: 30rem; overflow-y: auto; border: 2px solid #ccc;">
                         <div class="movie-list-container">
                             <div class="panel panel-primary" ng-repeat="movie in displayedResults">
                                 <div class="list-group">
