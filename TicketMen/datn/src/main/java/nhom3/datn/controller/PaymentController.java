@@ -54,7 +54,7 @@ public class PaymentController {
 
         vnp_Params.put("vnp_BankCode", bankCode);
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-        vnp_Params.put("vnp_OrderInfo", "Thanh Toan Don Hang:" + vnp_TxnRef);
+        vnp_Params.put("vnp_OrderInfo", vnp_TxnRef);
         vnp_Params.put("vnp_OrderType", orderType);
 
         vnp_Params.put("vnp_Locale", "vn");

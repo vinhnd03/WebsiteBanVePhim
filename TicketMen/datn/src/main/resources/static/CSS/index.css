@@ -1316,7 +1316,7 @@ h1 {
 /* Hiệu ứng khi nhấn vào */
 
 .panel:hover {
-    background-color: #d14bcf;
+    /* background-color: #d14bcf; */
     /* Màu nền khi di chuột vào */
     transition: background-color 0.3s ease;
     /* Hiệu ứng chuyển đổi màu nền */
