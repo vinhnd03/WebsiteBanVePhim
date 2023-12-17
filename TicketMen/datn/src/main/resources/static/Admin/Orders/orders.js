@@ -3,14 +3,20 @@ app.controller("orders-ctrl", function ($scope, $http) {
     $scope.details1 = [];
     $scope.form = {};
     $scope.totalTicketPrice = 0;
-
+    $scope.totalFoodPrice = 0;
 
     
     $scope.initialize = function () {
         //load products
         $http.get("/rest/orders").then(resp => {
             $scope.items = resp.data;
-                    
+
+
+            resp.data.forEach(food => {
+                $http.get("/rest/foods/getFoodOrder/" + food.id).then(resp => {
+                    food.details1 = resp.data;  
+                });
+            });
         });
 
     }
@@ -18,7 +24,10 @@ app.controller("orders-ctrl", function ($scope, $http) {
     $scope.view = function(item){
         $scope.form = angular.copy(item);
         $http.get("/rest/orderDetails/getOrderDetail/" + item.id).then(resp => {
-            $scope.details1 = resp.data;   
+            $scope.details1 = resp.data;  
+
+
+
         });
     }
 
@@ -28,9 +37,13 @@ app.controller("orders-ctrl", function ($scope, $http) {
 
     $scope.updateTotalTicketPrice = function() {
         $scope.totalTicketPrice = 0;
-        angular.forEach($scope.details, function(item) {
+        $scope.totalFoodPrice = 0;
+        angular.forEach($scope.details1, function(item) {
             $scope.totalTicketPrice += item.ticket.price;
         });
+        angular.forEach($scope.form.details1, function(food){
+            $scope.totalFoodPrice += food.food.price * food.quantity;
+        })
     };
     $scope.pager = {
         page: 0,
