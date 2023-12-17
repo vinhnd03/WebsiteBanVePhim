@@ -90,18 +90,13 @@
             <div style="height: 60px;">
 
             </div>
-
             <div ng-app="searchApp" ng-controller="MovieController" class="search-container">
                 <div class="float-right input-container" style="width: 27%; display: inline-flex; position: relative;">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim"
-                        id="searchInput" ng-model="searchInput" style="width: 80%;" ng-change="search()">
-                    <a style="background-color: white; display: inline-flex;" class="btn" type="button" id=""
-                        ng-click="search()">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm phim" aria-label="Tìm kiếm phim" id="searchInput" ng-model="searchInput" style="width: 80%;" ng-change="search()">
+                    <button class="btn" type="button" id="" ng-click="search()" style="background-color: white; display: inline-flex;">
                         <i class="fa-solid fa-magnifying-glass" style="font-size: large;"></i>
-                    </a>
-
-                    <div id="searchResults" class="search-results" ng-show="showSearch"
-                        style="display: none; position: absolute;z-index:999; top: 100%; right: 75px; background: white; color: black; width: 31.2rem; height: 30rem; overflow-y: auto; border: 2px solid #ccc;">
+                    </button>
+                    <div id="searchResults" class="search-results-container" ng-show="showSearch" ng-init="initialLoadCompleted = true" style="position: absolute; z-index: 999; top: 100%; right: 75px; background: white; color: black; width: 31.2rem; max-height: 30rem; overflow-y: auto; border: 2px solid #ccc;">
                         <div class="movie-list-container">
                             <div class="panel panel-primary" ng-repeat="movie in displayedResults">
                                 <div class="list-group">
@@ -112,16 +107,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="no-results" ng-show="showSearch && displayedResults.length === 0 && initialLoadCompleted" style="background: white; color: black; text-align: center; padding: 20px; ">
+                            <p style="font-size: 24px;">KHÔNG TÌM THẤY PHIM C╯°□°╯︵ ┻━┻</p>
+                        </div>
                     </div>
 
-
-
-                    <div class="no-results " ng-show="displayedResults.length===0 "
-                        style="display: none;position: absolute; top: 100%; z-index:999; right: 75px;; background: white; color: black; width:31.2rem; height: 30rem; ">
-                        <p style="font-size: 50px; text-align: center; ">KHÔNG TÌM THẤY PHIM C╯°□°╯︵ ┻━┻ </p>
-                    </div>
                 </div>
             </div>
+
+
 
 
 

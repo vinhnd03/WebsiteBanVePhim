@@ -1318,7 +1318,7 @@ h1 {
 .panel:hover {
     background-color: #d14bcf;
     /* Màu nền khi di chuột vào */
-    transition: background-color 0.3s ease;
+    /* transition: background-color 0.3s ease; */
     /* Hiệu ứng chuyển đổi màu nền */
 }
 
@@ -1328,7 +1328,7 @@ h1 {
 .panel:active {
     transform: translateY(3px);
     /* Di chuyển phần tử xuống khi nhấn chuột */
-    transition: transform 0.1s ease;
+    /* transition: transform 0.1s ease; */
     /* Hiệu ứng chuyển đổi di chuyển */
 }
 
