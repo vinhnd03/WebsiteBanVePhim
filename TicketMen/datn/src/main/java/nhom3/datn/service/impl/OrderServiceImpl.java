@@ -1,6 +1,7 @@
 package nhom3.datn.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,11 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void delete(Long id) {
         dao.deleteById(id);      
+    }
+
+    @Override
+    public Optional<Order> findOrder(Long id) {
+        return dao.findById(id);
     }
 
     

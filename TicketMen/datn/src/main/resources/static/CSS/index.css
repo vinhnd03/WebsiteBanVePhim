@@ -14,7 +14,7 @@ body {
     background-size: cover;
     width: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     transition: all 0.3s ease;
     /* border-bottom: 1px solid black; */
 }
@@ -1308,9 +1308,12 @@ h1 {
     display: none;
 }
 
-.input-container>.search-results {
-    display: block;
+.search-results-container {
+    display: none;
 }
+/* .input-container>.search-results {
+    display: none;
+} */
 
 
 /* Hiệu ứng khi nhấn vào */
@@ -1318,7 +1321,7 @@ h1 {
 .panel:hover {
     /* background-color: #d14bcf; */
     /* Màu nền khi di chuột vào */
-    transition: background-color 0.3s ease;
+    /* transition: background-color 0.3s ease; */
     /* Hiệu ứng chuyển đổi màu nền */
 }
 
@@ -1328,7 +1331,7 @@ h1 {
 .panel:active {
     transform: translateY(3px);
     /* Di chuyển phần tử xuống khi nhấn chuột */
-    transition: transform 0.1s ease;
+    /* transition: transform 0.1s ease; */
     /* Hiệu ứng chuyển đổi di chuyển */
 }
 

@@ -3,6 +3,7 @@ app.controller("history_ctrl", function ($scope, $http, $window) {
     $scope.details = [];
     $scope.form = {};
     $scope.totalTicketPrice = 0;
+    $scope.totalFoodPrice = 0;
     var username = $window.localStorage.getItem('username');
 
     $scope.initialize = function () {
@@ -11,28 +12,40 @@ app.controller("history_ctrl", function ($scope, $http, $window) {
             $scope.items = resp.data;
             
             resp.data.forEach(order => {
-                $http.get("/rest/orderDetails/getOrderDetail/" + order.id).then(resp => {
-                    order.details = resp.data;  
-                   
+                $http.get("/rest/orderDetails/getOrderDetail/" + order.id).then(orderResp => {
+                    order.details = orderResp.data;  
                 });
+                $http.get("/rest/foods/getFoodOrder/" + order.id).then(foodResp => {
+                    order.foods = foodResp.data;  
+                });
+                
             });
+
         });
     }
 
     $scope.view = function(item){
         $scope.form = angular.copy(item);
         $http.get("/rest/orderDetails/getOrderDetail/" + item.id).then(resp => {
-            $scope.details = resp.data;          
+            $scope.details = resp.data; 
+
+        
         });
     }
 
     //Khởi đầu
     $scope.initialize();    
 
-    $scope.updateTotalTicketPrice = function() {
+    $scope.updateTotalTicketAndFoodPrice = function() {
         $scope.totalTicketPrice = 0;
+        $scope.totalFoodPrice = 0;
+    
         angular.forEach($scope.details, function(item) {
             $scope.totalTicketPrice += item.ticket.price;
+        });
+    
+        angular.forEach($scope.form.foods, function(food) {
+            $scope.totalFoodPrice += food.food.price * food.quantity;
         });
     };
     $scope.pager = {

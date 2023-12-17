@@ -385,7 +385,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
             $scope.foods = resp.data
             $scope.foods.forEach(item => {
                 item.quantity = 0;
-                
+
             })
             console.log("foods: ", $scope.foods);
         }).catch(error => {
@@ -585,7 +585,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
     };
 
 
-    $scope.test = function(){
+    $scope.test = function() {
         var item = $scope.foods.filter(function(item) {
             return item.quantity >= 1;
         });
@@ -594,18 +594,18 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         console.log("order: ", $scope.order);
 
         item.forEach(i => {
-            var orderFood = {
-                food: i,
-                quantity: i.quantity,
-                order: $scope.order
-            }
-            $http.post("/rest/foods", orderFood).then(resp => {
+                var orderFood = {
+                    food: i,
+                    quantity: i.quantity,
+                    order: $scope.order
+                }
+                $http.post("/rest/foods", orderFood).then(resp => {
 
-            }).catch(error => {
-                console.log(error);
+                }).catch(error => {
+                    console.log(error);
+                })
             })
-        })
-        // $http.post("/rest/foods")
+            // $http.post("/rest/foods")
     }
 
     $scope.back = function() {
@@ -629,16 +629,16 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
     }
 
-    $scope.foodPrice = function () {
+    $scope.foodPrice = function() {
         $scope.foodTotalPrice = 0;
         $scope.foods.forEach(i => {
             $scope.foodTotalPrice += i.quantity * i.price;
         })
-        
+
     }
 
     $scope.continueBooking = function() {
-        
+
         var item = $scope.foods.filter(function(item) {
             return item.quantity >= 1;
         });
@@ -646,15 +646,15 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         // console.log("item: ", item);
         // console.log("order: ", $scope.order);
 
-        
+
 
         item.forEach(i => {
             var orderFood = {
-                food: i,
-                quantity: i.quantity,
-                order: $scope.order
-            }
-            // 
+                    food: i,
+                    quantity: i.quantity,
+                    order: $scope.order
+                }
+                // 
 
             $http.post("/rest/foods", orderFood).then(resp => {
 
@@ -723,28 +723,54 @@ app.config(function($routeProvider) {
 });
 
 
-app.controller('MovieController', function($scope, $http) {
-    $scope.showSearch = false;
 
+app.controller('MovieController', function($scope, $http) {
+    // Khởi tạo biến và hàm
+    $scope.displayedResults = [];
+    $scope.showSearch = false;
+    $scope.initialLoadCompleted = false; // Cờ xác định khi trang được tải lần đầu
+
+    // Kiểm tra khi trang được tải lại
+    angular.element(document).ready(function() {
+        $scope.initialLoadCompleted = true; // Đánh dấu khi trang đã tải xong
+        $scope.showSearch = false; // Ẩn kết quả khi trang được tải lại
+    });
+
+    // Hàm tìm kiếm phim
     $scope.search = function() {
         const query = $scope.searchInput;
         if (query && query.length > 0) {
             $http.get(`/rest/movies/findMovieByName/${query}`)
                 .then(function(resp) {
                     $scope.searchResults = resp.data;
-                    console.log("result: ", $scope.searchResults);
-                    $scope.displayResults($scope.searchResults); // Display results
-                    $scope.showSearch = true; // Show the search results
+                    $scope.displayResults($scope.searchResults);
+                    $scope.showSearch = true;
+                    $scope.initialLoadCompleted = true;
+                    // Hiển thị kết quả khi có dữ liệu
+                    $scope.showSearchResults();
                 })
                 .catch(function(error) {
-                    console.error('Error:', error);
+                    console.error('Lỗi:', error);
                 });
         } else {
             $scope.searchResults = [];
-            $scope.showSearch = false; // Hide results if query is empty
+            $scope.showSearch = false;
+            // Ẩn kết quả khi ô tìm kiếm trống
+            $scope.hideSearchResults();
         }
     };
+    
+    // Hàm ẩn kết quả tìm kiếm
+    $scope.hideSearchResults = function() {
+        document.getElementById('searchResults').style.display = 'none';
+    };
+    
+    // Hàm hiển thị kết quả tìm kiếm
+    $scope.showSearchResults = function() {
+        document.getElementById('searchResults').style.display = 'block';
+    };
 
+    // Hàm định dạng kết quả
     $scope.displayResults = function(results) {
         var formattedResults = [];
         results.forEach(function(movie) {
@@ -759,7 +785,8 @@ app.controller('MovieController', function($scope, $http) {
         $scope.displayedResults = formattedResults;
     };
 
+    // Ẩn kết quả khi click bên ngoài
     $scope.hideSearch = function() {
-        $scope.showSearch = false; // Hide search when clicked outside
+        $scope.showSearch = false;
     };
 });
