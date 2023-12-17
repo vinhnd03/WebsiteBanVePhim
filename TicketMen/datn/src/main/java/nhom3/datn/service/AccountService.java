@@ -26,4 +26,8 @@ public interface AccountService {
     Optional<Account> findAccount(String username);
 
     Optional<Account> findByEmail(String email);
+
+    Optional<Account> findByToken(String token);
+
+    
 }

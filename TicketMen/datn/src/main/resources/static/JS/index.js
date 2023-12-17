@@ -12,6 +12,80 @@ app.controller('username-ctrl', function($scope, $window) {
 
 });
 
+app.controller("forgot-ctrl", function($scope){
+    $scope.btn = true;
+    var message = $("#message").text();
+    var error = $("#error").text();
+    // alert("hello");
+    if(message){
+        Swal.fire({
+            icon: "success",
+            title: message,
+            theme: 'bootstrap 4',
+            
+        });
+    }
+
+    if(error){
+        Swal.fire({
+            icon: "error",
+            title: error,
+            theme: 'bootstrap 4',
+            
+        });
+    }
+
+    $scope.checkInput = function() {
+        if($scope.password && $scope.confirmPassword){
+            
+            if($scope.password == $scope.confirmPassword){
+                $scope.btn = false;
+                $scope.error =  "";
+            }else{
+                $scope.error = "Xác nhận mật khẩu chưa đúng!"
+                $scope.btn = true;
+            }
+        }else{
+            $scope.error = "Nhập đầy đủ mật khẩu và xác nhận!"
+            $scope.btn = true;
+        }
+    }
+    
+})
+
+app.controller("reset-ctrl", function($scope){
+    $scope.btn = true;
+    var message = $("#message").text();
+    // alert("hello");
+    if(message){
+        Swal.fire({
+            icon: "success",
+            title: message,
+            theme: 'bootstrap 4',
+            willClose: function () {               
+                window.location.href = '/';
+            }
+        });
+    }
+
+    $scope.checkInput = function() {
+        if($scope.password && $scope.confirmPassword){
+            
+            if($scope.password == $scope.confirmPassword){
+                $scope.btn = false;
+                $scope.error =  "";
+            }else{
+                $scope.error = "Xác nhận mật khẩu chưa đúng!"
+                $scope.btn = true;
+            }
+        }else{
+            $scope.error = "Nhập đầy đủ mật khẩu và xác nhận!"
+            $scope.btn = true;
+        }
+    }
+    
+})
+
 app.controller("movie-ctrl", function($scope, $http) {
     $scope.items = [];
     $scope.cates = [];
