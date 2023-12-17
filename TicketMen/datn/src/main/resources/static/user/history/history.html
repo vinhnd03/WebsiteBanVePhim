@@ -3,14 +3,14 @@
     <table class="table">
         <thead>
           <tr >
-            <th >ID</th>
+            <th >STT</th>
             <th >Tên Phim</th>
             <th >Ngày Mua</th>
             <th >Xem Chi Tiết</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in pager.items">
+          <tr ng-repeat="item in pager.items" >
             <th>{{$index + 1 + (pager.page * pager.size)}}</th>
             <td>{{item.details[0].ticket.movie.name}}</td>
             <td>{{item.buyDate | date : 'dd-MM-yyyy'}}</td>
@@ -32,7 +32,7 @@
                           <div class="modal-body">
                             <div class="row">
                                 <div class="col-1"></div>
-                                <table class="col-10">
+                                <table class="col-10" >
                                     <tr >
                                         <td>Tên Phim: <strong>{{form.details[0].ticket.movie.name}}</strong></td>
                                         <td>Phòng: <strong>{{form.details[0].ticket.room.name}}</strong></td>
@@ -43,31 +43,64 @@
                                     </tr>
                                     <tr>
                                         <td>Ngày Mua: <strong>{{form.buyDate | date : 'dd-MM-yyyy'}}</strong></td>
-                                        <td>Tổng tiền: <strong> {{totalTicketPrice}} VNĐ</strong></td>
+                                        <td>Tổng tiền: <strong> {{totalTicketPrice + totalFoodPrice}} VNĐ</strong></td>
                                     </tr>
                                 </table>
                                 <div class="col-1"></div>
                             </div>
-                            <strong>Chi tiết: </strong>
+                            <strong>Chi tiết vé: </strong>
                               <table class="table">
                                   <thead class="thead-dark">
                                       <tr>
-                                          <th>ID</th>
+                                          <th>STT</th>
+                                          <th></th>
                                           <th></th>
                                           <th>GHẾ</th>
+                                          <th></th>
                                           <th></th>
                                           <th>GIÁ</th>
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      <tr  ng-repeat="item in details" ng-init="updateTotalTicketPrice()">
+                                      <tr  ng-repeat="item in details" ng-init="updateTotalTicketAndFoodPrice()">
                                           <th>{{ $index + 1 }}</th>
+                                          <td></td>
                                           <td></td>
                                           <td>{{item.seat.name}}</td>
                                           <td></td> 
+                                          <td></td>
                                           <td>{{item.ticket.price}} VNĐ</td>
                                       </tr>
                                   </tbody>
+                              </table>
+                              <strong>Đồ Ăn - Đồ Uống: </strong>
+                              <table class="table">
+                                  <thead class="thead-dark">
+                                      <tr>
+                                          <th>Đồ Ăn - Đồ Uống</th>
+                                          <th>Số Lượng</th>
+                                          <th>GIÁ</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr ng-repeat="item in details" ng-init="updateTotalTicketAndFoodPrice()">
+                                        <td ng-if="$first">
+                                            <div ng-repeat="food in form.foods">
+                                                {{food.food.name}}
+                                            </div>
+                                        </td>
+                                        <td ng-if="$first">
+                                            <div ng-repeat="food in form.foods">
+                                                {{food.quantity}}
+                                            </div>
+                                        </td>
+                                        <td ng-if="$first">
+                                            <div  ng-repeat="food in form.foods">
+                                                {{food.food.price}} VNĐ
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
                               </table>
                           </div>
                       </div>
