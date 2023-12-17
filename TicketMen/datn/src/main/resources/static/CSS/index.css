@@ -1308,6 +1308,9 @@ h1 {
     display: none;
 }
 
+.search-results-container {
+    display: none;
+}
 /* .input-container>.search-results {
     display: none;
 } */

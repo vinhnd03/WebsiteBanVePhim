@@ -745,7 +745,9 @@ app.controller('MovieController', function($scope, $http) {
                     $scope.searchResults = resp.data;
                     $scope.displayResults($scope.searchResults);
                     $scope.showSearch = true;
-                    $scope.initialLoadCompleted = true; // Đánh dấu là đã tìm kiếm
+                    $scope.initialLoadCompleted = true;
+                    // Hiển thị kết quả khi có dữ liệu
+                    $scope.showSearchResults();
                 })
                 .catch(function(error) {
                     console.error('Lỗi:', error);
@@ -753,7 +755,19 @@ app.controller('MovieController', function($scope, $http) {
         } else {
             $scope.searchResults = [];
             $scope.showSearch = false;
+            // Ẩn kết quả khi ô tìm kiếm trống
+            $scope.hideSearchResults();
         }
+    };
+    
+    // Hàm ẩn kết quả tìm kiếm
+    $scope.hideSearchResults = function() {
+        document.getElementById('searchResults').style.display = 'none';
+    };
+    
+    // Hàm hiển thị kết quả tìm kiếm
+    $scope.showSearchResults = function() {
+        document.getElementById('searchResults').style.display = 'block';
     };
 
     // Hàm định dạng kết quả
