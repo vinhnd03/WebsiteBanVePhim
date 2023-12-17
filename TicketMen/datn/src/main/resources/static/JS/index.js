@@ -326,7 +326,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
                     $scope.cancelOrder($scope.order.id);
                     $scope.sweetAlert("info", "Đã hết thời gian giữ ghế!");
 
-                    // $scope.run = false;
+                    $scope.run = false;
                     $window.location.href = "/";
                 } else {
                     $timeout(updateCountdown, 1000);
@@ -359,7 +359,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
                 $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
             }
             $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
-            // $scope.cancelOrder($scope.order.id);
+            $scope.cancelOrder($scope.order.id);
         }
     });
 
@@ -370,7 +370,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         if (currentPath.indexOf('/order/bill') !== -1) {
             // Đường dẫn chứa chuỗi con
             if (!$scope.selectedSeats2.length) {
-                // $window.location.href = "/";
+                $window.location.href = "/";
             }
             $scope.seatHoding();
         } else {
