@@ -1,6 +1,6 @@
 var app = angular.module("myApp", ["ngRoute"]);
 
-app.controller('username-ctrl', function($scope, $window) {
+app.controller('username-ctrl', function ($scope, $window) {
     // Lấy tên từ session.name
     var name = $(".getname").text();
     // alert(name)
@@ -12,96 +12,96 @@ app.controller('username-ctrl', function($scope, $window) {
 
 });
 
-app.controller("forgot-ctrl", function($scope){
+app.controller("forgot-ctrl", function ($scope) {
     $scope.btn = true;
     var message = $("#message").text();
     var error = $("#error").text();
     // alert("hello");
-    if(message){
+    if (message) {
         Swal.fire({
             icon: "success",
             title: message,
             theme: 'bootstrap 4',
-            
+
         });
     }
 
-    if(error){
+    if (error) {
         Swal.fire({
             icon: "error",
             title: error,
             theme: 'bootstrap 4',
-            
+
         });
     }
 
-    $scope.checkInput = function() {
-        if($scope.password && $scope.confirmPassword){
-            
-            if($scope.password == $scope.confirmPassword){
+    $scope.checkInput = function () {
+        if ($scope.password && $scope.confirmPassword) {
+
+            if ($scope.password == $scope.confirmPassword) {
                 $scope.btn = false;
-                $scope.error =  "";
-            }else{
+                $scope.error = "";
+            } else {
                 $scope.error = "Xác nhận mật khẩu chưa đúng!"
                 $scope.btn = true;
             }
-        }else{
+        } else {
             $scope.error = "Nhập đầy đủ mật khẩu và xác nhận!"
             $scope.btn = true;
         }
     }
-    
+
 })
 
-app.controller("reset-ctrl", function($scope){
+app.controller("reset-ctrl", function ($scope) {
     $scope.btn = true;
     var message = $("#message").text();
     // alert("hello");
-    if(message){
+    if (message) {
         Swal.fire({
             icon: "success",
             title: message,
             theme: 'bootstrap 4',
-            willClose: function () {               
+            willClose: function () {
                 window.location.href = '/';
             }
         });
     }
 
-    $scope.checkInput = function() {
-        if($scope.password && $scope.confirmPassword){
-            
-            if($scope.password == $scope.confirmPassword){
+    $scope.checkInput = function () {
+        if ($scope.password && $scope.confirmPassword) {
+
+            if ($scope.password == $scope.confirmPassword) {
                 $scope.btn = false;
-                $scope.error =  "";
-            }else{
+                $scope.error = "";
+            } else {
                 $scope.error = "Xác nhận mật khẩu chưa đúng!"
                 $scope.btn = true;
             }
-        }else{
+        } else {
             $scope.error = "Nhập đầy đủ mật khẩu và xác nhận!"
             $scope.btn = true;
         }
     }
-    
+
 })
 
-app.controller("movie-ctrl", function($scope, $http) {
+app.controller("movie-ctrl", function ($scope, $http) {
     $scope.items = [];
     $scope.cates = [];
 
 
-    $scope.initialize = function() {
+    $scope.initialize = function () {
         //load products
         $http.get("/rest/movies").then(resp => {
-                $scope.items = resp.data;
-                $scope.items.forEach(item => {
+            $scope.items = resp.data;
+            $scope.items.forEach(item => {
 
-                });
-            }).catch(error => {
-                console.error("Error: " + error)
-            })
-            //load categories
+            });
+        }).catch(error => {
+            console.error("Error: " + error)
+        })
+        //load categories
         $http.get("/rest/categories").then(resp => {
             $scope.cates = resp.data;
         });
@@ -144,10 +144,10 @@ app.controller("movie-ctrl", function($scope, $http) {
         }
     }
 });
-app.controller("register-ctrl", function($scope) {
+app.controller("register-ctrl", function ($scope) {
     $scope.isDisabled = true; // Mặc định nút sẽ bị vô hiệu hóa
 
-    $scope.checkInput = function() {
+    $scope.checkInput = function () {
         // Kiểm tra tất cả các trường input
         if ($scope.name && $scope.address && $scope.username && $scope.phone &&
             $scope.email && $scope.password && $scope.confirmPassword) {
@@ -158,10 +158,10 @@ app.controller("register-ctrl", function($scope) {
         }
     };
 });
-app.controller("login-ctrl", function($scope) {
+app.controller("login-ctrl", function ($scope) {
     $scope.isDisabled = true; // Mặc định nút sẽ bị vô hiệu hóa
 
-    $scope.checkInput = function() {
+    $scope.checkInput = function () {
         // Kiểm tra tất cả các trường input
         if ($scope.username && $scope.password) {
             $scope.isDisabled = false; // Bật nút "Đăng ký"
@@ -172,23 +172,47 @@ app.controller("login-ctrl", function($scope) {
     };
 });
 
-app.controller("ticketSelectCtrl", function($scope, $http, $window) {
+app.controller("ticketSelectCtrl", function ($scope, $http, $window) {
     $scope.tickets = [];
     $scope.dayInWeek = [];
+    $scope.week = [];
     var movieId = $('#Mid').text();
 
-    $scope.set7Day = function() {
+    $scope.set7Day = function () {
         moment.locale('vi');
         var today = moment();
 
         $scope.dayInWeek.push(capitalizeFirstLetter("Hôm nay, " + today.format("DD/MM/YYYY")));
+
+
 
         for (var i = 1; i <= 6; i++) {
             today.add(1, 'days');
             $scope.dayInWeek.push(capitalizeFirstLetter(today.format("dddd, DD/MM/YYYY")));
         }
 
-        console.log("day in week: ", $scope.dayInWeek);
+        $scope.dayInWeek = $scope.dayInWeek.map(day => {
+            var dateParts = day.split(", ")[1].split("/");
+            var momentDate = moment({
+                year: parseInt(dateParts[2]),
+                month: parseInt(dateParts[1]) - 1,
+                day: parseInt(dateParts[0])
+            });
+
+            var ticketIndex = $scope.tickets.findIndex(ticket => ticket.date == momentDate.format("YYYY-MM-DD"));
+
+            console.log("ticketIndex: ", ticketIndex);
+
+            console.log("momentDate: ", momentDate.format("YYYY-MM-DD"));
+
+            return {
+                date: day,
+                hasShowtime: ticketIndex !== -1
+            };
+        });
+        console.log("Tickets : ", $scope.tickets);
+
+        console.log("Day in week: ", $scope.dayInWeek);
 
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
@@ -196,30 +220,69 @@ app.controller("ticketSelectCtrl", function($scope, $http, $window) {
     }
 
 
-    $scope.initialize = function() {
+    $scope.initialize = function () {
         $http.get("/rest/tickets/getTicketByMovie/" + movieId).then(resp => {
             $scope.tickets = resp.data;
             console.log("tickets: ", $scope.tickets);
+            $scope.set7Day();
         }).catch(error => {
             console.log(error);
         })
 
-        $scope.set7Day();
-    }
-    $scope.initialize();
 
-    $scope.findTime = function(day) {
+
+        // $scope.findDayHaveShowtime();
+    }
+
+
+
+    // $scope.findDayHaveShowtime = function () {
+    //     var days = angular.copy($scope.dayInWeek);
+
+    //     days.forEach(day => {
+    //         // Tách lấy phần ngày tháng năm từ chuỗi
+    //         var dateParts = day.split(", ")[1].split("/");
+
+    //         // Tạo đối tượng moment từ các phần tử ngày, tháng, năm
+    //         var momentDate = moment({
+    //             year: parseInt(dateParts[2]),
+    //             month: parseInt(dateParts[1]) - 1, // Tháng trong moment bắt đầu từ 0
+    //             day: parseInt(dateParts[0])
+    //         });
+
+    //         // Kiểm tra tính hợp lệ của ngày
+    //         if (momentDate.isValid()) {
+
+
+    //             $scope.week.push(momentDate.format("MM-DD-YYYY"));
+    //         } else {
+    //             console.error("Invalid date format:", day);
+    //         }
+    //     });
+
+    //     console.log("days: ", days);
+    //     console.log("week: ", $scope.week);
+    // }
+
+    $scope.initialize();
+    console.log("tickets2: ", $scope.tickets);
+    $scope.findTime = function (day) {
         $scope.time = [];
 
         var formattedDay = moment(day, "dddd, DD/MM/YYYY").format("MM-DD-YYYY");
 
-        $http.get(`/rest/tickets/findTicketByMovieAndDate/${movieId}/${formattedDay}`).then(resp => {
-            $scope.time = resp.data;
-            console.log("showtime: ", $scope.time);
-        }).catch(error => {
-            console.log(error);
-        })
+        if (day !== "") {
+            $http.get(`/rest/tickets/findTicketByMovieAndDate/${movieId}/${formattedDay}`).then(resp => {
+                $scope.time = resp.data;
+                console.log("showtime: ", $scope.time);
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+
     }
+
+
 
 });
 
@@ -238,7 +301,7 @@ app.controller("ticketSelectCtrl", function($scope, $http, $window) {
 //     });
 //   });
 
-app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $location, $timeout) {
+app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $location, $timeout) {
     $scope.showtimes = [];
     $scope.selectedShowtime = "";
     $scope.perform = {};
@@ -292,7 +355,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
     $scope.selectedSeats2 = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
 
     //Hiển thị thông báo
-    $scope.sweetAlert = function(icon, message) {
+    $scope.sweetAlert = function (icon, message) {
         Swal.fire({
             icon: icon,
             title: message,
@@ -300,12 +363,22 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         });
     }
 
+    $scope.sweetAlert2 = function(icon, message, href){
+        Swal.fire({
+            icon: icon,
+            title: message,
+            theme: 'bootstrap 4',
+            willClose: function () {
+                window.location.href = href;
+            }
+        });
+    }
 
     var ticketId = $('#Tid').text();
 
     console.log("tid: ", ticketId);
 
-    $scope.seatHoding = function() {
+    $scope.seatHoding = function () {
 
         $scope.countdown = {
             minutes: 5,
@@ -314,7 +387,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
         var totalSeconds = $scope.countdown.minutes * 60 + $scope.countdown.seconds;
 
-        updateCountdown = function() {
+        updateCountdown = function () {
             if ($scope.run) {
                 totalSeconds--;
 
@@ -324,10 +397,11 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
                 if (totalSeconds <= 0) {
                     $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
                     $scope.cancelOrder($scope.order.id);
-                    $scope.sweetAlert("info", "Đã hết thời gian giữ ghế!");
-
                     $scope.run = false;
-                    $window.location.href = "/";
+                    $scope.sweetAlert2("info", "Đã hết thời gian giữ ghế!", "/")
+
+                    
+                    // $window.location.href = "/";
                 } else {
                     $timeout(updateCountdown, 1000);
                 }
@@ -335,7 +409,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         };
 
         var timeout = $timeout(updateCountdown, 1000);
-        $scope.$on('$destroy', function() {
+        $scope.$on('$destroy', function () {
             // Ensure that the timeout is cleared when the controller is destroyed
             $timeout.cancel(timeout);
         });
@@ -343,9 +417,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
 
 
-
-
-    $(window).on('beforeunload', function() {
+    $(window).on('beforeunload', function () {
         // Thực hiện các công việc cần thiết trước khi chuyển trang
         // console.log('Trước khi chuyển trang...');
         // if($scope.run){
@@ -363,7 +435,9 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         }
     });
 
-    $scope.initialize = function() {
+
+
+    $scope.initialize = function () {
 
         $scope.run = true;
         var currentPath = window.location.pathname;
@@ -396,7 +470,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
         var promise = $http.get("/rest/tickets/" + ticketId);
 
-        promise.then(function(resp) {
+        promise.then(function (resp) {
 
 
 
@@ -437,7 +511,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
 
             console.log("test: ", $scope.ticket);
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.error("Error: " + error)
         })
 
@@ -456,7 +530,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
 
     var limit = 0;
-    $scope.toggleSeat = function(seat) {
+    $scope.toggleSeat = function (seat) {
         if ($scope.isSeatAvailable(seat)) {
             if (limit < 8) {
                 $scope.selectedSeats.push(seat);
@@ -478,24 +552,24 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
 
 
-    $scope.isSeatAvailable = function(seat) {
+    $scope.isSeatAvailable = function (seat) {
         return $scope.selectedSeats.indexOf(seat) === -1;
     };
 
-    $scope.isSeatSelected = function(seat) {
+    $scope.isSeatSelected = function (seat) {
         return $scope.selectedSeats.indexOf(seat) !== -1;
     };
 
-    $scope.isSeatOrdered = function(seat) {
+    $scope.isSeatOrdered = function (seat) {
         return $scope.orderedSeats.some(orderedSeat => orderedSeat.name === seat);
     };
 
-    $scope.isSeatChoosing = function(seat) {
+    $scope.isSeatChoosing = function (seat) {
         $scope.choosing = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
         return $scope.choosing.some(orderedSeat => orderedSeat.name === seat);
     };
 
-    $scope.goBack = function() {
+    $scope.goBack = function () {
         $scope.selectedSeats = [];
         limit = 0
         $scope.availableSeats = $scope.rows.length * $scope.columns.length - $scope.orderedSeats.length;
@@ -503,7 +577,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
     };
 
-    $scope.cancelOrder = function(orderId) {
+    $scope.cancelOrder = function (orderId) {
         if (orderId !== null) {
             $http.delete("/rest/orders/" + orderId).then(resp => {
                 console.log("xoa thanh cong " + orderId);
@@ -517,7 +591,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
     }
     $scope.initialize();
-    $scope.goToPayment = function() {
+    $scope.goToPayment = function () {
         if ($scope.selectedSeats.length === 0) {
             $scope.sweetAlert("info", "Vui lòng chọn ít nhất 1 ghế để tiếp tục!")
         } else {
@@ -575,9 +649,9 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
         }
     }
-    $scope.checkboxChanged = function() {
+    $scope.checkboxChanged = function () {
         if (!$scope.showTable) {
-            // Nếu checkbox được hủy chọn, đặt quantity của mỗi item trong foods thành 0
+            $scope.foodTotalPrice = 0;
             $scope.foods.forEach(item => {
                 item.quantity = 0;
             });
@@ -585,8 +659,8 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
     };
 
 
-    $scope.test = function() {
-        var item = $scope.foods.filter(function(item) {
+    $scope.test = function () {
+        var item = $scope.foods.filter(function (item) {
             return item.quantity >= 1;
         });
         $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
@@ -594,21 +668,21 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         console.log("order: ", $scope.order);
 
         item.forEach(i => {
-                var orderFood = {
-                    food: i,
-                    quantity: i.quantity,
-                    order: $scope.order
-                }
-                $http.post("/rest/foods", orderFood).then(resp => {
+            var orderFood = {
+                food: i,
+                quantity: i.quantity,
+                order: $scope.order
+            }
+            $http.post("/rest/foods", orderFood).then(resp => {
 
-                }).catch(error => {
-                    console.log(error);
-                })
+            }).catch(error => {
+                console.log(error);
             })
-            // $http.post("/rest/foods")
+        })
+        // $http.post("/rest/foods")
     }
 
-    $scope.back = function() {
+    $scope.back = function () {
         $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
         $scope.cancelOrder($scope.order.id);
 
@@ -621,7 +695,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
     //     return storedSeats ? JSON.parse(storedSeats) : [];
     // }
 
-    $scope.openVNPay = function(price) {
+    $scope.openVNPay = function (price) {
         // $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
         // $window.localStorage.setItem("order", JSON.stringify({}));
         $scope.run = false;
@@ -629,17 +703,19 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
     }
 
-    $scope.foodPrice = function() {
+    $scope.foodPrice = function () {
         $scope.foodTotalPrice = 0;
         $scope.foods.forEach(i => {
             $scope.foodTotalPrice += i.quantity * i.price;
         })
 
+
+
     }
 
-    $scope.continueBooking = function() {
+    $scope.continueBooking = function () {
 
-        var item = $scope.foods.filter(function(item) {
+        var item = $scope.foods.filter(function (item) {
             return item.quantity >= 1;
         });
         $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
@@ -650,11 +726,11 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
         item.forEach(i => {
             var orderFood = {
-                    food: i,
-                    quantity: i.quantity,
-                    order: $scope.order
-                }
-                // 
+                food: i,
+                quantity: i.quantity,
+                order: $scope.order
+            }
+            // 
 
             $http.post("/rest/foods", orderFood).then(resp => {
 
@@ -670,10 +746,10 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
         $window.localStorage.setItem("order", JSON.stringify({}));
         // alert($scope.selectedSeats[1])
         $scope.sweetAlert("success", "Đặt ghế thành công!")
-            // }).catch(error => {
-            //     console.log(error);
-            //     $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
-            // })
+        // }).catch(error => {
+        //     console.log(error);
+        //     $scope.sweetAlert("success", "Đặt ghế thất bại do lỗi!")
+        // })
 
 
 
@@ -682,8 +758,8 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
     function generateSeats(rows, columns) {
         var seats = [];
-        rows.forEach(function(row) {
-            columns.forEach(function(column) {
+        rows.forEach(function (row) {
+            columns.forEach(function (column) {
                 seats.push(column + row);
             });
         });
@@ -691,7 +767,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
     }
 });
 
-app.controller('username-ctrl', function($scope, $window) {
+app.controller('username-ctrl', function ($scope, $window) {
     // Lấy tên từ session.name
     var username = $(".getusername").text();
     // alert(name)
@@ -701,7 +777,7 @@ app.controller('username-ctrl', function($scope, $window) {
 
 
 
-app.config(function($routeProvider) {
+app.config(function ($routeProvider) {
     $routeProvider
         .when("/information_management", {
             templateUrl: "/user/information_management/information_management.html",
@@ -724,24 +800,24 @@ app.config(function($routeProvider) {
 
 
 
-app.controller('MovieController', function($scope, $http) {
+app.controller('MovieController', function ($scope, $http) {
     // Khởi tạo biến và hàm
     $scope.displayedResults = [];
     $scope.showSearch = false;
     $scope.initialLoadCompleted = false; // Cờ xác định khi trang được tải lần đầu
 
     // Kiểm tra khi trang được tải lại
-    angular.element(document).ready(function() {
+    angular.element(document).ready(function () {
         $scope.initialLoadCompleted = true; // Đánh dấu khi trang đã tải xong
         $scope.showSearch = false; // Ẩn kết quả khi trang được tải lại
     });
 
     // Hàm tìm kiếm phim
-    $scope.search = function() {
+    $scope.search = function () {
         const query = $scope.searchInput;
         if (query && query.length > 0) {
             $http.get(`/rest/movies/findMovieByName/${query}`)
-                .then(function(resp) {
+                .then(function (resp) {
                     $scope.searchResults = resp.data;
                     $scope.displayResults($scope.searchResults);
                     $scope.showSearch = true;
@@ -749,7 +825,7 @@ app.controller('MovieController', function($scope, $http) {
                     // Hiển thị kết quả khi có dữ liệu
                     $scope.showSearchResults();
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     console.error('Lỗi:', error);
                 });
         } else {
@@ -759,21 +835,21 @@ app.controller('MovieController', function($scope, $http) {
             $scope.hideSearchResults();
         }
     };
-    
+
     // Hàm ẩn kết quả tìm kiếm
-    $scope.hideSearchResults = function() {
+    $scope.hideSearchResults = function () {
         document.getElementById('searchResults').style.display = 'none';
     };
-    
+
     // Hàm hiển thị kết quả tìm kiếm
-    $scope.showSearchResults = function() {
+    $scope.showSearchResults = function () {
         document.getElementById('searchResults').style.display = 'block';
     };
 
     // Hàm định dạng kết quả
-    $scope.displayResults = function(results) {
+    $scope.displayResults = function (results) {
         var formattedResults = [];
-        results.forEach(function(movie) {
+        results.forEach(function (movie) {
             var formattedMovie = {
                 name: movie.name,
                 poster: movie.poster,
@@ -786,7 +862,7 @@ app.controller('MovieController', function($scope, $http) {
     };
 
     // Ẩn kết quả khi click bên ngoài
-    $scope.hideSearch = function() {
+    $scope.hideSearch = function () {
         $scope.showSearch = false;
     };
 });
