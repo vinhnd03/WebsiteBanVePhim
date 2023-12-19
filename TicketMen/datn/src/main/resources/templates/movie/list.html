@@ -138,58 +138,12 @@
 
                     </div>
 
-<<<<<<< HEAD
-                </div>
-              </div>
-            </div>
-          </div>
-        </ul>
-      </div>
-
-
-
-      <!--PHIM ĐANG CHIẾU-->
-      <div class="tab-pane fade active show in" id="tinDienAnh" role="tabpanel" aria-labelledby="tinDienAnh-tab">
-        <ul class="list-group">
-          <div class="container-fluid">
-            <div>
-              <div class="row ">
-                <div class="col-3"th:each="movie : ${items}" >
-                  
-                  <div class="boder">
-                    <div style="height: 5px;"></div>
-                    <div style="margin: 3%;" class="anh">
-                      <a th:href="@{|/movie/detail/${movie.id}|}">
-                          <img th:src="@{|/image/upload/${movie.poster}|}" alt="" width="90%" height="320px" style="margin: 5%;">
-                          <img th:src="@{|/image/video.png|}" class="video-icon">
-                      </a>
-                  </div>
-                    <div style="margin-top: 2%; margin-left: 5%;margin-right: 5%;" class="text-center">
-                      <a class="card-title1" th:src="@{|/image/${movie.poster}|}"><h4><strong th:text="${movie.name}" >QUỶ ÁM (T18)</strong></h4></a>
-                    </div>
-                    <div style="height: 5px;"></div>
-=======
->>>>>>> c01bcc659d84e7d7eb106a2946293462178d105e
                   </div>
                 </div>
               </div>
             </div>
           </ul>
-          <div class="card-footer1 text-center">
-            <button ng-click="pager.first()" class="btn btn-primary">
-              <i class="fa fa-backward" aria-hidden="true"></i>
-            </button>
-            <button ng-click="pager.prev()" class="btn btn-primary">
-              <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </button>
-            <button class="btn btn-default">{{pager.page + 1}} of {{pager.count}}</button>
-            <button ng-click="pager.next()" class="btn btn-primary">
-              <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </button>
-            <button ng-click="pager.last()" class="btn btn-primary">
-              <i class="fa fa-forward" aria-hidden="true"></i>
-            </button>
-          </div>
+     
         </div>
 
 
@@ -223,21 +177,18 @@
               </div>
             </div>
           </ul>
-          <div class="card-footer1 text-center">
-            <button ng-click="pager.first()" class="btn btn-primary">
-              <i class="fa fa-backward" aria-hidden="true"></i>
-            </button>
-            <button ng-click="pager.prev()" class="btn btn-primary">
-              <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </button>
-            <button class="btn btn-default">{{pager.page + 1}} of {{pager.count}}</button>
-            <button ng-click="pager.next()" class="btn btn-primary">
-              <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </button>
-            <button ng-click="pager.last()" class="btn btn-primary">
-              <i class="fa fa-forward" aria-hidden="true"></i>
-            </button>
-          </div>
+          <div th:if="${totalPages > 1}">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li th:each="pageNumber : ${#numbers.sequence(0, totalPages - 1)}">
+                        <a th:href="@{'/movie/list?cid=' + ${cid.orElse(null)}&page=' + ${pageNumber}}"
+                           th:class="${pageNumber == currentPage ? 'page-item active' : 'page-item'}">
+                            <span th:text="${pageNumber + 1}" class="page-link"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
           <div class="tab-content mt-3">
             <div class="tab-pane fade" id="tuyenDung" role="tabpanel" aria-labelledby="tuyenDung-tab">
               <ul class="list-group">

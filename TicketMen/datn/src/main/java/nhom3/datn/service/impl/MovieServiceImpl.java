@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.MovieDao;
@@ -103,6 +105,18 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<String> searchTimeByDate(String date, Long id) {
         return mdao.findTimeByDate(date, id);
+    }
+
+    @Override
+    public Page<Movie> findByCategoryIdPaged(Integer integer, PageRequest of) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByCategoryIdPaged'");
+    }
+
+    @Override
+    public Page<Movie> findAllPaged(PageRequest of) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findAllPaged'");
     }
 
 
