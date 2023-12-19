@@ -888,6 +888,11 @@ h1 {
     background: #59dbff;
 }
 
+.seat.hold {
+    background-color: gray;
+    pointer-events: none;
+}
+
 .seat.booked {
     background-color: #e74c3c;
     /* Màu ghế đã đặt */

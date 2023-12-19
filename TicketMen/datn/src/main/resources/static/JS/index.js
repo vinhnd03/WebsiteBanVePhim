@@ -13,39 +13,52 @@ app.controller('username-ctrl', function ($scope, $window) {
 });
 
 
-app.controller("fastOrder-ctrl", function($scope,$http){
+app.controller("fastOrder-ctrl", function ($scope, $http) {
     $scope.items = [];
     $scope.ticket = [];
     $scope.time = [];
 
     $scope.initialize = function () {
-        $http.get("/rest/movies/findMovieWithTodayAndFutureTicket" ).then(resp => {
+        $http.get("/rest/movies/findMovieWithTodayAndFutureTicket").then(resp => {
             $scope.items = resp.data;
-            
-        });
-        
-    }
-    $scope.initialize ();
-    
 
-    $scope.findDay = function(mId) {
+        });
+
+    }
+    $scope.initialize();
+
+
+    $scope.findDay = function (mId) {
+        if (mId) {
             $http.get("/rest/movies/findByTicketFutureMovieId/" + mId).then(resp => {
                 $scope.ticket = resp.data;
-                
-            });
-            
-    }
-    $scope.findTime = function(date,tId) {
-        console.log("test: " ,date,tId);
-        $http.get(`/rest/movies/findTimeByDate/${date}/${tId}`).then(resp => {
-            $scope.time = resp.data;
-            console.log($scope.time);
-        });
-}
 
+            });
+        } else {
+            $scope.ticket = []
+            $scope.time = []
+        }
+    }
+    $scope.findTime = function (date, tId) {
+        console.log("test: ", date, tId);
+        if (date && tId) {
+            $http.get(`/rest/movies/findTimeByDate/${date}/${tId}`).then(resp => {
+                $scope.time = resp.data;
+                console.log($scope.time);
+            });
+        } else {
+            $scope.time = [];
+        }
+
+
+    }
+
+    $scope.goToSelect = function (ticketId) {
+        window.location.href = "/order/select/" + ticketId;
+    }
 })
 
-app.controller("forgot-ctrl", function($scope){
+app.controller("forgot-ctrl", function ($scope) {
     $scope.btn = true;
     var message = $("#message").text();
     var error = $("#error").text();
@@ -595,6 +608,14 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
         return $scope.orderedSeats.some(orderedSeat => orderedSeat.name === seat);
     };
 
+    $scope.holding = [
+        "C1", "D1", "E1"
+    ]
+    $scope.isHolding = function (seat) {
+        // return $scope.holding.some(orderedSeat => orderedSeat.name === seat);
+        return $scope.holding.indexOf(seat) !== -1;
+    };
+
     $scope.isSeatChoosing = function (seat) {
         $scope.choosing = JSON.parse($window.localStorage.getItem("selectedSeats")) || [];
         return $scope.choosing.some(orderedSeat => orderedSeat.name === seat);
@@ -633,9 +654,8 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
             console.log("test124: ", $scope.orderId);
             // $window.localStorage.setItem("orderId", JSON.stringify(""));
         }
-       
-
     }
+
     $scope.initialize();
     $scope.goToPayment = function () {
         if ($scope.selectedSeats.length === 0) {
@@ -747,29 +767,42 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
     // }
     $scope.openVNPay = function (price) {
 
+        var item = $scope.foods.filter(function (item) {
+            return item.quantity >= 1;
+        });
+        $scope.order = JSON.parse($window.localStorage.getItem("order")) || {};
+        // console.log("item: ", item);
+        // console.log("order: ", $scope.order);
 
+
+
+        item.forEach(i => {
+            var orderFood = {
+                food: i,
+                quantity: i.quantity,
+                order: $scope.order
+            }
+            // 
+
+            $http.post("/rest/foods", orderFood).then(resp => {
+
+            }).catch(error => {
+                console.log(error);
+            })
+        })
 
         $window.localStorage.setItem("order", JSON.stringify({}));
         $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
         // $scope.toVNPay = true;
         $scope.run = false;
         $window.location.href = "/pay/" + price;
-
-
-
     }
-
-
-
 
     $scope.foodPrice = function () {
         $scope.foodTotalPrice = 0;
         $scope.foods.forEach(i => {
             $scope.foodTotalPrice += i.quantity * i.price;
         })
-
-
-
     }
 
     $scope.continueBooking = function () {

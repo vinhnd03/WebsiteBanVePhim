@@ -51,8 +51,8 @@ public interface MovieDao extends JpaRepository<Movie, Long> {
            "WHERE T.movie.id = ?1 AND  CONVERT(DATE, T.date) >= CONVERT(DATE, CURRENT_TIMESTAMP)")
     List<Ticket> findByTicketFutureMovieId(Long id);
 
-
-       @Query("SELECT T FROM Ticket T WHERE T.date = :date And T.movie.id = :movieId and  CONVERT(DATE, T.date) >= CONVERT(DATE, CURRENT_TIMESTAMP)")
+       //and CONVERT(DATE, T.date) >= CONVERT(DATE, CURRENT_TIMESTAMP)
+       @Query("SELECT T FROM Ticket T WHERE T.date = :date And T.movie.id = :movieId ")
        List<String> findTimeByDate(@Param("date") String date, @Param("movieId") Long id);
 }
  
