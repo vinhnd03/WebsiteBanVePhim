@@ -72,13 +72,13 @@ public class AccountServiceImpl implements AccountService{
         }
 
         @Override
-<<<<<<< HEAD
         public List<Account> findAllUser() {
             // TODO Auto-generated method stub
             return dao.getUser();
-=======
+        }
+
+        @Override
         public Optional <Account> findByToken(String token) {
             return dao.findByToken(token);
->>>>>>> c01bcc659d84e7d7eb106a2946293462178d105e
         }
 }
