@@ -3,7 +3,8 @@ app = angular.module("admin-app", ["ngRoute"]);
 app.config(function($routeProvider){
     $routeProvider
         .when("/", {
-            templateUrl: "/Admin/home/index.html", // Template cho trang chính
+            templateUrl: "/Admin/home/index.html",
+            controller: "home-ctrl" // Template cho trang chính
         })
         .when("/product", {
             templateUrl: "/admin/product/index.html",
@@ -38,6 +39,10 @@ app.config(function($routeProvider){
         .when("/ticket", {
             templateUrl: "/admin/Ticket/index.html",
             controller: "ticket-ctrl"
+        })
+        .when("/home", {
+            templateUrl: "/admin/home/index.html",
+            controller: "home-ctrl"
         })
         .otherwise({
             template: "<h1 class='text-center'>FPT Polytechnic Adminitration</h1>"
