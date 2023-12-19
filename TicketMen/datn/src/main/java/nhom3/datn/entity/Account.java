@@ -36,5 +36,5 @@ public class Account implements Serializable{
     @OneToMany(mappedBy = "account")
     List<Order> orders;
     
-    String img;
+    // String img;
 }
