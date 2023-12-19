@@ -87,7 +87,7 @@ app.controller("accounts-ctrl", function ($scope, $http, $location) {
         });
     }
 
-    //
+    // check xem đã tồn tại chưa
     $scope.checkUsernameExistence = function (username) {
         // Gửi yêu cầu kiểm tra tài khoản đến server
         $http.get(`/rest/accounts/${username}`).then(resp => {

@@ -72,14 +72,16 @@ app.controller("ticket-ctrl", function ($scope, $http) {
     }
 
     //Thêm sản phẩm mới
+    $scope.showInputError = false;
     $scope.create = function () {
-        if (!$scope.form.price) {
+        if (!$scope.form.price || !$scope.form.price <= 30000)  {
             $scope.showInputError = true;
             $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
             return;
         }
-    
+ 
         $scope.showInputError = false;
+        
 
         var item = angular.copy($scope.form);
         $http.post(`/rest/tickets`, item).then(resp => {
@@ -91,11 +93,23 @@ app.controller("ticket-ctrl", function ($scope, $http) {
         }).catch(error => {
             $scope.sweetAlert("error", "Tạo vé thất bại!");
             console.log("Error", error);
+            
         })
     }
 
     //Cập nhật sản phẩm
+   
     $scope.update = function () {
+
+        if (!$scope.form.price) {
+            $scope.showInputError = true;
+            $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
+            return;
+        }
+    
+        $scope.showInputError = false;
+
+
         var item = angular.copy($scope.form);
         $http.put(`/rest/tickets/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
