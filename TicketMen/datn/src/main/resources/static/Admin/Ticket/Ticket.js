@@ -73,6 +73,14 @@ app.controller("ticket-ctrl", function ($scope, $http) {
 
     //Thêm sản phẩm mới
     $scope.create = function () {
+        if (!$scope.form.price) {
+            $scope.showInputError = true;
+            $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
+            return;
+        }
+    
+        $scope.showInputError = false;
+
         var item = angular.copy($scope.form);
         $http.post(`/rest/tickets`, item).then(resp => {
             resp.data.createDate = new Date(resp.data.createDate)
@@ -129,6 +137,24 @@ app.controller("ticket-ctrl", function ($scope, $http) {
         })
     }
 
+    // Hàm kiểm tra chiều dài ký tự
+    $scope.checkMaxLength = function (value, maxLength) {
+        return value && value.length > maxLength;
+    };
+    $scope.checkMinLength = function (value, minLength) {
+        return value && value.length < minLength;
+    };
+
+    //
+    $scope.getCurrentDate = function () {
+        var currentDate = new Date();
+        var year = currentDate.getFullYear();
+        var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+        var day = currentDate.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+    
+    //
     $scope.pager = {
         page: 0,
         size: 5,

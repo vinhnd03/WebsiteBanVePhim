@@ -55,6 +55,14 @@ app.controller("category-ctrl", function ($scope, $http) {
 
     //Thêm sản phẩm mới
     $scope.create = function () {
+        if (!$scope.form.name) {
+            $scope.showInputError = true;
+            $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
+            return;
+        }
+    
+        $scope.showInputError = false;
+
         var item = angular.copy($scope.form);
         $http.post(`/rest/categories`, item).then(resp => {
             resp.data.createDate = new Date(resp.data.createDate)
@@ -70,6 +78,14 @@ app.controller("category-ctrl", function ($scope, $http) {
 
     //Cập nhật sản phẩm
     $scope.update = function () {
+        if (!$scope.form.name) {
+            $scope.showInputError = true;
+            $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
+            return;
+        }
+    
+        $scope.showInputError = false;
+
         var item = angular.copy($scope.form);
         $http.put(`/rest/categories/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
@@ -95,6 +111,13 @@ app.controller("category-ctrl", function ($scope, $http) {
         })
     }
 
+    // Hàm kiểm tra chiều dài ký tự
+    $scope.checkMaxLength = function (value, maxLength) {
+        return value && value.length > maxLength;
+    };
+    $scope.checkMinLength = function (value, minLength) {
+        return value && value.length < minLength;
+    };
 
     $scope.pager = {
         page: 0,

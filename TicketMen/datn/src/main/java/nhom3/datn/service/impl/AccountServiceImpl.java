@@ -56,6 +56,11 @@ public class AccountServiceImpl implements AccountService{
             return dao.getStaff();
         }
 
+        // @Override
+        // public List<Account> findAllUser() {
+        //     return dao.getUser();
+        // }
+
         @Override
         public Optional<Account> findAccount(String username) {
             return dao.findById(username);
@@ -64,5 +69,11 @@ public class AccountServiceImpl implements AccountService{
         @Override
         public Optional<Account> findByEmail(String email) {
            return dao.findByEmail(email);
+        }
+
+        @Override
+        public List<Account> findAllUser() {
+            // TODO Auto-generated method stub
+            return dao.getUser();
         }
 }

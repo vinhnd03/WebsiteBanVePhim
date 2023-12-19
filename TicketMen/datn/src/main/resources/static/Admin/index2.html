@@ -68,7 +68,10 @@
           <li id="dash_users">
             <strong><a style="text-decoration: none;" href="#!accounts">Quản lý Nhân Viên</a></strong> 
           </li>
-    
+          <li id="dash_users">
+            <strong><a style="text-decoration: none;" href="#!accountsuser">Quản lý Người Dùng</a></strong> 
+          </li>
+
           <li id="dash_products">
             <strong><a style="text-decoration: none;" href="#!product">Quản lý Phim</a></strong> 
           </li>
@@ -92,8 +95,8 @@
 
       <header ng-controller="menu-ctrl">
         <ul class="dropdown-content" id="user_dropdown" ng-style="isDisplay">
-          <li><a class="indigo-text" href="#!" style="text-decoration: none;">Profile</a></li>
-          <li><a class="indigo-text" href="/security/logoff" style="text-decoration: none;">Logout</a></li>
+          <!-- <li><a class="indigo-text" href="../user/index.html" style="text-decoration: none;">QUẢN LÝ TÀI KHOẢN</a></li> -->
+          <li><a class="indigo-text" href="/security/logoff" style="text-decoration: none;">ĐĂNG XUẤT</a></li>
         </ul>
     
         <nav class="indigo" role="navigation">
@@ -156,6 +159,7 @@
     <script src="/admin/accounts/accounts.js"></script>
     <script src="/admin/ticket/ticket.js"></script>
     <script src="/admin/orders/orders.js"></script>
+    <script src="/admin/accountsuser/accounts.js"></script>
 </body>
 
 </html>

@@ -18,28 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
 import nhom3.datn.entity.Account;
 import nhom3.datn.service.AccountService;
 
+
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/rest/accounts")
-public class AccountRestController {
-    @Autowired
+@RequestMapping("/rest/accountsuser")
+public class AccountUserRestController {
+        @Autowired
     AccountService accountService;
 
+
     @GetMapping
-    public List<Account> getAccounts(@RequestParam("admin") Optional<Boolean> admin){
-        if(admin.orElse(false)){
+    public List<Account> getAccountsUser(@RequestParam("staff") Optional<Boolean> staff){
+        if(staff.orElse(false)){
             return accountService.getAdministrators();
         }
-        return accountService.findAllStaff(); 
+        return accountService.findAllUser(); 
     }
-
-    // @GetMapping
-    // public List<Account> getAccountsUser(@RequestParam("staff") Optional<Boolean> staff){
-    //     if(staff.orElse(false)){
-    //         return accountService.getAdministrators();
-    //     }
-    //     return accountService.findAllUser(); 
-    // }
 
 //  @GetMapping("{id}")
 //     public Account getOne(@PathVariable("id") Long id){
@@ -67,3 +61,5 @@ public class AccountRestController {
         return accountService.findById(id);
     }
 }
+
+
