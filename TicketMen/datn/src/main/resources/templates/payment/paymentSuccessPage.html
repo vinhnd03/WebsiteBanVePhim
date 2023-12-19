@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả Thanh Toán</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #content {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #0a0af8;
+            background-color: #e6e6e6;
+            max-width: 400px;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #009688;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <a th:href="@{/}"><i class="fa-solid fa-house"></i></a>
+        <h1>Kết Quả Thanh Toán</h1>
+        
+        <p>Mã giao dịch: <span th:text="${vnp_TxnRef}"></span></p>
+        <p>Số tiền: <span th:text="${vnp_Amount}"></span> VND</p>
+        <p> Thông tin đơn hàng:  <span th:text="${vnp_OrderInfo}"></span></p>
+        <p>Trạng thái giao dịch: <span>Thành công</span></p>
+        
+       
+    </div>
+</body>
+</html>
+

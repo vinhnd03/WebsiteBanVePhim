@@ -76,7 +76,6 @@ public class AccountServiceImpl implements AccountService{
             // TODO Auto-generated method stub
             return dao.getUser();
         }
-
         @Override
         public Optional <Account> findByToken(String token) {
             return dao.findByToken(token);

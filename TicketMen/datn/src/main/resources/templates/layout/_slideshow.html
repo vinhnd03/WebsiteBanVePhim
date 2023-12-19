@@ -55,7 +55,8 @@
             </li>
 
         </ul>
-        <button class="col-1 btn2 btn" ng-click="goToSelect(selectedMovie2)">ĐẶT VÉ</button>
+        <button class="col-1 btn2 btn" ng-click="goToSelect(selectedMovie2)"
+             ng-disabled="!selectedMovie || !selectedDay || !selectedMovie2" >ĐẶT VÉ</button>
         <div class="col-2"></div>
 
     </div>
