@@ -1,6 +1,6 @@
-app.controller("category-ctrl", function ($scope, $http) {
+app.controller("food-ctrl", function ($scope, $http) {
     $scope.items = [];
-    $scope.cates = [];
+    $scope.food = [];
     $scope.form = {};
 
     $scope.updateBtn = true;
@@ -17,14 +17,14 @@ app.controller("category-ctrl", function ($scope, $http) {
 
     $scope.initialize = function () {
         //load products
-        $http.get("/rest/categories").then(resp => {
+        $http.get("/rest/foods").then(resp => {
             $scope.items = resp.data;            
             $scope.reset();
         });
 
         //load categories
-        $http.get("/rest/categories").then(resp => {
-            $scope.cates = resp.data;
+        $http.get("/rest/foods").then(resp => {
+            $scope.food = resp.data;
         })
 
     }
@@ -55,7 +55,7 @@ app.controller("category-ctrl", function ($scope, $http) {
 
     //Thêm sản phẩm mới
     $scope.create = function () {
-        if (!$scope.form.name) {
+        if (!$scope.form.name || !$scope.form.price) {
             $scope.showInputError = true;
             $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
             return;
@@ -64,7 +64,7 @@ app.controller("category-ctrl", function ($scope, $http) {
         $scope.showInputError = false;
 
         var item = angular.copy($scope.form);
-        $http.post(`/rest/categories`, item).then(resp => {
+        $http.post(`/rest/foods`, item).then(resp => {
             resp.data.createDate = new Date(resp.data.createDate)
             $scope.items.push(resp.data);
             $scope.reset();
@@ -78,7 +78,7 @@ app.controller("category-ctrl", function ($scope, $http) {
 
     //Cập nhật sản phẩm
     $scope.update = function () {
-        if (!$scope.form.name) {
+        if (!$scope.form.name || !$scope.form.price) {
             $scope.showInputError = true;
             $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
             return;
@@ -87,7 +87,7 @@ app.controller("category-ctrl", function ($scope, $http) {
         $scope.showInputError = false;
 
         var item = angular.copy($scope.form);
-        $http.put(`/rest/categories/${item.id}`, item).then(resp => {
+        $http.put(`/rest/foods/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items[index] = item;
             $scope.sweetAlert("success", "Cập nhật thành công!");
@@ -100,7 +100,7 @@ app.controller("category-ctrl", function ($scope, $http) {
     //Xóa sản phẩm
     $scope.delete = function (item) {
 
-        $http.delete(`/rest/categories/${item.id}`).then(resp => {
+        $http.delete(`/rest/foods/${item.id}`).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items.splice(index, 1);
             $scope.reset();
