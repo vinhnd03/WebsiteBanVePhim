@@ -476,8 +476,6 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
         }
     });
 
-
-
     $scope.initialize = function () {
 
 
@@ -554,13 +552,10 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
                 console.log(error);
             })
 
-
             console.log("test: ", $scope.ticket);
         }).catch(function (error) {
             console.error("Error: " + error)
         })
-
-
 
         $http.get("/rest/accounts/" + $scope.username).then(resp => {
             $scope.account = resp.data;
@@ -590,11 +585,6 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
             limit--;
         }
     };
-
-
-
-
-
 
     $scope.isSeatAvailable = function (seat) {
         return $scope.selectedSeats.indexOf(seat) === -1;
@@ -653,6 +643,11 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
             $scope.cancelOrder($scope.orderId);
             console.log("test124: ", $scope.orderId);
             // $window.localStorage.setItem("orderId", JSON.stringify(""));
+        }
+        if(resultValue != "" && resultValue == "00"){
+            $http.post("/rest/mail/sendOrderDetail",  { orderId: $scope.orderId, username: $scope.username}).catch(error => {
+                console.log("Error: ", error);
+            })
         }
     }
 

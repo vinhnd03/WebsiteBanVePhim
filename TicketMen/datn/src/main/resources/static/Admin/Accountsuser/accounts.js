@@ -61,7 +61,7 @@ app.controller("accountsuser-ctrl", function ($scope, $http) {
     function setAuthority(account) {
         var auth = {
             account: $scope.items.find(item => item.username = account),
-            role: $scope.roles.find(ro => ro.id = "STAFF")
+            role: $scope.roles.find(ro => ro.id = "USER")
         }
 
         $http.post(`/rest/authorities`, auth).then(resp => {

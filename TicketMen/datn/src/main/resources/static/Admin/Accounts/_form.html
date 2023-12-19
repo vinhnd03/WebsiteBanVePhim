@@ -116,7 +116,7 @@
         <button ng-click="checkUsernameExistence(form.username)||create()" class="btn" ng-disabled="createBtn">
             <i class="fa fa-plus" aria-hidden="true"></i> Thêm
         </button>
-        <button ng-click="update()" class="btn" ng-disabled="updateBtn">
+        <button ng-click="checkUsernameExistence(form.username)||update()" class="btn" ng-disabled="updateBtn">
             <i class="fa fa-stack-overflow" aria-hidden="true"></i> Cập nhật
         </button>
         <button ng-click="delete(form)" class="btn" ng-disabled="updateBtn">
