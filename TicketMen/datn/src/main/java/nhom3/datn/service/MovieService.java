@@ -5,6 +5,9 @@ package nhom3.datn.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import nhom3.datn.entity.Movie;
 import nhom3.datn.entity.Ticket;
 
@@ -44,6 +47,10 @@ public interface MovieService {
     List<Ticket> searchByTicketFutureMovieId(Long id);
 
     List<String> searchTimeByDate(String date, Long id);
+
+    Page<Movie> findByCategoryIdPaged(Integer integer, PageRequest of);
+
+    Page<Movie> findAllPaged(PageRequest of);
 
 
 
