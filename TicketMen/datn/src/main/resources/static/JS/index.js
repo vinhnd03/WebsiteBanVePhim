@@ -12,7 +12,40 @@ app.controller('username-ctrl', function ($scope, $window) {
 
 });
 
-app.controller("forgot-ctrl", function ($scope) {
+
+app.controller("fastOrder-ctrl", function($scope,$http){
+    $scope.items = [];
+    $scope.ticket = [];
+    $scope.time = [];
+
+    $scope.initialize = function () {
+        $http.get("/rest/movies/findMovieWithTodayAndFutureTicket" ).then(resp => {
+            $scope.items = resp.data;
+            
+        });
+        
+    }
+    $scope.initialize ();
+    
+
+    $scope.findDay = function(mId) {
+            $http.get("/rest/movies/findByTicketFutureMovieId/" + mId).then(resp => {
+                $scope.ticket = resp.data;
+                
+            });
+            
+    }
+    $scope.findTime = function(date,tId) {
+        console.log("test: " ,date,tId);
+        $http.get(`/rest/movies/findTimeByDate/${date}/${tId}`).then(resp => {
+            $scope.time = resp.data;
+            console.log($scope.time);
+        });
+}
+
+})
+
+app.controller("forgot-ctrl", function($scope){
     $scope.btn = true;
     var message = $("#message").text();
     var error = $("#error").text();

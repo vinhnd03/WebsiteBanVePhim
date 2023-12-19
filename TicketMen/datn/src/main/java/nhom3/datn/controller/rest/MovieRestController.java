@@ -4,6 +4,7 @@ package nhom3.datn.controller.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nhom3.datn.entity.Movie;
+import nhom3.datn.entity.Ticket;
 import nhom3.datn.service.MovieService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -56,4 +60,20 @@ public class MovieRestController {
     public List<Movie> getMoviesbynamMovies(@PathVariable("name") String name){
         return movieService.searchMoviesByName(name);
     }
+
+    @GetMapping("/findMovieWithTodayAndFutureTicket")
+    public List<Movie> getMovieWithTodayAndFutureTicket() {
+        return movieService.searchMovieWithTodayAndFutureTicket();
+    }
+
+    @GetMapping("/findByTicketFutureMovieId/{id}")
+    public List<Ticket> getByTicketFutureMovieId(@PathVariable("id")Long id) {
+        return movieService.searchByTicketFutureMovieId(id);
+    }
+    
+    @GetMapping("/findTimeByDate/{date}/{movieId}")
+    public List<String> getTimeByDate(@PathVariable("date") String date,@PathVariable("movieId") Long id) {
+        return movieService.searchTimeByDate(date,id);
+    }
+    
 }
