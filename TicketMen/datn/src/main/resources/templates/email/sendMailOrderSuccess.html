@@ -13,8 +13,8 @@
 
 <body>
 <div dir="ltr" class="es-wrapper-color">
-    <h1>Hello</h1>
-    <!-- <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0">
+    <!-- <h1>Hello</h1> -->
+    <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0">
         <tbody>
         <tr>
             <td class="esd-email-paddings" valign="top">
@@ -74,21 +74,57 @@
                                                     <table cellpadding="0" cellspacing="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="center" class="esd-block-image es-p10t es-p10b" style="font-size: 0px;"><a target="_blank"><img src="https://ab-fabdesigns.com/wp-content/uploads/2021/02/Password-Reset.png" style="display: block;" width="100"></a></td>
+                                                            <td align="center" class="esd-block-image es-p10t es-p10b" style="font-size: 0px;"><a target="_blank"><img src="https://i.ibb.co/F8SCwqV/logo-ticketmen-preview-rev-1.png" alt="logo-ticketmen-preview-rev-1" style="display: block;" width="200"></a></td>
                                                         </tr>
                                                         <tr>
                                                             <td align="center" class="esd-block-text es-p15t es-p15b es-p40r es-p40l es-m-p0r es-m-p0l es-m-txt-c" esd-links-underline="none">
-                                                                <h1>Đặt lại mật khẩu&nbsp;</h1>
+                                                                <h1>Xác nhận thanh toán&nbsp;</h1>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td align="left" class="esd-block-text es-p10t">
-                                                                <p>Sau khi kích và nút dưới, vui lòng làm theo các bước sau:</p>
-                                                                <ol>
-                                                                    <li>Nhập mật khẩu mới.</li>
-                                                                    <li>Nhập lại mật khẩu mới.</li>
-                                                                    <li>Ấn chọn xác nhận.</li>
-                                                                </ol>
+                                                                <p>Bạn vừa hoàn thành giao dịch ở Website TicketMen, đây là thông tin của bạn:</p>
+                                                                <!-- <ul>
+                                                                    <li>Mã đơn hàng: <span><b th:text="${order.id}"></b></span></li>
+                                                                    <li>Phim: <span><b th:text="${detail.ticket.movie.name}"></b></span></li>
+                                                                    <li>Tài khoản thanh toán: <span><b th:text="${username}"></b></span></li>
+                                                                    <li>Tổng tiền: </li>
+                                                                </ul> -->
+
+                                                                <table border="1" style="width: 100%; margin-bottom: 20px; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td>Mã đơn hàng: </td>
+                                                                        <td><b th:text="${order.id}"></b></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Tài khoản thanh toán: </td>
+                                                                        <td><b th:text="${username}"></b></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Phim:</td>
+                                                                        <td><b th:text="${detail.ticket.movie.name}"></b></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Ngày chiếu:</td>
+                                                                        <td><b th:text="${#dates.format(detail.ticket.date, 'dd/MM/yyyy')}"></b></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Giờ chiếu:</td>
+                                                                        <td><b th:text="${#dates.format(detail.ticket.time, 'HH:mm')}"></b></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Phòng chiếu:</td>
+                                                                        <td><b th:text="${detail.ticket.room.name}"></b></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Thức ăn:</td>
+                                                                        <td><b th:each="fo : ${foodOrder}">
+                                                                            <p><span th:text="${fo.food.name}"></span> x<span th:text="${fo.quantity}"></span></p>
+                                                                        </b></td>
+                                                                    </tr>
+                                                                </table>
+
+                                                                
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -109,16 +145,16 @@
                                                         <tbody>
                                                         <tr>
                                                             <td align="center" class="esd-block-button es-p10t es-p10b"><span class="es-button-border" style="border-radius: 6px;">
-                                                                <a th:href="${link}" class="btn es-button" style="background-color: #d14bcf; padding-left: 30px; padding-right: 30px; border-radius: 6px; padding-top: 8px; padding-bottom: 8px; color: white; text-decoration: none;">RESET YOUR PASSWORD</a></span></td>
+                                                                <a th:href="${link}" class="btn es-button" style="background-color: #d14bcf; padding-left: 30px; padding-right: 30px; border-radius: 6px; padding-top: 8px; padding-bottom: 8px; color: white; text-decoration: none;">LỊCH SỬ MUA</a></span></td>
                                                         </tr>
                                                         <tr>
                                                             <td align="center" class="esd-block-text es-p10t es-m-txt-c">
-                                                                <h3 style="line-height: 150%;">Đường dẫn này chỉ sử dụng một lần. Hết hạn trong vòng 2 giờ.</h3>
+                                                                <h3 style="line-height: 150%;">TicketMen xin cảm ơn quý khách, chúc quý khách xem phim vui vẻ.</h3>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td align="center" class="esd-block-text es-p10t es-p10b">
-                                                                <p style="line-height: 150%;">Nếu bạn không yêu cầu đặt lại &nbsp;mật khẩu, vui lòng bỏ qua tin nhắn này hoặc liên hệ với dịch vụ chăm sóc khách hàng của chúng tôi.</p>
+                                                                <p style="line-height: 150%;">Vui lòng giữ lại email này để Check in tại quầy vé.</p>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -199,7 +235,7 @@
             </td>
         </tr>
         </tbody>
-    </table> -->
+    </table>
 </div>
 </body>
 
