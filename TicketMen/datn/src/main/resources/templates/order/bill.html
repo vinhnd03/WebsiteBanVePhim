@@ -90,8 +90,8 @@
                                 <span>{{(selectedSeats2.length * perform.price) + foodTotalPrice | number}} VND</span>
                             </div>
                         </div>
-                        <a class="btn btn-warning" ng-click="back()">Trở về</a>
-                        <a class="btn btn-success" ng-click="continueBooking()">Thanh toán</a>
+                        <!-- <a class="btn btn-warning" ng-click="back()">Trở về</a>
+                        <a class="btn btn-success" ng-click="continueBooking()">Thanh toán</a> -->
                         
                     </div>
 
@@ -227,7 +227,7 @@
                             <button id="quaylai" ng-click="back()">QUAY LẠI</button>
                         </div>
                         <div class="button">
-                            <button id="thanhtoan"><a href="/pay/{{selectedSeats2 .length * perform.price}}">THANH
+                            <button id="thanhtoan"><a ng-click="openVNPay((selectedSeats2.length * perform.price) + foodTotalPrice)">THANH
                                     TOÁN</a></button>
                         </div>
                     </div>

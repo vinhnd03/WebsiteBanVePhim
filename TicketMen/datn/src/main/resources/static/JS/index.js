@@ -317,6 +317,8 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
     $scope.run = false;
     $scope.foods = [];
     $scope.foodTotalPrice = 0;
+    $scope.toVNPay = false;
+    // $scope.orderId = $window.localStorage.getItem("orderId");
     //Timer
     // $scope.countdown = {
     //     minutes: 0,
@@ -363,7 +365,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
         });
     }
 
-    $scope.sweetAlert2 = function(icon, message, href){
+    $scope.sweetAlert2 = function (icon, message, href) {
         Swal.fire({
             icon: icon,
             title: message,
@@ -400,7 +402,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
                     $scope.run = false;
                     $scope.sweetAlert2("info", "Đã hết thời gian giữ ghế!", "/")
 
-                    
+
                     // $window.location.href = "/";
                 } else {
                     $timeout(updateCountdown, 1000);
@@ -418,13 +420,6 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
 
 
     $(window).on('beforeunload', function () {
-        // Thực hiện các công việc cần thiết trước khi chuyển trang
-        // console.log('Trước khi chuyển trang...');
-        // if($scope.run){
-        //     console.log("run: ", $scope.run);
-        //     return "leave?";
-        // }
-
         if ($scope.run) {
             var currentPath = window.location.pathname;
             if (currentPath.indexOf('/order/bill') !== -1) {
@@ -439,7 +434,11 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
 
     $scope.initialize = function () {
 
+
+        $scope.checkResult();
+
         $scope.run = true;
+
         var currentPath = window.location.pathname;
         if (currentPath.indexOf('/order/bill') !== -1) {
             // Đường dẫn chứa chuỗi con
@@ -528,7 +527,6 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
 
     };
 
-
     var limit = 0;
     $scope.toggleSeat = function (seat) {
         if ($scope.isSeatAvailable(seat)) {
@@ -590,6 +588,21 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
 
 
     }
+
+    $scope.checkResult = function () {
+        var resultValue = $('#result').text();
+        console.log("RESULT: ", resultValue);
+        // var currentPath = window.location.pathname;
+
+        $scope.orderId = JSON.parse($window.localStorage.getItem("orderId")) || ""
+        if (resultValue != "" && resultValue != "00") {
+            $scope.cancelOrder($scope.orderId);
+            console.log("test124: ", $scope.orderId);
+            // $window.localStorage.setItem("orderId", JSON.stringify(""));
+        }
+       
+
+    }
     $scope.initialize();
     $scope.goToPayment = function () {
         if ($scope.selectedSeats.length === 0) {
@@ -635,6 +648,11 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
                             console.log("Lỗi khi thêm mới cho ghế", item.seat.name, error);
                         });
                 });
+
+                var order = JSON.parse($window.localStorage.getItem("order")) || {};
+                console.log("orderId: ", order.id);
+                $window.localStorage.setItem("orderId", JSON.stringify(order.id));
+
                 // Chuyển trang ở đây nếu điều kiện được đáp ứng
                 $window.location.href = "/order/bill/" + ticketId;
                 // $scope.seatHoding(true);
@@ -694,14 +712,22 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
     //     var storedSeats = $window.localStorage.getItem("selectedSeats");
     //     return storedSeats ? JSON.parse(storedSeats) : [];
     // }
-
     $scope.openVNPay = function (price) {
-        // $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
-        // $window.localStorage.setItem("order", JSON.stringify({}));
+
+
+
+        $window.localStorage.setItem("order", JSON.stringify({}));
+        $window.localStorage.setItem("selectedSeats", JSON.stringify([]));
+        // $scope.toVNPay = true;
         $scope.run = false;
         $window.location.href = "/pay/" + price;
 
+
+
     }
+
+
+
 
     $scope.foodPrice = function () {
         $scope.foodTotalPrice = 0;
