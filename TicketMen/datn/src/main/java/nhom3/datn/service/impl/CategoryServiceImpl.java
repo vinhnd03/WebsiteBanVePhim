@@ -21,9 +21,9 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
         @Override
-    public Category findById(Integer id) {
+        public Category findById(Integer id) {
         return cdao.findById(id).get();
-    }
+        }
 
         @Override
         public Category create(Category category) {

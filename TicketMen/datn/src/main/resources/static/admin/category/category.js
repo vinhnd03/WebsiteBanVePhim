@@ -106,7 +106,7 @@ app.controller("category-ctrl", function ($scope, $http) {
             $scope.reset();
             $scope.sweetAlert("success", "Xóa thành công!");
         }).catch(error => {
-            $scope.sweetAlert("error", "Xóa thành công!");
+            $scope.sweetAlert("error", "Xóa không thành công!");
             console.log("Error", error);
         })
     }
