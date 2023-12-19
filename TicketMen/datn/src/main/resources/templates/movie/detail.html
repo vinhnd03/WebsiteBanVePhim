@@ -1,4 +1,10 @@
+<style>
+    .has-showtime{
+        color: red;
+    }
+</style>
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+    
     <main>
         <div th:object="${item}">
             <div class="detail-container">
@@ -60,19 +66,17 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="text-center ">
+                        <div class="text-center">
                             <p>Ngày chiếu</p>
-                            <select class="w-50 custom-select" ng-model="selectedDate"
-                                ng-change="findTime(selectedDate)">
+                            <select class="w-50 custom-select" ng-model="selectedDate" ng-change="findTime(selectedDate)">
                                 <option value="" selected>Chọn ngày</option>
-                                <option ng-repeat="d in dayInWeek" value="{{d}}">{{d}}</option>
+                                <option ng-repeat="d in dayInWeek"  ng-class="{ 'has-showtime': d.hasShowtime }" value="{{d}}">{{d.date}}</option>
                             </select>
                             <div class="mt-4">
                                 <a ng-repeat="t in time" class="btn btn-primary mr-5 ticket-button" th:order="ascending"
                                     th:href="@{|/order/select/{{t.id}}|}">{{t.time}}
                                 </a>
                             </div>
-
                         </div>
                     </div>
                     <div class="modal-footer">

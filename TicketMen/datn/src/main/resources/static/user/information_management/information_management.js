@@ -24,6 +24,14 @@
         $scope.items = [];
         $scope.form = {};
 
+        $scope.sweetAlert=function(icon,message){
+            Swal.fire({
+                icon: icon,
+                title: message,
+                theme: 'bootstrap 4',
+            });
+        }
+
     $scope.initialize = function () {
         // Tạo một Promise để đảm bảo cuộc gọi API hoàn thành trước khi truyền dữ liệu vào $scope.user
         var promise = $http.get('/rest/accounts/' + $scope.username);
@@ -47,12 +55,64 @@
         var item = angular.copy($scope.form);
         $http.put(`/rest/accounts/${item.username}`, item).then(resp => {
             $scope.form = resp.data;
-            alert("Cập nhật thông tin thành công");
+            $scope.sweetAlert('success','Cập nhật thông tin thành công');
         }).catch(error => {
-            alert("Lỗi cập nhật thông tin");
-            console.log("Error", error);
+            $scope.sweetAlert('error','Lỗi cập nhật thông tin');
         });
     };
+
+    $scope.checkForm = function() {
+        // Check if the name is provided
+        if (!$scope.form.name) {
+            $scope.error = "Họ và tên không được để trống!";
+            $scope.btn = true;
+            return;
+        }
+
+        // Check if the phone number is provided and valid
+        if (!$scope.form.sdt || !isValidPhoneNumber($scope.form.sdt)) {
+            $scope.error = "Số điện thoại không hợp lệ!";
+            $scope.btn = true;
+            return;
+        }
+
+        // Check if the email is provided and valid
+        if (!$scope.form.email || !isValidEmail($scope.form.email)) {
+            $scope.error = "Email không hợp lệ!";
+            $scope.btn = true;
+            return;
+        }
+
+        // Check if the address is provided
+        if (!$scope.form.address) {
+            $scope.error = "Địa chỉ không được để trống!";
+            $scope.btn = true;
+            return;
+        }
+
+        // You can add more validation checks for other fields if needed
+
+        // If all checks pass, reset error and enable the button
+        $scope.error = "";
+        $scope.btn = false;
+    };
+
+    // Function to validate phone number (you can customize this based on your requirements)
+    function isValidPhoneNumber(phoneNumber) {
+        // Add your phone number validation logic here
+        // For example, you can use a regular expression to check the format
+        // Return true if valid, false otherwise
+        return /^[0-9]{10}$/.test(phoneNumber);
+    }
+
+    // Function to validate email (you can customize this based on your requirements)
+    function isValidEmail(email) {
+        // Add your email validation logic here
+        // For example, you can use a regular expression to check the format
+        // Return true if valid, false otherwise
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
 
     $scope.confirmDelete = function () {
         var confirmPassword = $scope.passwordToDelete;
@@ -65,11 +125,10 @@
             if (confirmDelete) {
                 // Nếu người dùng xác nhận, thực hiện xóa tài khoản
                 $http.delete(`/rest/accounts/${$scope.username}`).then(resp => {
-                    alert("Tài khoản đã được xóa thành công");
+                    $scope.sweetAlert('success','Xóa Tài Khoản Thành Công');
                     $window.location.href = '/security/logoff';
                 }).catch(error => {
-                    alert("Lỗi khi xóa tài khoản");
-                    console.log("Error", error);
+                    $scope.sweetAlert('error','Lỗi');
                 });
             } else {
                 // Người dùng không xác nhận, không thực hiện xóa tài khoản
@@ -77,7 +136,7 @@
             }
         } else {
             // Mật khẩu không hợp lệ, hiển thị thông báo lỗi
-            alert("Mật khẩu không đúng. Vui lòng thử lại.");
+            $scope.sweetAlert('error','Sai mật khẩu');
         }
     };
     $scope.showDeleteForm = false;

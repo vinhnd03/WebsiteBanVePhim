@@ -35,7 +35,7 @@
                     <p>Rạp chiếu: {{perform.room.name}}</p>
                     <p>Suất chiếu: {{perform.time | date : 'h:mm'}}</p>
                     <p>Ngày chiếu: {{perform.date | date : 'dd-MM-yyyy'}}</p>
-                    <p>Tổng giá tiền: {{selectedSeats.length * perform.price}} VNĐ</p>
+                    <p>Tổng giá tiền: {{selectedSeats.length * perform.price | number}} VND</p>
                 </div>
                 <div class="text-center">
                     <button id="back-button" class="btn btn-danger" ng-click="goBack()">Chọn lại</button>

@@ -54,7 +54,7 @@ public class PaymentController {
 
         vnp_Params.put("vnp_BankCode", bankCode);
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-        vnp_Params.put("vnp_OrderInfo", "Thanh Toan Don Hang:" + vnp_TxnRef);
+        vnp_Params.put("vnp_OrderInfo", vnp_TxnRef);
         vnp_Params.put("vnp_OrderType", orderType);
 
         vnp_Params.put("vnp_Locale", "vn");
@@ -101,7 +101,7 @@ public class PaymentController {
 
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl(vnpay);
-
+        
         // Trả về đối tượng ModelAndView với chuyển hướng đã được cấu hình
         return new ModelAndView(redirectView);
     }
@@ -115,6 +115,16 @@ public class PaymentController {
         String vnp_TransactionStatus = request.getParameter("vnp_TransactionStatus");
 
         // Xử lý dữ liệu callback ở đây
+        try {
+            float amount = Float.parseFloat(vnp_Amount);
+            amount /= 100;
+            vnp_Amount = String.valueOf(amount);
+            // Sử dụng giá trị kiểu float 'amount' ở đây
+        } catch (NumberFormatException e) {
+            // Xử lý nếu chuỗi không thể chuyển đổi thành kiểu float
+            e.printStackTrace(); // hoặc thực hiện xử lý khác tùy thuộc vào yêu cầu của bạn
+        }
+        // vnp_Amount /= 100;
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("vnp_ResponseCode", vnp_ResponseCode);
@@ -123,11 +133,13 @@ public class PaymentController {
         modelAndView.addObject("vnp_OrderInfo", vnp_OrderInfo);
         modelAndView.addObject("vnp_TransactionStatus", vnp_TransactionStatus);
 
-        if ("00".equals(vnp_ResponseCode) && "00".equals(vnp_TransactionStatus)) {
-            modelAndView.setViewName("/payment/paymentSuccessPage"); 
-        } else {
-            modelAndView.setViewName("/payment/paymentFailurePage"); 
-        }
+
+        modelAndView.setViewName("/payment/paymentResultPage"); 
+        // if ("00".equals(vnp_ResponseCode) && "00".equals(vnp_TransactionStatus)) {
+        //     modelAndView.setViewName("/payment/paymentSuccessPage"); 
+        // } else {
+        //     modelAndView.setViewName("/payment/paymentFailurePage"); 
+        // }
 
         return modelAndView;
     }

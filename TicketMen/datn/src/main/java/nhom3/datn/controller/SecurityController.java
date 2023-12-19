@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -53,26 +54,26 @@ public class SecurityController {
         return "redirect:/";
     }
 
-    @RequestMapping("/security/forgot")
-    public String forgot(Model model){        
+    @GetMapping("/security/forgot")
+    public String forgot(Model model){     
         return "security/forgot";
     }
 
-    @RequestMapping("/security/sendMail")
-    public String sendEmail(Model model, @RequestParam(name = "emailConfirm", required = false) String email){ 
+    // @RequestMapping("/security/sendMail")
+    // public String sendEmail(Model model, @RequestParam(name = "emailConfirm", required = false) String email){ 
 
-        if (StringUtils.hasText(email)) {
-            Optional<Account> account = accountService.findByEmail(email);
-            if(account.isPresent()){
-                emailService.sendEmail(email, account.get());
-                model.addAttribute("message", "Vui long xac nhan tai khoan trong email");
-                return "/security/forgot";
-            }else{
-                model.addAttribute("message", "Email chua duoc dang ky");
-                return "/security/forgot";
-            }
+    //     if (StringUtils.hasText(email)) {
+    //         Optional<Account> account = accountService.findByEmail(email);
+    //         if(account.isPresent()){
+    //             emailService.sendEmail(email, account.get());
+    //             model.addAttribute("message", "Vui long xac nhan tai khoan trong email");
+    //             return "/security/forgot";
+    //         }else{
+    //             model.addAttribute("message", "Email chua duoc dang ky");
+    //             return "/security/forgot";
+    //         }
             
-		} 
-        return "/security/forgot";       
-    }
+	// 	} 
+    //     return "/security/forgot";       
+    //}
 }

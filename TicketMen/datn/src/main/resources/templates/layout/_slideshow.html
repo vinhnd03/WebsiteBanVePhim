@@ -8,9 +8,9 @@
         overflow-y: overlay;
         max-height: 200px; 
     } */
-    
 </style>
-<div id="carouselExampleIndicators" class="carousel  slide  mt-2" data-ride="carousel" xmlns:th="http://www.thymeleaf.org" >
+<div id="carouselExampleIndicators" class="carousel  slide  mt-2" data-ride="carousel"
+    xmlns:th="http://www.thymeleaf.org" >
     <!-- <div class="movie-slide" >
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -47,79 +47,37 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a> -->
-      <img src="/image/baner4.jpg" alt="" width="100%">
+    <img src="/image/baner4.jpg" alt="" width="100%">
 </div>
-<div class="container-fluid"  >
-    <div class="ticket-buying mt-3 text-center ">
-        <h1 style="color:white;">
-            <i class="fa-solid fa-ticket fa-beat" style="color: #ff6600;"></i>
-            Mua Vé Nhanh
-        </h1>
-    </div>
-    <ul class="justify-content-center row" style="color:aliceblue ;">
-        <ul class="col-3">
-            <li class="nav-item dropdown">
-                <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">
-                            Chọn phim </a>
-
-                    <div class="dropdown-menu menu" >
-                        <a class="nav-link" href="#" align="center">
-                            <div class="detail">
-                                <p>Chọn phim</p>
-                            </div>
-                        </a>
-                        
-                        <a class="dropdown-item" th:each="movie : ${movis}" th:href="@{|/movie/detail/${movie.id}|}">
-                            <div class="detail">
-                                <p style="margin-left: 5%;">[[${movie.name}]]</p>
-                            </div>
-                        </a>
-                    </div>
-                </strong></h4>
-            </li>
+    <div class="container-fluid" ng-controller="fastOrder-ctrl">
+        <div class="ticket-buying mt-3 text-center ">
+            <h1 style="color:black;">
+                <i class="fa-solid fa-ticket fa-beat" style="color: #ff6600;"></i>
+                Mua Vé Nhanh
+            </h1>
+        </div>
+        <ul class="justify-content-center row" style="color:black ;" >
+            <ul class="col-3" style=" margin-right: -6%;">
+                <h4><strong>Chọn Phim</strong></h4> 
+                <select ng-model="selectedMovie" class="form-control" style="width: 80%; " ng-change="findDay(selectedMovie)">
+                    <option ng-repeat="item in items" value="{{item.id}}"><strong>{{item.name}}</strong></option> 
+                </select>
+            </ul>
+            <ul class="col-3" style="margin-right: -13%;">
+                <h4><strong>Chọn Ngày</strong></h4>
+                <select ng-model="selectedDay " class="form-control" style="width: 50%;" ng-change="findTime(selectedDay,selectedMovie)">
+                    <option ng-repeat ="ticket in ticket" value="{{ticket.date }}">{{ticket.date | date : 'EEEE ,dd-MM-yyyy'}}</option>
+                </select>
+            </ul>
+            <ul class="col-3" style="margin-right: -10%;">
+                <h4><strong>Chọn Giờ</strong></h4>
+                <select  ng-model="selectedMovie2" class="form-control" style="width: 50%;">
+                    <option ng-repeat ="time in time">{{time}}</option>
+                </select>
+            </ul>
+            <button style="width: 100px; height: 30px; margin-top: 40px; background-color: rgb(107, 176, 213);"><strong>Đặt Vé</strong></button>
         </ul>
-        <ul class="col-3">
-            <li class="nav-item dropdown">
-                <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">
-                    Chọn ngày </a>
-
-                    <div class="dropdown-menu menu">
-                        <a class="nav-link" href="#" align="center">
-                            <div class="detail">
-                                <p> Chọn ngày</p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="detail">
-                                <p>22-22-2022</p>
-                            </div>
-                        </a>
-                    </div>
-                </strong></h4>
-            </li>
-        </ul>
-        <ul class="col-3">
-            <li class="nav-item dropdown">
-                <h4><strong><a class="nav-link dropdown-toggle btn-chon-phim" data-toggle="dropdown">Chọn
-                            suất chiếu </a>
-
-                    <div class="dropdown-menu menu">
-                        <a class="nav-link" href="#" align="center">
-                            <div class="detail">
-                                <p>  suất chiếu </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="detail">
-                                <p>Xuất chiếu</p>
-                            </div>
-                        </a>
-                    </div>
-                </strong></h4>
-            </li>
-        </ul>
-    </ul>
-    <!-- <ul >
+        <!-- <ul >
         <div class="nav-item dropdown "style="color: aliceblue;width: 20%;margin-left: 40%;">
             <h4 >
                 <strong>
@@ -134,20 +92,20 @@
                 </strong>   
             </h4>
         </div>
-    </ul> -->
+        </ul> -->
 
-</div>
-<script>
-    // JavaScript để thay thế dropdown-toggle khi click vào dropdown-item
-    const dropdownButtons = document.querySelectorAll(".btn-chon-phim");
-    const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+    </div>
+    <script>
+        // JavaScript để thay thế dropdown-toggle khi click vào dropdown-item
+        const dropdownButtons = document.querySelectorAll(".btn-chon-phim");
+        const dropdownMenus = document.querySelectorAll(".dropdown-menu");
 
-    dropdownButtons.forEach((button, index) => {
-        const dropdownItems = dropdownMenus[index].querySelectorAll(".dropdown-item");
-        dropdownItems.forEach(item => {
-            item.addEventListener("click", function() {
-                button.innerText = item.querySelector(".detail p").innerText;
+        dropdownButtons.forEach((button, index) => {
+            const dropdownItems = dropdownMenus[index].querySelectorAll(".dropdown-item");
+            dropdownItems.forEach(item => {
+                item.addEventListener("click", function () {
+                    button.innerText = item.querySelector(".detail p").innerText;
+                });
             });
         });
-    });
-</script>
+    </script>

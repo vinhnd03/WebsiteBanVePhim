@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import nhom3.datn.entity.Movie;
+import nhom3.datn.entity.Ticket;
 
 
 public interface MovieService {
@@ -37,6 +38,15 @@ public interface MovieService {
     List<Movie> findAllAvailable();
 
     Optional<Movie> findById2(Long id);
+
+    List<Movie> searchMovieWithTodayAndFutureTicket();
+
+    List<Ticket> searchByTicketFutureMovieId(Long id);
+
+    List<String> searchTimeByDate(String date, Long id);
+
+
+
    
 
 }
