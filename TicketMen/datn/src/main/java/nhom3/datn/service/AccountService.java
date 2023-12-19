@@ -22,6 +22,8 @@ public interface AccountService {
     void delete(String username);
 
     List<Account> findAllStaff();
+    
+    List<Account> findAllUser();
 
     Optional<Account> findAccount(String username);
 

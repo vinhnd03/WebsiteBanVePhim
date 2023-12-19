@@ -1,47 +1,70 @@
 <div class="card">
     <div class="card-header" style="font-weight: 600; font-size: large; background-color: cornflowerblue; color: white;">
-        TICKET EDITION</div>
+        CẬP NHẬT VÉ</div>
     <div class="card-boby">
         <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-sm-10 mt-3">
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <div style="font-weight: 500;">Movie</div>
+                        <div style="font-weight: 500;">Tên phim</div>
                         <select  ng-model="form.movie.id" class="form-control" style="width: 95%;">
                             <option ng-repeat="v in cates" ng-value="v.id">{{v.name}}</option>
                         </select>
+                        <div class="error-message" ng-show="showInputError && !form.movie.id" style="color: red;">
+                            Tên phim không được để trống !.
+                        </div>
                     </div>
                     <div class="form-group col-sm-6">
-                        <div style="font-weight: 500;">Room</div>
+                        <div style="font-weight: 500;">Phòng chiếu</div>
                         <select  ng-model="form.room.id" class="form-control" style="width: 95%;">
                             <option ng-repeat="r in rooms" ng-value="r.id">{{r.name}}</option>
                         </select>
+                        <div class="error-message" ng-show="showInputError && !form.room.id" style="color: red;">
+                            Phòng chiếu không được để trống !.
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <div style="font-weight: 500;">Price</div>
+                        <div style="font-weight: 500;">Giá vé</div>
                         <input ng-model="form.price" class="form-control" style="width: 95%;">
+                        <div class="error-message" ng-show="showInputError && !form.price" style="color: red;">
+                            Giá vé không được để trống !.
+                        </div>   
+                        <div class="error-message" ng-show="showInputError && checkMinLength(form.price, 5)" style="color: red;">
+                            Nhập ít nhất 5 ký tự !
+                        </div>
+                        <div class="error-message" ng-show="showInputError && checkMaxLength(form.price, 30)" style="color: red;">
+                            Không nhập quá 30 ký tự !
+                        </div>
+                        <div class="error-message" ng-show="showInputError && (form.price < 30000)" style="color: red;">
+                            Giá vé ít nhất là 30.000 VNĐ !
+                        </div>
                     </div>
                     <div class="form-group col-sm-6">
-                        <div style="font-weight: 500;">Available</div>
+                        <div style="font-weight: 500;">Trạng thái</div>
                         <br>
                         <input type="radio" id="true" ng-model="form.available" name="available" value="true" ng-checked="form.available == 1">
-                        <label for="true">Yes</label>
+                        <label for="true">Còn vé</label>
                         <input type="radio" id="false" ng-model="form.available" name="available" value="false" ng-checked="form.available == 0">
-                        <label for="false">No</label>
+                        <label for="false">Hết vé</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <div style="font-weight: 500;">Date</div>
-                        <input ng-model="form.date" type="date" class="form-control" style="width: 95%;">
+                        <div style="font-weight: 500;">Ngày chiếu</div>
+                        <input ng-model="form.date" type="date" class="form-control" style="width: 95%;" min="{{getCurrentDate()}}">
+                        <div class="error-message" ng-show="showInputError && !form.date" style="color: red;">
+                            Vui lòng chọn ngày !.
+                        </div>
                     </div>
                     <div class="form-group col-sm-6">
-                        <div style="font-weight: 500;">Time</div>
+                        <div style="font-weight: 500;">Giờ chiếu</div>
                         <input ng-model="form.time" type="time" class="form-control" style="width: 95%;">
-                        
+                        <div class="error-message" ng-show="showInputError && !form.time" style="color: red;">
+                            Vui lòng chọn giờ !.
+                        </div>
                     </div>
                 </div>
 
@@ -51,16 +74,16 @@
     </div>
     <div class="card-footer text-center">
         <button ng-click="create()" class="btn" ng-disabled="createBtn">
-            <i class="fa fa-plus" aria-hidden="true"></i> Create
+            <i class="fa fa-plus" aria-hidden="true"></i> Thêm
         </button>
         <button ng-click="update()" class="btn" ng-disabled="updateBtn">
-            <i class="fa fa-stack-overflow" aria-hidden="true"></i> Save
+            <i class="fa fa-stack-overflow" aria-hidden="true"></i> Cập nhật
         </button>
         <button ng-click="delete(form)" class="btn" ng-disabled="updateBtn">
-            <i class="fa fa-trash" aria-hidden="true"></i> Delete
+            <i class="fa fa-trash" aria-hidden="true"></i> Xóa
         </button>
         <button ng-click="reset()" class="btn btn-info">
-            <i class="fa fa-refresh" aria-hidden="true"></i> Reset
+            <i class="fa fa-refresh" aria-hidden="true"></i> Làm mới
         </button>
     </div>
 </div>

@@ -1,0 +1,106 @@
+<style>
+    /* main {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        } */
+
+    .display {
+        /* margin: 40%; */
+
+        height: 300px;
+    }
+
+    #content {
+        /* text-align: center; */
+        margin-top: 15%;
+        padding: 20px;
+        border: 3px solid orangered;
+        background-color: #e6e6e6;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 10px;
+
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .title {
+        font-weight: 500;
+        color: orangered;
+    }
+
+    p {
+        margin-bottom: 10px;
+        font-size: 20px;
+        
+    }
+
+    span {
+        font-weight: bold;
+        color: blue;
+    }
+
+    .rBtn{
+        padding: 10px;
+        font-weight: 600;
+        color: aliceblue;
+        background-color: orange;
+        display: inline-block;
+        border-radius: 5px;
+        margin: 0 15px;
+        width: 180px;
+    }
+
+    .rBtn:hover{
+        background-color: #d14bcf;
+        text-decoration: none;
+        color: white;
+    }
+
+
+
+
+</style>
+
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+    <main id="content"  ng-controller="seatSelectCtrl">
+        <div class="display">
+
+            <!-- <a th:href="@{/}"><i class="fa-solid fa-house"></i></a> -->
+            <h1 class="text-center title">Kết Quả Thanh Toán</h1>
+            <div class="ml-5 mt-5">
+                <p>Mã giao dịch: <span th:text="${vnp_TxnRef}"></span></p>
+                <!-- ${#numbers.formatDecimal(vnp_Amount, 0, 'COMMA', 0, 'POINT')} -->
+                <p>Số tiền: <span th:text="${#numbers.formatDecimal(vnp_Amount, 0, 'COMMA', 0, 'POINT')}"></span> <span>VND</span></p>
+            <p>Thông tin đơn hàng: <span th:text="${vnp_OrderInfo}"></span></p>
+            <!-- <p>Trạng thái giao dịch: <span th:text="${vnp_TransactionStatus}"></span></p> -->
+            <p>Trạng thái:
+                <span th:if="${vnp_TransactionStatus.equals('00')}">
+                    Giao dịch thành công
+                </span>
+                <span th:unless="${vnp_TransactionStatus.equals('00')}">
+                    Giao dịch thất bại
+                </span>
+            </p>
+            <div hidden id="result" th:text="${vnp_TransactionStatus}"></div>
+            </div>
+            
+            <div class="mt-5 text-center">
+                <a class="rBtn" th:href="@{/}">Trở về trang chủ</a>
+                <a class="rBtn" href="/user#!/history">Lịch sử mua vé</a>
+            </div>
+        </div>
+
+    </main>
+    </body>
+
+    </html>

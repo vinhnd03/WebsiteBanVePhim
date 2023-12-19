@@ -9,12 +9,11 @@
             </div>
             <div class="input-box">
                 <span class="details">Họ Và Tên</span>
-                <input ng-model="form.name" type="text" id="fullName">
+                <input ng-model="form.name" type="text" id="fullName" ng-change="checkForm()">
             </div>
-
             <div class="input-box">
-                <span class="details">Ngày Sinh</span>
-                <input ng-model="form.date" type="date" id="date">
+                <span class="details">Số Điện Thoại</span>
+                <input ng-model="form.sdt" type="tel" id="phoneNumber"  ng-change="checkForm()">
             </div>
             <div class="input-radio">
                 <div style="font-weight: 500;">Giới Tính</div>
@@ -28,21 +27,19 @@
 
             <div class="input-box">
                 <span class="details">Email</span>
-                <input ng-model="form.email" type="email" id="email">
+                <input ng-model="form.email" type="email" id="email"  ng-change="checkForm()">
             </div>
-            <div class="input-box">
-                <span class="details">Số Điện Thoại</span>
-                <input ng-model="form.sdt" type="tel" id="phoneNumber">
-            </div>
+
             <div class="input-box">
                 <span class="details">Địa Chỉ</span>
-                <input ng-model="form.address" type="text" id="address">
+                <input ng-model="form.address" type="text" id="address"  ng-change="checkForm()">
             </div>
 
         </div>
+        <i class=" text-danger mt-2">{{error}}</i>
         <hr>
-        <button class="btn-custom-btn btn-btn-1" ng-click="update()">Cập Nhập</button>
-        <button class="btn-custom-btn btn-btn-1" ng-click="reset()">Làm Mới</button>
+        <button class="btn-custom-btn btn-btn-1" ng-click="update()" ng-disabled="btn">Cập Nhập</button>
+        <!-- <button class="btn-custom-btn btn-btn-1" ng-click="reset()">Làm Mới</button> -->
         <button class="btn-custom-btn btn-btn-1" ng-click="showDeleteForm = true" type="button" data-toggle="modal"
             data-target="#exampleModalCenter"> Xóa tài khoản</button>
 

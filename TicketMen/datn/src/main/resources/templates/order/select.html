@@ -9,7 +9,7 @@
                 <div class="seating-container">
                     <div class="seats">
                         <div class="seat"
-                            ng-class="{'selected': isSeatSelected(seat), 'available': isSeatAvailable(seat), 'booked': isSeatOrdered(seat)} "
+                            ng-class="{'selected': isSeatSelected(seat), 'available': isSeatAvailable(seat), 'booked': isSeatOrdered(seat), 'hold' : isHolding(seat)}"
                             ng-repeat="seat in seats" ng-click="toggleSeat(seat)">{{seat}}</div>
                     </div>
                     <div class="legend">

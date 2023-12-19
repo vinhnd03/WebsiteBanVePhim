@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.MovieDao;
 import nhom3.datn.entity.Movie;
+import nhom3.datn.entity.Ticket;
 import nhom3.datn.service.MovieService;
 
 @Service
 public class MovieServiceImpl implements MovieService {
     @Autowired
+    public
     MovieDao mdao;
 
     @Override
@@ -88,7 +90,20 @@ public class MovieServiceImpl implements MovieService {
         return mdao.findById(id);
     }
 
-   
+    @Override
+    public List<Movie> searchMovieWithTodayAndFutureTicket() {
+        return mdao.findMovieWithTodayAndFutureTicket();
+    }
+
+    @Override
+    public List<Ticket> searchByTicketFutureMovieId(Long id) {
+        return mdao.findByTicketFutureMovieId(id);
+    }
+
+    @Override
+    public List<String> searchTimeByDate(String date, Long id) {
+        return mdao.findTimeByDate(date, id);
+    }
 
 
 }

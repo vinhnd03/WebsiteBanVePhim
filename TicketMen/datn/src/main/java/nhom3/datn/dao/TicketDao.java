@@ -39,4 +39,5 @@ public interface TicketDao extends JpaRepository<Ticket, Long>{
 
     @Query("SELECT t FROM Ticket t WHERE t.movie.id = :movieId AND t.date = :date  ORDER BY t.time ASC")
     List<Ticket> findShowtimeByMovieIdAndDate(@Param("movieId") Long id,  @Param("date") Date date);
+
 }

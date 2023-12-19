@@ -105,7 +105,7 @@
                               <div
                                 th:each="m : ${futures.subList(group * 5, (group + 1) * 5 > futures.size() ? futures.size() : (group + 1) * 5)}"
                                 class="movie-item">
-                                <img th:src="@{|/image/upload/${m.poster}|}" alt="Movie Poster" style="width:200px" />
+                                <img th:src="@{|/image/upload/${m.poster}|}" alt="Movie Poster" style="width:200px; height: 300px;" />
                                 <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
                                 <div class="btn-details" style="width: 200px; height: 300px;">
                                   <div style="
@@ -171,7 +171,7 @@
                               <div
                                 th:each="m : ${todays.subList(group * 5, (group + 1) * 5 > todays.size() ? todays.size() : (group + 1) * 5)}"
                                 class="movie-item">
-                                <img th:src="@{|/image/upload/${m.poster}|}" alt="Movie Poster" style="width:200px" />
+                                <img th:src="@{|/image/upload/${m.poster}|}" alt="Movie Poster" style="width:200px ;" />
                                 <h3 class="card-title1" th:text="${m.name}" style="margin-bottom: 10%;"></h3>
                                 <div class="btn-details" style="width: 200px; height: 300px;">
                                   <div style="

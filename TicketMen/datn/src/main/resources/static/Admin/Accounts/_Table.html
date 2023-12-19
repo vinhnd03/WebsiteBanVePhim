@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header" style="font-weight: 600; font-size: large; background-color: cornflowerblue; color: white;">
-        STAFF LIST</div>
+        DANH SÁCH NHÂN VIÊN</div>
     <table class="table table-condensed">
         <thead class="bg-success" style="font-variant: small-caps;">
             <tr>
@@ -11,6 +11,8 @@
                 <th>Số Điện Thoại</th>
                 <th>Giới Tính</th>
                 <th>Ghi Chú</th>
+                <th></th>
+                <th></th>
                 <!-- <th>Available?</th>  -->
                 <th></th>
             </tr>
@@ -24,6 +26,7 @@
                 <td>{{item.sdt}}</td>
                 <td>{{item.gender ? 'nam':'nữ'}} </td>
                 <td>{{item.address}}</td>
+                <!-- <td>{{item.username.roleId}}</td> -->
                 <td>
                     <div class="btn-group btn-group-xs">
                         <button ng-click="edit(item)" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button>

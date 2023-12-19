@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import nhom3.datn.entity.Movie;
+import nhom3.datn.entity.Ticket;
 
 public interface MovieDao extends JpaRepository<Movie, Long> {
        @Query("SELECT m FROM Movie m WHERE m.category.id=?1")
@@ -36,4 +38,21 @@ public interface MovieDao extends JpaRepository<Movie, Long> {
 
        @Query("SELECT m FROM Movie m WHERE m.name  LIKE LOWER(CONCAT('%', :name, '%'))")
        List<Movie> findByName(String name);
+
+
+       @Query("SELECT DISTINCT M FROM Movie M " +
+           "INNER JOIN Ticket T ON M.id = T.movie.id " +
+           "WHERE CONVERT(DATE, T.date) >= CONVERT(DATE, CURRENT_TIMESTAMP)")
+    List<Movie> findMovieWithTodayAndFutureTicket();
+
+
+     @Query("SELECT T FROM Movie M " +
+           "INNER JOIN Ticket T ON M.id = T.movie.id " +
+           "WHERE T.movie.id = ?1 AND  CONVERT(DATE, T.date) >= CONVERT(DATE, CURRENT_TIMESTAMP)")
+    List<Ticket> findByTicketFutureMovieId(Long id);
+
+       //and CONVERT(DATE, T.date) >= CONVERT(DATE, CURRENT_TIMESTAMP)
+       @Query("SELECT T FROM Ticket T WHERE T.date = :date And T.movie.id = :movieId ")
+       List<String> findTimeByDate(@Param("date") String date, @Param("movieId") Long id);
 }
+ 

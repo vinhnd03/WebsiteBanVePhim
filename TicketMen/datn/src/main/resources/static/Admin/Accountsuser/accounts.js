@@ -1,11 +1,9 @@
-app.controller("accounts-ctrl", function ($scope, $http, $location) {
+app.controller("accountsuser-ctrl", function ($scope, $http) {
     $scope.items = [];
     $scope.cates = [];
     $scope.form = {};
     $scope.auths = [];
     $scope.roles = [];
-    $scope.file = null;
-    $scope.folder = null;
 
     $scope.updateBtn = true;
     $scope.createBtn = true;
@@ -23,21 +21,18 @@ app.controller("accounts-ctrl", function ($scope, $http, $location) {
 
     $scope.initialize = function () {
         // Load dữ liệu
-        $http.get("/rest/roles").then(resp => {
-            $scope.roles = resp.data;
-        })
-
-        $http.get("/rest/accounts").then(resp => {
+        $http.get("/rest/accountsuser").then(resp => {
             $scope.items = resp.data;
             $scope.reset();
         });
 
-        $http.get("/rest/authorities?admin=true").then(resp => {
+        $http.get("/rest/authorities").then(resp => {
             $scope.auths = resp.data;
-        }).catch(error => {
-            $location.path("/unaccount")
         })
-        
+
+        $http.get("/rest/roles").then(resp => {
+            $scope.roles = resp.data;
+        })
     }
 
     // Khởi đầu
@@ -45,28 +40,17 @@ app.controller("accounts-ctrl", function ($scope, $http, $location) {
 
     // Xóa form và reset các biến flag
     $scope.reset = function () {
-        $scope.folder = null;
         $scope.form = {
             createDate: new Date(),
-            poster: '/image/no-image.png',
             gender: true
         }
         $scope.updateBtn = true;
         $scope.createBtn = false;
         $scope.showInputError = false; // Reset biến flag
-
-
-        // Xóa giá trị file để tránh giữ lại tên ảnh cũ
-        $scope.file = null;
-        // Xóa giá trị trong trường chọn tệp
-        angular.element("input[type='file']").val(null);
-
-        console.log($scope.folder);
     }
 
     // Hiển thị lên form
     $scope.edit = function (item) {
-        $scope.folder = "/image/upload/";
         $scope.form = angular.copy(item);
         $(".nav-tabs a:eq(0)").tab('show')
         $scope.updateBtn = false;
@@ -90,7 +74,7 @@ app.controller("accounts-ctrl", function ($scope, $http, $location) {
     //
     $scope.checkUsernameExistence = function (username) {
         // Gửi yêu cầu kiểm tra tài khoản đến server
-        $http.get(`/rest/accounts/${username}`).then(resp => {
+        $http.get(`/rest/accountsuser/${username}`).then(resp => {
             // Nếu có kết quả trả về, tài khoản đã tồn tại
             if (resp.data) {
                 $scope.sweetAlert("error", "Tài khoản đã tồn tại!");
@@ -121,9 +105,6 @@ app.controller("accounts-ctrl", function ($scope, $http, $location) {
         }
     
         $scope.showInputError = false;
-
-        var data = new FormData();
-        data.append('file', $scope.file);
     
         // Kiểm tra chiều dài ký tự và hiển thị thông báo
         // if ($scope.checkMaxLength($scope.form.username, 30)) {
@@ -140,8 +121,7 @@ app.controller("accounts-ctrl", function ($scope, $http, $location) {
         // }
     
         var item = angular.copy($scope.form);
-        $http.post(`/rest/accounts`, item).then(resp => {
-            // $scope.item.poster = resp.item.name;
+        $http.post(`/rest/accountsuser`, item).then(resp => {
             $scope.items.push(resp.data);
             setAuthority(resp.data.username);
             $scope.sweetAlert("success", "Thêm mới thành công!");
@@ -167,33 +147,11 @@ app.controller("accounts-ctrl", function ($scope, $http, $location) {
             $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
             return;
         }
-        //
-        // if ($scope.file) { // Kiểm tra xem có ảnh mới hay không
-        //     var data = new FormData();
-        //     data.append('file', $scope.file);
-
-        //     $http.post(`/rest/upload`, data, {
-        //         transformRequest: angular.identity,
-        //         headers: { 'Content-Type': undefined }
-        //     }).then(resp => {
-        //         $scope.form.poster = resp.data.name;
-        //         updateMovie(); // Gọi hàm cập nhật phim sau khi lưu ảnh
-
-        //         // Xóa giá trị file để tránh giữ lại tên ảnh cũ
-        //         $scope.file = null;
-        //         // Xóa giá trị trong trường chọn tệp
-        //         angular.element("input[type='file']").val(null);
-        //     }).catch(error => {
-        //         console.log("Error uploading image", error);
-        //     });
-        // } else {
-        //     updateMovie(); // Nếu không có ảnh mới, chỉ cập nhật thông tin phim
-        // }
-    //
+    
         $scope.showInputError = false;
         
         var item = angular.copy($scope.form);
-        $http.put(`/rest/accounts/${item.id}`, item).then(resp => {
+        $http.put(`/rest/accountsuser/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items[index] = item;
             $scope.sweetAlert("success","Cập nhật tài khoản thành công!")
@@ -206,7 +164,7 @@ app.controller("accounts-ctrl", function ($scope, $http, $location) {
 
     // Xóa tài khoản
     $scope.delete = function (item) {
-        $http.delete(`/rest/accounts/${item.username}`).then(resp => {
+        $http.delete(`/rest/accountsuser/${item.username}`).then(resp => {
             var index = $scope.items.findIndex(s => s.username == item.username);
             $scope.items.splice(index, 1);
             $scope.reset();
