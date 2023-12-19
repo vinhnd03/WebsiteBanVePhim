@@ -609,7 +609,7 @@ app.controller("seatSelectCtrl", function ($scope, $http, $window, $interval, $l
     };
 
     $scope.holding = [
-        "C1", "D1", "E1"
+        // "C1", "D1", "E1"
     ]
     $scope.isHolding = function (seat) {
         // return $scope.holding.some(orderedSeat => orderedSeat.name === seat);

@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import nhom3.datn.entity.Movie;
 import nhom3.datn.entity.Ticket;
@@ -48,12 +49,7 @@ public interface MovieService {
 
     List<String> searchTimeByDate(String date, Long id);
 
-    Page<Movie> findByCategoryIdPaged(Integer integer, PageRequest of);
-
-    Page<Movie> findAllPaged(PageRequest of);
-
-
-
-   
+    Page<Movie> findAll(Pageable pageable);
+  
 
 }

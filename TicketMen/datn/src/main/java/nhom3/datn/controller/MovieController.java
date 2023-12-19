@@ -5,10 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,20 +40,35 @@ public class MovieController {
 
     @RequestMapping("/movie/list")
     public String list(Model model, @RequestParam("cid") Optional<Integer> cid,
-            @RequestParam(name = "page", defaultValue = "0") int page,
-            @RequestParam(name = "size", defaultValue = "10") int size) {
-        Page<Movie> moviePage;
+    @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+        int currentPage = page.orElse(1);
+		int pageSize = size.orElse(12);
 
-        if (cid.isPresent()) {
-            moviePage = movieService.findByCategoryIdPaged(cid.get(), PageRequest.of(page, size));
-        } else {
-            moviePage = movieService.findAllPaged(PageRequest.of(page, size));
-        }
+		Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+		Page<Movie> resultPage = null;
 
-        model.addAttribute("items", moviePage.getContent());
-        model.addAttribute("currentPage", moviePage.getNumber());
-        model.addAttribute("totalPages", moviePage.getTotalPages());
+		
+		resultPage = movieService.findAll(pageable);
+		
+		int totalPages = resultPage.getTotalPages();
+		if (totalPages > 0) {
+			int start = Math.max(1, currentPage - 2) ;
+			int end = Math.min(currentPage + 2, totalPages);
 
+			if (totalPages > 5) {
+				if (end == totalPages)
+					start = end - 5;
+				else if (start == 1)
+					end = start + 5;
+			}
+			List<Integer> pageNumbers = IntStream.rangeClosed(start, end)
+					.boxed().collect(Collectors.toList());
+			
+			model.addAttribute("pageNumbers", pageNumbers);
+		}
+
+		model.addAttribute("moviePage", resultPage);
+        
         return "movie/list";
     }
 

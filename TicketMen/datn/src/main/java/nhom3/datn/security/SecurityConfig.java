@@ -59,7 +59,7 @@ public class SecurityConfig {
     public SecurityFilterChain customSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests(authorizeRequests -> authorizeRequests
-                .antMatchers("/order/**").authenticated()
+                .antMatchers("/order/**","/user/**").authenticated()
                 .antMatchers("/admin/**").hasAnyRole("STAFF", "ADMIN")
                 .antMatchers("/rest/authorities").hasRole("ADMIN")
                 .anyRequest().permitAll());

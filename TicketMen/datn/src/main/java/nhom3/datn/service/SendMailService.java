@@ -21,8 +21,17 @@ public class SendMailService {
         Context context = new Context();
         context.setVariable("link", link);
 
-        String contextHtml = templateEngine.process("/auth/sendMailResetPassword.html", context);
+        String contextHtml = templateEngine.process("/email/sendMailResetPassword.html", context);
 
         emailService.sendSimpleMail("YÊU CẦU THAY ĐỔI MẬT KHẨU", contextHtml, email);
+    }
+
+    public void sendMailOrderNoti(String link, String email, String fullname) {
+        Context context = new Context();
+        context.setVariable("link", link);
+
+        String contextHtml = templateEngine.process("/email/sendMailOrderSuccess.html", context);
+
+        emailService.sendSimpleMail("XÁC NHẬN THANH TOÁN HÓA ĐƠN", contextHtml, email);
     }
 }
