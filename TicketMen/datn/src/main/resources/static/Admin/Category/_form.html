@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="card-footer text-center">
-                <button ng-click="create()" class="btn" ng-disabled="createBtn">
+                <button ng-click="checkCatenameExistence(form.name)||create()" class="btn" ng-disabled="createBtn">
                     <i class="fa fa-plus" aria-hidden="true"></i> Thêm
                 </button>
                 <button ng-click="update()" class="btn" ng-disabled="updateBtn">
