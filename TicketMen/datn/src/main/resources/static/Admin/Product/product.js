@@ -79,19 +79,32 @@ app.controller("product-ctrl", function ($scope, $http) {
         $scope.createBtn = true;
     }
 
+    
+    
     //Thêm sản phẩm mới
+    $scope.showInputError = false;
+    $scope.fileNotSelected = false;
+
     $scope.create = function () {
-        // $scope.folder = "/image/upload/";
+
+        if (!$scope.form.name || !$scope.form.age || !$scope.form.category.id || !$scope.form.releaseDate || !$scope.form.duration || !$scope.form.country || !$scope.form.description || !$scope.form.trailer || !$scope.form.movieContent || !$scope.form.poster) {
+            $scope.showInputError = true;
+            $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
+            return;
+        }
+    
+    
         var data = new FormData();
         data.append('file', $scope.file);
+    
         $http.post(`/rest/upload`, data, {
             transformRequest: angular.identity,
             headers: { 'Content-Type': undefined }
         }).then(resp => {
             $scope.form.poster = resp.data.name;
-
+    
             var item = angular.copy($scope.form);
-
+    
             $http.post(`/rest/movies`, item).then(resp => {
                 resp.data.createDate = new Date(resp.data.createDate)
                 $scope.items.push(resp.data);
@@ -101,20 +114,25 @@ app.controller("product-ctrl", function ($scope, $http) {
                 $scope.sweetAlert("error", "Thêm mới phim thất bại!");
                 console.log("Error", error);
             })
+    
             $scope.reset();
             $scope.initialize();
             console.log($scope.form.poster);
-
-            // Xóa giá trị file để tránh giữ lại tên ảnh cũ
+    
             $scope.file = null;
-            // Xóa giá trị trong trường chọn tệp
             angular.element("input[type='file']").val(null);
+    
+            // Reset trạng thái của thông báo lỗi và fileNotSelected
+            $scope.showInputError = false;
+            $scope.fileNotSelected = false;
         }).catch(error => {
             console.log("Error", error);
         })
-
+    
         console.log($scope.folder);
     }
+    
+
 
     //Cập nhật sản phẩm
     // $scope.update = function () {
@@ -152,6 +170,11 @@ app.controller("product-ctrl", function ($scope, $http) {
     // }
 
     $scope.update = function () {
+        if (!$scope.form.name || !$scope.form.age || !$scope.form.category.id || !$scope.form.releaseDate || !$scope.form.duration || !$scope.form.country || !$scope.form.description || !$scope.form.trailer || !$scope.form.movieContent) {
+            $scope.showInputError = true;
+            $scope.sweetAlert("error", "Vui lòng điền đầy đủ thông tin vào các trường bắt buộc.");
+            return;
+        }
         if ($scope.file) { // Kiểm tra xem có ảnh mới hay không
             var data = new FormData();
             data.append('file', $scope.file);
@@ -202,39 +225,35 @@ app.controller("product-ctrl", function ($scope, $http) {
         })
     }
 
-    // $scope.imageChanged = function (files) {
-    //     $scope.selectedFile = files[0];
-    // };
 
-    // //Upload hình
-    // $scope.imageChanged = function (files) {
-    //     var data = new FormData();
-    //     data.append('file', files[0]);
-    //     $http.post('/rest/upload/image', data, {
-    //         transformRequest: angular.identity,
-    //         headers: { 'Content-Type': undefined }
-    //     }).then(resp => {
-    //         $scope.form.poster = resp.data.name;
-    //         console.log($scope.form.poster);
-    //     }).catch(error => {
-    //         console.log("Error", error);
-    //     })
-    // }
-
-
-    $scope.imageChanged = function (input) {
+    $scope.imageChanged = function (poster) {
         $scope.folder = null;
-        $scope.file = input.files[0];
-        if (input.files && input.files[0]) {
+        $scope.file = poster.files[0];
+        if ($scope.file) {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $scope.$apply(function () {
                     $scope.form.poster = e.target.result;
+                    // Đặt lại trạng thái khi file được chọn
+                    $scope.imageSelected = true;
                 });
             };
-            reader.readAsDataURL(input.files[0]);
+            reader.readAsDataURL($scope.file);
+        } else {
+            // Đặt lại trạng thái khi không có file được chọn
+            $scope.imageSelected = false;
         }
     };
+
+    // Hàm kiểm tra chiều dài ký tự
+    $scope.checkMaxLength = function (value, maxLength) {
+        return value && value.length > maxLength;
+    };
+    $scope.checkMinLength = function (value, minLength) {
+        return value && value.length < minLength;
+    };
+    
+    
 
     $scope.pager = {
         page: 0,

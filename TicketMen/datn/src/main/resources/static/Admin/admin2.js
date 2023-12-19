@@ -21,13 +21,19 @@ app.config(function($routeProvider){
             templateUrl: "/admin/accounts/index.html",
             controller: "accounts-ctrl"
         })
+        .when("/unaccount", {
+            templateUrl: "/admin/accounts/unaccount.html",
+        })
+        .when("/accountsuser", {
+            templateUrl: "/admin/AccountsUser/index.html",
+            controller: "accountsuser-ctrl"
+        })
         .when("/authorize", {
             templateUrl: "/admin/Authority/index.html",
             controller: "authority-ctrl"
         })
         .when("/unauthorized", {
             templateUrl: "/admin/Authority/unauthorized.html",
-            
         })
         .when("/ticket", {
             templateUrl: "/admin/Ticket/index.html",

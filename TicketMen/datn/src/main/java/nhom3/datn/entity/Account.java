@@ -27,7 +27,7 @@ public class Account implements Serializable{
     String address;
     Boolean gender;
     String token;
-
+       
     @JsonIgnore
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     List<Authority> authorities;
@@ -35,5 +35,6 @@ public class Account implements Serializable{
     @JsonIgnore
     @OneToMany(mappedBy = "account")
     List<Order> orders;
-
+    
+    String img;
 }
