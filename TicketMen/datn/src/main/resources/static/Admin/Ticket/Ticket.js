@@ -74,7 +74,7 @@ app.controller("ticket-ctrl", function ($scope, $http) {
     //Thêm sản phẩm mới
     $scope.showInputError = false;
     $scope.create = function () {
-        if (!$scope.form.price || !$scope.form.price <= 30000)  {
+        if (!$scope.form.price || $scope.form.price <= 30000)  {
             $scope.showInputError = true;
             $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
             return;
