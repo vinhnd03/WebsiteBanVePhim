@@ -56,20 +56,20 @@ app.controller("category-ctrl", function ($scope, $http) {
 
 
     // check xem đã tồn tại chưa
-    $scope.checkCatenameExistence = function (name) {
-        // Gửi yêu cầu kiểm tra tài khoản đến server
-        $http.get(`/rest/categories?name=${name}`).then(resp => {
-            // Nếu có kết quả trả về, tài khoản đã tồn tại
-            if (resp.data) {
-                $scope.sweetAlert("error", "Thể loại đã tồn tại!");
-            } else {
-                // Ngược lại, tài khoản chưa tồn tại
-                $scope.sweetAlert("success", "Thể loại có thể sử dụng!");
-            }
-        }).catch(error => {
-            console.log("Error checking username existence", error);
-        });
-    };
+    // $scope.checkCatenameExistence = function (name) {
+    //     // Gửi yêu cầu kiểm tra tài khoản đến server
+    //     $http.get(`/rest/categories?name=${name}`).then(resp => {
+    //         // Nếu có kết quả trả về, tài khoản đã tồn tại
+    //         if (resp.data) {
+    //             $scope.sweetAlert("error", "Thể loại đã tồn tại!");
+    //         } else {
+    //             // Ngược lại, tài khoản chưa tồn tại
+    //             $scope.sweetAlert("success", "Thể loại có thể sử dụng!");
+    //         }
+    //     }).catch(error => {
+    //         console.log("Error checking username existence", error);
+    //     });
+    // };
     //
 
     // Thêm danh mục mới
@@ -82,7 +82,7 @@ app.controller("category-ctrl", function ($scope, $http) {
         }
 
         // Kiểm tra sự tồn tại của danh mục
-        $scope.checkCategoryExistence($scope.form.name);
+        // $scope.checkCategoryExistence($scope.form.name);
         $scope.showInputError = false;
 
         var item = angular.copy($scope.form);

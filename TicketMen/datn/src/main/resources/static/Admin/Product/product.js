@@ -81,20 +81,20 @@ app.controller("product-ctrl", function ($scope, $http) {
 
     
     // check xem đã tồn tại chưa
-    $scope.checkMovinameExistence = function (name) {
-        // Gửi yêu cầu kiểm tra tài khoản đến server
-        $http.get(`/rest/movies?name=${name}`).then(resp => {
-            // Nếu có kết quả trả về, tài khoản đã tồn tại
-            if (resp.data) {
-                $scope.sweetAlert("error", "Tên phim đã tồn tại!");
-            } else {
-                // Ngược lại, tài khoản chưa tồn tại
-                $scope.sweetAlert("success", "Tên phim có thể sử dụng!");
-            }
-        }).catch(error => {
-            console.log("Error checking username existence", error);
-        });
-    };
+    // $scope.checkMovinameExistence = function (name) {
+    //     // Gửi yêu cầu kiểm tra tài khoản đến server
+    //     $http.get(`/rest/movies?name=${name}`).then(resp => {
+    //         // Nếu có kết quả trả về, tài khoản đã tồn tại
+    //         if (resp.data) {
+    //             $scope.sweetAlert("error", "Tên phim đã tồn tại!");
+    //         } else {
+    //             // Ngược lại, tài khoản chưa tồn tại
+    //             $scope.sweetAlert("success", "Tên phim có thể sử dụng!");
+    //         }
+    //     }).catch(error => {
+    //         console.log("Error checking username existence", error);
+    //     });
+    // };
     //
     //Thêm sản phẩm mới
     $scope.showInputError = false;
@@ -102,11 +102,7 @@ app.controller("product-ctrl", function ($scope, $http) {
 
     $scope.create = function () {
 
-        if (!$scope.form.name || !$scope.form.age || !$scope.form.category.id || !$scope.form.releaseDate || !$scope.form.duration || !$scope.form.country || !$scope.form.description || !$scope.form.trailer || !$scope.form.movieContent || !$scope.form.poster
-            ||!$scope.form.age <= 0 || !$scope.form.age % 1 == 0
-            ||form.duration < 50
-            ||checkMinLength(form.name, 5)
-            ||!imageSelected) {
+        if (!$scope.form.name || !$scope.form.age || !$scope.form.category.id || !$scope.form.releaseDate || !$scope.form.duration || !$scope.form.country || !$scope.form.description || !$scope.form.trailer || !$scope.form.movieContent || !$scope.form.poster) {
             $scope.showInputError = true;
             $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
             return;
