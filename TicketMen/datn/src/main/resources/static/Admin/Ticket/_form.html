@@ -32,13 +32,7 @@
                         <div class="error-message" ng-show="showInputError && !form.price" style="color: red;">
                             Giá vé không được để trống !.
                         </div>   
-                        <div class="error-message" ng-show="showInputError && checkMinLength(form.price, 5)" style="color: red;">
-                            Nhập ít nhất 5 ký tự !
-                        </div>
-                        <div class="error-message" ng-show="showInputError && checkMaxLength(form.price, 30)" style="color: red;">
-                            Không nhập quá 30 ký tự !
-                        </div>
-                        <div class="error-message" ng-show="showInputError && (form.price < 30000)" style="color: red;">
+                        <div class="error-message" ng-show="showInputError && (!form.price < 30000)" style="color: red;">
                             Giá vé ít nhất là 30.000 VNĐ !
                         </div>
                     </div>

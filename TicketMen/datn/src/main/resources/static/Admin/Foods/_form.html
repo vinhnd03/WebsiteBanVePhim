@@ -1,0 +1,78 @@
+<div class="card">
+    <div class="card-header" style="font-weight: 600; font-size: large; background-color: cornflowerblue; color: white;">
+        CẬP NHẬT ĐỒ ĂN</div>
+    <div class="card-boby">
+        <div class="row">
+            <div class="col-sm-8 mt-3">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Tên đồ ăn</div>
+                        <input ng-model="form.name" class="form-control" style="width: 95%;">
+                        <!-- <div class="error-message" ng-show="showInputError && !form.name" style="color: red;">
+                            Vui lòng nhập tên thể loại !
+                        </div>
+                        <div class="error-message" ng-show="showInputError && checkMinLength(form.name, 5)" style="color: red;">
+                            Nhập ít nhất 5 ký tự !
+                        </div>
+                        <div class="error-message" ng-show="showInputError && checkMaxLength(form.name, 30)" style="color: red;">
+                            Không nhập quá 30 ký tự !
+                        </div> -->
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div style="font-weight: 500;">Giá</div>
+                        <input ng-model="form.price" class="form-control" style="width: 95%;">
+                        <!-- <div class="error-message" ng-show="showInputError && !form.name" style="color: red;">
+                            Vui lòng nhập tên thể loại !
+                        </div>
+                        <div class="error-message" ng-show="showInputError && checkMinLength(form.name, 5)" style="color: red;">
+                            Nhập ít nhất 5 ký tự !
+                        </div>
+                        <div class="error-message" ng-show="showInputError && checkMaxLength(form.name, 30)" style="color: red;">
+                            Không nhập quá 30 ký tự !
+                        </div> -->
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button ng-click="create()" class="btn" ng-disabled="createBtn">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Thêm
+                </button>
+                <button ng-click="update()" class="btn" ng-disabled="updateBtn">
+                    <i class="fa fa-stack-overflow" aria-hidden="true"></i> Cập nhật
+                </button>
+                <button ng-click="delete(form)" class="btn" ng-disabled="updateBtn">
+                    <i class="fa fa-trash" aria-hidden="true"></i> Xóa
+                </button>
+                <button ng-click="reset()" class="btn btn-info">
+                    <i class="fa fa-refresh" aria-hidden="true"></i> Làm mới
+                </button>
+            </div>
+            <table class="table table-condensed">
+                <thead class="bg-success" style="font-variant: small-caps;">
+                    <tr>
+                        <th>Id</th>
+                        <th>Tên Thể Loại</th>
+                        <th>Giá</th>
+                        <!-- <th>Available?</th>  -->
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in pager.items">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <th>{{item.price}}</th>
+                        <td>
+                            <div class="btn-group btn-group-xs">
+                                <button ng-click="edit(item)" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                <button ng-click="delete(item)"  class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -33,9 +33,9 @@
                         <div class="error-message" ng-show="showInputError && !form.age " style="color: red;">
                             Vui lòng nhập tuổi !
                         </div>
-                        <div class="error-message" ng-show="showInputError && (form.age <= 0 || form.age % 1 !== 0)" style="color: red;">
+                        <!-- <div class="error-message" ng-show="showInputError && (form.age <= 0 || form.age % 1 !== 0)" style="color: red;">
                             Tuổi phải là số nguyên !
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="row">
@@ -76,12 +76,6 @@
                         <input ng-model="form.duration" type="number" class="form-control" style="width: 95%;">
                         <div class="error-message" ng-show="showInputError && (!form.duration || form.duration < 50)" style="color: red;">
                             Thời gian phim không dưới 50 phút !
-                        </div>
-                        <div class="error-message" ng-show="showInputError && checkMaxLength(form.name, 50)" style="color: red;">
-                            Không nhập quá 50 ký tự !
-                        </div>
-                        <div class="error-message" ng-show="showInputError && checkMinLength(form.name, 5)" style="color: red;">
-                            Nhập ít nhất 5 ký tự !
                         </div>
                     </div>
                 </div>
@@ -136,7 +130,7 @@
         </div>
     </div>
     <div class="card-footer text-center">
-        <button ng-click="create()" class="btn" ng-disabled="createBtn">
+        <button ng-click="checkMovinameExistence(form.name)||create()" class="btn" ng-disabled="createBtn">
             <i class="fa fa-plus" aria-hidden="true"></i> Thêm 
         </button>
         <button ng-click="update()" class="btn" ng-disabled="updateBtn">

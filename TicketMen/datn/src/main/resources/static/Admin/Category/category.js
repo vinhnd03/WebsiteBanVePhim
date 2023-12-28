@@ -6,66 +6,88 @@ app.controller("category-ctrl", function ($scope, $http) {
     $scope.updateBtn = true;
     $scope.createBtn = true;
 
-    //Hiển thị thông báo
+    // Hiển thị thông báo
     $scope.sweetAlert = function (icon, message) {
         Swal.fire({
             icon: icon,
             title: message,
             theme: 'bootstrap 4',
         });
-    }
+    };
 
+    
+
+    // Khởi tạo
     $scope.initialize = function () {
-        //load products
+        // Load danh mục
         $http.get("/rest/categories").then(resp => {
             $scope.items = resp.data;            
             $scope.reset();
         });
 
-        //load categories
+        // Load danh sách danh mục
         $http.get("/rest/categories").then(resp => {
             $scope.cates = resp.data;
-        })
+        });
+    };
 
-    }
-
-    //Khởi đầu
+    // Khởi đầu
     $scope.initialize();
 
-
-    //Xóa form
+    // Xóa form
     $scope.reset = function () {
         $scope.form = {
             createDate: new Date(),
             poster: 'OIP2.jpg',
             available: true,
-        }
+        };
 
         $scope.updateBtn = true;
         $scope.createBtn = false;
-    }
+    };
 
-    //Hiển thị lên form
+    // Hiển thị lên form
     $scope.edit = function (item) {
         $scope.form = angular.copy(item);
-        $(".nav-tabs a:eq(0)").tab('show')
+        $(".nav-tabs a:eq(0)").tab('show');
         $scope.updateBtn = false;
         $scope.createBtn = true;
-    }
+    };
 
-    //Thêm sản phẩm mới
+
+    // check xem đã tồn tại chưa
+    // $scope.checkCatenameExistence = function (name) {
+    //     // Gửi yêu cầu kiểm tra tài khoản đến server
+    //     $http.get(`/rest/categories?name=${name}`).then(resp => {
+    //         // Nếu có kết quả trả về, tài khoản đã tồn tại
+    //         if (resp.data) {
+    //             $scope.sweetAlert("error", "Thể loại đã tồn tại!");
+    //         } else {
+    //             // Ngược lại, tài khoản chưa tồn tại
+    //             $scope.sweetAlert("success", "Thể loại có thể sử dụng!");
+    //         }
+    //     }).catch(error => {
+    //         console.log("Error checking username existence", error);
+    //     });
+    // };
+    //
+
+    // Thêm danh mục mới
     $scope.create = function () {
+        // Kiểm tra các trường bắt buộc
         if (!$scope.form.name) {
             $scope.showInputError = true;
             $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
             return;
         }
-    
+
+        // Kiểm tra sự tồn tại của danh mục
+        // $scope.checkCategoryExistence($scope.form.name);
         $scope.showInputError = false;
 
         var item = angular.copy($scope.form);
         $http.post(`/rest/categories`, item).then(resp => {
-            resp.data.createDate = new Date(resp.data.createDate)
+            resp.data.createDate = new Date(resp.data.createDate);
             $scope.items.push(resp.data);
             $scope.reset();
             $scope.sweetAlert("success", "Thêm mới thành công!");
@@ -73,17 +95,20 @@ app.controller("category-ctrl", function ($scope, $http) {
         }).catch(error => {
             $scope.sweetAlert("error", "Thêm mới thất bại!");
             console.log("Error", error);
-        })
-    }
+        });
+    };
 
-    //Cập nhật sản phẩm
+    // Cập nhật danh mục
     $scope.update = function () {
+        // Kiểm tra các trường bắt buộc
         if (!$scope.form.name) {
             $scope.showInputError = true;
             $scope.sweetAlert("error", "Vui lòng điền đầy đủ và đúng thông tin!");
             return;
         }
-    
+
+        // Kiểm tra sự tồn tại của danh mục
+        $scope.checkCategoryExistence($scope.form.name);
         $scope.showInputError = false;
 
         var item = angular.copy($scope.form);
@@ -94,22 +119,21 @@ app.controller("category-ctrl", function ($scope, $http) {
         }).catch(error => {
             $scope.sweetAlert("error", "Cập nhật mới thành công!");
             console.log("Error", error);
-        })
-    }
+        });
+    };
 
-    //Xóa sản phẩm
+    // Xóa danh mục
     $scope.delete = function (item) {
-
         $http.delete(`/rest/categories/${item.id}`).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items.splice(index, 1);
             $scope.reset();
             $scope.sweetAlert("success", "Xóa thành công!");
         }).catch(error => {
-            $scope.sweetAlert("error", "Xóa thành công!");
+            $scope.sweetAlert("error", "Xóa không thành công!");
             console.log("Error", error);
-        })
-    }
+        });
+    };
 
     // Hàm kiểm tra chiều dài ký tự
     $scope.checkMaxLength = function (value, maxLength) {
@@ -124,7 +148,6 @@ app.controller("category-ctrl", function ($scope, $http) {
         size: 5,
         get items() {
             var start = this.page * this.size;
-            //console.log(start + "..." + this.size);
             return $scope.items.slice(start, start + this.size);
         },
         get count() {
@@ -148,5 +171,5 @@ app.controller("category-ctrl", function ($scope, $http) {
         last() {
             this.page = this.count - 1;
         }
-    }
+    };
 });

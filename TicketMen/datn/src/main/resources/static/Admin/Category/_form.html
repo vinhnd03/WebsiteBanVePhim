@@ -11,18 +11,18 @@
                         <div class="error-message" ng-show="showInputError && !form.name" style="color: red;">
                             Vui lòng nhập tên thể loại !
                         </div>
-                        <div class="error-message" ng-show="showInputError && checkMinLength(form.name, 5)" style="color: red;">
+                        <!-- <div class="error-message" ng-show="showInputError && checkMinLength(form.name, 5)" style="color: red;">
                             Nhập ít nhất 5 ký tự !
                         </div>
                         <div class="error-message" ng-show="showInputError && checkMaxLength(form.name, 30)" style="color: red;">
                             Không nhập quá 30 ký tự !
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 </div>
             </div>
             <div class="card-footer text-center">
-                <button ng-click="create()" class="btn" ng-disabled="createBtn">
+                <button ng-click="checkCatenameExistence(form.name)||create()" class="btn" ng-disabled="createBtn">
                     <i class="fa fa-plus" aria-hidden="true"></i> Thêm
                 </button>
                 <button ng-click="update()" class="btn" ng-disabled="updateBtn">

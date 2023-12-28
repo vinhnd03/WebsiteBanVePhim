@@ -40,6 +40,10 @@ app.config(function($routeProvider){
             templateUrl: "/admin/Ticket/index.html",
             controller: "ticket-ctrl"
         })
+        .when("/food", {
+            templateUrl: "/admin/Foods/index.html",
+            controller: "food-ctrl"
+        })
         .when("/home", {
             templateUrl: "/admin/home/index.html",
             controller: "home-ctrl"

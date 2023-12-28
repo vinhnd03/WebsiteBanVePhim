@@ -125,18 +125,18 @@
         <script>
             $(document).ready(function () {
                 var loginButton = $('#loginButton');
-                loginButton.on('click', function () {
-                    window.history.pushState({}, 'Login', '/security/login/form');
-                });
+                // loginButton.on('click', function () {
+                //     window.history.pushState({}, 'Login', '/security/login/form');
+                // });
 
                 var myModal = $('#myModal1');
                 var previousPath = window.location.pathname;
 
 
-                myModal.on('hidden.bs.modal', function () {
-                    window.history.pushState({}, 'Previous Path', previousPath);
+                // myModal.on('hidden.bs.modal', function () {
+                //     window.history.pushState({}, 'Previous Path', previousPath);
 
-                });
+                // });
                 //Thông báo đăng nhập
                 var noti = $('#notification').text();
 

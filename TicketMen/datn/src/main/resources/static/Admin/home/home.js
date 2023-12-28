@@ -10,7 +10,7 @@ app.controller("home-ctrl", function ($scope, $http) {
             description: 'Image description: An area chart compares the nuclear stockpiles of the USA and the USSR/Russia between 1945 and 2017. The number of nuclear weapons is plotted on the Y-axis and the years on the X-axis. The chart is interactive, and the year-on-year stockpile levels can be traced for each country. The US has a stockpile of 6 nuclear weapons at the dawn of the nuclear age in 1945. This number has gradually increased to 369 by 1950 when the USSR enters the arms race with 6 weapons. At this point, the US starts to rapidly build its stockpile culminating in 32,040 warheads by 1966 compared to the USSR’s 7,089. From this peak in 1966, the US stockpile gradually decreases as the USSR’s stockpile expands. By 1978 the USSR has closed the nuclear gap at 25,393. The USSR stockpile continues to grow until it reaches a peak of 45,000 in 1986 compared to the US arsenal of 24,401. From 1986, the nuclear stockpiles of both countries start to fall. By 2000, the numbers have fallen to 10,577 and 21,000 for the US and Russia, respectively. The decreases continue until 2017 at which point the US holds 4,018 weapons compared to Russia’s 4,500.'
         },
         title: {
-            text: 'Growth chart of Vietnam and America'
+            text: 'Thống kê doanh thu năm vừa qua.'
       
         },
         subtitle: {
@@ -47,7 +47,7 @@ app.controller("home-ctrl", function ($scope, $http) {
             }
         },
         series: [{
-            name: 'USA',
+            name: 'ĐN',
             data: [
                 null, null, null, null, null, 2, 9, 13, 50, 170, 299, 438, 841,
                 1169, 1703, 2422, 3692, 5543, 7345, 12298, 18638, 22229, 25540,
@@ -60,7 +60,7 @@ app.controller("home-ctrl", function ($scope, $http) {
                 3750, 3708, 3708
             ]
         }, {
-            name: 'VN',
+            name: 'HN',
             data: [null, null, null, null, null, null, null, null, null,
                 1, 5, 25, 50, 120, 150, 200, 426, 660, 863, 1048, 1627, 2492,
                 3346, 4259, 5242, 6144, 7091, 8400, 9490, 10671, 11736, 13279,

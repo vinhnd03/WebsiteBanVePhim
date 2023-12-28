@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nhom3.datn.dao.FoodDao;
+import nhom3.datn.entity.Category;
 import nhom3.datn.entity.Food;
 import nhom3.datn.service.FoodService;
 
@@ -20,4 +21,26 @@ public class FoodServiceImpl implements FoodService{
        return fdao.findAll();
     }
 
+
+    @Override
+    public Food findById(Long id) {
+    return fdao.findById(id).get();
+    }
+
+    @Override
+    public Food create(Food food) {
+        return fdao.save(food);
+    }
+
+    @Override
+    public Food update(Food food) {
+       return fdao.save(food);
+    }
+
+    @Override
+    public void delete(Long id) {
+        fdao.deleteById(id);
+    }
+
+        
 }

@@ -5,6 +5,10 @@ package nhom3.datn.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 import nhom3.datn.entity.Movie;
 import nhom3.datn.entity.Ticket;
 
@@ -45,8 +49,7 @@ public interface MovieService {
 
     List<String> searchTimeByDate(String date, Long id);
 
-
-
-   
+    Page<Movie> findAll(Pageable pageable);
+  
 
 }
