@@ -548,6 +548,7 @@ app.controller("seatSelectCtrl", function($scope, $http, $window, $interval, $lo
 
                 $scope.availableSeats = ($scope.rows.length * $scope.columns.length) - $scope.orderedSeats.length;
                 $scope.ticket.time = new Date($scope.ticket.time);
+
             }).catch(error => {
                 console.log(error);
             })

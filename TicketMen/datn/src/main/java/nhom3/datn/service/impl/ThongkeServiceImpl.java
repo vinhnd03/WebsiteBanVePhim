@@ -5,8 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import nhom3.datn.service.ThongkeDaoImpl;
 
-@Service
-@Transactional
+// @Service
+// @Transactional
 // public class ThongkeServiceImpl implements ThongkeDaoImpl {
     
 // }

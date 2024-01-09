@@ -35,6 +35,7 @@ public class SendMailService {
         Context context = new Context();
         context.setVariable("link", link);
         context.setVariable("order", order);
+        context.setVariable("seat", details);
         context.setVariable("username", username);
         context.setVariable("detail", details.get(0));
         context.setVariable("foodOrder", foodOrders);
