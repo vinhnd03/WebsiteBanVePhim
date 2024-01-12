@@ -37,6 +37,9 @@ public class Order {
     Account account;
 
     String email;
+    // String paymentId;
+    // String qr;
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "order")

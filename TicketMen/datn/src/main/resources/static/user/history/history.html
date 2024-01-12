@@ -15,13 +15,11 @@
                 <td>{{item.details[0].ticket.movie.name}}</td>
                 <td>{{item.buyDate | date : 'dd-MM-yyyy'}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        ng-click="view(item)">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" ng-click="view(item)">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </button>
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -34,6 +32,11 @@
                                     <div class="row">
                                         <div class="col-1"></div>
                                         <table class="col-10">
+                                            <tr>
+                                                <td> Mã Hóa Đơn:
+                                                    <Strong>{{form.id}}</Strong>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td>Tên Phim: <strong>{{form.details[0].ticket.movie.name}}</strong>
                                                 </td>

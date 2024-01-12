@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nhom3.datn.entity.Order;
 import nhom3.datn.service.OrderService;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @CrossOrigin("*")
@@ -52,5 +54,12 @@ public class OrderRestController {
     @GetMapping("/getOrderUsername/{username}")
     public List<Order> getorderusername(@PathVariable("username") String username){
         return orderService.findByUsername(username);
+    }
+
+    @PutMapping("{id}")
+    public Order putQR(@PathVariable String id, @RequestBody Order order) {
+        //TODO: process PUT request
+        
+        return order;
     }
 }
