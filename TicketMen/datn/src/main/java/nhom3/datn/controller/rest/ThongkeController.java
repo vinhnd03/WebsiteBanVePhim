@@ -9,20 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import nhom3.datn.dao.ThongkeDao;
-import nhom3.datn.entity.Thongke;
-import nhom3.datn.service.ThongkeDaoImpl;
+import nhom3.datn.entity.MonthlyRevenueDTO;
+import nhom3.datn.service.ThongkeService;
 
 
 @Controller
-@RequestMapping("/revenue")
+@RequestMapping("/rest/statistic")
 public class ThongkeController {
     @Autowired
-    private ThongkeDao revenueService;
+    private ThongkeService revenueService;
 
     @GetMapping("/monthly")
-    public String getMonthlyRevenue(Model model) {
-        List<Thongke> thongke = revenueService.getMonthlyRevenue();
-        model.addAttribute("thongke", thongke);
-        return "revenue";
-    }
+public List<MonthlyRevenueDTO> getMonthlyRevenue() {
+    System.out.println("Controller method getMonthlyRevenue is called.");
+    return revenueService.getMonthlyRevenue();
+}
 }

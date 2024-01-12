@@ -2,9 +2,8 @@ package nhom3.datn.dao;
 
 import java.util.List;
 
-import nhom3.datn.entity.Thongke;
+import nhom3.datn.entity.MonthlyRevenueDTO;
 
 public interface ThongkeDao {
-
-    List<Thongke> getMonthlyRevenue();
+    List<MonthlyRevenueDTO> getMonthlyRevenue();
 } 
