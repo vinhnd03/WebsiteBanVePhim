@@ -304,41 +304,89 @@
         </div>
 
 
-        <div class="container col-8 mt-4" style=" border-radius: 5px;">
+        <div class="container col-8 mt-4" style="border-radius: 5px;">
             <h2 class="title" style="color: black;"><strong>Gửi Câu Hỏi Của Bạn</strong> </h2>
-            <form>
+            <form novalidate>
                 <div class="form-group">
                     <label for="name">Họ và tên:</label>
-                    <input type="text" class="form-control qinput" id="name" placeholder="Nhập họ và tên">
+                    <input type="text" class="form-control qinput" id="name" placeholder="Nhập họ và tên" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Số điện thoại:</label>
-                    <input type="tel" class="form-control qinput" id="phone" placeholder="Nhập số điện thoại">
+                    <input type="tel" class="form-control qinput" id="phone" placeholder="Nhập số điện thoại" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control qinput" id="email" placeholder="Nhập địa chỉ email">
+                    <input type="email" class="form-control qinput" id="email" placeholder="Nhập địa chỉ email" required>
                 </div>
                 <div class="form-group">
                     <label for="comment">Câu hỏi:</label>
-                    <textarea class="form-control qinput" id="comment" rows="5" placeholder="Nhập bình luận"></textarea>
+                    <textarea class="form-control qinput" id="comment" rows="5" placeholder="Nhập bình luận" required></textarea>
                 </div>
-                <!-- <a type="button" class="btn btn-primary qbtn ">Gửi</a> -->
+                <div class="error-message" style="color: red;"></div>
                 <div class="" align="center">
-                    <button class="col-3 btn btn-primary" type="submit" onclick="sendQan()">Gửi</button>
+                    <button class="col-3 btn btn-primary" type="button" onclick="sendQan()">Gửi</button>
                 </div>
             </form>
         </div>
-    </main>
-</div>
-<script>
-    function sendQan() {
-        let parms = {
-            name: document.getElementById("name").value,
-            phone: document.getElementById("phone").value,
-            email: document.getElementById("email").value,
-            comment: document.getElementById("comment").value,
-        }
-        emailjs.send("service_6pkro7a", "template_uszk5eq", parms).then(alert("Email Sent!!"))
-    }
-</script>
+
+        <script>
+            function sendQan() {
+                let name = document.getElementById("name").value;
+                let phone = document.getElementById("phone").value;
+                let email = document.getElementById("email").value;
+                let comment = document.getElementById("comment").value;
+
+
+                // Xóa thông báo lỗi khi gửi lại
+                clearErrorMessage();
+
+                if (!name || !phone || !email || !comment) {
+                    displayErrorMessage("Vui lòng điền đầy đủ thông tin trước khi gửi.");
+                    return;
+                }
+
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    displayErrorMessage("Vui lòng nhập địa chỉ email hợp lệ.");
+                    return;
+                }
+
+                // Kiểm tra định dạng số điện thoại
+                let phoneRegex = /^0\d{9}$/;
+                if (!phoneRegex.test(phone)) {
+                    displayErrorMessage("Vui lòng nhập số điện thoại hợp lệ.");
+                    return;
+                }
+
+                let parms = {
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    comment: comment,
+                };
+
+                emailjs.send("service_6pkro7a", "template_uszk5eq", parms)
+                    .then(function(response) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success!",
+                            text: "Tin nhắn đã được gửi thành công! ",
+                        });
+                    })
+                    .catch(function(error) {
+                        displayErrorMessage("Lỗi khi gửi email. Vui lòng thử lại sau.");
+                        console.error('Lỗi khi gửi email:', error);
+                    });
+            }
+
+            function displayErrorMessage(message) {
+                let errorMessageDiv = document.querySelector('.error-message');
+                errorMessageDiv.textContent = message;
+            }
+
+            function clearErrorMessage() {
+                let errorMessageDiv = document.querySelector('.error-message');
+                errorMessageDiv.textContent = '';
+            }
+        </script>
