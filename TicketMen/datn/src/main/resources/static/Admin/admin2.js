@@ -44,6 +44,11 @@ app.config(function($routeProvider){
             templateUrl: "/admin/Foods/index.html",
             controller: "food-ctrl"
         })
+        .when("/statis", {
+            templateUrl: "/admin/statistical/thongke.html",
+            controller: "statistic-ctrl"
+        })
+
         .when("/home", {
             templateUrl: "/admin/home/index.html",
             controller: "home-ctrl"

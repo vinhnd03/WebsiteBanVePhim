@@ -16,6 +16,7 @@ import nhom3.datn.service.OrderDetailService;
 
 
 @CrossOrigin("*")
+
 @RestController
 @RequestMapping("/rest/orderDetails")
 public class OrderDetailRestController {
