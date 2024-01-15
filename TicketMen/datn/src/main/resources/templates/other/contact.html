@@ -78,6 +78,10 @@
             email: document.getElementById("email").value,
             address: document.getElementById("address").value,
         }
-        emailjs.send("service_54v9yl6", "template_o37v3mc", parms).then(alert("Email Sent!!"))
+        emailjs.send("service_54v9yl6", "template_o37v3mc", parms).then(Swal.fire({
+            icon: "success",
+            title: "Success!",
+            text: "Tin nhắn đã được gửi thành công! ",
+        }))
     }
 </script>
