@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import nhom3.datn.entity.Account;
 
 public interface AccountDao extends JpaRepository<Account, String>{
-    @Query("SELECT DISTINCT ar.account FROM Authority ar WHERE ar.role.id IN ('ADMIN', 'STAFF')")
+    @Query("SELECT DISTINCT ar.account FROM Authority ar WHERE ar.role.id IN ('STAFF')")
     List<Account> getAdministrators();
 
     @Query("SELECT DISTINCT ar.account FROM Authority ar WHERE ar.role.id IN ('STAFF')")

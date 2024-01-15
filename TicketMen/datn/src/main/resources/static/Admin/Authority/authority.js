@@ -59,17 +59,26 @@ app.controller("authority-ctrl", function($scope, $http, $location){
         })
     }
     
-    //Xóa authority
-    $scope.revoke_authority = function(authority){
-        $http.delete(`/rest/authorities/${authority.id}`).then(resp => {
+    // Xóa authority
+$scope.revoke_authority = function(authority) {
+    // Kiểm tra nếu quyền đang được thu hồi là quyền của quản trị viên
+    if (authority.role.isAdmin) {
+        $scope.sweetAlert("warning", "Không thể thu hồi quyền của quản trị viên!");
+        return;
+    }
+
+    $http.delete(`/rest/authorities/${authority.id}`)
+        .then(resp => {
             var index = $scope.authorities.findIndex(a => a.id == authority.id);
             $scope.authorities.splice(index, 1);
-            $scope.sweetAlert("success", "Thu hồi quyền sử dụng thành công!")
-        }).catch(error => {
-            $scope.sweetAlert("error", "Thu hồi quyền sử dụng thành công!")
-            console.log("Error", error);
+            $scope.sweetAlert("success", "Thu hồi quyền sử dụng thành công!");
         })
-    }
+        .catch(error => {
+            $scope.sweetAlert("error", "Thu hồi quyền sử dụng thất bại! " + error.data.message);
+            console.log("Error", error);
+        });
+}
+
 
     
 
